@@ -1,0 +1,12 @@
+{
+"passwordFieldIsRequired": "Password Field Is Required.",
+  "passwordShouldBeEightCharacter": "Password must have at least 3 characters.",
+  "pleaseConfirmYourPassword": "Please confirm your password.",
+  "emailFieldIsRequired": "E-mail Field Is Required",
+  "emailIsNotValid": "This E-mail is not a Valid Email.",
+  "phoneFieldIsRequired": "Your Phone Field Is Required",
+  "wrongPhoneNumber": "Wrong Phone Number, ex 9******** ",
+  "fNameFieldIsRequired": "First Name Field Is Required.",
+  "passwordsDoesNotMatch": "Passwords does not match.try again",
+  "lNameFieldIsRequired": "Last Name Field Is Required."
+}
