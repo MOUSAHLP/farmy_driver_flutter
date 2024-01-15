@@ -8,5 +8,6 @@
   "wrongPhoneNumber": "Wrong Phone Number, ex 9******** ",
   "fNameFieldIsRequired": "First Name Field Is Required.",
   "passwordsDoesNotMatch": "Passwords does not match.try again",
+  "cancel":"Cancel",
   "lNameFieldIsRequired": "Last Name Field Is Required."
 }

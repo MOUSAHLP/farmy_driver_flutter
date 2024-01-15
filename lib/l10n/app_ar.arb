@@ -8,5 +8,6 @@
   "wrongPhoneNumber": "رقم الهاتف خاطئ, مثال ********9 ",
   "fNameFieldIsRequired": "حقل الأسم مطلوب",
   "passwordsDoesNotMatch": "كلمة السر غير مطابقة أعد المحاولة",
+   "cancel":"إلغاء",
   "lNameFieldIsRequired": "حقل الشهرة مطلوب"
 }
