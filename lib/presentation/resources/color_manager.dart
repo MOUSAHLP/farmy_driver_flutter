@@ -9,6 +9,7 @@ class     ColorManager {
   static const blackGreen = Color(0xff172F20);
   static const lightGray = Color(0xffE4E4E4);
   static const grayForPlaceholde = Color(0xffF4F4F4);
+  static const lightXGreen = Color(0xffDCFFD3);
   static const black = Color(0xff1E1E1E);
   static const white = Color(0xffFFFFFF);
   static const grayForSearch = Color(0xffD9D9D9);

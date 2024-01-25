@@ -1,63 +1,64 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:pharmy_driver/presentation/resources/font_app.dart';
 
+import '../resources/color_manager.dart';
+import '../resources/style_app.dart';
 
-// ignore: must_be_immutable
 class CustomButton extends StatelessWidget {
-  CustomButton({
-    super.key,
-    this.w,
-    required this.color,
-    required this.text,
-    required this.textStyle,
-    this.h,
-    required this.onPressed,
-    this.radius,
-    this.borderSideColor,
-    this.rowChild,
-    this.mainAxisAlignment
-  });
-  final double? w;
-  double? radius;
-  final double? h;
-  final Color color;
-  final Color? borderSideColor;
-  final TextStyle textStyle;
-  final String text;
-  final VoidCallback onPressed;
-  final Widget? rowChild;
-  final  MainAxisAlignment? mainAxisAlignment;
-
+  const CustomButton({
+    Key? key,
+    this.fillColor = ColorManager.primaryGreen,
+    this.borderColor,
+    this.isFilled = false,
+    this.labelColor = Colors.white,
+    this.height,
+    this.width,
+    required this.label,
+    this.onTap, this.fontSize, this.styleText, this.paddingText,
+  }) : super(key: key);
+  final Color fillColor;
+  final bool isFilled;
+  final Color labelColor;
+  final Color? borderColor;
+  final double? height;
+  final double? width;
+  final double?  fontSize;
+  final double?  paddingText;
+  final String label;
+  final TextStyle? styleText;
+  final Function()? onTap;
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: h,
-      width: w,
-      child: ElevatedButton(
-        style: ElevatedButton.styleFrom(
-          shadowColor: Colors.transparent,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(radius ?? 14), // Set the border radius to 50 to make it circular
-          ),
-          backgroundColor: color,
-          side: BorderSide(
-            color: borderSideColor??color,
-          ),
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        width: width ?? 1.sw - 50,
+        height: height ?? 47,
+        decoration: BoxDecoration(
+            color: isFilled ? fillColor : null,
+            borderRadius: BorderRadius.circular(12),
+            border:
+            Border.all(color: borderColor ?? Colors.transparent, width: 2),
+            gradient: !isFilled ? ColorManager.linearGradientPrimary : null
+          // boxShadow: isFilled
+          //     ?ColorManager.boxShadow
+          //     : []
         ),
-        onPressed: onPressed,
-        child: Row(
-          mainAxisAlignment: mainAxisAlignment?? MainAxisAlignment.center,
-          children: [
-            if(rowChild!=null)rowChild!,
-            const SizedBox(width: 8,),
-            Text(
-              text,
-              style: textStyle,
-              textAlign:  TextAlign.center,
+        child: Center(
+          child: Padding(
+            padding:  EdgeInsets.all(paddingText??10.0),
+            child: Text(
+              label,
+              style:styleText?? getBoldStyle(
+                color: labelColor,
+                fontSize: fontSize??FontSizeApp.s12
+              ),
             ),
-          ],
+          ),
         ),
       ),
-      );
+    );
   }
 }

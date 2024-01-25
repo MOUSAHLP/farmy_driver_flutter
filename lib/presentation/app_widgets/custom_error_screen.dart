@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:lottie/lottie.dart';
-
 import '../resources/assets_manager.dart';
-import '../resources/font_app.dart';
-import '../resources/style_app.dart';
 import 'custom_button.dart';
 
 class CustomErrorScreen extends StatelessWidget {
@@ -21,13 +18,12 @@ class CustomErrorScreen extends StatelessWidget {
             Lottie.asset(LottieManager.noInternet,),
             const SizedBox(height: 20),
             CustomButton(
-              onPressed: (){
+              onTap: (){
                 onTap!();
               },
-              color: Colors.white,
-              text: 'Retry',
-              textStyle:getRegularStyle(color: Colors.black,fontSize: FontSizeApp.s16)!,
-              w: 200.w,
+              fillColor: Colors.white,
+              label: 'Retry',
+              width: 200.w,
             )
           ],
         ),

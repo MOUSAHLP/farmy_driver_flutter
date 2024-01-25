@@ -52,3 +52,10 @@ TextStyle? getBoldStyle({
 }) {
   return _getTextStyle(fontSize, FontWeightApp.morebold, color);
 }
+
+TextStyle? getBold800Style({
+  double fontSize = FontSizeApp.s12,
+  required Color color,
+}) {
+  return _getTextStyle(fontSize, FontWeightApp.bold, color);
+}

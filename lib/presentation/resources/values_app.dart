@@ -8,12 +8,15 @@ class SizeApp {
   static const double s18 = 18.0;
   static const double s20 = 20.0;
   static const double s23 = 23.0;
+  static const double s26 = 26.0;
+  static const double s30 = 30.0;
   static const double s50 = 50.0;
   static const double s56 = 56.0;
   static const double s140 = 140.0;
 }
 
 class PaddingApp {
+  static const double p4 = 4.0;
   static const double p5 = 5.0;
   static const double p8 = 8.0;
   static const double p10 = 10.0;
@@ -23,12 +26,16 @@ class PaddingApp {
   static const double p18 = 18.0;
   static const double p20 = 20.0;
   static const double p22 = 22.0;
+  static const double p25 = 25.0;
   static const double p30 = 30.0;
+  static const double p32 = 32.0;
+  static const double p41 = 41.0;
   static const double p55 = 55.0;
 }
 
 class RadiusApp {
   static const double r5 = 5.0;
+  static const double r6 = 6.0;
   static const double r8 = 8.0;
   static const double r10 = 10.0;
   static const double r12 = 12.0;
