@@ -19,6 +19,7 @@ class OrderDetailsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: BaseScaffold(
+        isBack: true,
         title: AppLocalizations.of(context)!.order_details,
         child:Expanded(
           child: SingleChildScrollView(

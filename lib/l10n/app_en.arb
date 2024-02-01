@@ -48,7 +48,7 @@
   "bonus_guid":"Bonus guid",
   "get_promotion":"",
   "settings":"Settings",
-  "orders_date":"",
+  "orders_date":"History of requests and acquisitions",
   "contact_us":"contact us",
   "usage_guide":"usage guide",
   "sign_out":"Logout",
@@ -77,6 +77,23 @@
   "lName": "Last name",
   "phone":"phone",
   "confirmNumber": "confirm Number",
-  "back": "back"
+  "back": "back",
+  "transactions":"Transactions",
+  "your_current_balance":"Your current balance",
+  "add_balance":"Add balance",
+  "enter_current_balance":"Enter current balance",
+  "dues":"Dues",
+  "request_your_benefits":"Request your benefits",
+  "your_dues":"Your dues",
+  "company_dues":"Company dues",
+  "pay_your_dues":"Pay your dues",
+  "date":"Date",
+  "total":"Total",
+  "all_order_history":"All order history",
+  "order_history":"Order history",
+  "history_of_your_earnings":"History of your earnings",
+  "downloading_file":"Downloading a file",
+  "more_details":"More details"
+
 
 }

@@ -42,6 +42,10 @@ class HomeScreen extends StatelessWidget {
                   ],
                 ),
                 Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 14),
+                  child: Image.asset('assets/images/map.png'),
+                ),
+                Padding(
                   padding: const EdgeInsets.symmetric(vertical: PaddingApp.p12),
                   child: Container(
                     width: 0.35.sw,

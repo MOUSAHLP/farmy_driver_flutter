@@ -12,6 +12,7 @@ import 'package:pharmy_driver/presentation/screens/my_profile/screens/my_account
 import 'package:pharmy_driver/translations.dart';
 import '../../../../cubit/home_states.dart';
 import '../../../app_widgets/custom_drawer.dart';
+import '../../transactions/screens/transactions_screen.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
@@ -30,7 +31,7 @@ class _MainScreenState extends State<MainScreen> {
   Widget build(BuildContext context) {
     List<Widget> children = [
       const MyOrdersScreen(),
-      const MyOrdersScreen(),
+      const TransactionsScreen(),
       const HomeScreen(),
       const IncentivesScreen(),
       const MyAccountScreen(),

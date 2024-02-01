@@ -28,11 +28,20 @@ class     ColorManager {
     transform: GradientRotation(177.96),
   );
   static const greyForUnSleactedItem = Color(0xffD6D3D3);
+
+
   static   BoxShadow shadowGaryDown =  BoxShadow(
     color: const Color(0xFF000000).withOpacity(0.18),
     offset: const Offset(0, 2),
     blurRadius: 4.0,
   );
+  static   BoxShadow shadowGaryUp40 =  BoxShadow(
+    color: Color(0xFF000000).withOpacity(0.40),
+    offset: Offset(0, -3), // التأثير الرأسي
+    blurRadius: 4.0,
+    spreadRadius: 0.0,
+  );
+
   static   BoxShadow shadowGaryUp =  BoxShadow(
     color: const Color(0xFF000000).withOpacity(0.18),
     offset: const Offset(0, -3),

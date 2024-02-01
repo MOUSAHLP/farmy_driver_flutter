@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pharmy_driver/core/app_router/app_router.dart';
 import 'package:pharmy_driver/presentation/resources/color_manager.dart';
 import 'package:pharmy_driver/presentation/resources/font_app.dart';
 import 'package:pharmy_driver/presentation/resources/style_app.dart';
@@ -6,7 +7,8 @@ import 'package:pharmy_driver/presentation/resources/values_app.dart';
 
 class ScreenTitleWidget extends StatelessWidget {
   final String title;
-  const ScreenTitleWidget({Key? key, required this.title}) : super(key: key);
+  final bool isBack;
+  const ScreenTitleWidget({Key? key, required this.title,this.isBack=false}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +29,11 @@ class ScreenTitleWidget extends StatelessWidget {
           children: [
             Text(title,style: getBold800Style(color: ColorManager.grayForMessage,fontSize: FontSizeApp.s15),),
             const Spacer(),
-            const Icon(Icons.arrow_forward_ios_rounded,color: ColorManager.grayForMessage,size: 20),
+            InkWell(
+                onTap: (){
+                  isBack?AppRouter.pop(context):null;
+                },
+                child: const Icon(Icons.arrow_forward_ios_rounded,color: ColorManager.grayForMessage,size: 20)),
           ],
         ),
       ),

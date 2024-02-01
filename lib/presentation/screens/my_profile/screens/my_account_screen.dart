@@ -20,14 +20,15 @@ class MyAccountScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+
       body: BaseScaffold(
-        child: SafeArea(
+        title: AppLocalizations.of(context)!.personal_Details ,
+        child: Expanded(
+          
           child: SingleChildScrollView(
             child: Column(
               children: [
-                ScreenTitleWidget(title: AppLocalizations.of(context)!.personal_Details),
-                const SizedBox(height: 28),
-                Align(
+                 Align(
                   alignment:AlignmentDirectional.centerStart,
                   child: Padding(
                     padding: const EdgeInsetsDirectional.only(start:22.0),
@@ -161,16 +162,15 @@ class MyAccountScreen extends StatelessWidget {
                       ),
                       const SizedBox(height: 15),
                       InputFieldAuth(
+                          icon: Image.asset(
+                            ImageManager.flagOfSyria,
+                            height: 20,
+                            width: 20,
+                          ),
                           color: ColorManager.grayForm,
                           width: 1.sw,
                           hintText: AppLocalizations.of(context)!.phone,
-                          suffixIcon: const CountryCodePicker(
-                            padding: EdgeInsets.zero,
-                            showCountryOnly: true,
-                            flagWidth: 20,
-                            enabled: false,
-                            initialSelection: 'SY',
-                          )),
+                       ),
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 40),
                         child: Column(
