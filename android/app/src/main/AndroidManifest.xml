@@ -3,6 +3,9 @@
         android:label="pharmy_driver"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyAX8XoECKD0-gnAaah67gR4akbUodB_8Ww" />
         <activity
             android:name=".MainActivity"
             android:exported="true"

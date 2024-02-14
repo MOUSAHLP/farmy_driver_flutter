@@ -91,9 +91,18 @@
   "total":"Total",
   "all_order_history":"All order history",
   "order_history":"Order history",
-  "history_of_your_earnings":"History of your earnings",
+  "history_of_your_earnings":"Your earnings date",
   "downloading_file":"Downloading a file",
-  "more_details":"More details"
-
-
+  "more_details":"More details",
+  "sp":"S.P",
+  "daily":"Daily",
+  "weekly":"Weekly",
+  "monthly":"Monthly",
+  "number_of_all_orders":"Number of all orders",
+  "date_of_your_weekly_earnings":"Date of your weekly earnings",
+  "order":"order",
+  "your_connection_time":"Your connection time",
+  "days":"days",
+  "hour":"hour",
+  "order_delivery":"Order Delivery"
 }

@@ -44,6 +44,15 @@ TextStyle? getUnderBoldStyle(
     {double fontSize = FontSizeApp.s12, required Color color}) {
   return _getTextStyle(fontSize, FontWeightApp.underBold, color);
 }
+TextStyle? getUnderLineBoldStyle({
+  double fontSize = FontSizeApp.s16,
+  required Color color,
+}){return TextStyle(
+    fontSize:fontSize,
+    fontFamily: FontConstantEnglish.fontFamily,
+    fontWeight: FontWeightApp.morebold,
+    color :color ,
+    decoration:TextDecoration.underline );}
 
 // bold style
 TextStyle? getBoldStyle({

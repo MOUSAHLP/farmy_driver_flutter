@@ -5,8 +5,8 @@ import 'package:pharmy_driver/presentation/resources/color_manager.dart';
 import 'package:pharmy_driver/presentation/resources/font_app.dart';
 import 'package:pharmy_driver/presentation/resources/style_app.dart';
 
-import '../../../../cubit/home_cubit.dart';
-import '../../../../cubit/home_states.dart';
+import '../../../../cubit/home/home_cubit.dart';
+import '../../../../cubit/home/home_states.dart';
 
 class BottomNavItem extends StatelessWidget {
  final VoidCallback onTap;

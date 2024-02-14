@@ -45,6 +45,14 @@ dependencies:
   url_launcher: ^6.2.1
   flutter_switch: ^0.3.2
   sms_autofill: ^2.3.0
+  google_maps_flutter: ^2.2.8
+  geolocator: ^9.0.2
+  flutter_swipe_button: ^2.1.1+1
+  lite_rolling_switch: ^1.0.1
+  slide_action: ^0.0.2
+  d_chart: ^2.6.7
+  #  slide_to_act: ^2.0.2
+  #  syncfusion_flutter_charts: ^24.2.4+3
 
 dev_dependencies:
   flutter_test:

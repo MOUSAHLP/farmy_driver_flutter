@@ -11,6 +11,8 @@ import 'package:pharmy_driver/presentation/screens/home/widgets/progress_linear_
 import 'package:pharmy_driver/presentation/screens/my_orders/widgets/order_card.dart';
 import 'package:pharmy_driver/translations.dart';
 
+import '../../Order_delivery/widgets/google_map.dart';
+
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
@@ -41,10 +43,27 @@ class HomeScreen extends StatelessWidget {
                     Text('11/يناير/2024',style: getLightStyle(color: ColorManager.grayForMessage,fontSize: FontSizeApp.s15,),),
                   ],
                 ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 14),
-                  child: Image.asset('assets/images/map.png'),
+              Stack(alignment: AlignmentDirectional.bottomEnd, children: [
+                Container(
+                  height: 35.h,
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: PaddingApp.p5, vertical: PaddingApp.p12),
+                  child: Google_map(),
                 ),
+                Padding(
+                  padding: const EdgeInsets.only(left: 8, bottom: 15),
+                  child: FloatingActionButton(elevation: 10,
+                    onPressed: () {},
+                    backgroundColor: ColorManager.primaryGreen,
+                    shape: const CircleBorder(),
+                    child: const Icon(
+                      Icons.my_location,
+                      size: 32,
+                      color: ColorManager.white,
+                    ),
+                  ),
+                )
+              ]),
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: PaddingApp.p12),
                   child: Container(

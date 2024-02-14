@@ -4,14 +4,13 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'home_states.dart';
 
 class HomeCubit extends Cubit<HomeStates> {
-  int currentIndex=2;
+  int currentIndex = 2;
   final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
 
   HomeCubit() : super(InitialHomeState());
 
-  changeIndex(int index){
-    currentIndex=index;
+  changeIndex(int index) {
+    currentIndex = index;
     emit(ChangeIndexState());
   }
-
 }
