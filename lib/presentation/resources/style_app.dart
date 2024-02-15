@@ -52,7 +52,7 @@ TextStyle? getUnderLineBoldStyle({
     fontFamily: FontConstantEnglish.fontFamily,
     fontWeight: FontWeightApp.morebold,
     color :color ,
-    decoration:TextDecoration.underline );}
+     );}
 
 // bold style
 TextStyle? getBoldStyle({
