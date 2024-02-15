@@ -26,13 +26,13 @@ class EarningsDate extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 CircularContainer(
-                    text: '${AppLocalizations.of(context)!.daily}'),
+                    text: AppLocalizations.of(context)!.daily),
                 CircularContainer(
-                    text: '${AppLocalizations.of(context)!.weekly}',
+                    text: AppLocalizations.of(context)!.weekly,
                     color: ColorManager.primaryGreen,
                     textColor: ColorManager.white),
                 CircularContainer(
-                    text: '${AppLocalizations.of(context)!.monthly}'),
+                    text: AppLocalizations.of(context)!.monthly),
               ],
             ),
           ),
@@ -40,7 +40,7 @@ class EarningsDate extends StatelessWidget {
             padding: const EdgeInsets.symmetric(
                 vertical: PaddingApp.p5, horizontal: PaddingApp.p25),
             child: Text(
-              '${AppLocalizations.of(context)!.date_of_your_weekly_earnings}',
+              AppLocalizations.of(context)!.date_of_your_weekly_earnings,
               style: getBoldStyle(
                   fontSize: FontSizeApp.s15, color: ColorManager.black),
             ),
@@ -94,33 +94,9 @@ class EarningsDate extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                Container(
-                  width: 35.w,
-                  padding: const EdgeInsets.all(10),
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(5),
-                      color: const Color.fromARGB(255, 253, 249, 254),
-                      boxShadow: [ColorManager.shadowGaryDownSoft]),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        '${AppLocalizations.of(context)!.number_of_all_orders}',
-                        style: getBold800Style(
-                            color: ColorManager.grayForMessage,
-                            fontSize: FontSizeApp.s15),
-                      ),
-                      Text(
-                        '200 ' + '${AppLocalizations.of(context)!.order}',
-                        style: getBold800Style(
-                            color: ColorManager.grayForMessage,
-                            fontSize: FontSizeApp.s15),
-                      )
-                    ],
-                  ),
-                ),
-                Container(
-                    width: 35.w,
+                Expanded(
+                  child: Container(
+                    // width: 35.w,
                     padding: const EdgeInsets.all(10),
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(5),
@@ -130,21 +106,48 @@ class EarningsDate extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          '${AppLocalizations.of(context)!.your_connection_time}',
+                          AppLocalizations.of(context)!.number_of_all_orders,
                           style: getBold800Style(
                               color: ColorManager.grayForMessage,
                               fontSize: FontSizeApp.s15),
                         ),
                         Text(
-                          '5' + '${AppLocalizations.of(context)!.days}' +
-                              '12' +
-                              '${AppLocalizations.of(context)!.hour}',
+                          '200 ${AppLocalizations.of(context)!.order}',
                           style: getBold800Style(
                               color: ColorManager.grayForMessage,
                               fontSize: FontSizeApp.s15),
                         )
                       ],
-                    ))
+                    ),
+                  ),
+                ),
+                6.horizontalSpace,
+                Expanded(
+                  child: Container(
+                      // width: 135.w,
+                      padding: const EdgeInsets.all(10),
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(5),
+                          color: const Color.fromARGB(255, 253, 249, 254),
+                          boxShadow: [ColorManager.shadowGaryDownSoft]),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            AppLocalizations.of(context)!.your_connection_time,
+                            style: getBold800Style(
+                                color: ColorManager.grayForMessage,
+                                fontSize: FontSizeApp.s15),
+                          ),
+                          Text(
+                            '5${AppLocalizations.of(context)!.days}12${AppLocalizations.of(context)!.hour}',
+                            style: getBold800Style(
+                                color: ColorManager.grayForMessage,
+                                fontSize: FontSizeApp.s15),
+                          )
+                        ],
+                      )),
+                )
               ],
             ),
           )

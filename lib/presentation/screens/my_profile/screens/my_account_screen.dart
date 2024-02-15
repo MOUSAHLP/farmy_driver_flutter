@@ -27,7 +27,7 @@ class MyAccountScreen extends StatelessWidget {
                 title: AppLocalizations.of(context)!.personal_Details),
             const SizedBox(height: 20),
             SizedBox(
-              height: 0.65.sh,
+              height: 0.62.sh,
               child: ListView(
                 padding: EdgeInsets.zero,
                 shrinkWrap: true,

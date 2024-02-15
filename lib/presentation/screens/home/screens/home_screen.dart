@@ -26,11 +26,23 @@ class HomeScreen extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const SizedBox(height:SizeApp.s14 ,),
+                const SizedBox(
+                  height: SizeApp.s14,
+                ),
                 Row(
                   children: [
-                    Text('${AppLocalizations.of(context)!.driver_level}: ',style: getBoldStyle(color: ColorManager.grayForMessage,fontSize: FontSizeApp.s15),),
-                    Text('متمرس',style: getBoldStyle(color: ColorManager.primaryGreen,fontSize: FontSizeApp.s15),),
+                    Text(
+                      '${AppLocalizations.of(context)!.driver_level}: ',
+                      style: getBoldStyle(
+                          color: ColorManager.grayForMessage,
+                          fontSize: FontSizeApp.s15),
+                    ),
+                    Text(
+                      'متمرس',
+                      style: getBoldStyle(
+                          color: ColorManager.primaryGreen,
+                          fontSize: FontSizeApp.s15),
+                    ),
                   ],
                 ),
                 const Padding(
@@ -39,51 +51,72 @@ class HomeScreen extends StatelessWidget {
                 ),
                 Row(
                   children: [
-                    Text('الجمعة',style: getBold800Style(color: ColorManager.grayForMessage,fontSize: FontSizeApp.s15, ),),
-                    Text('11/يناير/2024',style: getLightStyle(color: ColorManager.grayForMessage,fontSize: FontSizeApp.s15,),),
+                    Text(
+                      'الجمعة',
+                      style: getBold800Style(
+                        color: ColorManager.grayForMessage,
+                        fontSize: FontSizeApp.s15,
+                      ),
+                    ),
+                    Text(
+                      '11/يناير/2024',
+                      style: getLightStyle(
+                        color: ColorManager.grayForMessage,
+                        fontSize: FontSizeApp.s15,
+                      ),
+                    ),
                   ],
                 ),
-              Stack(alignment: AlignmentDirectional.bottomEnd, children: [
-                Container(
-                  height: 35.h,
-                  padding: const EdgeInsets.symmetric(
-                      horizontal: PaddingApp.p5, vertical: PaddingApp.p12),
-                  child: Google_map(),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 8, bottom: 15),
-                  child: FloatingActionButton(elevation: 10,
-                    onPressed: () {},
-                    backgroundColor: ColorManager.primaryGreen,
-                    shape: const CircleBorder(),
-                    child: const Icon(
-                      Icons.my_location,
-                      size: 32,
-                      color: ColorManager.white,
-                    ),
+                Stack(alignment: AlignmentDirectional.bottomEnd, children: [
+                  Container(
+                    height: 200.h,
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: PaddingApp.p5, vertical: PaddingApp.p12),
+                    child: Google_map(),
                   ),
-                )
-              ]),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 8, bottom: 15),
+                    child: FloatingActionButton(
+                      elevation: 10,
+                      onPressed: () {},
+                      backgroundColor: ColorManager.primaryGreen,
+                      shape: const CircleBorder(),
+                      child: const Icon(
+                        Icons.my_location,
+                        size: 32,
+                        color: ColorManager.white,
+                      ),
+                    ),
+                  )
+                ]),
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: PaddingApp.p12),
                   child: Container(
                     width: 0.35.sw,
                     decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: const BorderRadius.all(Radius.circular(RadiusApp.r6)),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.black.withOpacity(0.25),
-                            spreadRadius: 0,
-                            blurRadius: 4,
-                            offset: const Offset(0,1),
-                          )],
+                      color: Colors.white,
+                      borderRadius:
+                          const BorderRadius.all(Radius.circular(RadiusApp.r6)),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withOpacity(0.25),
+                          spreadRadius: 0,
+                          blurRadius: 4,
+                          offset: const Offset(0, 1),
+                        )
+                      ],
                     ),
                     child: Padding(
                       padding: const EdgeInsets.all(PaddingApp.p10),
                       child: Row(
                         children: [
-                          Text(AppLocalizations.of(context)!.auto_accept,style: getBold800Style(color: ColorManager.grayForMessage,fontSize: FontSizeApp.s15, ),),
+                          Text(
+                            AppLocalizations.of(context)!.auto_accept,
+                            style: getBold800Style(
+                              color: ColorManager.grayForMessage,
+                              fontSize: FontSizeApp.s15,
+                            ),
+                          ),
                           const Spacer(),
                           Container(
                             width: 18,
@@ -96,8 +129,9 @@ class HomeScreen extends StatelessWidget {
                                   color: Colors.black.withOpacity(0.14),
                                   spreadRadius: 0,
                                   blurRadius: 7,
-                                  offset: const Offset(3,4),
-                                )],
+                                  offset: const Offset(3, 4),
+                                )
+                              ],
                             ),
                           )
                         ],
@@ -107,20 +141,40 @@ class HomeScreen extends StatelessWidget {
                 ),
                 Row(
                   children: [
-                    Text('${AppLocalizations.of(context)!.all_orders}: ',style: getBold800Style(color: ColorManager.grayForMessage,fontSize: FontSizeApp.s15, ),),
+                    Text(
+                      '${AppLocalizations.of(context)!.all_orders}: ',
+                      style: getBold800Style(
+                        color: ColorManager.grayForMessage,
+                        fontSize: FontSizeApp.s15,
+                      ),
+                    ),
                     const Spacer(),
                     Container(
                       decoration: const BoxDecoration(
                         color: ColorManager.primaryGreen,
-                        borderRadius: BorderRadius.all(Radius.circular(RadiusApp.r22)),
+                        borderRadius:
+                            BorderRadius.all(Radius.circular(RadiusApp.r22)),
                       ),
                       child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal:SizeApp.s16,vertical: SizeApp.s5),
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: SizeApp.s16, vertical: SizeApp.s5),
                         child: Row(
                           children: [
-                            Text(AppLocalizations.of(context)!.refresh,style: getUnderBoldStyle(color: Colors.white,fontSize: FontSizeApp.s14, ),),
-                            const SizedBox(width: SizeApp.s12,),
-                            const ImageSvgWidget(url: IconsManager.refreshIcon,width: 19,height: 19,).buildAssetSvgImage(),
+                            Text(
+                              AppLocalizations.of(context)!.refresh,
+                              style: getUnderBoldStyle(
+                                color: Colors.white,
+                                fontSize: FontSizeApp.s14,
+                              ),
+                            ),
+                            const SizedBox(
+                              width: SizeApp.s12,
+                            ),
+                            const ImageSvgWidget(
+                              url: IconsManager.refreshIcon,
+                              width: 19,
+                              height: 19,
+                            ).buildAssetSvgImage(),
                           ],
                         ),
                       ),
@@ -129,10 +183,14 @@ class HomeScreen extends StatelessWidget {
                 ),
                 ListView.separated(
                     physics: const NeverScrollableScrollPhysics(),
-                    padding: const EdgeInsets.symmetric(vertical: PaddingApp.p12),
+                    padding:
+                        const EdgeInsets.symmetric(vertical: PaddingApp.p12),
                     shrinkWrap: true,
-                    itemBuilder: (context, index) =>const OrderCardWidget(isHome: true),
-                    separatorBuilder: (context, index) =>const SizedBox(height: PaddingApp.p22,),
+                    itemBuilder: (context, index) =>
+                        const OrderCardWidget(isHome: true),
+                    separatorBuilder: (context, index) => const SizedBox(
+                          height: PaddingApp.p22,
+                        ),
                     itemCount: 3),
               ],
             ),

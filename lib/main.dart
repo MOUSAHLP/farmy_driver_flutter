@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
       ],
       child: ScreenUtilInit(
           minTextAdapt: true,
-          designSize: const Size(100, 100),
+          designSize: MediaQuery.of(context).size,
             builder: (context, child) =>  MaterialApp(
               title: 'Flutter Demo',
               theme: ThemeData(

@@ -13,9 +13,7 @@ import 'order_date.dart';
 import 'package:pharmy_driver/translations.dart';
 
 class AllOrderHistoryScreen extends StatelessWidget {
-  const AllOrderHistoryScreen({
-    Key? key,
-  }) : super(key: key);
+  const AllOrderHistoryScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -84,8 +82,16 @@ class AllOrderHistoryScreen extends StatelessWidget {
                       ),
                     ),
                     Expanded(
-                        child: SingleChildScrollView(child: Column(children: [cubit.isOrderDate ? const OrderDate() : const EarningsDate()],)))
-
+                      child: SingleChildScrollView(
+                        child: Column(
+                          children: [
+                            cubit.isOrderDate
+                                ? const OrderDate()
+                                : const EarningsDate()
+                          ],
+                        ),
+                      ),
+                    )
                   ],
                 ),
               ),
