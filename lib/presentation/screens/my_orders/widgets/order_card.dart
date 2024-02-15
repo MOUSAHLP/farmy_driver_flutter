@@ -10,7 +10,7 @@ import 'package:pharmy_driver/presentation/resources/style_app.dart';
 import 'package:pharmy_driver/presentation/resources/values_app.dart';
 import 'package:pharmy_driver/presentation/screens/order_details/screens/order_details.dart';
 import 'package:pharmy_driver/translations.dart';
-import '../../../../cubit/home_cubit.dart';
+import '../../../../cubit/home/home_cubit.dart';
 import 'order_card_row.dart';
 
 class OrderCardWidget extends StatelessWidget {
