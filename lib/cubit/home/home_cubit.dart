@@ -13,4 +13,5 @@ class HomeCubit extends Cubit<HomeStates> {
     currentIndex = index;
     emit(ChangeIndexState());
   }
+
 }

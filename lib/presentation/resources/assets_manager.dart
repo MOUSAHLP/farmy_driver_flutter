@@ -6,12 +6,16 @@ class ImageManager {
 
   static const String placeholderLogo = "$imagePath/logo_app.png";
   static const String orderLogo = "$imagePath/order_logo.svg";
+  static const String flagOfSyria = "$imagePath/flag_of_syria.png";
 }
 
 class IconsManager {
   static const String logoApp = "$iconPath/logo_app.svg";
+  static const String pdfIcon = "$iconPath/pdf_icon.svg";
   static const String crownIcon = "$iconPath/crown_icon.svg";
   static const String logoGreen = "$iconPath/logo_green.svg";
+  static const String logoAppLight = "$iconPath/logo_app_light.png";
+  static const String queen = "$iconPath/queen.png";
   //bottom nav icons
   static const String ordersIcon = "$iconPath/my_orders.svg";
   static const String homeIcon = "$iconPath/home.svg";

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:pharmy_driver/presentation/resources/assets_manager.dart';
 import 'package:pharmy_driver/presentation/resources/font_app.dart';
 
 import '../resources/color_manager.dart';
@@ -11,6 +13,7 @@ class CustomButton extends StatelessWidget {
     this.fillColor = ColorManager.primaryGreen,
     this.borderColor,
     this.isFilled = false,
+    this.isIcon = false,
     this.labelColor = Colors.white,
     this.height,
     this.width,
@@ -19,6 +22,7 @@ class CustomButton extends StatelessWidget {
   }) : super(key: key);
   final Color fillColor;
   final bool isFilled;
+  final bool isIcon;
   final Color labelColor;
   final Color? borderColor;
   final double? height;
@@ -49,12 +53,21 @@ class CustomButton extends StatelessWidget {
         child: Center(
           child: Padding(
             padding:  EdgeInsets.all(paddingText??10.0),
-            child: Text(
-              label,
-              style:styleText?? getBoldStyle(
-                color: labelColor,
-                fontSize: fontSize??FontSizeApp.s12
-              ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  label,
+                  style:styleText?? getBoldStyle(
+                    color: labelColor,
+                    fontSize: fontSize??FontSizeApp.s12
+                  ),
+                ),
+                isIcon?Padding(
+                  padding: const EdgeInsets.all(2),
+                  child: SvgPicture.asset(IconsManager.pdfIcon),
+                ):const SizedBox()
+              ],
             ),
           ),
         ),

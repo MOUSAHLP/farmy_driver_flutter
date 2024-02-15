@@ -4,9 +4,8 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pharmy_driver/presentation/screens/main_screen/screen/main_screen.dart';
 import 'package:pharmy_driver/translations.dart';
-
 import 'core/services/services_locator.dart';
-import 'cubit/home_cubit.dart';
+import 'cubit/home/home_cubit.dart';
 import 'data/data_resource/local_resource/data_store.dart';
 
 void main() async{

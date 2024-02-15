@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:pharmy_driver/cubit/home_cubit.dart';
+import 'package:pharmy_driver/cubit/home/home_cubit.dart';
 import 'package:pharmy_driver/presentation/app_widgets/dialog/will_pop_scope_handler.dart';
 import 'package:pharmy_driver/presentation/resources/assets_manager.dart';
 import 'package:pharmy_driver/presentation/screens/home/screens/home_screen.dart';
@@ -10,8 +10,9 @@ import 'package:pharmy_driver/presentation/screens/main_screen/widget/bottom_nav
 import 'package:pharmy_driver/presentation/screens/my_orders/screens/my_orders.dart';
 import 'package:pharmy_driver/presentation/screens/my_profile/screens/my_account_screen.dart';
 import 'package:pharmy_driver/translations.dart';
-import '../../../../cubit/home_states.dart';
+import '../../../../cubit/home/home_states.dart';
 import '../../../app_widgets/custom_drawer.dart';
+import '../../transactions/screens/transactions_screen.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
@@ -30,7 +31,7 @@ class _MainScreenState extends State<MainScreen> {
   Widget build(BuildContext context) {
     List<Widget> children = [
       const MyOrdersScreen(),
-      const MyOrdersScreen(),
+      const TransactionsScreen(),
       const HomeScreen(),
       const IncentivesScreen(),
       const MyAccountScreen(),

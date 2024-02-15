@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:pharmy_driver/core/app_router/app_router.dart';
 import 'package:pharmy_driver/presentation/app_widgets/custom_button.dart';
 import 'package:pharmy_driver/presentation/app_widgets/image_helper_svg.dart';
@@ -67,7 +68,14 @@ class OrderCardWidget extends StatelessWidget {
               padding: const EdgeInsets.symmetric(vertical:PaddingApp.p14,horizontal:PaddingApp.p10 ),
               child: Row(
                 children: [
-                  const ImageSvgWidget(url: ImageManager.orderLogo,width:90,height:90,fit: BoxFit.cover,).buildAssetSvgImage(),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Image.asset(IconsManager.queen,width:23,height:19),
+                      Image.asset(IconsManager.logoAppLight,width:90,height:90),
+                    ],
+                  ),
+               //   const ImageSvgWidget(url: ImageManager.orderLogo,width:90,height:90,fit: BoxFit.cover,).buildAssetSvgImage(),
                   Expanded(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
