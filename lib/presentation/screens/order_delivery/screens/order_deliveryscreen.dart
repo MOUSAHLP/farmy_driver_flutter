@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:lite_rolling_switch/lite_rolling_switch.dart';
 import 'package:pharmy_driver/presentation/app_widgets/base_scaffold.dart';
 import 'package:pharmy_driver/presentation/resources/color_manager.dart';
@@ -24,24 +25,26 @@ class Order_deliveryScreen extends StatelessWidget {
               child: Stack(
                   // alignment: AlignmentDirectional.bottomEnd,
                   children: [
-                Google_map(),
+                    Google_map(),
                 Positioned(
                   bottom: 12.h,
-                  left: 20,
-                  right: 20,
-                  child: LiteRollingSwitch(
-                    onTap: () {},width: 90.w,
-                    onSwipe: () {},
-                    onDoubleTap: () {},
-                    value: true,
-                    animationDuration: const Duration(seconds: 2),
-                    textOn: 'تم التوصيل',
-                    textOff: 'تم التوصيل',
-                    colorOn: Colors.redAccent,
-                    colorOff: ColorManager.primaryGreen,
-                    iconOn: Icons.double_arrow_outlined,
-                    iconOff: Icons.double_arrow_outlined,
-                    onChanged: (bool state) {},
+                  child: Padding(
+                    padding:  EdgeInsets.symmetric(horizontal: 20.w),
+                    child: LiteRollingSwitch(
+                      onTap: () {},
+                     width: 0.9.sw,
+                      onSwipe: () {},
+                      onDoubleTap: () {},
+                      value: true,
+                      animationDuration: const Duration(seconds: 1),
+                      textOn: 'تم التوصيل',
+                      textOff: 'تم التوصيل',
+                      colorOn: Colors.redAccent,
+                      colorOff: ColorManager.primaryGreen,
+                      iconOn: Icons.double_arrow_outlined,
+                      iconOff: Icons.double_arrow_outlined,
+                      onChanged: (bool state) {},
+                    ),
                   ),
                 ),
               ]))),
