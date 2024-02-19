@@ -104,5 +104,7 @@
   "your_connection_time":"Your connection time",
   "days":"days",
   "hour":"hour",
-  "order_delivery":"Order Delivery"
+  "order_delivery":"Order Delivery",
+  "delivered":"Delivered",
+  "total_bill":"Total Bill"
 }

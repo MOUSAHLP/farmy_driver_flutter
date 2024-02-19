@@ -6,14 +6,16 @@ import 'package:pharmy_driver/presentation/resources/color_manager.dart';
 import 'package:pharmy_driver/presentation/resources/font_app.dart';
 import 'package:pharmy_driver/presentation/resources/style_app.dart';
 import 'package:pharmy_driver/presentation/resources/values_app.dart';
+import 'package:pharmy_driver/presentation/screens/order_delivery/screens/order_deliveryscreen.dart';
 import 'package:pharmy_driver/presentation/screens/order_details/widgets/order_expanded_card.dart';
 import 'package:pharmy_driver/presentation/screens/order_details/widgets/user_info.dart';
 import 'package:pharmy_driver/translations.dart';
+import '../../../../core/app_router/app_router.dart';
 import '../widgets/order_info_column.dart';
 
 class OrderDetailsScreen extends StatelessWidget {
-  final bool isHome;
-  const OrderDetailsScreen({Key? key,  this.isHome=false}) : super(key: key);
+  bool isHome;
+   OrderDetailsScreen({Key? key, this.isHome=false}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -67,10 +69,15 @@ class OrderDetailsScreen extends StatelessWidget {
                     padding:  const EdgeInsets.symmetric( horizontal: PaddingApp.p25),
                     child: CustomButton(
                         height:44 ,
-                        label:isHome? AppLocalizations.of(context)!.order_accept: AppLocalizations.of(context)!.go_to_delivery,
+                        label:isHome?
+                        AppLocalizations.of(context)!.order_accept
+                            : AppLocalizations.of(context)!.go_to_delivery,
                         isFilled: true,
                         fillColor: ColorManager.primaryGreen ,
-                        onTap: () {},
+                        onTap: () {
+                          if(isHome=true)
+                          AppRouter.push(context, const Order_deliveryScreen ());
+                         },
                         styleText: getUnderBoldStyle(color:Colors.white,fontSize: FontSizeApp.s14, )
                     ),
                   ),

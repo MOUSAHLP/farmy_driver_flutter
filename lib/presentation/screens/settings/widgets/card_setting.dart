@@ -4,8 +4,9 @@ import 'package:pharmy_driver/presentation/resources/color_manager.dart';
 import 'package:pharmy_driver/presentation/resources/style_app.dart';
 
 class CardSetting extends StatelessWidget {
-  const CardSetting({super.key,required this.title,required this.onTap});
+    CardSetting({super.key,required this.title,required this.onTap,required this.color});
   final String title;
+   late Color color;
   final Function ()onTap;
 
   @override
@@ -24,7 +25,7 @@ class CardSetting extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(title,style: getBoldStyle(color: Colors.black,fontSize: 14),),
+              Text(title,style: getBoldStyle(color: color,fontSize: 14),),
               const Icon(Icons.arrow_forward_ios,
                 size: 20,
                 color: ColorManager.grayForMessage,),

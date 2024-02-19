@@ -118,7 +118,7 @@ class OrderDateCard extends StatelessWidget {
                   fillColor: ColorManager.primaryGreen,
                   labelColor: Colors.white,
                   styleText: getUnderBoldStyle(
-                      color: Colors.white, fontSize: FontSizeApp.s14),
+                      color: Colors.white, fontSize: FontSizeApp.s12.sp),
                   onTap: () {
                     AppRouter.push(context, const AllOrderHistoryScreen());
                   },
@@ -140,7 +140,7 @@ class OrderDateCard extends StatelessWidget {
                   borderColor: ColorManager.primaryGreen,
                   styleText: getUnderBoldStyle(
                       color: ColorManager.primaryGreen,
-                      fontSize: FontSizeApp.s14),
+                      fontSize: FontSizeApp.s12.sp),
                   onTap: () {},
                 ),
               ),

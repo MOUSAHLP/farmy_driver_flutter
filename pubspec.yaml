@@ -48,18 +48,25 @@ dependencies:
   google_maps_flutter: ^2.2.8
   geolocator: ^9.0.2
   flutter_swipe_button: ^2.1.1+1
-  lite_rolling_switch: ^1.0.1
+#  lite_rolling_switch: ^1.0.1
   slide_action: ^0.0.2
   d_chart: ^2.6.7
-  #  slide_to_act: ^2.0.2
+  slide_to_act: ^2.0.2
   #  syncfusion_flutter_charts: ^24.2.4+3
 
 dev_dependencies:
+  flutter_launcher_icons: "^0.13.1"
   flutter_test:
     sdk: flutter
   build_runner: ^2.3.3
   hive_generator: ^2.0.0
   flutter_lints: ^2.0.0
+flutter_launcher_icons:
+  android: "launcher_icon"
+  ios: false
+  image_path: "assets/icons/logoGreen.png"
+
+
 
 
 flutter:

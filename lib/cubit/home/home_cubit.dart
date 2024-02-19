@@ -5,7 +5,7 @@ import 'home_states.dart';
 
 class HomeCubit extends Cubit<HomeStates> {
   int currentIndex = 2;
-  final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
+   GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
 
   HomeCubit() : super(InitialHomeState());
 

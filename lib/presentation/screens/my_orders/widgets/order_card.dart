@@ -151,7 +151,7 @@ class OrderCardWidget extends StatelessWidget {
                     fillColor:ColorManager.primaryGreen ,
                     labelColor:Colors.white ,
                      onTap: () {
-                      AppRouter.push(context, const OrderDetailsScreen());
+                      AppRouter.push(context,  OrderDetailsScreen());
                      },
 
                 ),

@@ -22,10 +22,9 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreenState extends State<MainScreen> {
-
   int index = 0;
-  //move to controller
 
+  //move to controller
 
   @override
   Widget build(BuildContext context) {
@@ -38,15 +37,16 @@ class _MainScreenState extends State<MainScreen> {
     ];
     return WillPopScope(
       onWillPop: () async {
-        if (context.read<HomeCubit>().scaffoldKey.currentState?.isDrawerOpen == true) {
+        if (context.read<HomeCubit>().scaffoldKey.currentState?.isDrawerOpen ==
+            true) {
           context.read<HomeCubit>().scaffoldKey.currentState?.closeDrawer();
         } else {
           WillPopScopeHandler.handle(context);
         }
         return false;
       },
-      child: BlocBuilder<HomeCubit,HomeStates>(
-        builder: (context, state) =>  Scaffold(
+      child: BlocBuilder<HomeCubit, HomeStates>(
+        builder: (context, state) => Scaffold(
           key: context.read<HomeCubit>().scaffoldKey,
           drawer: const CustomAppDrawer(),
           body: SizedBox(
@@ -55,9 +55,9 @@ class _MainScreenState extends State<MainScreen> {
             child: Stack(
               alignment: Alignment.bottomCenter,
               children: [
-                  Padding(
+                Padding(
                   padding: const EdgeInsets.only(bottom: 60),
-                  child: children[ context.read<HomeCubit>().currentIndex],
+                  child: children[context.read<HomeCubit>().currentIndex],
                 ),
                 Container(
                   height: 70,
@@ -68,41 +68,41 @@ class _MainScreenState extends State<MainScreen> {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       BottomNavItem(
-                        currentIndex: context.read<HomeCubit>().currentIndex,
+                          currentIndex: context.read<HomeCubit>().currentIndex,
                           onTap: () {
-                         context.read<HomeCubit>().changeIndex(0);
-                         },
+                            context.read<HomeCubit>().changeIndex(0);
+                          },
                           title: AppLocalizations.of(context)!.my_orders,
                           icon: IconsManager.ordersIcon,
                           index: 0),
                       BottomNavItem(
-                        currentIndex: context.read<HomeCubit>().currentIndex,
+                          currentIndex: context.read<HomeCubit>().currentIndex,
                           onTap: () {
-                         context.read<HomeCubit>().changeIndex(1);
+                            context.read<HomeCubit>().changeIndex(1);
                           },
                           title: AppLocalizations.of(context)!.transactions,
                           icon: IconsManager.transactionsIcon,
                           index: 1),
                       BottomNavItem(
-                        currentIndex: context.read<HomeCubit>().currentIndex,
+                          currentIndex: context.read<HomeCubit>().currentIndex,
                           onTap: () {
-                         context.read<HomeCubit>().changeIndex(2);
+                            context.read<HomeCubit>().changeIndex(2);
                           },
                           title: AppLocalizations.of(context)!.home,
                           icon: IconsManager.homeIcon,
                           index: 2),
                       BottomNavItem(
-                        currentIndex: context.read<HomeCubit>().currentIndex,
+                          currentIndex: context.read<HomeCubit>().currentIndex,
                           onTap: () {
-                         context.read<HomeCubit>().changeIndex(3);
+                            context.read<HomeCubit>().changeIndex(3);
                           },
                           title: AppLocalizations.of(context)!.incentives,
                           icon: IconsManager.starIcon,
                           index: 3),
                       BottomNavItem(
-                        currentIndex: context.read<HomeCubit>().currentIndex,
+                          currentIndex: context.read<HomeCubit>().currentIndex,
                           onTap: () {
-                         context.read<HomeCubit>().changeIndex(4);
+                            context.read<HomeCubit>().changeIndex(4);
                           },
                           title: AppLocalizations.of(context)!.profile,
                           icon: IconsManager.profileIcon,

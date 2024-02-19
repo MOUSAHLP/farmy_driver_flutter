@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pharmy_driver/presentation/screens/all_order_history/widgets/chart.dart';
 import 'package:pharmy_driver/presentation/screens/all_order_history/widgets/circular_container.dart';
+import '../../../app_widgets/custom_button.dart';
 import '../../../resources/color_manager.dart';
 import '../../../resources/font_app.dart';
 import '../../../resources/style_app.dart';
 import '../../../resources/values_app.dart';
+
 //import 'package:d_chart/d_chart.dart';
 // import 'package:syncfusion_flutter_charts/charts.dart';
 // import 'package:syncfusion_flutter_charts/sparkcharts.dart';
@@ -25,14 +27,12 @@ class EarningsDate extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                CircularContainer(
-                    text: AppLocalizations.of(context)!.daily),
+                CircularContainer(text: AppLocalizations.of(context)!.daily),
                 CircularContainer(
                     text: AppLocalizations.of(context)!.weekly,
                     color: ColorManager.primaryGreen,
                     textColor: ColorManager.white),
-                CircularContainer(
-                    text: AppLocalizations.of(context)!.monthly),
+                CircularContainer(text: AppLocalizations.of(context)!.monthly),
               ],
             ),
           ),

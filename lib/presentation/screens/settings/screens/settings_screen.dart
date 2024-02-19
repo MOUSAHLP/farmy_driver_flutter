@@ -38,9 +38,10 @@ class SettingScreen extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.symmetric(vertical: 20),
                       child: CardSetting(
+                          color: Colors.black,
                           title: AppLocalizations.of(context)!.change_Password,
                           onTap: () {
-                        //    AppRouter.push(context, const ChangePasswordScreen());
+                            //    AppRouter.push(context, const ChangePasswordScreen());
                           }),
                     ),
                     const Divider(),
@@ -57,8 +58,9 @@ class SettingScreen extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.symmetric(vertical: 20),
                       child: CardSetting(
-                        title:"العربية",
-                      onTap: () {},
+                        color: Colors.black,
+                        title: "العربية",
+                        onTap: () {},
                       ),
                       // BlocBuilder<LanguageBloc, LanguageState>(
                       //   builder: (context, state) => CardSetting(
@@ -177,7 +179,8 @@ class SettingScreen extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         Text(
-                          AppLocalizations.of(context)!.privacy_and_Terms_of_Use,
+                          AppLocalizations.of(context)!
+                              .privacy_and_Terms_of_Use,
                           style: getBoldStyle(
                               color: ColorManager.grayForMessage, fontSize: 15),
                         ),
@@ -186,10 +189,13 @@ class SettingScreen extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.symmetric(vertical: 20),
                       child: CardSetting(
-                          title: AppLocalizations.of(context)!.terms_and_Conditions,
+                          color: Colors.black,
+                          title: AppLocalizations.of(context)!
+                              .terms_and_Conditions,
                           onTap: () {}),
                     ),
                     CardSetting(
+                        color: Colors.black,
                         title: AppLocalizations.of(context)!.privacy_Policy,
                         onTap: () {}),
                     const SizedBox(
@@ -199,14 +205,24 @@ class SettingScreen extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.symmetric(vertical: 10),
                       child: CardSetting(
-                          title: AppLocalizations.of(context)!.frequently_Asked_Questions,
+                          color: Colors.black,
+                          title: AppLocalizations.of(context)!
+                              .frequently_Asked_Questions,
                           onTap: () {}),
                     ),
                     CardSetting(
+                        color: Colors.black,
                         title: AppLocalizations.of(context)!.about_Application,
                         onTap: () {
-                        //  AppRouter.push(context, const AboutTheAppcreen());
+                          //  AppRouter.push(context, const AboutTheAppcreen());
                         }),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 10),
+                      child: CardSetting(
+                          color: ColorManager.redForFavorite,
+                          title: AppLocalizations.of(context)!.delete_account,
+                          onTap: () {}),
+                    ),
                   ],
                 ),
               ),

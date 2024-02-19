@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+//import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+//import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:pharmy_driver/presentation/app_widgets/base_scaffold.dart';
 import 'package:pharmy_driver/presentation/app_widgets/image_helper_svg.dart';
 import 'package:pharmy_driver/presentation/resources/assets_manager.dart';
@@ -11,14 +13,14 @@ import 'package:pharmy_driver/presentation/screens/home/widgets/progress_linear_
 import 'package:pharmy_driver/presentation/screens/my_orders/widgets/order_card.dart';
 import 'package:pharmy_driver/translations.dart';
 
-import '../../Order_delivery/widgets/google_map.dart';
+import '../../../app_widgets/google_map.dart';
+//import '../../../../cubit/location/location_cubit.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
-    return BaseScaffold(
+     return BaseScaffold(
       child: Expanded(
         child: SingleChildScrollView(
           child: Padding(
@@ -72,18 +74,19 @@ class HomeScreen extends StatelessWidget {
                     height: 200.h,
                     padding: const EdgeInsets.symmetric(
                         horizontal: PaddingApp.p5, vertical: PaddingApp.p12),
-                    child: Google_map(),
+                    child:Google_map()
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(left: 8, bottom: 15),
+                    padding: EdgeInsetsDirectional.fromSTEB( 0,0,4,10),
                     child: FloatingActionButton(
+                      mini: true,
                       elevation: 10,
                       onPressed: () {},
                       backgroundColor: ColorManager.primaryGreen,
                       shape: const CircleBorder(),
-                      child: const Icon(
+                      child:  Icon(
                         Icons.my_location,
-                        size: 32,
+                        size: 25.h.w,
                         color: ColorManager.white,
                       ),
                     ),

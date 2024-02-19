@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:pharmy_driver/presentation/app_widgets/custom_button.dart';
 import 'package:pharmy_driver/translations.dart';
 
 import '../../../app_widgets/image_helper_svg.dart';
@@ -22,49 +23,25 @@ class OrderDate extends StatelessWidget {
               vertical: PaddingApp.p20, horizontal: PaddingApp.p32),
           child: Row(
             children: [
-              Expanded(
-                child: Text(AppLocalizations.of(context)!.more_details,
-                    style: getBold800Style(
-                        color: ColorManager.grayForMessage,
-                        fontSize: FontSizeApp.s15)),
-              ),
+              Text(AppLocalizations.of(context)!.more_details,
+                  style: getBold800Style(
+                      color: ColorManager.grayForMessage,
+                      fontSize: FontSizeApp.s15)),
               const SizedBox(width: 10),
-              Expanded(
-                child: Padding(
-                  padding: EdgeInsetsDirectional.only(end: 20.w),
-                  child: Container(
-                    height: 40.h,
-                    // width: 28.w,
-                    decoration: BoxDecoration(
-                        border: Border.all(
-                            color: ColorManager.primaryGreen, width: 1.3),
-                        borderRadius: BorderRadius.circular(8)),
-                    child: InkWell(
-                      onTap: () {},
-                      child: Container(
-                        padding: const EdgeInsets.symmetric(
-                            vertical: PaddingApp.p4,
-                            horizontal: PaddingApp.p10),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          children: [
-                            Text(
-                              AppLocalizations.of(context)!.downloading_file,
-                              style: getBold800Style(
-                                color: ColorManager.primaryGreen,
-                              ),
-                            ),
-                            const ImageSvgWidget(
-                              url: IconsManager.pdfIcon,
-                              // color: ColorFilter.mode(
-                              //     ColorManager.primaryGreen, BlendMode.srcIn),
-                            ).buildAssetSvgImage(),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
+              CustomButton(
+                isIcon: true,
+                width: 0.33.sw,
+                height: 47,
+                paddingText: PaddingApp.p4,
+                isFilled: true,
+                label: AppLocalizations.of(context)!.downloading_file,
+                fillColor: Colors.white,
+                labelColor: ColorManager.primaryGreen,
+                borderColor: ColorManager.primaryGreen,
+                styleText: getUnderBoldStyle(
+                    color: ColorManager.primaryGreen,
+                    fontSize: FontSizeApp.s14.sp),
+                onTap: () {},
               ),
             ],
           ),

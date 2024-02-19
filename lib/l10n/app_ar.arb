@@ -104,5 +104,7 @@
   "your_connection_time":"وقت اتصالك",
   "days":"أيام",
   "hour":"ساعة",
-  "order_delivery":"توصيل الطلب"
+  "order_delivery":"توصيل الطلب",
+  "delivered":"تم التوصيل",
+  "total_bill": "إجمالي الفاتورة"
 }

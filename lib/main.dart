@@ -3,12 +3,15 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pharmy_driver/presentation/screens/main_screen/screen/main_screen.dart';
+import 'package:pharmy_driver/presentation/screens/splash_screen/splash_screen.dart';
+//import 'package:pharmy_driver/presentation/screens/order_delivery/screens/order_deliveryscreen.dart';
 import 'package:pharmy_driver/translations.dart';
 import 'core/services/services_locator.dart';
 import 'cubit/home/home_cubit.dart';
 import 'data/data_resource/local_resource/data_store.dart';
 
 void main() async{
+
   WidgetsFlutterBinding.ensureInitialized();
   await DataStore.instance.init();
   ServicesLocator().init();
@@ -42,7 +45,7 @@ class MyApp extends StatelessWidget {
                 GlobalCupertinoLocalizations.delegate,
                 GlobalWidgetsLocalizations.delegate,
               ],
-              home: const MainScreen(),
+              home:  SplashScreen(),
         ),
       ),
     );

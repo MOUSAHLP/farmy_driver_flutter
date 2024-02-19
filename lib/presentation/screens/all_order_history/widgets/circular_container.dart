@@ -8,7 +8,8 @@ import '../../../resources/values_app.dart';
 Widget CircularContainer({
   required String text,
   Color color =const Color.fromARGB(255, 253, 249, 254),
-  Color textColor= ColorManager.primaryGreen
+  Color textColor= ColorManager.primaryGreen,
+   double circular=5
 }) =>
     Container(
         padding: const EdgeInsets.symmetric(
@@ -16,7 +17,7 @@ Widget CircularContainer({
         decoration: BoxDecoration(
             color: color,
             border: Border.all(color: ColorManager.primaryGreen, width: 1.5),
-            borderRadius: BorderRadius.circular(5)),
+            borderRadius: BorderRadius.circular(circular)),
         child: Text(text,
             style: getBold800Style(
                 color: textColor, fontSize: FontSizeApp.s13)));
