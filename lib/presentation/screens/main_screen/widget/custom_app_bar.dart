@@ -48,7 +48,7 @@ class CustomAppBar extends StatelessWidget {
                         width: 21,
                       ),
                       onTap: () {
-                        context.read<HomeCubit>().scaffoldKey?.currentState?.openDrawer();
+                        context.read<HomeCubit>().scaffoldKey.currentState?.openDrawer();
                       },
                     ),
                     Padding(

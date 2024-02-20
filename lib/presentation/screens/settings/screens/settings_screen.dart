@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:pharmy_driver/presentation/app_widgets/screen_title.dart';
 import 'package:pharmy_driver/presentation/resources/color_manager.dart';
 import 'package:pharmy_driver/presentation/resources/style_app.dart';
-import 'package:pharmy_driver/presentation/screens/main_screen/widget/custom_app_bar.dart';
 import 'package:pharmy_driver/presentation/screens/settings/widgets/card_setting.dart';
 import 'package:pharmy_driver/translations.dart';
 

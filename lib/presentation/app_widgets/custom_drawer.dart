@@ -7,6 +7,7 @@ import 'package:pharmy_driver/translations.dart';
 import '../resources/assets_manager.dart';
 import '../resources/color_manager.dart';
 import '../resources/style_app.dart';
+import '../screens/all_order_history/screens/all_order_history_screen.dart';
 
 class CustomAppDrawer extends StatelessWidget {
   const CustomAppDrawer({super.key});
@@ -76,6 +77,7 @@ class CustomAppDrawer extends StatelessWidget {
                           ElevatedButtonWidget(
                             title: AppLocalizations.of(context)!.orders_date,
                               onTap: () {
+                                AppRouter.push(context, const AllOrderHistoryScreen());
                             //AppRouter.push(context, const AllInvoicesScreen());
                           }),
                           ElevatedButtonWidget(
