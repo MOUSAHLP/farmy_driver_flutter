@@ -7,7 +7,8 @@ import 'package:pharmy_driver/translations.dart';
 import '../resources/assets_manager.dart';
 import '../resources/color_manager.dart';
 import '../resources/style_app.dart';
-import '../screens/all_order_history/screens/all_order_history_screen.dart';
+
+import '../screens/all_order_history/screens/order&earnings_date_screen.dart';
 
 class CustomAppDrawer extends StatelessWidget {
   const CustomAppDrawer({super.key});
