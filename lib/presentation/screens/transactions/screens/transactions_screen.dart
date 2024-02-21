@@ -1,13 +1,8 @@
 
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:hive_flutter/adapters.dart';
 import 'package:pharmy_driver/presentation/app_widgets/base_scaffold.dart';
-import 'package:pharmy_driver/presentation/app_widgets/custom_button.dart';
 import 'package:pharmy_driver/presentation/resources/color_manager.dart';
-import 'package:pharmy_driver/presentation/resources/font_app.dart';
 import 'package:pharmy_driver/presentation/resources/style_app.dart';
-import 'package:pharmy_driver/presentation/resources/values_app.dart';
 import 'package:pharmy_driver/presentation/screens/transactions/widgets/company_dues_card.dart';
 import 'package:pharmy_driver/presentation/screens/transactions/widgets/current_balance_card.dart';
 import 'package:pharmy_driver/presentation/screens/transactions/widgets/dues_card.dart';
