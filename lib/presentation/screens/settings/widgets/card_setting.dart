@@ -15,10 +15,11 @@ class CardSetting extends StatelessWidget {
       onTap: onTap,
       child: Container(
         width: 1.sw,
+        height: 45,
         decoration: BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.circular(6),
-            boxShadow: [ColorManager.shadowGaryDown]
+            boxShadow: [ColorManager.shadowGaryDownSoft]
         ),
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 18,vertical: 11),

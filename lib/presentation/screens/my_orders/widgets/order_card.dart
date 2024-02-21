@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:pharmy_driver/core/app_router/app_router.dart';
 import 'package:pharmy_driver/presentation/app_widgets/custom_button.dart';
-import 'package:pharmy_driver/presentation/app_widgets/image_helper_svg.dart';
 import 'package:pharmy_driver/presentation/resources/assets_manager.dart';
 import 'package:pharmy_driver/presentation/resources/color_manager.dart';
 import 'package:pharmy_driver/presentation/resources/font_app.dart';
@@ -11,6 +10,8 @@ import 'package:pharmy_driver/presentation/resources/style_app.dart';
 import 'package:pharmy_driver/presentation/resources/values_app.dart';
 import 'package:pharmy_driver/presentation/screens/order_details/screens/order_details.dart';
 import 'package:pharmy_driver/translations.dart';
+import '../../../../cubit/home/home_cubit.dart';
+
 import 'order_card_row.dart';
 
 class OrderCardWidget extends StatelessWidget {
@@ -75,7 +76,6 @@ class OrderCardWidget extends StatelessWidget {
                       Image.asset(IconsManager.logoAppLight,width:90,height:90),
                     ],
                   ),
-               //   const ImageSvgWidget(url: ImageManager.orderLogo,width:90,height:90,fit: BoxFit.cover,).buildAssetSvgImage(),
                   Expanded(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -110,7 +110,7 @@ class OrderCardWidget extends StatelessWidget {
                     labelColor:Colors.white ,
                     styleText: getUnderBoldStyle(color: Colors.white ,fontSize: FontSizeApp.s14),
                     onTap: () {
-
+                      context.read<HomeCubit>().changeIndex(0);
                     },
 
                   ),
