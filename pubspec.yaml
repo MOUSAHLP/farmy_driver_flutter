@@ -64,7 +64,7 @@ dev_dependencies:
 flutter_launcher_icons:
   android: "launcher_icon"
   ios: false
-  image_path: "assets/icons/logoGreen.png"
+  image_path: "assets/icons/menu.png"
 
 
 
