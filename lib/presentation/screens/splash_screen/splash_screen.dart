@@ -5,8 +5,6 @@ import '../../resources/assets_manager.dart';
 import '../../resources/color_manager.dart';
 import 'package:flutter/cupertino.dart';
 
-
-
 class SplashScreen extends StatefulWidget{
   @override
   State<StatefulWidget> createState() {
