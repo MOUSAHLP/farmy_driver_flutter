@@ -14,8 +14,9 @@ import '../../../../core/app_router/app_router.dart';
 import '../widgets/order_info_column.dart';
 
 class OrderDetailsScreen extends StatelessWidget {
-  bool isHome;
-   OrderDetailsScreen({Key? key, this.isHome=false}) : super(key: key);
+  final bool isHome;
+
+  const OrderDetailsScreen({Key? key, this.isHome = false}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -23,69 +24,86 @@ class OrderDetailsScreen extends StatelessWidget {
       body: BaseScaffold(
         isBack: true,
         title: AppLocalizations.of(context)!.order_details,
-        child:Expanded(
+        child: Expanded(
           child: SingleChildScrollView(
             child: Padding(
-              padding: const EdgeInsets.symmetric(vertical: PaddingApp.p22,),
+              padding: const EdgeInsets.symmetric(vertical: PaddingApp.p22),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const OrderInfoWidget(),
-                  Padding(
-                    padding: const EdgeInsets.symmetric( horizontal: PaddingApp.p25),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.start ,
-                      children: [
-                        CustomButton(
-                          width: 0.35.sw,
-                          label: AppLocalizations.of(context)!.contact_client,
-                          fillColor:ColorManager.primaryGreen ,
-                          labelColor:Colors.white ,
-                          onTap: () {
-                          },
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(horizontal:PaddingApp.p10),
-                          child: CustomButton(
+                  OrderInfoWidget(isHome: isHome),
+                  if (!isHome)
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: PaddingApp.p25),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          CustomButton(
                             width: 0.35.sw,
-                            isFilled: true,
-                            label: AppLocalizations.of(context)!.contact_pharmy_team,
-                            fillColor: Colors.white,
-                            labelColor:ColorManager.primaryGreen,
-                            borderColor: ColorManager.primaryGreen,
+                            label: AppLocalizations.of(context)!.contact_client,
+                            fillColor: ColorManager.primaryGreen,
+                            labelColor: Colors.white,
                             onTap: () {},
                           ),
-                        ),
-                      ],
+                          Padding(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: PaddingApp.p10),
+                            child: CustomButton(
+                              width: 0.35.sw,
+                              isFilled: true,
+                              label: AppLocalizations.of(context)!
+                                  .contact_pharmy_team,
+                              fillColor: Colors.white,
+                              labelColor: ColorManager.primaryGreen,
+                              borderColor: ColorManager.primaryGreen,
+                              onTap: () {},
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
-                  ),
-                  const UserInfoWidget(),
-                   OrderExpandedCard(isHome: isHome),
+                  UserInfoWidget(isHome: isHome),
+                  OrderExpandedCard(isHome: isHome),
                   Padding(
-                    padding: const EdgeInsets.symmetric(vertical: PaddingApp.p16),
-                    child: Center(child: Text(AppLocalizations.of(context)!.order_info3,style: getUnderBoldStyle(color: ColorManager.grayForMessage,fontSize: FontSizeApp.s12),)),
+                    padding:
+                        const EdgeInsets.symmetric(vertical: PaddingApp.p16),
+                    child: Center(
+                        child: Text(
+                      AppLocalizations.of(context)!.order_info3,
+                      style: getUnderBoldStyle(
+                          color: ColorManager.grayForMessage,
+                          fontSize: FontSizeApp.s12),
+                    )),
                   ),
                   Padding(
-                    padding:  const EdgeInsets.symmetric( horizontal: PaddingApp.p25),
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: PaddingApp.p25),
                     child: CustomButton(
-                        height:44 ,
-                        label:isHome?
-                        AppLocalizations.of(context)!.order_accept
+                        height: 44,
+                        label: isHome
+                            ? AppLocalizations.of(context)!.order_accept
                             : AppLocalizations.of(context)!.go_to_delivery,
                         isFilled: true,
-                        fillColor: ColorManager.primaryGreen ,
+                        fillColor: ColorManager.primaryGreen,
                         onTap: () {
-                          if(isHome=true)
-                          AppRouter.push(context, const Order_deliveryScreen ());
-                         },
-                        styleText: getUnderBoldStyle(color:Colors.white,fontSize: FontSizeApp.s14, )
-                    ),
+                          if (isHome) {
+                            AppRouter.push(
+                              context,
+                              const OrderDeliveryScreen(),
+                            );
+                          }
+                        },
+                        styleText: getUnderBoldStyle(
+                          color: Colors.white,
+                          fontSize: FontSizeApp.s14,
+                        )),
                   ),
                 ],
               ),
             ),
           ),
-        ) ,
+        ),
       ),
     );
   }

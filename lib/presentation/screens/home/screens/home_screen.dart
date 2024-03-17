@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+
 //import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 //import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:pharmy_driver/presentation/app_widgets/base_scaffold.dart';
 import 'package:pharmy_driver/presentation/app_widgets/image_helper_svg.dart';
@@ -18,9 +20,10 @@ import '../../../app_widgets/google_map.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
-     return BaseScaffold(
+    return BaseScaffold(
       child: Expanded(
         child: SingleChildScrollView(
           child: Padding(
@@ -51,40 +54,39 @@ class HomeScreen extends StatelessWidget {
                   padding: EdgeInsets.symmetric(vertical: PaddingApp.p12),
                   child: ProgressLinearIndicatorWidget(),
                 ),
-                Row(
-                  children: [
-                    Text(
-                      'الجمعة',
-                      style: getBold800Style(
-                        color: ColorManager.grayForMessage,
-                        fontSize: FontSizeApp.s15,
-                      ),
-                    ),
-                    Text(
-                      '11/يناير/2024',
-                      style: getLightStyle(
-                        color: ColorManager.grayForMessage,
-                        fontSize: FontSizeApp.s15,
-                      ),
-                    ),
-                  ],
-                ),
+                // Row(
+                //   children: [
+                //     Text(
+                //       'الجمعة',
+                //       style: getBold800Style(
+                //         color: ColorManager.grayForMessage,
+                //         fontSize: FontSizeApp.s15,
+                //       ),
+                //     ),
+                //     Text(
+                //       '11/يناير/2024',
+                //       style: getLightStyle(
+                //         color: ColorManager.grayForMessage,
+                //         fontSize: FontSizeApp.s15,
+                //       ),
+                //     ),
+                //   ],
+                // ),
                 Stack(alignment: AlignmentDirectional.bottomEnd, children: [
                   Container(
-                    height: 200.h,
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: PaddingApp.p5, vertical: PaddingApp.p12),
-                    child:Google_map()
-                  ),
+                      height: 200.h,
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: PaddingApp.p5, vertical: PaddingApp.p12),
+                      child: Google_map()),
                   Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB( 0,0,4,10),
+                    padding: const EdgeInsetsDirectional.fromSTEB(0, 0, 4, 10),
                     child: FloatingActionButton(
                       mini: true,
                       elevation: 10,
                       onPressed: () {},
                       backgroundColor: ColorManager.primaryGreen,
                       shape: const CircleBorder(),
-                      child:  Icon(
+                      child: Icon(
                         Icons.my_location,
                         size: 25.h.w,
                         color: ColorManager.white,
@@ -92,56 +94,57 @@ class HomeScreen extends StatelessWidget {
                     ),
                   )
                 ]),
-                Padding(
-                  padding: const EdgeInsets.symmetric(vertical: PaddingApp.p12),
-                  child: Container(
-                    width: 0.35.sw,
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius:
-                          const BorderRadius.all(Radius.circular(RadiusApp.r6)),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.black.withOpacity(0.25),
-                          spreadRadius: 0,
-                          blurRadius: 4,
-                          offset: const Offset(0, 1),
-                        )
-                      ],
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.all(PaddingApp.p10),
-                      child: Row(
-                        children: [
-                          Text(
-                            AppLocalizations.of(context)!.auto_accept,
-                            style: getBold800Style(
-                              color: ColorManager.grayForMessage,
-                              fontSize: FontSizeApp.s15,
-                            ),
-                          ),
-                          const Spacer(),
-                          Container(
-                            width: 18,
-                            height: 18,
-                            decoration: BoxDecoration(
-                              color: ColorManager.grayForSearch,
-                              shape: BoxShape.circle,
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Colors.black.withOpacity(0.14),
-                                  spreadRadius: 0,
-                                  blurRadius: 7,
-                                  offset: const Offset(3, 4),
-                                )
-                              ],
-                            ),
-                          )
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
+                // Padding(
+                //   padding: const EdgeInsets.symmetric(vertical: PaddingApp.p12),
+                //   child: Container(
+                //     width: 0.35.sw,
+                //     decoration: BoxDecoration(
+                //       color: Colors.white,
+                //       borderRadius:
+                //           const BorderRadius.all(Radius.circular(RadiusApp.r6)),
+                //       boxShadow: [
+                //         BoxShadow(
+                //           color: Colors.black.withOpacity(0.25),
+                //           spreadRadius: 0,
+                //           blurRadius: 4,
+                //           offset: const Offset(0, 1),
+                //         )
+                //       ],
+                //     ),
+                //     child: Padding(
+                //       padding: const EdgeInsets.all(PaddingApp.p10),
+                //       child: Row(
+                //         children: [
+                //           Text(
+                //             AppLocalizations.of(context)!.auto_accept,
+                //             style: getBold800Style(
+                //               color: ColorManager.grayForMessage,
+                //               fontSize: FontSizeApp.s15,
+                //             ),
+                //           ),
+                //           const Spacer(),
+                //           Container(
+                //             width: 18,
+                //             height: 18,
+                //             decoration: BoxDecoration(
+                //               color: ColorManager.grayForSearch,
+                //               shape: BoxShape.circle,
+                //               boxShadow: [
+                //                 BoxShadow(
+                //                   color: Colors.black.withOpacity(0.14),
+                //                   spreadRadius: 0,
+                //                   blurRadius: 7,
+                //                   offset: const Offset(3, 4),
+                //                 )
+                //               ],
+                //             ),
+                //           )
+                //         ],
+                //       ),
+                //     ),
+                //   ),
+                // ),
+                15.verticalSpace,
                 Row(
                   children: [
                     Text(
