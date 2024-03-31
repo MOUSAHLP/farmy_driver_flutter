@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:pharmy_driver/presentation/screens/all_order_history/widgets/order_table_row.dart';
+import 'package:pharmy_driver/presentation/screens/orders_history/widgets/order_table_row.dart';
 import 'package:pharmy_driver/translations.dart';
 import '../../../resources/color_manager.dart';
 import '../../../resources/font_app.dart';

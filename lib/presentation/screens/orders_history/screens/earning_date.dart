@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:pharmy_driver/presentation/screens/all_order_history/widgets/chart.dart';
-import 'package:pharmy_driver/presentation/screens/all_order_history/widgets/circular_container.dart';
+import 'package:pharmy_driver/presentation/screens/orders_history/widgets/chart.dart';
+import 'package:pharmy_driver/presentation/screens/orders_history/widgets/circular_container.dart';
 import '../../../app_widgets/custom_button.dart';
 import '../../../resources/color_manager.dart';
 import '../../../resources/font_app.dart';
@@ -40,7 +40,7 @@ class EarningsDate extends StatelessWidget {
             padding: const EdgeInsets.symmetric(
                 vertical: PaddingApp.p10, horizontal: PaddingApp.p25),
             child: Text(
-              AppLocalizations.of(context)!.date_of_your_weekly_earnings,
+              AppLocalizations.of(context)!.daily_orders_percentage,
               style: getBoldStyle(
                   fontSize: FontSizeApp.s15, color: ColorManager.black),
             ),
@@ -68,7 +68,17 @@ class EarningsDate extends StatelessWidget {
               ],
             ),
           ),
-          const Chart(),
+          const Chart(
+            data: {
+              "Sat": 5,
+              "Fri": 6,
+              "Thu": 2,
+              "Wed": 8,
+              "Tue": 2,
+              "Mon": 6,
+              "Sun": 10
+            },
+          ),
           Divider(
             color: ColorManager.grayForMessage,
             endIndent: 20.w,

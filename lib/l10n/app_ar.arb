@@ -110,5 +110,6 @@
   "order_delivery": "توصيل الطلب",
   "delivered": "تم التوصيل",
   "total_bill": "إجمالي الفاتورة",
-  "syrian_pound": "ل.س"
+  "syrian_pound": "ل.س",
+  "daily_orders_percentage": "نسبة الطلبات المتممة اليومية"
 }

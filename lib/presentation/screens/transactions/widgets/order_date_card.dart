@@ -9,7 +9,7 @@ import 'package:pharmy_driver/presentation/resources/values_app.dart';
 import 'package:pharmy_driver/presentation/screens/transactions/widgets/order_date_row.dart';
 import 'package:pharmy_driver/translations.dart';
 
-import '../../all_order_history/screens/order&earnings_date_screen.dart';
+import '../../orders_history/screens/orders_history_screen.dart';
 
 class OrderDateCard extends StatelessWidget {
   const OrderDateCard({Key? key}) : super(key: key);
@@ -97,7 +97,7 @@ class OrderDateCard extends StatelessWidget {
                   styleText: getUnderBoldStyle(
                       color: Colors.white, fontSize: FontSizeApp.s12.sp),
                   onTap: () {
-                    AppRouter.push(context, const AllOrderHistoryScreen());
+                    AppRouter.push(context, const OrdersHistoryScreen());
                   },
                 ),
               ),

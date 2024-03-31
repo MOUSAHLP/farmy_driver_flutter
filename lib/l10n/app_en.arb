@@ -110,5 +110,6 @@
   "order_delivery": "Order Delivery",
   "delivered": "Delivered",
   "total_bill": "Total Bill",
-  "syrian_pound": "S.P"
+  "syrian_pound": "S.P",
+  "daily_orders_percentage": "Percentage of daily completed orders"
 }

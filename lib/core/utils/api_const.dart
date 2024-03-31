@@ -1,6 +1,5 @@
 class ApiConst {
-  static const String baseUrl =
-      "https://control.farmy.peaklink.site/public/api";
+  static const String baseUrl = "https://farmy.driver.peaklink.site/api";
 
   ///Auth
   static const String login = "/auth/login";
@@ -27,5 +26,9 @@ class ApiConst {
   ///Address
   static const String getUserAddresses = "/user_addresses";
   static const String addUserAddresses = "/user_addresses";
-  static  String deleteUserAddresses(int id) => "/user_addresses/$id";
+  static String deleteUserAddresses(int id) => "/user_addresses/$id";
+
+  ///Orders History
+  static String getDriverOrdersHistory(String date, String type) =>
+      "$baseUrl/get-driver-orders-history?date=$date&type=$type";
 }
