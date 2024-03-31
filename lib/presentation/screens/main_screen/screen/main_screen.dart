@@ -4,8 +4,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pharmy_driver/cubit/home/home_cubit.dart';
 import 'package:pharmy_driver/presentation/app_widgets/dialog/will_pop_scope_handler.dart';
 import 'package:pharmy_driver/presentation/resources/assets_manager.dart';
+import 'package:pharmy_driver/presentation/screens/all_order_history/screens/order&earnings_date_screen.dart';
 import 'package:pharmy_driver/presentation/screens/home/screens/home_screen.dart';
-import 'package:pharmy_driver/presentation/screens/incentives/screens/incentives.dart';
 import 'package:pharmy_driver/presentation/screens/main_screen/widget/bottom_nav_item.dart';
 import 'package:pharmy_driver/presentation/screens/my_orders/screens/my_orders.dart';
 import 'package:pharmy_driver/presentation/screens/my_profile/screens/my_account_screen.dart';
@@ -32,7 +32,8 @@ class _MainScreenState extends State<MainScreen> {
       const MyOrdersScreen(),
       const TransactionsScreen(),
       const HomeScreen(),
-      const IncentivesScreen(),
+      // const IncentivesScreen(),
+      const AllOrderHistoryScreen(),
       const MyAccountScreen(),
     ];
     return WillPopScope(
@@ -96,8 +97,8 @@ class _MainScreenState extends State<MainScreen> {
                           onTap: () {
                             context.read<HomeCubit>().changeIndex(3);
                           },
-                          title: AppLocalizations.of(context)!.incentives,
-                          icon: IconsManager.starIcon,
+                          title: AppLocalizations.of(context)!.order_history,
+                          icon: IconsManager.ordersIcon,
                           index: 3),
                       BottomNavItem(
                           currentIndex: context.read<HomeCubit>().currentIndex,

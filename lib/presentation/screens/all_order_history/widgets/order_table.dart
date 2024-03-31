@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:pharmy_driver/presentation/screens/all_order_history/widgets/order_table_row.dart';
 import 'package:pharmy_driver/translations.dart';
 import '../../../resources/color_manager.dart';
 import '../../../resources/font_app.dart';
@@ -41,31 +42,10 @@ class OrderTable extends StatelessWidget {
             padding: const EdgeInsets.symmetric(
                 vertical: PaddingApp.p12, horizontal: 1),
             shrinkWrap: true,
-            itemBuilder: (context, index) => Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Expanded(
-                        child: Center(
-                            child: Text(
-                      "54545",
-                      style: getRegularStyle(
-                          color: ColorManager.grayForMessage, fontSize: 15),
-                    ))),
-                    Expanded(
-                        child: Center(
-                            child: Text(
-                      "01/01/2024",
-                      style: getRegularStyle(
-                          color: ColorManager.grayForMessage, fontSize: 15),
-                    ))),
-                    Expanded(
-                        child: Center(
-                            child: Text(
-                      " 200,000 ${AppLocalizations.of(context)!.sp}",
-                      style: getRegularStyle(
-                          color: ColorManager.grayForMessage, fontSize: 15),
-                    ))),
-                  ],
+            itemBuilder: (context, index) => OrderTableRow(
+                  orderNumber: "54545",
+                  date: "01/01/2024",
+                  total: "200000",
                 ),
             separatorBuilder: (context, index) => const Divider(),
             itemCount: 20),
