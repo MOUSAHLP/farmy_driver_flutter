@@ -9,17 +9,17 @@ class Order_earnings_dateCubit extends Cubit<Order_earnings_dateState> {
     return BlocProvider.of(context);
   }
 
-  bool isOrderDate = true;
+  // bool isOrderDate = true;
 
-  void orderDate() {
-    isOrderDate = true;
+  // void orderDate() {
+  //   isOrderDate = true;
 
-    emit(OrderState());
-  }
+  //   emit(OrderState());
+  // }
 
-  void earningsDate() {
-    isOrderDate = false;
+  // void earningsDate() {
+  //   isOrderDate = false;
 
-    emit(EarningsState());
-  }
+  //   emit(EarningsState());
+  // }
 }

@@ -28,66 +28,15 @@ class AllOrderHistoryScreen extends StatelessWidget {
             body: BaseScaffold(
               isBack: true,
               title: AppLocalizations.of(context)!.orders_date,
-              child: Expanded(
+              child: const Expanded(
                 child: Column(
                   children: [
-                    Container(
-                      padding: const EdgeInsets.symmetric(
-                          vertical: PaddingApp.p10, horizontal: PaddingApp.p22),
-                      decoration:
-                          BoxDecoration(color: Colors.white, boxShadow: [
-                        BoxShadow(
-                          color: Colors.black.withOpacity(0.19),
-                          spreadRadius: 0,
-                          blurRadius: 5,
-                          offset: const Offset(0, 2),
-                        )
-                      ]),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: [
-                          InkWell(
-                            onTap: () {
-                              cubit.orderDate();
-                            },
-                            child: Text(
-                                '${AppLocalizations.of(context)!.order_history} ',
-                                style: cubit.isOrderDate
-                                    ? getUnderLineBoldStyle(
-                                        color: ColorManager.primaryGreen,
-                                      )
-                                    : getBold800Style(
-                                        fontSize: FontSizeApp.s15,
-                                        color: ColorManager.grayForMessage)),
-                          ),
-                          const Text('|',
-                              style: TextStyle(
-                                  color: Color(0xff727272),
-                                  fontSize: FontSizeApp.s17)),
-                          InkWell(
-                            onTap: () {
-                              cubit.earningsDate();
-                            },
-                            child: Text(
-                                '${AppLocalizations.of(context)!.history_of_your_earnings} ',
-                                style: !cubit.isOrderDate
-                                    ? getUnderLineBoldStyle(
-                                        color: ColorManager.primaryGreen,
-                                      )
-                                    : getBold800Style(
-                                        fontSize: FontSizeApp.s15,
-                                        color: ColorManager.grayForMessage)),
-                          ),
-                        ],
-                      ),
-                    ),
                     Expanded(
                       child: SingleChildScrollView(
                         child: Column(
                           children: [
-                            cubit.isOrderDate
-                                ? const OrderDate()
-                                : const EarningsDate()
+                            EarningsDate(),
+                            OrderDate(),
                           ],
                         ),
                       ),
