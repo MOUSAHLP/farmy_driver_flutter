@@ -5,6 +5,8 @@ import 'package:pharmy_driver/presentation/resources/color_manager.dart';
 import 'package:pharmy_driver/presentation/resources/font_app.dart';
 import 'package:pharmy_driver/presentation/resources/style_app.dart';
 
+import '../../../../cubit/bottom/bottom_bloc.dart';
+import '../../../../cubit/bottom/bottom_state.dart';
 import '../../../../cubit/home/home_cubit.dart';
 import '../../../../cubit/home/home_states.dart';
 
@@ -18,7 +20,7 @@ class BottomNavItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<HomeCubit,HomeStates>(
+    return BlocBuilder<BottomCubit,BottomState>(
       builder:(context, state) => GestureDetector(
         onTap: onTap,
         child: Column(
@@ -35,7 +37,7 @@ class BottomNavItem extends StatelessWidget {
             Text(title,
               style: getUnderBoldStyle(
                   color:
-                  context.read<HomeCubit>().currentIndex == index
+                  context.read<BottomCubit>().index == index
                       ? ColorManager.primaryGreen
                       : ColorManager.greyForUnSleactedItem,
                   fontSize: FontSizeApp.s12),

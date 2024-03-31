@@ -13,12 +13,13 @@ class MyOrdersScreen extends StatelessWidget {
     return BaseScaffold(
       title:AppLocalizations.of(context)!.my_orders,
       child: Expanded(
-        child: ListView.separated(
-          padding: const EdgeInsets.symmetric(vertical: PaddingApp.p22,   horizontal: PaddingApp.p22),
-            shrinkWrap: true,
-            itemBuilder: (context, index) =>const OrderCardWidget(),
-            separatorBuilder: (context, index) =>const SizedBox(height: PaddingApp.p22,),
-            itemCount: 3),
+        child: Text("k")
+        // ListView.separated(
+        //   padding: const EdgeInsets.symmetric(vertical: PaddingApp.p22,   horizontal: PaddingApp.p22),
+        //     shrinkWrap: true,
+        //     itemBuilder: (context, index) =>const OrderCardWidget(),
+        //     separatorBuilder: (context, index) =>const SizedBox(height: PaddingApp.p22,),
+        //     itemCount: 3),
       ),
     );
   }

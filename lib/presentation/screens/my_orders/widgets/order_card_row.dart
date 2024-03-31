@@ -10,6 +10,7 @@ class OrderCardRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    if(content==null ||content=="")return const SizedBox();
     return Row(
       children: [
         Text('$title: ',style: getUnderBoldStyle(color: color,fontSize:fontSize ),),

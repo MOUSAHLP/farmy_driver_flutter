@@ -125,13 +125,15 @@ class BaseApiClient {
     CancelToken? cancelToken,
   }) async {
     try {
+      print("url");
+      print(url);
       var response = await client.get(
         url,
         queryParameters: queryParameters,
         options: Options(
           headers: {
             'accept': _acceptHeader,
-            'authorization': 'Bearer ${DataStore.instance.token ?? ''}',
+             'authorization': 'Bearer ${DataStore.instance.token ?? ''}',
           },
         ),
         cancelToken: cancelToken,
