@@ -5,7 +5,6 @@ final sl = GetIt.instance;
 
 class ServicesLocator {
   void init() {
-    sl.registerSingleton<HomeCubit>(HomeCubit());
-
+    sl.registerLazySingleton(() => HomeCubit());
   }
 }

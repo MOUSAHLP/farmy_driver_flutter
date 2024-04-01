@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:pharmy_driver/cubit/orders_history/orders_history_cubit.dart';
 import 'package:pharmy_driver/presentation/app_widgets/custom_button.dart';
 import 'package:pharmy_driver/translations.dart';
 
@@ -16,6 +17,7 @@ class OrderDate extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    OrdersHistoryCubit cubit = OrdersHistoryCubit.get(context);
     return Column(
       children: [
         Padding(
@@ -28,25 +30,27 @@ class OrderDate extends StatelessWidget {
                       color: ColorManager.grayForMessage,
                       fontSize: FontSizeApp.s15)),
               const SizedBox(width: 10),
-              CustomButton(
-                isIcon: true,
-                width: 0.33.sw,
-                height: 47,
-                paddingText: PaddingApp.p4,
-                isFilled: true,
-                label: AppLocalizations.of(context)!.downloading_file,
-                fillColor: Colors.white,
-                labelColor: ColorManager.primaryGreen,
-                borderColor: ColorManager.primaryGreen,
-                styleText: getUnderBoldStyle(
-                    color: ColorManager.primaryGreen,
-                    fontSize: FontSizeApp.s14.sp),
-                onTap: () {},
+              Expanded(
+                child: CustomButton(
+                  isIcon: true,
+                  // width: 0.33.sw,
+                  height: 47,
+                  paddingText: PaddingApp.p4,
+                  isFilled: true,
+                  label: AppLocalizations.of(context)!.downloading_file,
+                  fillColor: Colors.white,
+                  labelColor: ColorManager.primaryGreen,
+                  borderColor: ColorManager.primaryGreen,
+                  styleText: getUnderBoldStyle(
+                      color: ColorManager.primaryGreen,
+                      fontSize: FontSizeApp.s14.sp),
+                  onTap: () {},
+                ),
               ),
             ],
           ),
         ),
-        const OrderTable()
+        OrderTable(listData: cubit.ordersHistorymodel!.driverOrders!)
       ],
     );
   }

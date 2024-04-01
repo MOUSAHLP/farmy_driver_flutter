@@ -4,7 +4,7 @@ import 'package:pharmy_driver/presentation/resources/color_manager.dart';
 import 'package:pharmy_driver/presentation/resources/values_app.dart';
 
 class Chart extends StatelessWidget {
-  final Map<String, int> data;
+  final Map<String, dynamic> data;
   const Chart({Key? key, required this.data}) : super(key: key);
 
   @override

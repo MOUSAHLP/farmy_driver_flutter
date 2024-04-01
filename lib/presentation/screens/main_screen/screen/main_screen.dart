@@ -10,6 +10,7 @@ import 'package:pharmy_driver/presentation/screens/main_screen/widget/bottom_nav
 import 'package:pharmy_driver/presentation/screens/my_orders/screens/my_orders.dart';
 import 'package:pharmy_driver/presentation/screens/my_profile/screens/my_account_screen.dart';
 import 'package:pharmy_driver/translations.dart';
+import '../../../../core/services/services_locator.dart';
 import '../../../../cubit/home/home_states.dart';
 import '../../../app_widgets/custom_drawer.dart';
 import '../../transactions/screens/transactions_screen.dart';
@@ -47,6 +48,7 @@ class _MainScreenState extends State<MainScreen> {
         return false;
       },
       child: BlocBuilder<HomeCubit, HomeStates>(
+        bloc: sl<HomeCubit>()..getLastOrder(),
         builder: (context, state) => Scaffold(
           key: context.read<HomeCubit>().scaffoldKey,
           drawer: const CustomAppDrawer(),

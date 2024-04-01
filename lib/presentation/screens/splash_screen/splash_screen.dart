@@ -1,25 +1,27 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:pharmy_driver/cubit/language/language_cubit.dart';
+import 'package:pharmy_driver/cubit/language/language_states.dart';
 import 'package:pharmy_driver/presentation/screens/main_screen/screen/main_screen.dart';
 import '../../resources/assets_manager.dart';
 import '../../resources/color_manager.dart';
 import 'package:flutter/cupertino.dart';
 
-class SplashScreen extends StatefulWidget{
+class SplashScreen extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
     return SplashScreenState();
   }
 }
 
-class SplashScreenState extends State<SplashScreen>{
+class SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
-    Future.delayed(const Duration(seconds: 3), () async {
-      Navigator.pushReplacement(context, MaterialPageRoute(
-          builder: (context){
-            return const MainScreen();
-          }));
+    Future.delayed(const Duration(seconds: 4), () async {
+      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) {
+        return const MainScreen();
+      }));
     });
     super.initState();
   }

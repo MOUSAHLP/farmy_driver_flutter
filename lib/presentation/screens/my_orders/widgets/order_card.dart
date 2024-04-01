@@ -13,12 +13,13 @@ import 'package:pharmy_driver/presentation/resources/values_app.dart';
 import 'package:pharmy_driver/presentation/screens/order_details/screens/order_details.dart';
 import 'package:pharmy_driver/translations.dart';
 import '../../../../cubit/home/home_cubit.dart';
+import '../../../../models/order_model.dart';
 import 'order_card_row.dart';
 
 class OrderCardWidget extends StatelessWidget {
   final bool isHome;
-
-  const OrderCardWidget({Key? key, this.isHome = false}) : super(key: key);
+final OrderModel order;
+   const OrderCardWidget({Key? key, this.isHome = false,required this.order}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -53,7 +54,7 @@ class OrderCardWidget extends StatelessWidget {
                       width: 0.44.sw,
                       child: OrderCardRow(
                         title: AppLocalizations.of(context)!.order_date,
-                        content: '11/01/2024',
+                        content: order.date.toString(),
                         color: Colors.white,
                         fontSize: FontSizeApp.s14,
                       ),
@@ -63,7 +64,7 @@ class OrderCardWidget extends StatelessWidget {
                       width: 0.34.sw,
                       child: OrderCardRow(
                         title: AppLocalizations.of(context)!.order_time,
-                        content: '5:30 pm',
+                        content: order.time.toString(),
                         color: Colors.white,
                         fontSize: FontSizeApp.s14,
                       ),
@@ -91,14 +92,14 @@ class OrderCardWidget extends StatelessWidget {
                     children: [
                       OrderCardRow(
                         title: AppLocalizations.of(context)!.order_number,
-                        content: 'F1234564',
+                        content: order.orderNumber.toString(),
                         color: ColorManager.grayForMessage,
                         fontSize: FontSizeApp.s14,
                       ),
                       const SizedBox(height: PaddingApp.p4),
                       OrderCardRow(
                         title: AppLocalizations.of(context)!.order_location,
-                        content: 'كورنيش التجارة, حلاق الهيبة..',
+                        content: order.location,
                         color: ColorManager.grayForMessage,
                         fontSize: FontSizeApp.s14,
                       ),
@@ -180,7 +181,7 @@ class OrderCardWidget extends StatelessWidget {
                         fillColor: ColorManager.primaryGreen,
                         labelColor: Colors.white,
                         onTap: () {
-                          AppRouter.push(context, OrderDetailsScreen());
+                          AppRouter.push(context, const OrderDetailsScreen());
                         },
                       ),
                       Padding(
