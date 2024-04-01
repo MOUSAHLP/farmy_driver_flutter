@@ -26,6 +26,7 @@
   "delivery_value": "قيمة التوصيل",
   "total_invoice": "إجمالي الفاتورة",
   "order_date": "تاريخ الطلب",
+  "order_date_last_5": "تاريخ الطلبات: (اّخر 5 طلبات)",
   "order_time": "وقت الطلب",
   "show_order": "عرض الطلب",
   "contact_client": "اتصال بالزبون",

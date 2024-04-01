@@ -45,6 +45,8 @@ class DuesCard extends StatelessWidget {
                 Expanded(
                     child: Center(
                         child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -65,21 +67,21 @@ class DuesCard extends StatelessWidget {
                                 fontSize: 16)),
                       ],
                     ),
-                    CustomButton(
-                      width: 0.33.sw,
-                      height: 47,
-                      paddingText: PaddingApp.p4,
-                      label:
-                          AppLocalizations.of(context)!.request_your_benefits,
-                      fillColor: ColorManager.primaryGreen,
-                      labelColor: Colors.white,
-                      styleText: getUnderBoldStyle(
-                          color: Colors.white, fontSize: FontSizeApp.s14),
-                      onTap: onTap,
-                    ),
+                    // CustomButton(
+                    //   width: 0.33.sw,
+                    //   height: 47,
+                    //   paddingText: PaddingApp.p4,
+                    //   label:
+                    //       AppLocalizations.of(context)!.request_your_benefits,
+                    //   fillColor: ColorManager.primaryGreen,
+                    //   labelColor: Colors.white,
+                    //   styleText: getUnderBoldStyle(
+                    //       color: Colors.white, fontSize: FontSizeApp.s14),
+                    //   onTap: onTap,
+                    // ),
                     const SizedBox(
                       height: 4,
-                    )
+                    ),
                   ],
                 )))
               ],

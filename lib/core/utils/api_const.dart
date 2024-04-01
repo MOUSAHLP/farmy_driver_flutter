@@ -9,8 +9,14 @@ class ApiConst {
 
   ///Orders History
   static String getDriverOrdersHistory(String date, String type) =>
-      "$baseUrl/get-driver-orders-history?date=$date&type=$type";
+      "/get-driver-orders-history?date=$date&type=$type";
 
   static String getDriverOrdersStatistics(String date, String type) =>
-      "$baseUrl/get-orders-statistics?date=$date&type=$type";
+      "/get-orders-statistics?date=$date&type=$type";
+
+  ///Transactions
+  static const String getDriverDriverDues = "/driver-dues";
+
+  ///All Orders
+  static const String getDriverAllOrders = "/all-orders";
 }

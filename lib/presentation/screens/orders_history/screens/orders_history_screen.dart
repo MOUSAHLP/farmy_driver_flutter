@@ -11,7 +11,7 @@ import 'package:pharmy_driver/presentation/screens/orders_history/widgets/chart.
 import 'package:pharmy_driver/translations.dart';
 import '../../../../cubit/orders_history/orders_history_cubit.dart';
 import '../../../../cubit/orders_history/orders_history_state.dart';
-import 'order_date.dart';
+import 'all_orders_history_date.dart';
 
 class OrdersHistoryScreen extends StatelessWidget {
   const OrdersHistoryScreen({Key? key}) : super(key: key);
@@ -121,7 +121,7 @@ class OrdersHistoryScreen extends StatelessWidget {
 
                               const AllOrdersStatistics(),
 
-                              const OrderDate(),
+                             const AllOrdersHistoryDate(),
                             ],
                           ),
                         ),

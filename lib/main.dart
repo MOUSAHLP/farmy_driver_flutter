@@ -4,9 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:pharmy_driver/cubit/all_orders_date/all_orders_date_cubit.dart';
 import 'package:pharmy_driver/cubit/language/language_cubit.dart';
 import 'package:pharmy_driver/cubit/language/language_states.dart';
 import 'package:pharmy_driver/cubit/orders_history/orders_history_cubit.dart';
+import 'package:pharmy_driver/cubit/transactions/transactions_cubit.dart';
 import 'package:pharmy_driver/presentation/screens/splash_screen/splash_screen.dart';
 import 'package:pharmy_driver/translations.dart';
 import 'core/services/services_locator.dart';
@@ -42,13 +44,29 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: (BuildContext context) => sl<HomeCubit>()),
+
+        // Home screen
         BlocProvider(
           create: (BuildContext context) => sl<HomeCubit>(),
         ),
+
+        // language screen
         BlocProvider(create: (BuildContext context) => LanguageCubit()),
+
+        // Orders History screen
         BlocProvider(
             create: (BuildContext context) =>
                 OrdersHistoryCubit()..getDriverOrdersHistory()),
+
+        // Transactions screen
+        BlocProvider(
+            create: (BuildContext context) =>
+                TransactionsCubit()..getDriverTransactions()),
+
+        // all orders screen
+        BlocProvider(
+            create: (BuildContext context) =>
+                AllOrdersDateCubit()..getDriverTransactions()),
       ],
       child: ScreenUtilInit(
           minTextAdapt: true,

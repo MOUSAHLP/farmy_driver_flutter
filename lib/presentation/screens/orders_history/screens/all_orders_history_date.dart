@@ -9,8 +9,8 @@ import '../../../resources/style_app.dart';
 import '../../../resources/values_app.dart';
 import '../widgets/order_table.dart';
 
-class OrderDate extends StatelessWidget {
-  const OrderDate({Key? key}) : super(key: key);
+class AllOrdersHistoryDate extends StatelessWidget {
+  const AllOrdersHistoryDate({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
