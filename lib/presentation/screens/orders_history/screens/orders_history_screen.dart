@@ -1,10 +1,6 @@
-import 'package:d_chart/d_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:pharmy_driver/core/app_enum.dart';
-import 'package:pharmy_driver/cubit/language/language_cubit.dart';
-import 'package:pharmy_driver/data/data_resource/local_resource/data_store.dart';
 import 'package:pharmy_driver/presentation/app_widgets/base_scaffold.dart';
 import 'package:pharmy_driver/presentation/resources/color_manager.dart';
 import 'package:pharmy_driver/presentation/resources/font_app.dart';
@@ -23,7 +19,6 @@ class OrdersHistoryScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     OrdersHistoryCubit cubit = OrdersHistoryCubit.get(context);
-    LanguageCubit cubitLang = LanguageCubit.get(context);
     return Scaffold(
       body: BaseScaffold(
         isBack: true,

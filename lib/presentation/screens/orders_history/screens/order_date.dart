@@ -3,9 +3,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pharmy_driver/cubit/orders_history/orders_history_cubit.dart';
 import 'package:pharmy_driver/presentation/app_widgets/custom_button.dart';
 import 'package:pharmy_driver/translations.dart';
-
-import '../../../app_widgets/image_helper_svg.dart';
-import '../../../resources/assets_manager.dart';
 import '../../../resources/color_manager.dart';
 import '../../../resources/font_app.dart';
 import '../../../resources/style_app.dart';

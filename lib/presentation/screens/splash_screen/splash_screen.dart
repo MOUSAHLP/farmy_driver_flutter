@@ -9,6 +9,8 @@ import '../../resources/color_manager.dart';
 import 'package:flutter/cupertino.dart';
 
 class SplashScreen extends StatefulWidget {
+  const SplashScreen({super.key});
+
   @override
   State<StatefulWidget> createState() {
     return SplashScreenState();
