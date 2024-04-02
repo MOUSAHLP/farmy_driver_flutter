@@ -21,7 +21,7 @@ class SettingScreen extends StatelessWidget {
       body: SafeArea(
         child: Column(
           children: [
-            ScreenTitleWidget(title: AppLocalizations.of(context)!.settings),
+            ScreenTitleWidget(title: AppLocalizations.of(context)!.settings,isBack: true,),
             Expanded(
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 28),

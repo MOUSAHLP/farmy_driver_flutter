@@ -35,12 +35,15 @@ class ScreenTitleWidget extends StatelessWidget {
                   fontSize: FontSizeApp.s15),
             ),
             const Spacer(),
-            InkWell(
-                onTap: () {
-                  isBack ? AppRouter.pop(context) : null;
-                },
-                child: const Icon(Icons.arrow_forward_ios_rounded,
-                    color: ColorManager.grayForMessage, size: 20)),
+            if (isBack)
+              InkWell(
+                  onTap: () {
+                    if (isBack && Navigator.of(context).canPop()) {
+                      AppRouter.pop(context);
+                    }
+                  },
+                  child: const Icon(Icons.arrow_forward_ios_rounded,
+                      color: ColorManager.grayForMessage, size: 20)),
           ],
         ),
       ),

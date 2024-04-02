@@ -75,13 +75,6 @@ class CustomAppDrawer extends StatelessWidget {
                               AppRouter.push(context, const SettingScreen());
                             }),
                         ElevatedButtonWidget(
-                            title: AppLocalizations.of(context)!.orders_date,
-                            onTap: () {
-                              AppRouter.push(
-                                  context, const OrdersHistoryScreen());
-                              //AppRouter.push(context, const AllInvoicesScreen());
-                            }),
-                        ElevatedButtonWidget(
                             title: AppLocalizations.of(context)!.contact_us,
                             onTap: () {
                               //AppRouter.push(context, const AllInvoicesScreen());
