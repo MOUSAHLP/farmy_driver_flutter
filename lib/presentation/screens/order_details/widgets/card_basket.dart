@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:pharmy_driver/cubit/order/order_cubit.dart';
 import 'package:pharmy_driver/presentation/app_widgets/image_helper_svg.dart';
 import 'package:pharmy_driver/presentation/resources/assets_manager.dart';
 import 'package:pharmy_driver/presentation/resources/color_manager.dart';
@@ -34,32 +36,37 @@ class CardBasket extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  Container(
-                    height: 36,
-                    width: 36,
-                    decoration: BoxDecoration(boxShadow: [
-                      ColorManager.shadowGaryDown,
-                    ], color: Colors.white),
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: const ImageSvgWidget(url: IconsManager.checkIcon).buildAssetSvgImage(),
-                    )
+                  InkWell(
+                    child: Container(
+                      height: 36,
+                      width: 36,
+                      decoration: BoxDecoration(boxShadow: [
+                        ColorManager.shadowGaryDown,
+                      ], color: Colors.white),
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: const ImageSvgWidget(url: IconsManager.checkIcon).buildAssetSvgImage(),
+                      )
+                    ),
+                    onTap: (){
+                      context.read<OrderCubit>().addProduct(orderDetail.id);
+                    },
                   ),
-                  // SizedBox(
-                  //   height: 30,
-                  //   width: 30,
-                  //   child: Center(child: Text(productAddedToBasketDetails.quantity??"",style: getRegularStyle(color: Colors.black),)),
-                  // ),
-                  Container(
-                    height: 36,
-                    width: 36,
-                    decoration: BoxDecoration(boxShadow: [
-                      ColorManager.shadowGaryDown,
-                    ], color: Colors.white),
-                    child: Padding(
-                      padding: const EdgeInsets.all(10.0),
-                      child: const ImageSvgWidget(url: IconsManager.closeIcon).buildAssetSvgImage(),
-                    )
+                  InkWell(
+                    onTap: (){
+                      context.read<OrderCubit>().deleteProduct(orderDetail.id);
+                    },
+                    child: Container(
+                      height: 36,
+                      width: 36,
+                      decoration: BoxDecoration(boxShadow: [
+                        ColorManager.shadowGaryDown,
+                      ], color: Colors.white),
+                      child: Padding(
+                        padding: const EdgeInsets.all(10.0),
+                        child: const ImageSvgWidget(url: IconsManager.closeIcon).buildAssetSvgImage(),
+                      )
+                    ),
                   ),
                 ],
               ),
@@ -79,8 +86,7 @@ class CardBasket extends StatelessWidget {
                   child:   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                    //  productAddedToBasketDetails.attributeList.isNotEmpty
-                       //   ?
+
                       Text('400 غ / 15 قطعة',
                           //productAddedToBasketDetails.attributeList[0].value,
                           style: getRegularStyle(
@@ -88,13 +94,7 @@ class CardBasket extends StatelessWidget {
                             fontSize: FontSizeApp.s10,
                           ))
                          // : const SizedBox(),
-                      // productAddedToBasketDetails.attributeList.length > 1
-                      //     ? Text(" / ${productAddedToBasketDetails.attributeList[1].value}",
-                      //     style: getBoldStyle(
-                      //       color: ColorManager.grayForMessage,
-                      //       fontSize: FontSizeApp.s15,
-                      //     ))
-                      //     : const SizedBox(),
+
                     ],
                   )
                 ),

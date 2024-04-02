@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:pharmy_driver/core/launcher.dart';
 import 'package:pharmy_driver/cubit/order/order_cubit.dart';
 import 'package:pharmy_driver/cubit/order/order_states.dart';
 import 'package:pharmy_driver/presentation/app_widgets/base_scaffold.dart';
@@ -66,6 +67,17 @@ class OrderDetailsBody extends StatelessWidget {
             if (state.isSuccessAccept) {
               AppRouter.pop(context);
             }
+            if (state.isLoadingUpdate) {
+              LoadingDialog().openDialog(context);
+            } else {
+              LoadingDialog().closeDialog(context);
+            }
+            if (state.errorUpdate != "") {
+              ErrorDialog.openDialog(context, state.errorUpdate);
+            }
+            if (state.isSuccessUpdate) {
+              AppRouter.pop(context);
+            }
           },
           builder: (context, state) {
             if (state.screenState == ScreenState.loading) {
@@ -105,7 +117,9 @@ class OrderDetailsBody extends StatelessWidget {
                                         .contact_client,
                                     fillColor: ColorManager.primaryGreen,
                                     labelColor: Colors.white,
-                                    onTap: () {},
+                                    onTap: () {
+                                      launchPhoneCall(state.orderDetailsModel?.userPhone??"");
+                                    },
                                   ),
                                 ),
                                 Expanded(
@@ -120,7 +134,10 @@ class OrderDetailsBody extends StatelessWidget {
                                       fillColor: Colors.white,
                                       labelColor: ColorManager.primaryGreen,
                                       borderColor: ColorManager.primaryGreen,
-                                      onTap: () {},
+                                      onTap: () {
+                                        //todo
+                                        launchPhoneCall(state.orderDetailsModel?.userPhone??"");
+                                      },
                                     ),
                                   ),
                                 ),
@@ -159,6 +176,11 @@ class OrderDetailsBody extends StatelessWidget {
                                   context
                                       .read<OrderCubit>()
                                       .acceptOrder(state.orderDetailsModel!.id);
+                                }
+                                else{
+                                  context
+                                      .read<OrderCubit>()
+                                      .updateOrder(state.orderDetailsModel!.id);
                                 }
                               },
                               styleText: getUnderBoldStyle(

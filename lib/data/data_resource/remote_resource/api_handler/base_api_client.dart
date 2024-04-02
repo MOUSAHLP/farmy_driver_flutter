@@ -74,12 +74,12 @@ class BaseApiClient {
     }
   }
 
-  static Future put(
+  static Future<Either<String, T>> put<T>(
       {required String url,
-      FormData? formData,
-      Map<String, dynamic>? queryParameters,
-      required Function(dynamic) converter,
-      dynamic returnOnError}) async {
+        dynamic? formData,
+        Map<String, dynamic>? queryParameters,
+        required T Function(dynamic) converter,
+        dynamic returnOnError}) async {
     try {
       var response = await client.put(
         url,
@@ -93,28 +93,31 @@ class BaseApiClient {
         },
         options: Options(
           headers: {
-            'accept': _acceptHeader,
-            'authorization': 'Bearer ${DataStore.instance.token ?? ''}',
-          },
+        'accept': _acceptHeader,
+        'authorization': 'Bearer ${DataStore.instance.token ?? ''}',
+        }
         ),
       );
-      if (response.statusCode! >= 200 || response.statusCode! <= 205) {
+      if (((response.statusCode! >= 200 || response.statusCode! <= 205)) &&
+          (response.data['error'].toString() != 'true')) {
         if (kDebugMode) {
-          print(response.data);
+          log(response.data.toString());
         }
-        return converter(response.data);
+        return right(converter(response.data));
+      } else {
+        return left(response.data['message']);
       }
     } on DioException catch (e) {
       Map dioError = DioErrorsHandler.onError(e);
-      // toast(dioError['message']);
       if (kDebugMode) {
-        print(dioError);
+        print(e);
       }
-      return returnOnError ?? e.response?.data['message'] ?? '';
+      return left(returnOnError ?? dioError["message"] ?? '');
     } catch (e) {
       if (kDebugMode) {
         print(e);
       }
+      return left("");
     }
   }
 

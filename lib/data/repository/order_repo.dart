@@ -22,5 +22,26 @@ class OrderRepository{
       },
     );
   }
+  static Future<Either<String, bool>> updateOrder(int id,List<int> accept,List<int> cancel) {
+    return BaseApiClient.put<bool>(
+      url: ApiConst.getOrdersDetails(id),
+      formData: {
+        "approved_products_ids":accept,
+        "canceled_products_ids":cancel
+      },
+
+      converter: (e) {
+        return true;
+      },
+    );
+  }
+  static Future<Either<String, bool>> acceptOrder(int id) {
+    return BaseApiClient.get<bool>(
+      url: ApiConst.acceptOrder(id),
+      converter: (e) {
+        return true;
+      },
+    );
+  }
 
 }

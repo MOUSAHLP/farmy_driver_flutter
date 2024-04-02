@@ -13,9 +13,12 @@ class OrderStates extends Equatable {
  final ScreenState screenState;
  final String error;
  final String errorAccept;
+ final String errorUpdate;
  final bool isLoading;
  final bool isLoadingAccept;
+ final bool isLoadingUpdate;
  final bool isSuccessAccept;
+ final bool isSuccessUpdate;
 final List<OrderModel> orderList;
  final OrderDetailsModel? orderDetailsModel;
 
@@ -24,10 +27,13 @@ const OrderStates({
   this.screenState=ScreenState.initialized,
   this.error='',
   this.errorAccept='',
+  this.errorUpdate='',
   this.orderList=const [],
   this.isLoading=false,
   this.isLoadingAccept=false,
+  this.isLoadingUpdate=false,
   this.isSuccessAccept=false,
+  this.isSuccessUpdate=false,
   this.orderDetailsModel
   });
 
@@ -36,21 +42,28 @@ const OrderStates({
    ScreenState? screenState,
    String? error,
    String? errorAccept,
+   String? errorUpdate,
    List<OrderModel>? orderList,
    bool? isLoading,
    bool? isLoadingAccept,
+   bool? isLoadingUpdate,
    bool? isSuccess,
-   OrderDetailsModel? orderDetailsModel
+   OrderDetailsModel? orderDetailsModel,
+   bool? isSuccessAccept,
+   bool? isSuccessUpdate
   }) {
     return OrderStates(
        index: index??this.index,
     screenState: screenState??this.screenState,
       error: error??'',
       errorAccept: errorAccept??'',
+        errorUpdate: errorUpdate??'',
       orderList: orderList??this.orderList,
       isLoading: isLoading??false,
       isLoadingAccept: isLoadingAccept??false,
-      isSuccessAccept: isSuccess??false,
+        isLoadingUpdate: isLoadingUpdate??false,
+      isSuccessAccept: isSuccessAccept??false,
+        isSuccessUpdate: isSuccessUpdate??false,
       orderDetailsModel: orderDetailsModel??this.orderDetailsModel
     );
   }
@@ -62,10 +75,13 @@ const OrderStates({
     screenState,
     error,
     errorAccept,
+    errorUpdate,
     orderList,
     isLoading,
     isLoadingAccept,
+    isLoadingUpdate,
     isSuccessAccept,
+    isSuccessUpdate,
     orderDetailsModel
   ];
 }
