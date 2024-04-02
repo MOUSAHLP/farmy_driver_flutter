@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pharmy_driver/cubit/order/order_cubit.dart';
 import 'package:pharmy_driver/cubit/order/order_states.dart';
 import 'package:pharmy_driver/presentation/app_widgets/base_scaffold.dart';
@@ -17,18 +16,26 @@ import '../../../../core/app_enum.dart';
 import '../../../../core/app_router/app_router.dart';
 import '../../../../core/services/services_locator.dart';
 import '../../../app_widgets/custom_error_screen.dart';
+import '../../../app_widgets/dialog/error_dialog.dart';
+import '../../../app_widgets/dialog/loading_dialog.dart';
 import '../../home/widgets/cutsom_home_shimmer.dart';
 import '../widgets/order_info_column.dart';
+
 class OrderDetailsScreen extends StatelessWidget {
   final int id;
   final bool isHome;
-  const OrderDetailsScreen({super.key,required this.id, this.isHome = false,});
+
+  const OrderDetailsScreen({
+    super.key,
+    required this.id,
+    this.isHome = false,
+  });
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider<OrderCubit>(
-      create:(context) => sl<OrderCubit>()..getOrderDetails(id) ,
-      child: OrderDetailsBody(id: id),
+      create: (context) => sl<OrderCubit>()..getOrderDetails(id),
+      child: OrderDetailsBody(id: id, isHome: isHome),
     );
   }
 }
@@ -46,16 +53,31 @@ class OrderDetailsBody extends StatelessWidget {
       body: BaseScaffold(
         isBack: true,
         title: AppLocalizations.of(context)!.order_details,
-        child: BlocConsumer<OrderCubit,OrderStates>(
-          listener: (context, state) {},
+        child: BlocConsumer<OrderCubit, OrderStates>(
+          listener: (context, state) {
+            if (state.isLoadingAccept) {
+              LoadingDialog().openDialog(context);
+            } else {
+              LoadingDialog().closeDialog(context);
+            }
+            if (state.errorAccept != "") {
+              ErrorDialog.openDialog(context, state.errorAccept);
+            }
+            if (state.isSuccessAccept) {
+              AppRouter.pop(context);
+            }
+          },
           builder: (context, state) {
             if (state.screenState == ScreenState.loading) {
               return const CustomHomeShimmer();
             }
             if (state.screenState == ScreenState.error) {
-              return CustomErrorScreen(titleError: state.error,onTap: (){
-                sl<OrderCubit>().getOrderDetails(id);
-              },);
+              return CustomErrorScreen(
+                titleError: state.error,
+                onTap: () {
+                  sl<OrderCubit>().getOrderDetails(id);
+                },
+              );
             }
             if (state.screenState == ScreenState.success) {
               return Expanded(
@@ -66,7 +88,9 @@ class OrderDetailsBody extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        OrderInfoWidget(isHome: isHome,orderDetailsModel: state.orderDetailsModel!),
+                        OrderInfoWidget(
+                            isHome: isHome,
+                            orderDetailsModel: state.orderDetailsModel!),
                         if (!isHome)
                           Padding(
                             padding: const EdgeInsets.symmetric(
@@ -104,7 +128,10 @@ class OrderDetailsBody extends StatelessWidget {
                             ),
                           ),
                         UserInfoWidget(isHome: isHome),
-                        OrderExpandedCard(isHome: isHome,orderDetailsModel: state.orderDetailsModel?.orderDetails??[]),
+                        OrderExpandedCard(
+                            isHome: isHome,
+                            orderDetailsModel:
+                                state.orderDetailsModel?.orderDetails ?? []),
                         Padding(
                           padding: const EdgeInsets.symmetric(
                               vertical: PaddingApp.p16),
@@ -129,10 +156,9 @@ class OrderDetailsBody extends StatelessWidget {
                               fillColor: ColorManager.primaryGreen,
                               onTap: () {
                                 if (isHome) {
-                                  AppRouter.push(
-                                    context,
-                                    const OrderDeliveryScreen(),
-                                  );
+                                  context
+                                      .read<OrderCubit>()
+                                      .acceptOrder(state.orderDetailsModel!.id);
                                 }
                               },
                               styleText: getUnderBoldStyle(
@@ -145,8 +171,7 @@ class OrderDetailsBody extends StatelessWidget {
                   ),
                 ),
               );
-            }
-            else {
+            } else {
               return const SizedBox();
             }
           },

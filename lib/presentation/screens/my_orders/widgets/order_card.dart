@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:pharmy_driver/core/app_router/app_router.dart';
+import 'package:pharmy_driver/core/launcher.dart';
 import 'package:pharmy_driver/presentation/app_widgets/custom_button.dart';
 import 'package:pharmy_driver/presentation/app_widgets/image_helper_svg.dart';
 import 'package:pharmy_driver/presentation/resources/assets_manager.dart';
@@ -204,7 +205,9 @@ final OrderModel order;
                         fillColor: Colors.white,
                         labelColor: ColorManager.primaryGreen,
                         borderColor: ColorManager.primaryGreen,
-                        onTap: () {},
+                        onTap: () {
+                          launchPhoneCall(order.userPhone??"");
+                        },
                       ),
                     ),
                   ),

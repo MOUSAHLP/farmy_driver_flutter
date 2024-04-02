@@ -29,6 +29,15 @@ class OrderCubit extends Cubit<OrderStates> {
       emit(state.copyWith(screenState: ScreenState.success,orderDetailsModel: r));
     });
   }
+  acceptOrder(int id)async{
+    emit(state.copyWith(isLoadingAccept: true));
+    final response = await HomeRepository.acceptOrder(id);
+    response.fold((l) {
+      emit(state.copyWith(errorAccept: l));
+    }, (r) {
+      emit(state.copyWith(isSuccess: true ));
+    });
+  }
 
 
 }
