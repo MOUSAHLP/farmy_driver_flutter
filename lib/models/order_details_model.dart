@@ -67,7 +67,7 @@ class OrderDetail {
   String? image;
   String? quantity;
   String? price;
-  List<Attribute>? attributes;
+  List<Attribute> attributes;
 
   OrderDetail({
   required  this.id,
@@ -75,7 +75,7 @@ class OrderDetail {
     this.image,
     this.quantity,
     this.price,
-    this.attributes,
+    this.attributes=const[],
   });
 
   factory OrderDetail.fromJson(Map<String, dynamic> json) => OrderDetail(
@@ -84,7 +84,9 @@ class OrderDetail {
     image: json["image"],
     quantity: json["quantity"],
     price: json["price"],
-    attributes: List<Attribute>.from(json["attributes"].map((x) => Attribute.fromJson(x))),
+    attributes:  json["attributes"] == null
+        ? []
+        :List<Attribute>.from(json["attributes"].map((x) => Attribute.fromJson(x))),
   );
 }
 

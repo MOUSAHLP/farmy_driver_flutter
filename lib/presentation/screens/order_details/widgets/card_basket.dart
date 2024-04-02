@@ -81,23 +81,44 @@ class CardBasket extends StatelessWidget {
                           color: ColorManager.black, fontSize: FontSizeApp.s10)
                       ?.copyWith(height: 1),
                 ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 10),
-                  child:   Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
+                SizedBox(height: 5,),
+                orderDetail.attributes.isNotEmpty? SizedBox(
+                  height: 25,
 
-                      Text('400 غ / 15 قطعة',
-                          //productAddedToBasketDetails.attributeList[0].value,
-                          style: getRegularStyle(
-                            color: ColorManager.grayForMessage,
-                            fontSize: FontSizeApp.s10,
-                          ))
-                         // : const SizedBox(),
+                  child: ListView.builder(
+                    shrinkWrap: true,
+                    scrollDirection: Axis.horizontal,
+                    itemCount:  orderDetail.attributes.length,
+                    physics: const NeverScrollableScrollPhysics(),
 
-                    ],
-                  )
-                ),
+                    itemBuilder: (context, index) =>Padding(
+                        padding: const EdgeInsets.symmetric(vertical:2),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
+                            Text(
+                              orderDetail
+                                  .attributes[index].value??"",
+                              style: getRegularStyle(
+                                color: ColorManager.grayForMessage,
+                                fontSize: FontSizeApp.s15,
+                              )!
+                                  .copyWith(height: 1),
+                            ),
+                            orderDetail
+                                .attributes.length-1!=index?Text(
+                              "/",
+                              style: getRegularStyle(
+                                color: ColorManager.grayForMessage,
+                                fontSize: FontSizeApp.s15,
+                              )!
+                                  .copyWith(height: 1),
+                            ):SizedBox()
+
+                          ],
+                        )) ,),
+                ):SizedBox(),
+               SizedBox(height: 5,),
                 Row(
                   children: [
 
