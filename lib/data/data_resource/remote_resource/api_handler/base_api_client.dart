@@ -166,8 +166,8 @@ class BaseApiClient {
 
   static Future<Either<String, T>> delete<T>(
       {required String url,
-        Map<String, dynamic>? queryParameters,
-        required Function(dynamic) converter}) async {
+      Map<String, dynamic>? queryParameters,
+      required Function(dynamic) converter}) async {
     try {
       var response = await client.delete(
         url,
@@ -185,8 +185,7 @@ class BaseApiClient {
           print(response);
         }
         return right(converter(response.data));
-      }
-      else {
+      } else {
         return left(response.data['message']);
       }
     } on DioException catch (e) {
@@ -197,15 +196,12 @@ class BaseApiClient {
       if (kDebugMode) {
         print(e);
       }
-        return left(dioError['message']);
-
+      return left(dioError['message']);
     } catch (e) {
-
       if (kDebugMode) {
         print(e);
       }
       return left("");
     }
   }
-
 }

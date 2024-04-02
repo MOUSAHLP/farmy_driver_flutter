@@ -13,15 +13,16 @@ class DataStore {
 
   Future<void> init() async {
     await Hive.initFlutter();
-   // Hive.registerAdapter(LoginResponseAdapter());
+    // Hive.registerAdapter(LoginResponseAdapter());
     box = await Hive.openBox(DataStoreKeys.box);
-
 
     log("Datastore initialized", name: "$runtimeType");
   }
 
   /// Lang
   String get lang => box.get(DataStoreKeys.lang, defaultValue: "ar")!;
+
+  bool get isArabic => box.get(DataStoreKeys.lang, defaultValue: "ar")! == "ar";
 
   Future<void> setLang(String value) => box.put(DataStoreKeys.lang, value);
 
@@ -54,10 +55,12 @@ class DataStore {
 
   Future<void> setShowOnborading(bool value) =>
       box.put(DataStoreKeys.onBoarding, value);
+
   /// DYNAMIC Data
   Future<void> setDynamicData<T>(String key, T value) async {
     await box.put(key, value);
   }
+
   bool? get isShowOnBoarding {
     if (!box.containsKey(DataStoreKeys.onBoarding)) return false;
     return box.get(DataStoreKeys.onBoarding);

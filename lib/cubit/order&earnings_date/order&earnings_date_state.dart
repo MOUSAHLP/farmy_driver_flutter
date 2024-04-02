@@ -1,4 +1,0 @@
-abstract class Order_earnings_dateState{}
-class InitialOrder_earnings_dateState extends Order_earnings_dateState{}
-class OrderState extends Order_earnings_dateState{}
-class EarningsState extends Order_earnings_dateState{}

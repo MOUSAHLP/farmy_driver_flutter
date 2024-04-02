@@ -26,6 +26,7 @@
   "delivery_value": "قيمة التوصيل",
   "total_invoice": "إجمالي الفاتورة",
   "order_date": "تاريخ الطلب",
+  "order_date_last_5": "تاريخ الطلبات: (اّخر 5 طلبات)",
   "order_time": "وقت الطلب",
   "show_order": "عرض الطلب",
   "contact_client": "اتصال بالزبون",
@@ -113,6 +114,8 @@
   "syrian_pound": "ل.س",
     "try_again": "إعادة المحاولة",
     "error": "حدث خطأ ما, الرجاء المحاولة لاحقا",
-      "processing": "جاري المعالجة"
+      "processing": "جاري المعالجة",
 
+
+  "daily_orders_percentage": "نسبة الطلبات المتممة اليومية"
 }
