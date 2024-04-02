@@ -4,7 +4,7 @@ const String lottiePath = "assets/lotties";
 
 class ImageManager {
 
-  static const String placeholderLogo = "$imagePath/logo_app.png";
+  static const String placeholderLogo = "$imagePath/app_logo.png";
   static const String orderLogo = "$imagePath/order_logo.svg";
   static const String flagOfSyria = "$imagePath/flag_of_syria.png";
 }

@@ -27,30 +27,30 @@ class CustomDialog extends StatelessWidget {
                   ),
                   child: content,
                 ),
-                Positioned(
-                  top: -30,
-                  child: Container(
-                    decoration: const BoxDecoration(
-                      color: Colors.white,
-                      shape: BoxShape.circle,
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.all(4.0),
-                      child: Container(
-                        height: 50,
-                        width: 50,
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: color ?? Colors.redAccent,
-                        ),
-                        child: Icon(
-                          icon ?? Icons.close,
-                          color: Colors.white,
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
+                // Positioned(
+                //   top: -30,
+                //   child: Container(
+                //     decoration: const BoxDecoration(
+                //       color: Colors.white,
+                //       shape: BoxShape.circle,
+                //     ),
+                //     child: Padding(
+                //       padding: const EdgeInsets.all(4.0),
+                //       child: Container(
+                //         height: 50,
+                //         width: 50,
+                //         decoration: BoxDecoration(
+                //           shape: BoxShape.circle,
+                //           color: color ?? Colors.redAccent,
+                //         ),
+                //         child: Icon(
+                //           icon ?? Icons.close,
+                //           color: Colors.white,
+                //         ),
+                //       ),
+                //     ),
+                //   ),
+                // ),
               ],
             ),
           ),

@@ -110,5 +110,9 @@
   "order_delivery": "توصيل الطلب",
   "delivered": "تم التوصيل",
   "total_bill": "إجمالي الفاتورة",
-  "syrian_pound": "ل.س"
+  "syrian_pound": "ل.س",
+    "try_again": "إعادة المحاولة",
+    "error": "حدث خطأ ما, الرجاء المحاولة لاحقا",
+      "processing": "جاري المعالجة"
+
 }

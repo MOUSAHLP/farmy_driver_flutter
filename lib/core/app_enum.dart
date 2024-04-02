@@ -15,10 +15,6 @@ enum ScreenState { initialized,loading, success, error }
 
 final navigatorKey = GlobalKey<NavigatorState>();
 
-enum OrderStates {
-  normalOrder,
-  urgentOrder,
-}
 
 enum PaymentStates { cashPayment, farmyWallet }
 

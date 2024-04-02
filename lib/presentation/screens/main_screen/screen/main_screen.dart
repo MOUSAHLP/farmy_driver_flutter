@@ -30,7 +30,7 @@ class _MainScreenState extends State<MainScreen> {
   @override
   Widget build(BuildContext context) {
     List<Widget> children = [
-      const MyOrdersScreen(),
+      const MyOrdersBody(),
       const TransactionsScreen(),
       const HomeScreen(),
       // const IncentivesScreen(),

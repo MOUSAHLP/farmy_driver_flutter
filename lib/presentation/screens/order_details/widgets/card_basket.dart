@@ -6,11 +6,13 @@ import 'package:pharmy_driver/presentation/resources/color_manager.dart';
 import 'package:pharmy_driver/presentation/resources/font_app.dart';
 import 'package:pharmy_driver/presentation/resources/style_app.dart';
 import 'package:pharmy_driver/presentation/resources/values_app.dart';
+import '../../../../models/order_details_model.dart';
 import '../../../../translations.dart';
 
 class CardBasket extends StatelessWidget {
   final bool isHome ;
-  const CardBasket({super.key,  this.isHome=false, });
+  final OrderDetail orderDetail ;
+  const CardBasket({super.key,  this.isHome=false,required this.orderDetail });
 
   @override
   Widget build(BuildContext context) {
@@ -67,7 +69,7 @@ class CardBasket extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
-                Text('فليفلة حمراء',
+                Text(orderDetail.name??"",
                   style: getBoldStyle(
                           color: ColorManager.black, fontSize: FontSizeApp.s10)
                       ?.copyWith(height: 1),
@@ -99,7 +101,7 @@ class CardBasket extends StatelessWidget {
                 Row(
                   children: [
 
-                      Text('50,000',
+                      Text(orderDetail.price??"",
                           style: getBoldStyle(
                               color: ColorManager.primaryGreen,
                               fontSize: FontSizeApp.s15)!

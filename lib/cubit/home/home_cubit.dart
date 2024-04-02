@@ -23,7 +23,25 @@ class HomeCubit extends Cubit<HomeStates> {
     }, (r) {
       emit(state.copyWith(screenState: ScreenState.success,orderList: r));
     });
-
+  }
+  getRefreshOrder()async {
+    emit(state.copyWith(isLoading: true));
+    final response = await HomeRepository.getLastOrder();
+    response.fold((l) {
+     // emit(state.copyWith(screenState: ScreenState.error,error:l));
+    }, (r) {
+      emit(state.copyWith(isLoading: false,orderList: r));
+    });
+  }
+  acceptOrder(int id)async{
+    emit(state.copyWith(isLoadingAccept: true));
+    final response = await HomeRepository.acceptOrder(id);
+    response.fold((l) {
+    emit(state.copyWith(errorAccept: l));
+    }, (r) {
+      state.orderList.removeWhere((element) => element.id==id);
+      emit(state.copyWith(isSuccess: true,orderList: state.orderList ));
+    });
   }
 
 }

@@ -7,7 +7,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pharmy_driver/presentation/screens/splash_screen/splash_screen.dart';
 import 'package:pharmy_driver/translations.dart';
 import 'core/services/services_locator.dart';
-import 'cubit/bottom/bottom_bloc.dart';
 import 'cubit/home/home_cubit.dart';
 import 'data/data_resource/local_resource/data_store.dart';
 import 'data/data_resource/remote_resource/api_handler/base_api_client.dart';
@@ -37,9 +36,6 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: (BuildContext context) => sl<HomeCubit>()),
-        BlocProvider(
-          create: (BuildContext context) => sl<BottomCubit>(),
-        ),
       ],
       child: ScreenUtilInit(
           minTextAdapt: true,
