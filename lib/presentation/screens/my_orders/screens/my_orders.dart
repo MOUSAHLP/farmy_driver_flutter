@@ -54,7 +54,7 @@ class MyOrdersBody extends StatelessWidget {
                   separatorBuilder: (context, index) => const SizedBox(
                         height: PaddingApp.p22,
                       ),
-                  itemCount: 3): Row(
+                  itemCount:state.orderList.length): Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   CustomNoData(noDataStatment: "no order"),

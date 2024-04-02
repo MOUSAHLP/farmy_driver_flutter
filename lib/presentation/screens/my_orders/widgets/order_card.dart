@@ -83,16 +83,19 @@ final OrderModel order;
               children: [
                 Column(
                   mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Image.asset(IconsManager.queen, width: 23, height: 19),
                     Image.asset(IconsManager.logoAppLight,
-                        width: 90, height: 90),
+                        width: 90, height: 81),
+                    const SizedBox(height: 10,)
                   ],
                 ),
                 //   const ImageSvgWidget(url: ImageManager.orderLogo,width:90,height:90,fit: BoxFit.cover,).buildAssetSvgImage(),
                 Expanded(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       OrderCardRow(
                         title: AppLocalizations.of(context)!.order_number,
