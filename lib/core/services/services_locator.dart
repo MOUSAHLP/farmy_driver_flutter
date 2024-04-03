@@ -3,6 +3,7 @@ import 'package:pharmy_driver/cubit/home/home_cubit.dart';
 
 import '../../cubit/authentication_bloc/authertication_bloc.dart';
 import '../../cubit/order/order_cubit.dart';
+import '../../cubit/profile/pofile_bloc.dart';
 import '../../data/repository/user_repository.dart';
 
 
@@ -15,5 +16,7 @@ class ServicesLocator {
 
     sl.registerLazySingleton<UserRepository>(() => UserRepository());
     sl.registerLazySingleton(() => AuthenticationBloc(sl()));
+    ///profile
+    sl.registerFactory(() => ProfileBloc());
   }
 }

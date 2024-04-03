@@ -51,6 +51,18 @@ class LoginResponse {
         birthday:json['user']["birthday"]!=null?DateFormat("yyyy-MM-dd").parse(json['user']["birthday"]):null ,
         token: json['token'],
       );
+  factory LoginResponse.fromJsonProfile(Map<String, dynamic> json) => LoginResponse(
+    id: json["id"],
+    firstName: json["first_name"],
+    lastName: json["last_name"],
+    phone: json["phone"],
+    status: json["status"],
+    address: json["address"],
+    email: json["email"],
+    roleId: json["role_id"],
+    birthday:json["birthday"]!=null?DateFormat("yyyy-MM-dd").parse(json["birthday"]):null ,
+
+  );
 
   Map<String, dynamic> toJson() => {
         "id": id,

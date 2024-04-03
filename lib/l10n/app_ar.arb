@@ -121,5 +121,7 @@
   "password": "كلمة المرور"
   ,
    "exit": "خروج",
-     "confimSignOut": "تأكيد تسجيل الخروج؟"
+     "confimSignOut": "تأكيد تسجيل الخروج؟",
+      "email_option": "الإيميل (اختياري)",
+        "email_with_at": "الايميل @ ...."
 }

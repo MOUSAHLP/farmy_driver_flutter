@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:pharmy_driver/core/app_router/app_router.dart';
 import 'package:pharmy_driver/presentation/app_widgets/drawer/elevated_button.dart';
-import 'package:pharmy_driver/presentation/screens/orders_history/screens/orders_history_screen.dart';
+
 import 'package:pharmy_driver/presentation/screens/settings/screens/settings_screen.dart';
 import 'package:pharmy_driver/translations.dart';
+import '../../cubit/authentication_bloc/authertication_bloc.dart';
 import '../resources/assets_manager.dart';
 import '../resources/color_manager.dart';
 import '../resources/style_app.dart';
@@ -52,8 +54,8 @@ class CustomAppDrawer extends StatelessWidget {
                         ),
                         //  sl<AuthenticationBloc>().loggedIn?
                         Text(
-                          "UserName",
-                          //   "${context.read<AuthenticationBloc>().loginResponse!.firstName} ${context.read<AuthenticationBloc>().loginResponse!.lastName}",
+
+                           "${context.read<AuthenticationBloc>().loginResponse!.firstName} ${context.read<AuthenticationBloc>().loginResponse!.lastName}",
                           style: getMediumStyle(
                             color: Colors.black,
                             fontSize: 18,

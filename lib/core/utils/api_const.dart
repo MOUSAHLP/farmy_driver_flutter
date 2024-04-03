@@ -4,6 +4,8 @@ class ApiConst {
   ///Auth
   static const String login = "/login";
   static const String logout = "/logout";
+  static const String updateProfile = "/update_profile";
+
 
   ///Home
   static const String getLastOrders = "/orders";

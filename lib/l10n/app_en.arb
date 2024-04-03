@@ -119,6 +119,8 @@
   "daily_orders_percentage": "Percentage of daily completed orders",
   "password": "Password",
    "exit": "Exit",
-     "confimSignOut": "Confirm sign out?"
+     "confimSignOut": "Confirm sign out?",
+     "email_option": "Email option",
+       "email_with_at": "Email @ ..."
 
 }

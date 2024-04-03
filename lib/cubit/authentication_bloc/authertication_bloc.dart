@@ -6,7 +6,6 @@ import '../../data/data_resource/local_resource/data_store.dart';
 
 import '../../data/repository/user_repository.dart';
 import '../../models/login_response.dart';
-import 'authentication_event.dart';
 import 'authentication_state.dart';
 
 class AuthenticationBloc
