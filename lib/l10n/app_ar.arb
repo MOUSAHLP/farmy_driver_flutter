@@ -117,5 +117,9 @@
       "processing": "جاري المعالجة",
 
 
-  "daily_orders_percentage": "نسبة الطلبات المتممة اليومية"
+  "daily_orders_percentage": "نسبة الطلبات المتممة اليومية",
+  "password": "كلمة المرور"
+  ,
+   "exit": "خروج",
+     "confimSignOut": "تأكيد تسجيل الخروج؟"
 }

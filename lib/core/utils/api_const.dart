@@ -2,7 +2,8 @@ class ApiConst {
   static const String baseUrl = "https://farmy.driver.peaklink.site/api";
 
   ///Auth
-  static const String login = "/auth/login";
+  static const String login = "/login";
+  static const String logout = "/logout";
 
   ///Home
   static const String getLastOrders = "/orders";

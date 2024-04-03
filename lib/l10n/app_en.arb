@@ -116,6 +116,9 @@
       "error": "An error occurred, please try again later",
         "processing": "Processing"
 ,
-  "daily_orders_percentage": "Percentage of daily completed orders"
+  "daily_orders_percentage": "Percentage of daily completed orders",
+  "password": "Password",
+   "exit": "Exit",
+     "confimSignOut": "Confirm sign out?"
 
 }

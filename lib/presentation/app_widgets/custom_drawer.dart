@@ -8,6 +8,7 @@ import 'package:pharmy_driver/translations.dart';
 import '../resources/assets_manager.dart';
 import '../resources/color_manager.dart';
 import '../resources/style_app.dart';
+import 'dialog/logout_confirmation_dialog.dart';
 
 class CustomAppDrawer extends StatelessWidget {
   const CustomAppDrawer({super.key});
@@ -95,7 +96,8 @@ class CustomAppDrawer extends StatelessWidget {
                         ElevatedButtonWidget(
                             title: AppLocalizations.of(context)!.sign_out,
                             onTap: () {
-                              //  LogoutConfirmationDialog.handle(context);
+
+                               LogoutConfirmationDialog.handle(context);
                             }),
                         //      :ElevatedButtonWidget(
                         //     title: AppLocalizations.of(context)!.sign_in,
