@@ -1,3 +1,5 @@
-abstract class HomeStates{}
-class InitialHomeState extends HomeStates{}
-class ChangeIndexState extends HomeStates{}
+abstract class HomeStates {}
+
+class InitialHomeState extends HomeStates {}
+
+class ChangeIndexState extends HomeStates {}

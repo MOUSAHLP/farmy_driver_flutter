@@ -12,10 +12,12 @@ class ApiConst {
   static const String signUp = "/users";
 
   ///Categories
-  static const String getAllCategoties = "/categories";
+  static const String getAllCategories = "/categories";
   static String getSubCategories(int id) => "/categories/$id";
+
 //product
   static String getProductBySubCategoryId = "/products";
+
   static String getProductDetailsById(int id) => "/products/$id";
 
   //home
@@ -27,5 +29,6 @@ class ApiConst {
   ///Address
   static const String getUserAddresses = "/user_addresses";
   static const String addUserAddresses = "/user_addresses";
-  static  String deleteUserAddresses(int id) => "/user_addresses/$id";
+
+  static String deleteUserAddresses(int id) => "/user_addresses/$id";
 }

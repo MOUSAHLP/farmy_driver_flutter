@@ -68,13 +68,14 @@ class _MainScreenState extends State<MainScreen> {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       BottomNavItem(
-                          currentIndex: context.read<HomeCubit>().currentIndex,
-                          onTap: () {
-                            context.read<HomeCubit>().changeIndex(0);
-                          },
-                          title: AppLocalizations.of(context)!.my_orders,
-                          icon: IconsManager.ordersIcon,
-                          index: 0),
+                        currentIndex: context.read<HomeCubit>().currentIndex,
+                        onTap: () {
+                          context.read<HomeCubit>().changeIndex(0);
+                        },
+                        title: AppLocalizations.of(context)!.my_orders,
+                        icon: IconsManager.ordersIcon,
+                        index: 0,
+                      ),
                       BottomNavItem(
                           currentIndex: context.read<HomeCubit>().currentIndex,
                           onTap: () {
