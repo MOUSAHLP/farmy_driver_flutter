@@ -127,5 +127,12 @@
   "you_can_connect_directly": "You can contact our customer service department directly",
   "on_the_next_number": "On the next number",
   "or_via_whatsup": "Or via Whatsapp",
-  "loading": "Loading"
+  "loading": "Loading",
+  "about_Application": "About the Application",
+  "sorry_for_delete_account": "We're sorry to \n see you leave the application! If you have any issues, we can still assist you.",
+  "please_write_your_phone_and_password": "Please enter your phone number and password for confirmation",
+  "password_with_star": "Password **",
+  "confirm_delete": "Confirm Delete",
+  "previous_Password": "Previous Password",
+  "new_password": "New password"
 }

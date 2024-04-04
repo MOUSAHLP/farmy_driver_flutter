@@ -5,11 +5,14 @@ class ApiConst {
   static const String login = "/login";
   static const String logout = "/logout";
   static const String updateProfile = "/update_profile";
+  static const String deleteAccount = "/delete_account";
 
   ///Setting
   static const String contactUs = "/contact_us";
   static const String getPrivacy = "/policy";
   static const String getConditions = "/conditions";
+  static const String getFaqQuestions = "/faq_questions";
+  static const String getAbout = "/about_the_app";
 
 
   ///Home

@@ -13,6 +13,10 @@ import 'package:pharmy_driver/presentation/screens/settings/screens/conditions_s
 import 'package:pharmy_driver/presentation/screens/settings/widgets/card_setting.dart';
 import 'package:pharmy_driver/translations.dart';
 
+import '../../delete_account/delete_account_screen.dart';
+import 'about_screen.dart';
+import 'faq_screen.dart';
+
 class SettingScreen extends StatelessWidget {
   const SettingScreen({super.key});
 
@@ -27,241 +31,248 @@ class SettingScreen extends StatelessWidget {
             Expanded(
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 28),
-                child: Column(
-                  children: [
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Text(
-                          AppLocalizations.of(context)!.protection,
-                          style: getBoldStyle(
-                              color: ColorManager.grayForMessage, fontSize: 15),
-                        ),
-                      ],
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 20),
-                      child: CardSetting(
-                          color: Colors.black,
-                          title: AppLocalizations.of(context)!.change_Password,
-                          onTap: () {
-                            //    AppRouter.push(context, const ChangePasswordScreen());
-                          }),
-                    ),
-                    const Divider(),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Text(
-                          AppLocalizations.of(context)!.change_Language,
-                          style: getBoldStyle(
-                              color: ColorManager.grayForMessage, fontSize: 15),
-                        ),
-                      ],
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 20),
-                      child: BlocBuilder<LanguageCubit, LanguageState>(
-                        builder: (context, state) {
-                          LanguageCubit cubitLang = LanguageCubit.get(context);
-                          print("BlocBuilder");
-                          print(cubitLang.lang);
-
-                          return CardSetting(
-                              color: Colors.black,
-                              title: DataStore.instance.lang == "ar"
-                                  ? "العربية"
-                                  : "English",
-                              onTap: () {
-                                showDialog(
-                                  context: context,
-                                  builder: (BuildContext context) {
-                                    return AlertDialog(
-                                      title: Column(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceAround,
-                                        children: [
-                                          GestureDetector(
-                                              child: Container(
-                                                height: 43,
-                                                decoration: BoxDecoration(
-                                                    color:
-                                                        ColorManager.lightGray,
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            6)),
-                                                child: Row(
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment
-                                                          .spaceBetween,
-                                                  children: [
-                                                    Padding(
-                                                      padding:
-                                                          const EdgeInsets.all(
-                                                              8.0),
-                                                      child: Text("English",
-                                                          style: getBoldStyle(
-                                                            color: Colors.black,
-                                                            fontSize: 13,
-                                                          )),
-                                                    ),
-                                                    Radio(
-                                                      fillColor: MaterialStateColor
-                                                          .resolveWith((states) =>
-                                                              ColorManager
-                                                                  .primaryGreen),
-                                                      value: "en",
-                                                      groupValue:
-                                                          cubitLang.lang,
-                                                      onChanged: (value) {
-                                                        print(
-                                                            "en en en en en ");
-
-                                                        cubitLang.updateLang(
-                                                            value ?? "en");
-                                                      },
-                                                    ),
-                                                  ],
-                                                ),
-                                              ),
-                                              onTap: () {
-                                                print("else en en en en en ");
-                                                cubitLang.updateLang("en");
-                                              }),
-                                          const SizedBox(
-                                            height: 15,
-                                          ),
-                                          GestureDetector(
-                                              child: Container(
-                                                height: 43,
-                                                decoration: BoxDecoration(
-                                                    color:
-                                                        ColorManager.lightGray,
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            6)),
-                                                child: Row(
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment
-                                                          .spaceBetween,
-                                                  children: [
-                                                    Padding(
-                                                      padding:
-                                                          const EdgeInsets.all(
-                                                              8.0),
-                                                      child: Text("عربي",
-                                                          style: getBoldStyle(
-                                                            color: Colors.black,
-                                                            fontSize: 13,
-                                                          )),
-                                                    ),
-                                                    Radio(
-                                                      fillColor: MaterialStateColor
-                                                          .resolveWith((states) =>
-                                                              ColorManager
-                                                                  .primaryGreen),
-                                                      value: "ar",
-                                                      groupValue:
-                                                          cubitLang.lang,
-                                                      onChanged: (value) {
-                                                        print(
-                                                            " ar ar ar ar ar ");
-                                                        cubitLang.updateLang(
-                                                            value ?? "ar");
-                                                      },
-                                                    ),
-                                                  ],
-                                                ),
-                                              ),
-                                              onTap: () {
-                                                print("else ar ar ar ar ar ");
-                                                cubitLang.updateLang("ar");
-                                              }),
-                                          const SizedBox(
-                                            height: 18,
-                                          ),
-                                          SizedBox(
-                                            width: 97,
-                                            child: CustomButton(
-                                              label:
-                                                  AppLocalizations.of(context)!
-                                                      .confirm,
-                                              fillColor:
-                                                  ColorManager.primaryGreen,
-                                              onTap: () {
-                                                cubitLang
-                                                    .setLang(cubitLang.lang);
-                                                AppRouter.pop(context);
-                                              },
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    );
-                                  },
-                                );
-                              });
-                        },
+                child: SingleChildScrollView(
+                  child: Column(
+                    children: [
+                      const SizedBox(
+                        height: 10,
                       ),
-                    ),
-                    const Divider(),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Text(
-                          AppLocalizations.of(context)!
-                              .privacy_and_Terms_of_Use,
-                          style: getBoldStyle(
-                              color: ColorManager.grayForMessage, fontSize: 15),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          Text(
+                            AppLocalizations.of(context)!.protection,
+                            style: getBoldStyle(
+                                color: ColorManager.grayForMessage, fontSize: 15),
+                          ),
+                        ],
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 20),
+                        child: CardSetting(
+                            color: Colors.black,
+                            title: AppLocalizations.of(context)!.change_Password,
+                            onTap: () {
+                              //    AppRouter.push(context, const ChangePasswordScreen());
+                            }),
+                      ),
+                      const Divider(),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          Text(
+                            AppLocalizations.of(context)!.change_Language,
+                            style: getBoldStyle(
+                                color: ColorManager.grayForMessage, fontSize: 15),
+                          ),
+                        ],
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 20),
+                        child: BlocBuilder<LanguageCubit, LanguageState>(
+                          builder: (context, state) {
+                            LanguageCubit cubitLang = LanguageCubit.get(context);
+                            print("BlocBuilder");
+                            print(cubitLang.lang);
+
+                            return CardSetting(
+                                color: Colors.black,
+                                title: DataStore.instance.lang == "ar"
+                                    ? "العربية"
+                                    : "English",
+                                onTap: () {
+                                  showDialog(
+                                    context: context,
+                                    builder: (BuildContext context) {
+                                      return AlertDialog(
+                                        title: Column(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceAround,
+                                          children: [
+                                            GestureDetector(
+                                                child: Container(
+                                                  height: 43,
+                                                  decoration: BoxDecoration(
+                                                      color:
+                                                          ColorManager.lightGray,
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              6)),
+                                                  child: Row(
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .spaceBetween,
+                                                    children: [
+                                                      Padding(
+                                                        padding:
+                                                            const EdgeInsets.all(
+                                                                8.0),
+                                                        child: Text("English",
+                                                            style: getBoldStyle(
+                                                              color: Colors.black,
+                                                              fontSize: 13,
+                                                            )),
+                                                      ),
+                                                      Radio(
+                                                        fillColor: MaterialStateColor
+                                                            .resolveWith((states) =>
+                                                                ColorManager
+                                                                    .primaryGreen),
+                                                        value: "en",
+                                                        groupValue:
+                                                            cubitLang.lang,
+                                                        onChanged: (value) {
+                                                          print(
+                                                              "en en en en en ");
+
+                                                          cubitLang.updateLang(
+                                                              value ?? "en");
+                                                        },
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ),
+                                                onTap: () {
+                                                  print("else en en en en en ");
+                                                  cubitLang.updateLang("en");
+                                                }),
+                                            const SizedBox(
+                                              height: 15,
+                                            ),
+                                            GestureDetector(
+                                                child: Container(
+                                                  height: 43,
+                                                  decoration: BoxDecoration(
+                                                      color:
+                                                          ColorManager.lightGray,
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              6)),
+                                                  child: Row(
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .spaceBetween,
+                                                    children: [
+                                                      Padding(
+                                                        padding:
+                                                            const EdgeInsets.all(
+                                                                8.0),
+                                                        child: Text("عربي",
+                                                            style: getBoldStyle(
+                                                              color: Colors.black,
+                                                              fontSize: 13,
+                                                            )),
+                                                      ),
+                                                      Radio(
+                                                        fillColor: MaterialStateColor
+                                                            .resolveWith((states) =>
+                                                                ColorManager
+                                                                    .primaryGreen),
+                                                        value: "ar",
+                                                        groupValue:
+                                                            cubitLang.lang,
+                                                        onChanged: (value) {
+                                                          print(
+                                                              " ar ar ar ar ar ");
+                                                          cubitLang.updateLang(
+                                                              value ?? "ar");
+                                                        },
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ),
+                                                onTap: () {
+                                                  print("else ar ar ar ar ar ");
+                                                  cubitLang.updateLang("ar");
+                                                }),
+                                            const SizedBox(
+                                              height: 18,
+                                            ),
+                                            SizedBox(
+                                              width: 97,
+                                              child: CustomButton(
+                                                label:
+                                                    AppLocalizations.of(context)!
+                                                        .confirm,
+                                                fillColor:
+                                                    ColorManager.primaryGreen,
+                                                onTap: () {
+                                                  cubitLang
+                                                      .setLang(cubitLang.lang);
+                                                  AppRouter.pop(context);
+                                                },
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      );
+                                    },
+                                  );
+                                });
+                          },
                         ),
-                      ],
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 20),
-                      child: CardSetting(
+                      ),
+                      const Divider(),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          Text(
+                            AppLocalizations.of(context)!
+                                .privacy_and_Terms_of_Use,
+                            style: getBoldStyle(
+                                color: ColorManager.grayForMessage, fontSize: 15),
+                          ),
+                        ],
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 20),
+                        child: CardSetting(
+                            color: Colors.black,
+                            title: AppLocalizations.of(context)!
+                                .terms_and_Conditions,
+                            onTap: () {
+                              //ConditionsScreen
+                              AppRouter.push(context, ConditionsScreen());
+                            }),
+                      ),
+                      CardSetting(
                           color: Colors.black,
-                          title: AppLocalizations.of(context)!
-                              .terms_and_Conditions,
+                          title: AppLocalizations.of(context)!.privacy_Policy,
                           onTap: () {
-                            //ConditionsScreen
-                            AppRouter.push(context, ConditionsScreen());
+                            AppRouter.push(context, PrivacyPolicyScreen());
                           }),
-                    ),
-                    CardSetting(
-                        color: Colors.black,
-                        title: AppLocalizations.of(context)!.privacy_Policy,
-                        onTap: () {
-                          AppRouter.push(context, PrivacyPolicyScreen());
-                        }),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    const Divider(),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 10),
-                      child: CardSetting(
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      const Divider(),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 10),
+                        child: CardSetting(
+                            color: Colors.black,
+                            title: AppLocalizations.of(context)!
+                                .frequently_Asked_Questions,
+                            onTap: () {
+
+                              AppRouter.push(context, FAQScreen());
+                            }),
+                      ),
+                      CardSetting(
                           color: Colors.black,
-                          title: AppLocalizations.of(context)!
-                              .frequently_Asked_Questions,
-                          onTap: () {}),
-                    ),
-                    CardSetting(
-                        color: Colors.black,
-                        title: AppLocalizations.of(context)!.about_Application,
-                        onTap: () {
-                          //  AppRouter.push(context, const AboutTheAppcreen());
-                        }),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 10),
-                      child: CardSetting(
-                          color: ColorManager.redForFavorite,
-                          title: AppLocalizations.of(context)!.delete_account,
-                          onTap: () {}),
-                    ),
-                  ],
+                          title: AppLocalizations.of(context)!.about_Application,
+                          onTap: () {
+                            AppRouter.push(context, const AboutScreen());
+                          }),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 10),
+                        child: CardSetting(
+                            color: ColorManager.redForFavorite,
+                            title: AppLocalizations.of(context)!.delete_account,
+                            onTap: () {
+                              AppRouter.push(context, DeleteAccountScreen());
+                            }),
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),

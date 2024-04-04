@@ -4,6 +4,7 @@ import 'package:dio/dio.dart';
 import '../../core/utils/api_const.dart';
 import '../../models/login_response.dart';
 
+import '../../models/params/delete_account_params.dart';
 import '../../models/params/login_params.dart';
 
 import '../../models/profile_model.dart';
@@ -20,7 +21,18 @@ class UserRepository {
           return LoginResponse.fromJson(e);
         });
   }
-
+  Future<Either<String, bool>> deleteAccount(
+      DeleteAccountParams deleteAccountParams) async {
+    return BaseApiClient.post<bool>(
+        url: ApiConst.deleteAccount,
+        formData: {
+          "phone":deleteAccountParams.phone,
+          "password":deleteAccountParams.password
+        },
+        converter: (e) {
+          return true;
+        });
+  }
   void deleteToken() async {
     DataStore.instance.deleteToken();
   }
