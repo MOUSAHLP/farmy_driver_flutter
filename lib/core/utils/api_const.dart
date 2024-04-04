@@ -6,6 +6,11 @@ class ApiConst {
   static const String logout = "/logout";
   static const String updateProfile = "/update_profile";
 
+  ///Setting
+  static const String contactUs = "/contact_us";
+  static const String getPrivacy = "/policy";
+  static const String getConditions = "/conditions";
+
 
   ///Home
   static const String getLastOrders = "/orders";

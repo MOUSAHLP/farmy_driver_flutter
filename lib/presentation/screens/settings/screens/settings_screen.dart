@@ -8,6 +8,8 @@ import 'package:pharmy_driver/presentation/app_widgets/custom_button.dart';
 import 'package:pharmy_driver/presentation/app_widgets/screen_title.dart';
 import 'package:pharmy_driver/presentation/resources/color_manager.dart';
 import 'package:pharmy_driver/presentation/resources/style_app.dart';
+import 'package:pharmy_driver/presentation/screens/settings/screens/privacy_policy_screen.dart';
+import 'package:pharmy_driver/presentation/screens/settings/screens/conditions_screen.dart';
 import 'package:pharmy_driver/presentation/screens/settings/widgets/card_setting.dart';
 import 'package:pharmy_driver/translations.dart';
 
@@ -223,12 +225,17 @@ class SettingScreen extends StatelessWidget {
                           color: Colors.black,
                           title: AppLocalizations.of(context)!
                               .terms_and_Conditions,
-                          onTap: () {}),
+                          onTap: () {
+                            //ConditionsScreen
+                            AppRouter.push(context, ConditionsScreen());
+                          }),
                     ),
                     CardSetting(
                         color: Colors.black,
                         title: AppLocalizations.of(context)!.privacy_Policy,
-                        onTap: () {}),
+                        onTap: () {
+                          AppRouter.push(context, PrivacyPolicyScreen());
+                        }),
                     const SizedBox(
                       height: 10,
                     ),

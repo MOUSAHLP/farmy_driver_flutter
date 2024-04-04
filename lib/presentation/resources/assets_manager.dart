@@ -8,6 +8,8 @@ class ImageManager {
   static const String orderLogo = "$imagePath/order_logo.svg";
   static const String flagOfSyria = "$imagePath/flag_of_syria.png";
   static const String auth = "$imagePath/auth.png";
+  static const String whatsUpLogo = "$imagePath/whats_up.png";
+  static const String contactLogo = "$imagePath/contact_logo.png";
 }
 
 class IconsManager {
