@@ -13,6 +13,7 @@ import 'package:pharmy_driver/presentation/screens/settings/screens/conditions_s
 import 'package:pharmy_driver/presentation/screens/settings/widgets/card_setting.dart';
 import 'package:pharmy_driver/translations.dart';
 
+import '../../change_password/change_password_screen.dart';
 import '../../delete_account/delete_account_screen.dart';
 import 'about_screen.dart';
 import 'faq_screen.dart';
@@ -53,7 +54,7 @@ class SettingScreen extends StatelessWidget {
                             color: Colors.black,
                             title: AppLocalizations.of(context)!.change_Password,
                             onTap: () {
-                              //    AppRouter.push(context, const ChangePasswordScreen());
+                                AppRouter.push(context, const ChangePasswordScreen());
                             }),
                       ),
                       const Divider(),

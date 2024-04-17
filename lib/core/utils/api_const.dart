@@ -6,6 +6,7 @@ class ApiConst {
   static const String logout = "/logout";
   static const String updateProfile = "/update_profile";
   static const String deleteAccount = "/delete_account";
+  static const String resetPassword = "/change_password";
 
   ///Setting
   static const String contactUs = "/contact_us";

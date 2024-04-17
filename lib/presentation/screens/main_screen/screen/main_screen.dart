@@ -24,7 +24,7 @@ class MainScreen extends StatefulWidget {
 
 class _MainScreenState extends State<MainScreen> {
   int index = 0;
-  final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
+//  final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
   //move to controller
 
   @override

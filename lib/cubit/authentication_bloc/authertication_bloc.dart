@@ -92,23 +92,23 @@ class AuthenticationBloc
            isDeleteAccount: true));
      });
    }
-   // ResetPassword(ResetPasswordParams resetPasswordParams)async{
-   //   emit(state.copyWith(isLoading: true));
-   //
-   //   ResetPasswordParams forgetPasswordParams = ResetPasswordParams(
-   //
-   //       password: resetPasswordParams.password,
-   //       repeatPassword: resetPasswordParams.repeatPassword,
-   //       oldPassword: resetPasswordParams.oldPassword);
-   //   var response = await userRepository.resetPassword(forgetPasswordParams);
-   //   response.fold((l) {
-   //     emit(state.copyWith(error: l));
-   //   }, (r) {
-   //     userRepository.deleteToken();
-   //     DataStore.instance.deleteUserInfo();
-   //     emit(state.copyWith(resetPassword: true,authenticationScreenStates: AuthenticationScreenStates.authenticationLoggedOut));
-   //   });
-   // }
+   ResetPassword(ResetPasswordParams resetPasswordParams)async{
+     emit(state.copyWith(isLoading: true));
+
+     ResetPasswordParams forgetPasswordParams = ResetPasswordParams(
+
+         password: resetPasswordParams.password,
+         repeatPassword: resetPasswordParams.repeatPassword,
+         oldPassword: resetPasswordParams.oldPassword);
+     var response = await userRepository.resetPassword(forgetPasswordParams);
+     response.fold((l) {
+       emit(state.copyWith(error: l));
+     }, (r) {
+       userRepository.deleteToken();
+       DataStore.instance.deleteUserInfo();
+       emit(state.copyWith(resetPassword: true,authenticationScreenStates: AuthenticationScreenStates.authenticationLoggedOut));
+     });
+   }
 
 
 }
