@@ -18,6 +18,7 @@ import 'core/services/services_locator.dart';
 import 'cubit/authentication_bloc/authentication_state.dart';
 import 'cubit/authentication_bloc/authertication_bloc.dart';
 import 'cubit/home/home_cubit.dart';
+import 'cubit/setting/setting_bloc.dart';
 import 'data/data_resource/local_resource/data_store.dart';
 import 'data/data_resource/remote_resource/api_handler/base_api_client.dart';
 
@@ -73,6 +74,10 @@ class MyApp extends StatelessWidget {
         BlocProvider(
             create: (BuildContext context) =>
                 AllOrdersDateCubit()..getDriverTransactions()),
+        BlocProvider(
+          lazy: false,
+            create: (BuildContext context) =>
+            SettingBloc()..GetSetting()),
         BlocProvider(
             create: (BuildContext context) => sl<AuthenticationBloc>()),
       ],

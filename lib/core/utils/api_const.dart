@@ -16,6 +16,10 @@ class ApiConst {
   static const String getAbout = "/about_the_app";
 
 
+  /// Setting
+  static const String getSetting = "/setting";
+
+
   ///Home
   static const String getLastOrders = "/orders";
   static  String acceptOrder(int id) => "/accept-order/$id";

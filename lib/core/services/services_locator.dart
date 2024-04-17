@@ -9,6 +9,7 @@ import '../../cubit/faq/faq_bloc.dart';
 import '../../cubit/order/order_cubit.dart';
 import '../../cubit/privacy_bloc/privacy_bloc.dart';
 import '../../cubit/profile/pofile_bloc.dart';
+import '../../cubit/setting/setting_bloc.dart';
 import '../../data/repository/user_repository.dart';
 
 
@@ -37,5 +38,8 @@ class ServicesLocator {
     /// Conditions Screen
     sl.registerFactory(() => ConditionsBloc());
     sl.registerFactory(() => AboutBloc());
+
+    /// setting
+    sl.registerLazySingleton(() => SettingBloc());
   }
 }
