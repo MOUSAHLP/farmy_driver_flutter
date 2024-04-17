@@ -7,6 +7,8 @@ import 'package:pharmy_driver/presentation/app_widgets/base_scaffold.dart';
 import 'package:pharmy_driver/presentation/app_widgets/custom_button.dart';
 import 'package:pharmy_driver/presentation/screens/transactions/widgets/order_date_row.dart';
 import 'package:pharmy_driver/translations.dart';
+import 'package:url_launcher/url_launcher.dart';
+import '../../../../core/utils/api_const.dart';
 import '../../../resources/color_manager.dart';
 import '../../../resources/font_app.dart';
 import '../../../resources/style_app.dart';
@@ -62,7 +64,13 @@ class AllOrdersDate extends StatelessWidget {
                               styleText: getUnderBoldStyle(
                                   color: ColorManager.primaryGreen,
                                   fontSize: FontSizeApp.s14.sp),
-                              onTap: () {},
+                              onTap: () {
+                                launchUrl(
+                                    Uri.parse(
+                                        ApiConst.baseUrl+ApiConst.generatePdfAllOrders),
+                                    mode: LaunchMode
+                                        .externalApplication);
+                              },
                             ),
                           ),
                         ],
