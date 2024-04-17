@@ -74,6 +74,12 @@ class OrderInfoWidget extends StatelessWidget {
                 fontSize: FontSizeApp.s12,
                 title: AppLocalizations.of(context)!.total_invoice,
                 content:orderDetailsModel.total.toString()??""),
+            OrderDetailsRow(
+                titleColor: ColorManager.grayForMessage,
+                contentColor: ColorManager.primaryGreen,
+                fontSize: FontSizeApp.s12,
+                title: AppLocalizations.of(context)!.tax,
+                content:orderDetailsModel.tax.toString()??""),
           ],
         ],
       ),

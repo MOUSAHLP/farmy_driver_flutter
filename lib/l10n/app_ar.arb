@@ -133,5 +133,6 @@
   "please_write_your_phone_and_password": "الرجاء كتابة رقمك وكلمة المرور للتأكيد",
   "password_with_star": "كلمة المرور **",
   "confirm_delete": "تأكيد الحذف",
-  "previous_Password": "كلمة المرور السابقة"
+  "previous_Password": "كلمة المرور السابقة",
+  "tax": "ضريبة"
 }

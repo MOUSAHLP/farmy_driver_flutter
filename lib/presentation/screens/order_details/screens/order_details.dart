@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pharmy_driver/core/launcher.dart';
 import 'package:pharmy_driver/cubit/order/order_cubit.dart';
 import 'package:pharmy_driver/cubit/order/order_states.dart';
+import 'package:pharmy_driver/cubit/setting/setting_bloc.dart';
 import 'package:pharmy_driver/presentation/app_widgets/base_scaffold.dart';
 import 'package:pharmy_driver/presentation/app_widgets/custom_button.dart';
 import 'package:pharmy_driver/presentation/resources/color_manager.dart';
@@ -118,6 +119,7 @@ class OrderDetailsBody extends StatelessWidget {
                                     fillColor: ColorManager.primaryGreen,
                                     labelColor: Colors.white,
                                     onTap: () {
+
                                       launchPhoneCall(state.orderDetailsModel?.userPhone??"");
                                     },
                                   ),
@@ -135,8 +137,7 @@ class OrderDetailsBody extends StatelessWidget {
                                       labelColor: ColorManager.primaryGreen,
                                       borderColor: ColorManager.primaryGreen,
                                       onTap: () {
-                                        //todo
-                                        launchPhoneCall(state.orderDetailsModel?.userPhone??"");
+                                        launchPhoneCall(context.read<SettingBloc>().settingModel?.data?.phone??"");
                                       },
                                     ),
                                   ),
