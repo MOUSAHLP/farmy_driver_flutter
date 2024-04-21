@@ -12,9 +12,11 @@ class OrderDetailsRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    if(content==""||content=="null"||content==null)return SizedBox();
     return Padding(
       padding: const EdgeInsets.only(bottom: PaddingApp.p10),
       child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text('$title: ',style: getBold800Style(color: titleColor,fontSize:fontSize ),),
           const SizedBox(width: 2,),

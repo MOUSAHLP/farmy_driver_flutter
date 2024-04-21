@@ -1,32 +1,38 @@
+
+
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:lottie/lottie.dart';
+import 'package:flutter_svg/svg.dart';
+
+
+import '../../translations.dart';
 import '../resources/assets_manager.dart';
+import '../resources/color_manager.dart';
+import '../resources/style_app.dart';
 import 'custom_button.dart';
 
 class CustomErrorScreen extends StatelessWidget {
   final Function()? onTap;
-  const CustomErrorScreen({super.key, required this.onTap});
+  final  String? titleError;
+  const CustomErrorScreen({super.key, required this.onTap,this.titleError});
 
   @override
   Widget build(BuildContext context) {
     return Center(
+      child: SingleChildScrollView(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            SvgPicture.asset(IconsManager.logoApp,color: ColorManager.lightGray,height: 170,width: 170,fit: BoxFit.contain),
             const SizedBox(height: 10),
-            Lottie.asset(LottieManager.noInternet,),
-            const SizedBox(height: 20),
-            CustomButton(
-              onTap: (){
-                onTap!();
-              },
-              fillColor: Colors.white,
-              label: 'Retry',
-              width: 200.w,
-            )
+            Text(titleError??"لا يوجد اتصال الرجاء\n التحقق من إعدادات الانترنت لديك",style: getBoldStyle(color: ColorManager.primaryGreen,fontSize: 14),textAlign: TextAlign.center),
+            const SizedBox(height: 10),
+            CustomButton(label: AppLocalizations.of(context)!.try_again,onTap: (){
+              onTap!();
+            },)
           ],
         ),
-      );
+      ),
+    );
   }
 }

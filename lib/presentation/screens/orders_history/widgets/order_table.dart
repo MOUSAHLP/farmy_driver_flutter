@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:pharmy_driver/models/order_history_model.dart';
+import 'package:pharmy_driver/presentation/screens/orders_history/widgets/order_table_row.dart';
 import 'package:pharmy_driver/translations.dart';
 import '../../../resources/color_manager.dart';
 import '../../../resources/font_app.dart';
@@ -7,7 +9,8 @@ import '../../../resources/style_app.dart';
 import '../../../resources/values_app.dart';
 
 class OrderTable extends StatelessWidget {
-  const OrderTable({Key? key}) : super(key: key);
+  final List<DriverOrders> listData;
+  const OrderTable({Key? key, required this.listData}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -41,34 +44,13 @@ class OrderTable extends StatelessWidget {
             padding: const EdgeInsets.symmetric(
                 vertical: PaddingApp.p12, horizontal: 1),
             shrinkWrap: true,
-            itemBuilder: (context, index) => Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Expanded(
-                        child: Center(
-                            child: Text(
-                      "54545",
-                      style: getRegularStyle(
-                          color: ColorManager.grayForMessage, fontSize: 15),
-                    ))),
-                    Expanded(
-                        child: Center(
-                            child: Text(
-                      "01/01/2024",
-                      style: getRegularStyle(
-                          color: ColorManager.grayForMessage, fontSize: 15),
-                    ))),
-                    Expanded(
-                        child: Center(
-                            child: Text(
-                      " 200,000 ${AppLocalizations.of(context)!.sp}",
-                      style: getRegularStyle(
-                          color: ColorManager.grayForMessage, fontSize: 15),
-                    ))),
-                  ],
+            itemBuilder: (context, index) => OrderTableRow(
+                  orderNumber: listData[index].orderNumber.toString(),
+                  date: listData[index].orderDate!,
+                  total: listData[index].total!.toString(),
                 ),
             separatorBuilder: (context, index) => const Divider(),
-            itemCount: 20),
+            itemCount: listData.length),
       ],
     );
   }

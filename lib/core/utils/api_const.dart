@@ -1,34 +1,29 @@
 class ApiConst {
-  static const String baseUrl =
-      "https://control.farmy.peaklink.site/public/api";
+  static const String baseUrl = "https://farmy.driver.peaklink.site/api";
 
   ///Auth
-  static const String login = "/auth/login";
-  static const String logout = "/auth/logout";
-  static const String generateOtp = "/auth/generate-otp";
-  static const String verifyOtp = "/auth/verify-otp";
-  static const String changePassword = "/auth/change-password";
+  static const String login = "/login";
+  static const String logout = "/logout";
+  static const String updateProfile = "/update_profile";
 
-  static const String signUp = "/users";
 
-  ///Categories
-  static const String getAllCategories = "/categories";
-  static String getSubCategories(int id) => "/categories/$id";
+  ///Home
+  static const String getLastOrders = "/orders";
+  static  String acceptOrder(int id) => "/accept-order/$id";
+  ///orders
+  static const String getOrders = "/driver-orders";
+  static  String getOrdersDetails(int id) => "/driver-orders/$id?lang=ar";
 
-//product
-  static String getProductBySubCategoryId = "/products";
+  ///Orders History
+  static String getDriverOrdersHistory(String date, String type) =>
+      "/get-driver-orders-history?date=$date&type=$type";
 
-  static String getProductDetailsById(int id) => "/products/$id";
+  static String getDriverOrdersStatistics(String date, String type) =>
+      "/get-orders-statistics?date=$date&type=$type";
 
-  //home
-  static String getHomeDate = "/home-page";
+  ///Transactions
+  static const String getDriverDriverDues = "/driver-dues";
 
-  //payment-process
-  static String getPaymentDetails = "/payment-process";
-
-  ///Address
-  static const String getUserAddresses = "/user_addresses";
-  static const String addUserAddresses = "/user_addresses";
-
-  static String deleteUserAddresses(int id) => "/user_addresses/$id";
+  ///All Orders
+  static const String getDriverAllOrders = "/all-orders";
 }

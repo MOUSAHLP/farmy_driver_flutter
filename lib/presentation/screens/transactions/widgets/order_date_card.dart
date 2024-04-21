@@ -1,22 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pharmy_driver/core/app_router/app_router.dart';
+import 'package:pharmy_driver/models/transactions_model.dart';
 import 'package:pharmy_driver/presentation/app_widgets/custom_button.dart';
 import 'package:pharmy_driver/presentation/resources/color_manager.dart';
 import 'package:pharmy_driver/presentation/resources/font_app.dart';
 import 'package:pharmy_driver/presentation/resources/style_app.dart';
 import 'package:pharmy_driver/presentation/resources/values_app.dart';
+import 'package:pharmy_driver/presentation/screens/all_history_orders/screens/all_orders_date.dart';
+import 'package:pharmy_driver/presentation/screens/transactions/widgets/order_date_row.dart';
 import 'package:pharmy_driver/translations.dart';
 
-import '../../all_order_history/screens/order&earnings_date_screen.dart';
-
 class OrderDateCard extends StatelessWidget {
-  const OrderDateCard({Key? key}) : super(key: key);
+  final List<DueOrders> listData;
+  const OrderDateCard({Key? key, required this.listData}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 40),
+      padding: EdgeInsets.symmetric(vertical: 10.h, horizontal: 20.w),
       child: Column(
         children: [
           Container(
@@ -43,63 +45,40 @@ class OrderDateCard extends StatelessWidget {
                             child: Center(
                                 child: Text(
                           AppLocalizations.of(context)!.order_number,
-                          style:
-                              getBoldStyle(color: Colors.white, fontSize: 15),
+                          style: getBoldStyle(
+                              color: Colors.white, fontSize: FontSizeApp.s15),
                         ))),
                         Expanded(
                             child: Center(
                                 child: Text(
                           AppLocalizations.of(context)!.date,
-                          style:
-                              getBoldStyle(color: Colors.white, fontSize: 15),
+                          style: getBoldStyle(
+                              color: Colors.white, fontSize: FontSizeApp.s15),
                         ))),
                         Expanded(
                             child: Center(
                                 child: Text(
                           AppLocalizations.of(context)!.total,
-                          style:
-                              getBoldStyle(color: Colors.white, fontSize: 15),
+                          style: getBoldStyle(
+                              color: Colors.white, fontSize: FontSizeApp.s15),
                         ))),
                       ],
                     ),
                   ),
                 ),
                 ListView.separated(
-                    physics: const NeverScrollableScrollPhysics(),
-                    padding: const EdgeInsets.symmetric(
-                        vertical: PaddingApp.p12, horizontal: 1),
-                    shrinkWrap: true,
-                    itemBuilder: (context, index) => Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Expanded(
-                                child: Center(
-                                    child: Text(
-                              "54545",
-                              style: getRegularStyle(
-                                  color: ColorManager.grayForMessage,
-                                  fontSize: 15),
-                            ))),
-                            Expanded(
-                                child: Center(
-                                    child: Text(
-                              "01/01/2024",
-                              style: getRegularStyle(
-                                  color: ColorManager.grayForMessage,
-                                  fontSize: 15),
-                            ))),
-                            Expanded(
-                                child: Center(
-                                    child: Text(
-                              "200,000 ل.س",
-                              style: getRegularStyle(
-                                  color: ColorManager.grayForMessage,
-                                  fontSize: 15),
-                            ))),
-                          ],
-                        ),
-                    separatorBuilder: (context, index) => const Divider(),
-                    itemCount: 3),
+                  physics: const NeverScrollableScrollPhysics(),
+                  padding: const EdgeInsets.symmetric(
+                      vertical: PaddingApp.p12, horizontal: 1),
+                  shrinkWrap: true,
+                  itemBuilder: (context, index) => OrderDateRow(
+                    orderNumber: listData[index].orderNumber.toString(),
+                    date: listData[index].time!,
+                    total: listData[index].total!.toString(),
+                  ),
+                  separatorBuilder: (context, index) => const Divider(),
+                  itemCount: listData.length,
+                ),
               ],
             ),
           ),
@@ -120,7 +99,7 @@ class OrderDateCard extends StatelessWidget {
                   styleText: getUnderBoldStyle(
                       color: Colors.white, fontSize: FontSizeApp.s12.sp),
                   onTap: () {
-                    AppRouter.push(context, const AllOrderHistoryScreen());
+                    AppRouter.push(context, const AllOrdersDate());
                   },
                 ),
               ),
@@ -131,7 +110,7 @@ class OrderDateCard extends StatelessWidget {
                 child: CustomButton(
                   isIcon: true,
                   width: 0.33.sw,
-                  height: 47,
+                  height: 47.h,
                   paddingText: PaddingApp.p4,
                   isFilled: true,
                   label: AppLocalizations.of(context)!.more_details,

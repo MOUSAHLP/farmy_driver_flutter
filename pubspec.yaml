@@ -52,6 +52,7 @@ dependencies:
   slide_action: ^0.0.2
   d_chart: ^2.6.7
   slide_to_act: ^2.0.2
+  package_info_plus:
   #  syncfusion_flutter_charts: ^24.2.4+3
 
 dev_dependencies:

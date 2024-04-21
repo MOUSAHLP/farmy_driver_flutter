@@ -5,10 +5,13 @@ import 'package:pharmy_driver/presentation/resources/style_app.dart';
 import 'package:pharmy_driver/presentation/resources/values_app.dart';
 import 'package:pharmy_driver/presentation/screens/order_details/widgets/card_basket.dart';
 
+import '../../../../models/order_details_model.dart';
+
 bool isExpanded=false;
 class OrderExpandedCard extends StatefulWidget {
   final bool isHome ;
-  const OrderExpandedCard({Key? key,  this.isHome=false}) : super(key: key);
+  final List<OrderDetail> orderDetailsModel;
+  const OrderExpandedCard({Key? key,  this.isHome=false,required this.orderDetailsModel}) : super(key: key);
 
   @override
   State<OrderExpandedCard> createState() => _OrderExpandedCardState();
@@ -67,9 +70,9 @@ class _OrderExpandedCardState extends State<OrderExpandedCard> {
                  padding: const EdgeInsets.symmetric(horizontal: 20),
                 physics: const NeverScrollableScrollPhysics(),
                 shrinkWrap: true,
-                itemBuilder: (context, index) => CardBasket(isHome: widget.isHome),
+                itemBuilder: (context, index) => CardBasket(isHome: widget.isHome,orderDetail: widget.orderDetailsModel[index]),
                 separatorBuilder: (context, index) =>const SizedBox(height: 6,) ,
-                itemCount: 3),
+                itemCount: widget.orderDetailsModel.length),
           ],
         ),
       ),

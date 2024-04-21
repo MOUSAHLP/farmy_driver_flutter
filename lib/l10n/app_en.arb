@@ -26,6 +26,7 @@
   "delivery_value": "Delivery value",
   "total_invoice": "Total invoice",
   "order_date": "order date",
+  "order_date_last_5": "Order history: (last 5 orders)",
   "order_time": "order time",
   "show_order": "order show",
   "contact_client": "contact client",
@@ -109,5 +110,17 @@
   "hour": "hour",
   "order_delivery": "Order Delivery",
   "delivered": "Delivered",
-  "total_bill": "Total Bill"
+  "total_bill": "Total Bill",
+  "syrian_pound": "S.P",
+    "try_again": "Try again",
+      "error": "An error occurred, please try again later",
+        "processing": "Processing"
+,
+  "daily_orders_percentage": "Percentage of daily completed orders",
+  "password": "Password",
+   "exit": "Exit",
+     "confimSignOut": "Confirm sign out?",
+     "email_option": "Email option",
+       "email_with_at": "Email @ ..."
+
 }

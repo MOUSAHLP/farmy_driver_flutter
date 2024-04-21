@@ -157,12 +157,12 @@
 //   //   }
 //   // }
 //
-//   // void processMessage(RemoteMessage? model) {
-//   //   if (model == null) return;
-//   //   final data = model.data["Model"];
+//   // void processMessage(RemoteMessage? models) {
+//   //   if (models == null) return;
+//   //   final data = models.data["Model"];
 //   //   int type;
 //   //   try {
-//   //     type = int.parse(model.data['NotificationName'] as String);
+//   //     type = int.parse(models.data['NotificationName'] as String);
 //   //   } catch (e) {
 //   //     return;
 //   //   }

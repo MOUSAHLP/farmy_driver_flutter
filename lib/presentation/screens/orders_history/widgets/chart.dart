@@ -4,7 +4,8 @@ import 'package:pharmy_driver/presentation/resources/color_manager.dart';
 import 'package:pharmy_driver/presentation/resources/values_app.dart';
 
 class Chart extends StatelessWidget {
-  const Chart({Key? key}) : super(key: key);
+  final Map<String, dynamic> data;
+  const Chart({Key? key, required this.data}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -23,20 +24,19 @@ class Chart extends StatelessWidget {
           // layoutMargin: LayoutMargin(10, 10, 10, 10),
           groupList: [
             OrdinalGroup(
-              chartType: ChartType.scatterPlot,
-              color: ColorManager.grayForSearch,
-              // chartType: ChartType.line,
-              id: '1',
-              data: [
-                OrdinalData(domain: 'Sat', measure: 5),
-                OrdinalData(domain: 'Fri', measure: 6),
-                OrdinalData(domain: 'Thu', measure: 2),
-                OrdinalData(domain: 'Wed', measure: 8),
-                OrdinalData(domain: 'Tue', measure: 3),
-                OrdinalData(domain: 'Mon', measure: 1),
-                OrdinalData(domain: 'Sun', measure: 4),
-              ],
-            ),
+                chartType: ChartType.scatterPlot,
+                color: ColorManager.grayForSearch,
+                // chartType: ChartType.line,
+                id: '1',
+                data: [
+                  ...List.generate(
+                    data.length,
+                    (index) => OrdinalData(
+                      domain: data.keys.toList()[index],
+                      measure: data[data.keys.toList()[index]] as num,
+                    ),
+                  ),
+                ]),
           ],
         ),
       ),
