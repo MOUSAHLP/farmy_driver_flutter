@@ -41,6 +41,7 @@ class OrdersHistoryCubit extends Cubit<OrdersHistoryState> {
   DateTime now = DateTime.now();
   OrdersHistorymodel? ordersHistorymodel;
 
+
   Future<void> getDriverOrdersHistory({String? date, String? type}) async {
     emit(LoadingState());
 
@@ -89,4 +90,5 @@ class OrdersHistoryCubit extends Cubit<OrdersHistoryState> {
 
     return '$month ( ${now.day} - $preDays )';
   }
+
 }

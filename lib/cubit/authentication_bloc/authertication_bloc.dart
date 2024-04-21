@@ -6,6 +6,8 @@ import '../../data/data_resource/local_resource/data_store.dart';
 
 import '../../data/repository/user_repository.dart';
 import '../../models/login_response.dart';
+import '../../models/params/delete_account_params.dart';
+import '../../models/reset_password_params.dart';
 import 'authentication_state.dart';
 
 class AuthenticationBloc
@@ -75,6 +77,38 @@ class AuthenticationBloc
           login: true));
     });
   }
+   DeleteAccount(DeleteAccountParams deleteAccountParams)async{
+     emit(state.copyWith(isLoading: true));
+     final response =
+     await userRepository.deleteAccount(deleteAccountParams);
+     response.fold((l) {
+       emit(state.copyWith(error: l));
+     }, (r) {
+       userRepository.deleteToken();
+       DataStore.instance.deleteUserInfo();
+       emit(state.copyWith(
+           authenticationScreenStates:
+           AuthenticationScreenStates.authenticationLoggedOut,
+           isDeleteAccount: true));
+     });
+   }
+   ResetPassword(ResetPasswordParams resetPasswordParams)async{
+     emit(state.copyWith(isLoading: true));
+
+     ResetPasswordParams forgetPasswordParams = ResetPasswordParams(
+
+         password: resetPasswordParams.password,
+         repeatPassword: resetPasswordParams.repeatPassword,
+         oldPassword: resetPasswordParams.oldPassword);
+     var response = await userRepository.resetPassword(forgetPasswordParams);
+     response.fold((l) {
+       emit(state.copyWith(error: l));
+     }, (r) {
+       userRepository.deleteToken();
+       DataStore.instance.deleteUserInfo();
+       emit(state.copyWith(resetPassword: true,authenticationScreenStates: AuthenticationScreenStates.authenticationLoggedOut));
+     });
+   }
 
 
 }

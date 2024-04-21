@@ -112,16 +112,27 @@
   "delivered": "تم التوصيل",
   "total_bill": "إجمالي الفاتورة",
   "syrian_pound": "ل.س",
-    "try_again": "إعادة المحاولة",
-    "error": "حدث خطأ ما, الرجاء المحاولة لاحقا",
-      "processing": "جاري المعالجة",
-
-
+  "try_again": "إعادة المحاولة",
+  "error": "حدث خطأ ما, الرجاء المحاولة لاحقا",
+  "processing": "جاري المعالجة",
   "daily_orders_percentage": "نسبة الطلبات المتممة اليومية",
-  "password": "كلمة المرور"
-  ,
-   "exit": "خروج",
-     "confimSignOut": "تأكيد تسجيل الخروج؟",
-      "email_option": "الإيميل (اختياري)",
-        "email_with_at": "الايميل @ ...."
+  "password": "كلمة المرور",
+  "exit": "خروج",
+  "confimSignOut": "تأكيد تسجيل الخروج؟",
+  "email_option": "الإيميل (اختياري)",
+  "email_with_at": "الايميل @ ....",
+  "leave_message_to_contact": "اترك لنا رسالتك هنا وسيتم التواصل معك تبعاً لطلبك في أقرب وقت.",
+  "write_message_notes_question_here": "اكتب رسالتك, ملاحظاتك, أو استفسارك هنا ...",
+  "sent": "ارسال",
+  "you_can_connect_directly": "ويمكنك التواصل مع قسم خدمة العملاء مباشرة",
+  "on_the_next_number": "على الرقم التالي",
+  "or_via_whatsup": "أو عبر تطبيق Whatsapp",
+  "loading" : "يتم التحميل",
+  "about_Application": "حول التطبيق",
+  "sorry_for_delete_account": "يؤسفنا مغادرتك التطبيق !\n إذا كان لديك مشكلة ما..مازلنا نستطيع مساعدتك",
+  "please_write_your_phone_and_password": "الرجاء كتابة رقمك وكلمة المرور للتأكيد",
+  "password_with_star": "كلمة المرور **",
+  "confirm_delete": "تأكيد الحذف",
+  "previous_Password": "كلمة المرور السابقة",
+  "tax": "ضريبة"
 }

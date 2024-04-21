@@ -10,6 +10,7 @@ import '../../cubit/authentication_bloc/authertication_bloc.dart';
 import '../resources/assets_manager.dart';
 import '../resources/color_manager.dart';
 import '../resources/style_app.dart';
+import '../screens/contact_us/contact_us_screen.dart';
 import 'dialog/logout_confirmation_dialog.dart';
 
 class CustomAppDrawer extends StatelessWidget {
@@ -53,16 +54,16 @@ class CustomAppDrawer extends StatelessWidget {
                           height: 24,
                         ),
                         //  sl<AuthenticationBloc>().loggedIn?
-                        Text(
-
-                           "${context.read<AuthenticationBloc>().loginResponse!.firstName} ${context.read<AuthenticationBloc>().loginResponse!.lastName}",
-                          style: getMediumStyle(
-                            color: Colors.black,
-                            fontSize: 18,
-                          ),
-                          overflow: TextOverflow.ellipsis,
-                          maxLines: 1,
-                        ),
+                        // Text(
+                        //
+                        //    "${context.read<AuthenticationBloc>().loginResponse!.firstName} ${context.read<AuthenticationBloc>().loginResponse!.lastName}",
+                        //   style: getMediumStyle(
+                        //     color: Colors.black,
+                        //     fontSize: 18,
+                        //   ),
+                        //   overflow: TextOverflow.ellipsis,
+                        //   maxLines: 1,
+                        // ),
                         //:const SizedBox(),
                         const SizedBox(
                           height: 21,
@@ -80,7 +81,8 @@ class CustomAppDrawer extends StatelessWidget {
                         ElevatedButtonWidget(
                             title: AppLocalizations.of(context)!.contact_us,
                             onTap: () {
-                              //AppRouter.push(context, const AllInvoicesScreen());
+                              AppRouter.push(context,  ContactUsScreen());
+
                             }),
                         ElevatedButtonWidget(
                             title: AppLocalizations.of(context)!.usage_guide,

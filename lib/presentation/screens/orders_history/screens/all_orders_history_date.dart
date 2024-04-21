@@ -3,6 +3,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pharmy_driver/cubit/orders_history/orders_history_cubit.dart';
 import 'package:pharmy_driver/presentation/app_widgets/custom_button.dart';
 import 'package:pharmy_driver/translations.dart';
+import 'package:url_launcher/url_launcher.dart';
+import '../../../../core/utils/api_const.dart';
 import '../../../resources/color_manager.dart';
 import '../../../resources/font_app.dart';
 import '../../../resources/style_app.dart';
@@ -41,7 +43,13 @@ class AllOrdersHistoryDate extends StatelessWidget {
                   styleText: getUnderBoldStyle(
                       color: ColorManager.primaryGreen,
                       fontSize: FontSizeApp.s14.sp),
-                  onTap: () {},
+                  onTap: () {
+                    launchUrl(
+                        Uri.parse(
+                            ApiConst.baseUrl+ApiConst.generatePdfAllOrders),
+                        mode: LaunchMode
+                            .externalApplication);
+                  },
                 ),
               ),
             ],

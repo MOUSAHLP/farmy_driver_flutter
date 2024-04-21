@@ -3,6 +3,12 @@ import 'package:pharmy_driver/core/utils/app_regex.dart';
 import '../translations.dart';
 
 class AppValidators {
+  static String? validateNameFields(BuildContext context, String? name) {
+    if (name == null || name.isEmpty) {
+      return "AppLocalizations.of(context)!.field_is_required";
+    }
+    return null;
+  }
   static String? validateFirstNameFields(BuildContext context, String? name) {
     if (name == null || name.isEmpty) {
       return AppLocalizations.of(context)!.fNameFieldIsRequired;

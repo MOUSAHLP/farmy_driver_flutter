@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pharmy_driver/core/app_router/app_router.dart';
 import 'package:pharmy_driver/models/transactions_model.dart';
@@ -10,6 +11,9 @@ import 'package:pharmy_driver/presentation/resources/values_app.dart';
 import 'package:pharmy_driver/presentation/screens/all_history_orders/screens/all_orders_date.dart';
 import 'package:pharmy_driver/presentation/screens/transactions/widgets/order_date_row.dart';
 import 'package:pharmy_driver/translations.dart';
+import 'package:url_launcher/url_launcher.dart';
+
+import '../../../../core/utils/api_const.dart';
 
 class OrderDateCard extends StatelessWidget {
   final List<DueOrders> listData;
@@ -120,7 +124,14 @@ class OrderDateCard extends StatelessWidget {
                   styleText: getUnderBoldStyle(
                       color: ColorManager.primaryGreen,
                       fontSize: FontSizeApp.s12.sp),
-                  onTap: () {},
+                  onTap: () {
+                    launchUrl(
+                        Uri.parse(
+                            ApiConst.baseUrl+ApiConst.generatePdfAllOrders),
+                        mode: LaunchMode
+                            .externalApplication);
+
+                  },
                 ),
               ),
             ],

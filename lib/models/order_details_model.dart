@@ -13,6 +13,7 @@ class OrderDetailsModel {
   String? deliveryFee;
   String? subTotal;
   int? total;
+  String? tax;
   String? notes;
   List<int>? changes;
   List<String>? deliveryAttributes;
@@ -37,6 +38,7 @@ class OrderDetailsModel {
     this.changes,
     this.deliveryAttributes,
     this.orderDetails,
+    this.tax,
   });
 
   factory OrderDetailsModel.fromJson(Map<String, dynamic> json) => OrderDetailsModel(
@@ -54,6 +56,7 @@ class OrderDetailsModel {
     deliveryFee: json["delivery_fee"],
     subTotal: json["sub_total"],
     total: json["total"],
+    tax: json["tax"],
     notes: json["notes"],
     changes: List<int>.from(json["changes"].map((x) => x)),
     deliveryAttributes: List<String>.from(json["deliveryAttributes"].map((x) => x)),

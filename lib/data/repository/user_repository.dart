@@ -4,9 +4,11 @@ import 'package:dio/dio.dart';
 import '../../core/utils/api_const.dart';
 import '../../models/login_response.dart';
 
+import '../../models/params/delete_account_params.dart';
 import '../../models/params/login_params.dart';
 
 import '../../models/profile_model.dart';
+import '../../models/reset_password_params.dart';
 import '../data_resource/local_resource/data_store.dart';
 import '../data_resource/remote_resource/api_handler/base_api_client.dart';
 
@@ -20,7 +22,18 @@ class UserRepository {
           return LoginResponse.fromJson(e);
         });
   }
-
+  Future<Either<String, bool>> deleteAccount(
+      DeleteAccountParams deleteAccountParams) async {
+    return BaseApiClient.post<bool>(
+        url: ApiConst.deleteAccount,
+        formData: {
+          "phone":deleteAccountParams.phone,
+          "password":deleteAccountParams.password
+        },
+        converter: (e) {
+          return true;
+        });
+  }
   void deleteToken() async {
     DataStore.instance.deleteToken();
   }
@@ -43,9 +56,6 @@ class UserRepository {
   }
   static Future<Either<String, LoginResponse>> editProfile(
       ProfileModel profileModel) async {
-    print(profileModel.toJson());
-    print(FormData.fromMap(profileModel.toJson()));
-
     return BaseApiClient.post<LoginResponse>(
         url: ApiConst.updateProfile,
         formData: FormData.fromMap(profileModel.toJson()),
@@ -53,6 +63,18 @@ class UserRepository {
           return LoginResponse.fromJsonProfile(e['data']);
         });
   }
+  Future<Either<String, bool>> resetPassword(
+      ResetPasswordParams forgetPasswordParams) async {
+    return BaseApiClient.post<bool>(
+        url: ApiConst.resetPassword,
+        formData:  {
+          "old_password":forgetPasswordParams.oldPassword,
+          "password":forgetPasswordParams.password,
+          "password_confirmation":forgetPasswordParams.repeatPassword
+        },
+        converter: (e) {
+          return true;
+        });}
 
 
 }

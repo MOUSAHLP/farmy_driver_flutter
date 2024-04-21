@@ -5,6 +5,19 @@ class ApiConst {
   static const String login = "/login";
   static const String logout = "/logout";
   static const String updateProfile = "/update_profile";
+  static const String deleteAccount = "/delete_account";
+  static const String resetPassword = "/change_password";
+
+  ///Setting
+  static const String contactUs = "/contact_us";
+  static const String getPrivacy = "/policy";
+  static const String getConditions = "/conditions";
+  static const String getFaqQuestions = "/faq_questions";
+  static const String getAbout = "/about_the_app";
+
+
+  /// Setting
+  static const String getSetting = "/setting";
 
 
   ///Home
@@ -26,4 +39,5 @@ class ApiConst {
 
   ///All Orders
   static const String getDriverAllOrders = "/all-orders";
+  static const String generatePdfAllOrders = "/generate-pdf-all-orders";
 }
