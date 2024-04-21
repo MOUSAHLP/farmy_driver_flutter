@@ -16,12 +16,14 @@ import 'package:pharmy_driver/translations.dart';
 import '../../../../core/services/services_locator.dart';
 import '../../../../cubit/home/home_cubit.dart';
 import '../../../../cubit/home/home_states.dart';
+import '../../../app_widgets/custom_alert.dart';
 import '../../../app_widgets/custom_error_screen.dart';
 import '../../../app_widgets/custom_no_dataa.dart';
 import '../../../app_widgets/dialog/error_dialog.dart';
 import '../../../app_widgets/dialog/loading_dialog.dart';
 import '../../../app_widgets/google_map.dart';
 import '../widgets/cutsom_home_shimmer.dart';
+import '../widgets/show_orders.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -40,8 +42,16 @@ class HomeScreen extends StatelessWidget {
           if (state.errorAccept != "") {
             ErrorDialog.openDialog(context, state.errorAccept);
           }
-          if(state.isSuccessAccept){
 
+          if(state.isSuccessHome){
+            if(state.homeModel!.asignedOrders!.isNotEmpty) {
+              showDialog(
+                context: context,
+                builder: (BuildContext context) {
+                  return  ShowOrders(listOrder: state.homeModel!.asignedOrders!,);
+                },
+              );
+            }
           }
 
         },
@@ -76,16 +86,16 @@ class HomeScreen extends StatelessWidget {
                                 fontSize: FontSizeApp.s15),
                           ),
                           Text(
-                            'متمرس',
+                            state.homeModel?.driverRank??"",
                             style: getBoldStyle(
                                 color: ColorManager.primaryGreen,
                                 fontSize: FontSizeApp.s15),
                           ),
                         ],
                       ),
-                      const Padding(
+                       Padding(
                         padding: EdgeInsets.symmetric(vertical: PaddingApp.p12),
-                        child: ProgressLinearIndicatorWidget(),
+                        child: ProgressLinearIndicatorWidget(progress: state.homeModel?.acceptanceRate??0),
                       ),
 
                       isShow

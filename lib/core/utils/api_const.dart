@@ -21,6 +21,7 @@ class ApiConst {
 
 
   ///Home
+  static const String getHome = "/get_home";
   static const String getLastOrders = "/orders";
   static  String acceptOrder(int id) => "/accept-order/$id";
   ///orders

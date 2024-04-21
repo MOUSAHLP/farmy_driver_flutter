@@ -35,12 +35,12 @@ class IncentivesScreen extends StatelessWidget {
                   ],
                 ),
                 const SizedBox(height: 22,),
-                const ProgressLinearIndicatorWidget(),
+                const ProgressLinearIndicatorWidget(progress: 0),
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: PaddingApp.p10),
                   child: Text(AppLocalizations.of(context)!.incentives_info1,style: getRegularStyle(color: ColorManager.grayForMessage,fontSize: FontSizeApp.s12)),
                 ),
-                const ProgressLinearIndicatorWidget(),
+                const ProgressLinearIndicatorWidget(progress: 0),
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: PaddingApp.p10),
                   child: Text(AppLocalizations.of(context)!.incentives_info2,style: getRegularStyle(color: ColorManager.grayForMessage,fontSize: FontSizeApp.s12)),

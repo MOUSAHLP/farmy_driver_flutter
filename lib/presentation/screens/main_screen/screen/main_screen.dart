@@ -33,7 +33,7 @@ class _MainScreenState extends State<MainScreen> {
       const MyOrdersBody(),
       const TransactionsScreen(),
       const HomeScreen(),
-      // const IncentivesScreen(),
+
       const OrdersHistoryScreen(),
       const MyAccountScreen(),
     ];
@@ -48,7 +48,7 @@ class _MainScreenState extends State<MainScreen> {
         return false;
       },
       child: BlocBuilder<HomeCubit, HomeStates>(
-        bloc: sl<HomeCubit>()..getLastOrder(),
+        bloc: sl<HomeCubit>()..getHome()..getLastOrder(),
         builder: (context, state) => Scaffold(
           key: context.read<HomeCubit>().scaffoldKey,
           drawer: const CustomAppDrawer(),

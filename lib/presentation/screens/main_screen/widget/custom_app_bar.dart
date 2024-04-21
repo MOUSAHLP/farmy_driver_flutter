@@ -8,6 +8,7 @@ import 'package:pharmy_driver/presentation/resources/assets_manager.dart';
 import 'package:pharmy_driver/presentation/resources/font_app.dart';
 import 'package:pharmy_driver/presentation/resources/style_app.dart';
 import 'package:url_launcher/url_launcher.dart';
+import '../../../../data/data_resource/local_resource/data_store.dart';
 import '../../../resources/color_manager.dart';
 
 class CustomAppBar extends StatelessWidget {
@@ -102,7 +103,7 @@ class CustomAppBar extends StatelessWidget {
             Row(
               children: [
                 Expanded(
-                    child: Text(' السائق: أحمد أحمد',style: getBold800Style(color: Colors.white,fontSize: FontSizeApp.s13),)),
+                    child: Text('${DataStore.instance.userInfo?.firstName}',style: getBold800Style(color: Colors.white,fontSize: FontSizeApp.s13),)),
                 Text('متصل',style: getBold800Style(color: Colors.white,fontSize: FontSizeApp.s12),),
                 const SizedBox(width: 6,),
                 FlutterSwitch(

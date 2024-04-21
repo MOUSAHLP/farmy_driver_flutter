@@ -19,8 +19,12 @@ import 'order_card_row.dart';
 
 class OrderCardWidget extends StatelessWidget {
   final bool isHome;
+  final bool isAssign;
 final OrderModel order;
-   const OrderCardWidget({Key? key, this.isHome = false,required this.order}) : super(key: key);
+   const OrderCardWidget({Key? key,
+     this.isHome = false,
+     this.isAssign = false,
+     required this.order}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -56,7 +60,8 @@ final OrderModel order;
                 child: Row(
                   children: [
                     SizedBox(
-                      width: 0.44.sw,
+
+                      width:isAssign?0.24.sw: 0.44.sw,
                       child: OrderCardRow(
                         title: AppLocalizations.of(context)!.order_date,
                         content: isHome?order.date.toString():order.orderDate.toString(),
@@ -143,7 +148,14 @@ final OrderModel order;
                         styleText: getUnderBoldStyle(
                             color: Colors.white, fontSize: FontSizeApp.s14),
                         onTap: () {
-                          context.read<HomeCubit>().acceptOrder(order.id);
+                          if(isAssign==true) {
+                              context
+                                  .read<HomeCubit>()
+                                  .acceptOrderAssign(order.id);
+                            } else {
+                            context.read<HomeCubit>().acceptOrder(order.id)
+                          ;
+                          }
                         },
                       ),
                     ),
