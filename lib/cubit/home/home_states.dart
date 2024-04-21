@@ -67,7 +67,7 @@ const HomeStates({
         isLoadingAssign: isLoadingAssign??false,
         isSuccessAssign: isSuccessAssign??false,
       isSuccessAccept: isSuccess??false,
-        isSuccessHome: isSuccessHome??this.isSuccessHome,
+        isSuccessHome: isSuccessHome??false,
       homeModel: homeModel??this.homeModel
     );
   }
