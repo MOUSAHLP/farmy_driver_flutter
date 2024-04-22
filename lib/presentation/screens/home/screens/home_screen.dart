@@ -44,7 +44,7 @@ class HomeScreen extends StatelessWidget {
           }
 
           if(state.isSuccessHome){
-            if(state.homeModel!.asignedOrders!.isNotEmpty) {
+            if(state.homeModel!.asignedOrders!.isEmpty) {
               showDialog(
                 context: context,
                 builder: (BuildContext context) {
@@ -60,9 +60,12 @@ class HomeScreen extends StatelessWidget {
             return const CustomHomeShimmer();
           }
           if (state.screenState == ScreenState.error) {
-            return CustomErrorScreen(titleError: state.error,onTap: (){
-              sl<HomeCubit>().getLastOrder();
-              sl<SettingBloc>().GetSetting();
+            return CustomErrorScreen(titleError: state.error,onTap: () async {
+              await sl<HomeCubit>().getHome(context.read<SettingBloc>().settingModel?.data?.update_time??"5");
+              await  sl<SettingBloc>().GetSetting();
+           await   sl<HomeCubit>().getLastOrder();
+
+
             },);
           }
           if (state.screenState == ScreenState.success) {

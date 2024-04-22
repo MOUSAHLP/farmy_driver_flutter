@@ -22,9 +22,11 @@ class HomeStates extends Equatable {
  final bool isSuccessAssign;
 final List<OrderModel> orderList;
  final HomeModel? homeModel;
+ final int time;
 
 const HomeStates({
    this.index=0,
+   this.time=5,
   this.screenState=ScreenState.initialized,
   this.error='',
   this.errorAccept='',
@@ -41,6 +43,7 @@ const HomeStates({
 
  HomeStates copyWith({
    int? index,
+   int? time,
    ScreenState? screenState,
    String? error,
    String? errorAccept,
@@ -57,6 +60,7 @@ const HomeStates({
   }) {
     return HomeStates(
        index: index??this.index,
+        time: time??this.time,
     screenState: screenState??this.screenState,
       error: error??'',
       errorAccept: errorAccept??'',
@@ -76,6 +80,7 @@ const HomeStates({
   List<Object?> get props => [
     identityHashCode(this),
     index,
+    time,
     screenState,
     error,
     errorAccept,

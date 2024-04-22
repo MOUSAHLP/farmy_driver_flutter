@@ -9,9 +9,9 @@ class OrderDetailsModel {
   String? userAddress;
   String? paymentMethod;
   bool? paymentStatus;
-  String? couponDiscount;
-  String? deliveryFee;
-  String? subTotal;
+  int? couponDiscount;
+  int? deliveryFee;
+  int? subTotal;
   int? total;
   String? tax;
   String? notes;

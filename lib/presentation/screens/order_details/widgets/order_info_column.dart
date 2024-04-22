@@ -61,13 +61,13 @@ class OrderInfoWidget extends StatelessWidget {
                 contentColor: ColorManager.primaryGreen,
                 fontSize: FontSizeApp.s12,
                 title: AppLocalizations.of(context)!.the_value_of_the_request,
-                content: orderDetailsModel.subTotal??""),
+                content: orderDetailsModel.subTotal.toString()??""),
             OrderDetailsRow(
                 titleColor: ColorManager.grayForMessage,
                 contentColor: ColorManager.primaryGreen,
                 fontSize: FontSizeApp.s12,
                 title: AppLocalizations.of(context)!.delivery_value,
-                content:orderDetailsModel.deliveryFee??""),
+                content:orderDetailsModel.deliveryFee.toString()??""),
             OrderDetailsRow(
                 titleColor: ColorManager.grayForMessage,
                 contentColor: ColorManager.primaryGreen,

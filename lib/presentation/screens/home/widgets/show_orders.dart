@@ -27,7 +27,7 @@ final  List<OrderModel> listOrder;
           LoadingDialog().closeDialog(context);
         }
         if (state.errorAssign != "") {
-           ErrorDialog.openDialog(context, state.errorAccept);
+           ErrorDialog.openDialog(context, state.errorAssign);
         }
         if (state.isSuccessAssign) {
         }

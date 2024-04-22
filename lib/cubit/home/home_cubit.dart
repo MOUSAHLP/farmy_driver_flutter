@@ -1,17 +1,36 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../core/app_enum.dart';
+import '../../core/services/services_locator.dart';
 import '../../data/repository/home_repo.dart';
+import '../setting/setting_bloc.dart';
 import 'home_states.dart';
 
 class HomeCubit extends Cubit<HomeStates> {
   int currentIndex = 2;
    GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
+  Timer? _timer;
 
-  HomeCubit() : super(HomeStates());
+  HomeCubit() : super(HomeStates()) {
+    _startTimer();
+    print(sl<SettingBloc>().settingModel?.data?.phone??"");
+  }
 
-  changeIndex(int index) {
+  void _startTimer() {
+
+    _timer = Timer.periodic(Duration(minutes: state.time), (Timer timer) {
+      getRefreshOrder();
+    });
+  }
+  @override
+  Future<void> close() {
+    _timer?.cancel();
+    return super.close();
+  }
+    changeIndex(int index) {
     currentIndex = index;
     emit(state.copyWith(index: index));
   }
@@ -45,7 +64,6 @@ class HomeCubit extends Cubit<HomeStates> {
     });
   }
   acceptOrderAssign(int id)async{
-    print("hjjjjjjj");
     emit(state.copyWith(isLoadingAssign: true));
     final response = await HomeRepository.acceptOrder(id);
     response.fold((l) {
@@ -55,15 +73,14 @@ class HomeCubit extends Cubit<HomeStates> {
       emit(state.copyWith(isSuccessAssign: true ,homeModel:state.homeModel ));
     });
   }
-  getHome()async {
-    emit(state.copyWith(screenState: ScreenState.loading));
+  getHome(String x)async {
+    emit(state.copyWith(screenState: ScreenState.loading,time: int.parse(x.toString())));
     final response = await HomeRepository.getHome();
     response.fold((l) {
        emit(state.copyWith(screenState: ScreenState.error,error:l));
     }, (r) {
       emit(state.copyWith(isSuccessHome:true,homeModel: r));
     });
-
   }
 
 }
