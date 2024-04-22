@@ -1,5 +1,6 @@
 import 'package:get_it/get_it.dart';
 import 'package:pharmy_driver/cubit/home/home_cubit.dart';
+import 'package:pharmy_driver/cubit/location/location_cubit.dart';
 
 import '../../cubit/about/about_bloc.dart';
 import '../../cubit/authentication_bloc/authertication_bloc.dart';
@@ -41,5 +42,6 @@ class ServicesLocator {
 
     /// setting
     sl.registerLazySingleton(() => SettingBloc());
+    sl.registerLazySingleton(() => LocationCubit());
   }
 }

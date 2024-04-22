@@ -13,10 +13,10 @@ import 'package:pharmy_driver/presentation/resources/values_app.dart';
 import 'package:pharmy_driver/presentation/screens/home/widgets/progress_linear_indicator.dart';
 import 'package:pharmy_driver/presentation/screens/my_orders/widgets/order_card.dart';
 import 'package:pharmy_driver/translations.dart';
+import 'package:socket_io_client/socket_io_client.dart';
 import '../../../../core/services/services_locator.dart';
 import '../../../../cubit/home/home_cubit.dart';
 import '../../../../cubit/home/home_states.dart';
-import '../../../app_widgets/custom_alert.dart';
 import '../../../app_widgets/custom_error_screen.dart';
 import '../../../app_widgets/custom_no_dataa.dart';
 import '../../../app_widgets/dialog/error_dialog.dart';
@@ -24,6 +24,7 @@ import '../../../app_widgets/dialog/loading_dialog.dart';
 import '../../../app_widgets/google_map.dart';
 import '../widgets/cutsom_home_shimmer.dart';
 import '../widgets/show_orders.dart';
+import 'package:socket_io_client/socket_io_client.dart' as IO;
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -42,16 +43,8 @@ class HomeScreen extends StatelessWidget {
           if (state.errorAccept != "") {
             ErrorDialog.openDialog(context, state.errorAccept);
           }
+          if(state.isSuccessAccept){
 
-          if(state.isSuccessHome){
-            if(state.homeModel!.asignedOrders!.isNotEmpty) {
-              showDialog(
-                context: context,
-                builder: (BuildContext context) {
-                  return  ShowOrders(listOrder: state.homeModel!.asignedOrders!,);
-                },
-              );
-            }
           }
 
         },
@@ -69,6 +62,7 @@ class HomeScreen extends StatelessWidget {
             },);
           }
           if (state.screenState == ScreenState.success) {
+            sl<LocationCubit>().getLatAndLng();
             return Expanded(
               child: SingleChildScrollView(
                 child: Padding(
@@ -89,19 +83,20 @@ class HomeScreen extends StatelessWidget {
                                 fontSize: FontSizeApp.s15),
                           ),
                           Text(
-                            state.homeModel?.driverRank??"",
+                            'متمرس',
                             style: getBoldStyle(
                                 color: ColorManager.primaryGreen,
                                 fontSize: FontSizeApp.s15),
                           ),
                         ],
                       ),
-                       Padding(
+                      const Padding(
                         padding: EdgeInsets.symmetric(vertical: PaddingApp.p12),
-                        child: ProgressLinearIndicatorWidget(progress: state.homeModel?.acceptanceRate??0),
+                        child: ProgressLinearIndicatorWidget(),
                       ),
 
                       isShow
+                      // ToDo Id order in google Map
                           ? Stack(
                               alignment: AlignmentDirectional.bottomEnd,
                               children: [
@@ -110,7 +105,8 @@ class HomeScreen extends StatelessWidget {
                                       padding: const EdgeInsets.symmetric(
                                           horizontal: PaddingApp.p5,
                                           vertical: PaddingApp.p12),
-                                      child: Google_map()),
+                                      child:  MapGoogle(trackingUrl:   context.read<OrderCubit>().state.trackingUrl,id: 0,orderCubit: context.read<OrderCubit>()),
+                                  ),
                                   Padding(
                                     padding:
                                         const EdgeInsetsDirectional.fromSTEB(

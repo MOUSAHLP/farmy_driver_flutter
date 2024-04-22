@@ -1,5 +1,4 @@
 import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -7,6 +6,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pharmy_driver/cubit/all_orders_date/all_orders_date_cubit.dart';
 import 'package:pharmy_driver/cubit/language/language_cubit.dart';
 import 'package:pharmy_driver/cubit/language/language_states.dart';
+import 'package:pharmy_driver/cubit/location/location_cubit.dart';
+import 'package:pharmy_driver/cubit/order/order_cubit.dart';
+import 'package:pharmy_driver/cubit/order_delivery/order_delivery_cubit.dart';
 import 'package:pharmy_driver/cubit/orders_history/orders_history_cubit.dart';
 import 'package:pharmy_driver/cubit/transactions/transactions_cubit.dart';
 import 'package:pharmy_driver/presentation/screens/main_screen/screen/main_screen.dart';
@@ -51,35 +53,22 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: (BuildContext context) => sl<HomeCubit>()),
-
         // Home screen
-        BlocProvider(
-          create: (BuildContext context) => sl<HomeCubit>(),
-        ),
-
+        BlocProvider(create: (BuildContext context) => sl<HomeCubit>(),),
         // language screen
         BlocProvider(create: (BuildContext context) => LanguageCubit()),
-
         // Orders History screen
-        BlocProvider(
-            create: (BuildContext context) =>
-                OrdersHistoryCubit()..getDriverOrdersHistory()),
-
+        BlocProvider(create: (BuildContext context) => OrdersHistoryCubit()..getDriverOrdersHistory()),
         // Transactions screen
-        BlocProvider(
-            create: (BuildContext context) =>
-                TransactionsCubit()..getDriverTransactions()),
-
+        BlocProvider(create: (BuildContext context) => TransactionsCubit()..getDriverTransactions()),
         // all orders screen
-        BlocProvider(
-            create: (BuildContext context) =>
-                AllOrdersDateCubit()..getDriverTransactions()),
-        BlocProvider(
-          lazy: false,
-            create: (BuildContext context) =>
-            SettingBloc()..GetSetting()),
-        BlocProvider(
-            create: (BuildContext context) => sl<AuthenticationBloc>()),
+        BlocProvider(create: (BuildContext context) => AllOrdersDateCubit()..getDriverTransactions()),
+        //
+        BlocProvider(lazy: false, create: (BuildContext context) => SettingBloc()..GetSetting()),
+        //
+        BlocProvider(create: (BuildContext context) => sl<AuthenticationBloc>()),
+        BlocProvider(create: (BuildContext context) => sl<OrderCubit>()),
+
       ],
       child: ScreenUtilInit(
           minTextAdapt: true,
@@ -87,7 +76,7 @@ class MyApp extends StatelessWidget {
           builder: (context, child) =>
               BlocBuilder<LanguageCubit, LanguageState>(
                   builder: (context, state) {
-                    if (true) {
+                if (true) {
                   return MaterialApp(
                     debugShowCheckedModeBanner: false,
                     title: 'Flutter Demo',

@@ -186,55 +186,51 @@ final OrderModel order;
                 ],
               )
               : Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Expanded(
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: PaddingApp.p10),
-                      child: CustomButton(
-                        // width: 0.25.sw,
-                        height: 35,
-                        paddingText: PaddingApp.p4,
-                        label: AppLocalizations.of(context)!.show_order,
-                        fillColor: ColorManager.primaryGreen,
-                        labelColor: Colors.white,
-                        onTap: () {
-                          AppRouter.push(context,  OrderDetailsScreen(id: order.id,));
-                        },
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Expanded(
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: PaddingApp.p10),
+                        child: CustomButton(
+                          // width: 0.25.sw,
+                          height: 35,
+                          paddingText: PaddingApp.p4,
+                          label: AppLocalizations.of(context)!.show_order,
+                          fillColor: ColorManager.primaryGreen,
+                          labelColor: Colors.white,
+                          onTap: () {
+                            AppRouter.push(
+                              context,
+                              OrderDetailsScreen(
+                                id: order.id,
+                              ),
+                            );
+                          },
+                        ),
                       ),
                     ),
-                  ),
-                  Expanded(
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: PaddingApp.p10),
-                      child: CustomButton(
-                        // width: 0.25.sw,
-                        height: 35,
-                        paddingText: PaddingApp.p4,
-                        isFilled: true,
-                        label: AppLocalizations.of(context)!.contact_client,
-                        fillColor: Colors.white,
-                        labelColor: ColorManager.primaryGreen,
-                        borderColor: ColorManager.primaryGreen,
-                        onTap: () {
-                          launchPhoneCall(order.userPhone??"");
-                        },
+                    Expanded(
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: PaddingApp.p10),
+                        child: CustomButton(
+                          // width: 0.25.sw,
+                          height: 35,
+                          paddingText: PaddingApp.p4,
+                          isFilled: true,
+                          label: AppLocalizations.of(context)!.contact_client,
+                          fillColor: Colors.white,
+                          labelColor: ColorManager.primaryGreen,
+                          borderColor: ColorManager.primaryGreen,
+                          onTap: () {
+                            launchPhoneCall(order.userPhone ?? "");
+                          },
+                        ),
                       ),
                     ),
-                  ),
-                  // CustomButton(
-                  //   width: 0.25.sw,
-                  //   height: 35,
-                  //   paddingText: PaddingApp.p4,
-                  //   isFilled: true,
-                  //   label: AppLocalizations.of(context)!.cancel,
-                  //   fillColor: ColorManager.redForFavorite,
-                  //   labelColor: Colors.white,
-                  //   onTap: () {},
-                  // ),
-                ],
-              ),
+                  ],
+                ),
           const SizedBox(
             height: PaddingApp.p16,
           )

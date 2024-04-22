@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pharmy_driver/core/launcher.dart';
 import 'package:pharmy_driver/cubit/order/order_cubit.dart';
 import 'package:pharmy_driver/cubit/order/order_states.dart';
@@ -14,6 +15,7 @@ import 'package:pharmy_driver/presentation/screens/order_delivery/screens/order_
 import 'package:pharmy_driver/presentation/screens/order_details/widgets/order_expanded_card.dart';
 import 'package:pharmy_driver/presentation/screens/order_details/widgets/user_info.dart';
 import 'package:pharmy_driver/translations.dart';
+import 'package:socket_io_client/socket_io_client.dart';
 import '../../../../core/app_enum.dart';
 import '../../../../core/app_router/app_router.dart';
 import '../../../../core/services/services_locator.dart';
@@ -22,6 +24,7 @@ import '../../../app_widgets/dialog/error_dialog.dart';
 import '../../../app_widgets/dialog/loading_dialog.dart';
 import '../../home/widgets/cutsom_home_shimmer.dart';
 import '../widgets/order_info_column.dart';
+import 'package:socket_io_client/socket_io_client.dart' as IO;
 
 class OrderDetailsScreen extends StatelessWidget {
   final int id;
@@ -51,6 +54,7 @@ class OrderDetailsBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    ;
     return Scaffold(
       body: BaseScaffold(
         isBack: true,
@@ -65,8 +69,17 @@ class OrderDetailsBody extends StatelessWidget {
             if (state.errorAccept != "") {
               ErrorDialog.openDialog(context, state.errorAccept);
             }
+
+            // TODO
             if (state.isSuccessAccept) {
-              AppRouter.pop(context);
+              AppRouter.push(
+                context,
+                OrderDeliveryScreen(
+                  idOrder: id,
+                  orderCubit: context.read<OrderCubit>(),
+                ),
+              );
+              // AppRouter.pop(context);
             }
             if (state.isLoadingUpdate) {
               LoadingDialog().openDialog(context);
@@ -77,7 +90,14 @@ class OrderDetailsBody extends StatelessWidget {
               ErrorDialog.openDialog(context, state.errorUpdate);
             }
             if (state.isSuccessUpdate) {
-              AppRouter.pop(context);
+              AppRouter.push(
+                context,
+                OrderDeliveryScreen(
+                  idOrder: id,
+                  orderCubit: context.read<OrderCubit>(),
+                ),
+              );
+              // AppRouter.pop(context);
             }
           },
           builder: (context, state) {
@@ -96,18 +116,21 @@ class OrderDetailsBody extends StatelessWidget {
               return Expanded(
                 child: SingleChildScrollView(
                   child: Padding(
-                    padding:
-                        const EdgeInsets.symmetric(vertical: PaddingApp.p22),
+                    padding: EdgeInsets.symmetric(
+                      vertical: PaddingApp.p22.h,
+                    ),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         OrderInfoWidget(
-                            isHome: isHome,
-                            orderDetailsModel: state.orderDetailsModel!),
+                          isHome: isHome,
+                          orderDetailsModel: state.orderDetailsModel!,
+                        ),
                         if (!isHome)
                           Padding(
-                            padding: const EdgeInsets.symmetric(
-                                horizontal: PaddingApp.p25),
+                            padding: EdgeInsets.symmetric(
+                              horizontal: PaddingApp.p25.w,
+                            ),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.start,
                               children: [
@@ -119,17 +142,19 @@ class OrderDetailsBody extends StatelessWidget {
                                     fillColor: ColorManager.primaryGreen,
                                     labelColor: Colors.white,
                                     onTap: () {
-
-                                      launchPhoneCall(state.orderDetailsModel?.userPhone??"");
+                                      launchPhoneCall(
+                                        state.orderDetailsModel?.userPhone ??
+                                            "",
+                                      );
                                     },
                                   ),
                                 ),
                                 Expanded(
                                   child: Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                        horizontal: PaddingApp.p10),
+                                    padding: EdgeInsets.symmetric(
+                                      horizontal: PaddingApp.p10.w,
+                                    ),
                                     child: CustomButton(
-                                      // width: 0.35.sw,
                                       isFilled: true,
                                       label: AppLocalizations.of(context)!
                                           .contact_pharmy_team,
@@ -137,7 +162,14 @@ class OrderDetailsBody extends StatelessWidget {
                                       labelColor: ColorManager.primaryGreen,
                                       borderColor: ColorManager.primaryGreen,
                                       onTap: () {
-                                        launchPhoneCall(context.read<SettingBloc>().settingModel?.data?.phone??"");
+                                        launchPhoneCall(
+                                          context
+                                                  .read<SettingBloc>()
+                                                  .settingModel
+                                                  ?.data
+                                                  ?.phone ??
+                                              "",
+                                        );
                                       },
                                     ),
                                   ),
@@ -147,12 +179,14 @@ class OrderDetailsBody extends StatelessWidget {
                           ),
                         UserInfoWidget(isHome: isHome),
                         OrderExpandedCard(
-                            isHome: isHome,
-                            orderDetailsModel:
-                                state.orderDetailsModel?.orderDetails ?? []),
+                          isHome: isHome,
+                          orderDetailsModel:
+                              state.orderDetailsModel?.orderDetails ?? [],
+                        ),
                         Padding(
-                          padding: const EdgeInsets.symmetric(
-                              vertical: PaddingApp.p16),
+                          padding: EdgeInsets.symmetric(
+                            vertical: PaddingApp.p16.h,
+                          ),
                           child: Center(
                               child: Text(
                             AppLocalizations.of(context)!.order_info3,
@@ -162,8 +196,9 @@ class OrderDetailsBody extends StatelessWidget {
                           )),
                         ),
                         Padding(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: PaddingApp.p25),
+                          padding: EdgeInsets.symmetric(
+                            horizontal: PaddingApp.p25.w,
+                          ),
                           child: CustomButton(
                               height: 44,
                               label: isHome
@@ -174,14 +209,16 @@ class OrderDetailsBody extends StatelessWidget {
                               fillColor: ColorManager.primaryGreen,
                               onTap: () {
                                 if (isHome) {
+                                  print('isHome');
                                   context
                                       .read<OrderCubit>()
                                       .acceptOrder(state.orderDetailsModel!.id);
-                                }
-                                else{
+                                } else {
+                                  print('######');
                                   context
                                       .read<OrderCubit>()
-                                      .updateOrder(state.orderDetailsModel!.id);
+                                      .moveToTheDeliveryStage(
+                                          state.orderDetailsModel!.id);
                                 }
                               },
                               styleText: getUnderBoldStyle(

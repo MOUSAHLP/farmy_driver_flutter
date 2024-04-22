@@ -1,7 +1,3 @@
-// abstract class HomeStates{}
-// class InitialHomeState extends HomeStates{}
-
-
 import 'package:equatable/equatable.dart';
 import 'package:pharmy_driver/core/app_enum.dart';
 

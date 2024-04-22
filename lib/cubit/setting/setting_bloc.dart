@@ -9,6 +9,7 @@ class SettingBloc extends Cubit<SettingState> {
     SettingModel? settingModel;
 
   SettingBloc() : super(SettingInit()) ;
+
   GetSetting()async{
     {
       emit(SettingLoading());

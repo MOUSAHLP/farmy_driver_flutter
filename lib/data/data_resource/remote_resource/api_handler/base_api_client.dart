@@ -2,6 +2,7 @@ import 'dart:developer';
 import 'package:dartz/dartz.dart';
 import 'package:flutter/foundation.dart';
 import 'package:dio/dio.dart';
+import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 import '../../../../core/utils/api_const.dart';
 import '../../local_resource/data_store.dart';
 import 'dio_errors_handler.dart';
@@ -11,11 +12,19 @@ class BaseApiClient {
   static Dio client = Dio();
   static const String _acceptHeader = 'application/json';
   static CancelToken getTargetCancelToken = CancelToken();
+
   BaseApiClient() {
     client.interceptors.add(LogInterceptor());
     if (kDebugMode) {
-      // client.interceptors.add(PrettyDioLogger(
-      //     requestHeader: true, responseHeader: true, request: true));
+      client.interceptors.add(
+        PrettyDioLogger(
+          error: true,
+          requestBody: true,
+          requestHeader: true,
+          // responseHeader: true,
+          request: true,
+        ),
+      );
     }
     client.interceptors.add(ClientInterceptor());
     client.options.baseUrl = ApiConst.baseUrl;
@@ -76,10 +85,10 @@ class BaseApiClient {
 
   static Future<Either<String, T>> put<T>(
       {required String url,
-        dynamic? formData,
-        Map<String, dynamic>? queryParameters,
-        required T Function(dynamic) converter,
-        dynamic returnOnError}) async {
+      dynamic? formData,
+      Map<String, dynamic>? queryParameters,
+      required T Function(dynamic) converter,
+      dynamic returnOnError}) async {
     try {
       var response = await client.put(
         url,
@@ -91,12 +100,10 @@ class BaseApiClient {
                 'progress: ${(sent / total * 100).toStringAsFixed(0)}% ($sent/$total)');
           }
         },
-        options: Options(
-          headers: {
-        'accept': _acceptHeader,
-        'authorization': 'Bearer ${DataStore.instance.token ?? ''}',
-        }
-        ),
+        options: Options(headers: {
+          'accept': _acceptHeader,
+          'authorization': 'Bearer ${DataStore.instance.token ?? ''}',
+        }),
       );
       if (((response.statusCode! >= 200 || response.statusCode! <= 205)) &&
           (response.data['error'].toString() != 'true')) {
@@ -136,7 +143,7 @@ class BaseApiClient {
         options: Options(
           headers: {
             'accept': _acceptHeader,
-             'authorization': 'Bearer ${DataStore.instance.token ?? ''}',
+            'authorization': 'Bearer ${DataStore.instance.token ?? ''}',
           },
         ),
         cancelToken: cancelToken,

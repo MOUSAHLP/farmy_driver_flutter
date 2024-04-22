@@ -1,12 +1,8 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../core/app_enum.dart';
-import '../../core/services/services_locator.dart';
 import '../../data/repository/home_repo.dart';
-import '../setting/setting_bloc.dart';
 import 'home_states.dart';
 
 class HomeCubit extends Cubit<HomeStates> {
