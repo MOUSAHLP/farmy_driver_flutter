@@ -12,6 +12,7 @@ import 'package:pharmy_driver/presentation/screens/my_profile/screens/my_account
 import 'package:pharmy_driver/translations.dart';
 import '../../../../core/services/services_locator.dart';
 import '../../../../cubit/home/home_states.dart';
+import '../../../../cubit/setting/setting_bloc.dart';
 import '../../../app_widgets/custom_drawer.dart';
 import '../../transactions/screens/transactions_screen.dart';
 
@@ -33,7 +34,7 @@ class _MainScreenState extends State<MainScreen> {
       const MyOrdersBody(),
       const TransactionsScreen(),
       const HomeScreen(),
-      // const IncentivesScreen(),
+
       const OrdersHistoryScreen(),
       const MyAccountScreen(),
     ];
@@ -48,7 +49,7 @@ class _MainScreenState extends State<MainScreen> {
         return false;
       },
       child: BlocBuilder<HomeCubit, HomeStates>(
-        bloc: sl<HomeCubit>()..getLastOrder(),
+        bloc: sl<HomeCubit>()..getHome(context.read<SettingBloc>().settingModel?.data?.update_time??"5")..getLastOrder(),
         builder: (context, state) => Scaffold(
           key: context.read<HomeCubit>().scaffoldKey,
           drawer: const CustomAppDrawer(),

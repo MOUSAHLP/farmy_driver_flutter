@@ -19,10 +19,12 @@ import 'order_card_row.dart';
 
 class OrderCardWidget extends StatelessWidget {
   final bool isHome;
-  final OrderModel order;
-
-  const OrderCardWidget({Key? key, this.isHome = false, required this.order})
-      : super(key: key);
+  final bool isAssign;
+final OrderModel order;
+   const OrderCardWidget({Key? key,
+     this.isHome = false,
+     this.isAssign = false,
+     required this.order}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -45,42 +47,34 @@ class OrderCardWidget extends StatelessWidget {
           ]),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
+
         children: [
           Container(
-              decoration: BoxDecoration(
-                color: ColorManager.primaryGreen,
-                borderRadius: BorderRadius.vertical(
-                  bottom: Radius.circular(
-                    6.0.r,
-                  ),
-                ),
-              ),
+              decoration: const BoxDecoration(
+                  color: ColorManager.primaryGreen,
+                  borderRadius:
+                      BorderRadius.vertical(bottom: Radius.circular(6))),
               child: Padding(
-                padding: EdgeInsets.symmetric(
-                  vertical: 4.0.h,
-                  horizontal: 14.w,
-                ),
+                padding:
+                    const EdgeInsets.symmetric(vertical: 4.0, horizontal: 14),
                 child: Row(
                   children: [
                     SizedBox(
-                      width: 0.44.sw,
+
+                      width:isAssign?0.24.sw: 0.44.sw,
                       child: OrderCardRow(
                         title: AppLocalizations.of(context)!.order_date,
-                        content: isHome
-                            ? order.date.toString()
-                            : order.orderDate.toString(),
+                        content: isHome?order.date.toString():order.orderDate.toString(),
                         color: Colors.white,
                         fontSize: FontSizeApp.s11,
                       ),
                     ),
-                    SizedBox(width: 4.w),
+                    const SizedBox(width: 4),
                     SizedBox(
                       width: 0.34.sw,
                       child: OrderCardRow(
                         title: AppLocalizations.of(context)!.order_time,
-                        content: isHome
-                            ? order.time.toString()
-                            : order.orderTime.toString(),
+                        content:isHome? order.time.toString():order.orderTime.toString(),
                         color: Colors.white,
                         fontSize: FontSizeApp.s11,
                       ),
@@ -89,10 +83,8 @@ class OrderCardWidget extends StatelessWidget {
                 ),
               )),
           Padding(
-            padding: EdgeInsets.symmetric(
-              vertical: PaddingApp.p14.h,
-              horizontal: PaddingApp.p10.w,
-            ),
+            padding: const EdgeInsets.symmetric(
+                vertical: PaddingApp.p14, horizontal: PaddingApp.p10),
             child: Row(
               children: [
                 Column(
@@ -100,14 +92,12 @@ class OrderCardWidget extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Image.asset(IconsManager.queen, width: 23, height: 19),
-                    Image.asset(
-                      IconsManager.logoAppLight,
-                      width: 90.w,
-                      height: 81.h,
-                    ),
-                    SizedBox(height: 10.h)
+                    Image.asset(IconsManager.logoAppLight,
+                        width: 90, height: 81),
+                    const SizedBox(height: 10,)
                   ],
                 ),
+                //   const ImageSvgWidget(url: ImageManager.orderLogo,width:90,height:90,fit: BoxFit.cover,).buildAssetSvgImage(),
                 Expanded(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -122,9 +112,7 @@ class OrderCardWidget extends StatelessWidget {
                       const SizedBox(height: PaddingApp.p4),
                       OrderCardRow(
                         title: AppLocalizations.of(context)!.order_location,
-                        content: isHome
-                            ? order.location ?? ""
-                            : order.userAddress ?? "",
+                        content:isHome? order.location??"":order.userAddress??"",
                         color: ColorManager.grayForMessage,
                         fontSize: FontSizeApp.s14,
                       ),
@@ -145,57 +133,58 @@ class OrderCardWidget extends StatelessWidget {
           ),
           isHome
               ? Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Expanded(
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: PaddingApp.p12),
-                        child: CustomButton(
-                          // width: 0.33.sw,
-                          height: 35,
-                          paddingText: PaddingApp.p4,
-                          label: AppLocalizations.of(context)!.order_accept,
-                          fillColor: ColorManager.primaryGreen,
-                          labelColor: Colors.white,
-                          styleText: getUnderBoldStyle(
-                              color: Colors.white, fontSize: FontSizeApp.s14),
-                          onTap: () {
-                            context.read<HomeCubit>().acceptOrder(order.id);
-                          },
-                        ),
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Expanded(
+                    child: Padding(
+                      padding:  const EdgeInsets.symmetric(horizontal: PaddingApp.p12),
+                      child: CustomButton(
+                        // width: 0.33.sw,
+                        height: 35,
+                        paddingText: PaddingApp.p4,
+                        label: AppLocalizations.of(context)!.order_accept,
+                        fillColor: ColorManager.primaryGreen,
+                        labelColor: Colors.white,
+                        styleText: getUnderBoldStyle(
+                            color: Colors.white, fontSize: FontSizeApp.s14),
+                        onTap: () {
+                          if(isAssign==true) {
+                              context
+                                  .read<HomeCubit>()
+                                  .acceptOrderAssign(order.id);
+                            } else {
+                            context.read<HomeCubit>().acceptOrder(order.id)
+                          ;
+                          }
+                        },
                       ),
                     ),
-                    Expanded(
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: PaddingApp.p12),
-                        child: CustomButton(
-                          // width: 0.33.sw,
-                          height: 35,
-                          paddingText: PaddingApp.p4,
-                          isFilled: true,
-                          label: AppLocalizations.of(context)!.show_order,
-                          fillColor: Colors.white,
-                          labelColor: ColorManager.primaryGreen,
-                          borderColor: ColorManager.primaryGreen,
-                          styleText: getUnderBoldStyle(
-                              color: ColorManager.primaryGreen,
-                              fontSize: FontSizeApp.s14),
-                          onTap: () {
-                            AppRouter.push(
-                              context,
-                              OrderDetailsScreen(
-                                isHome: isHome,
-                                id: order.id,
-                              ),
-                            );
-                          },
-                        ),
+                  ),
+                  Expanded(
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: PaddingApp.p12),
+                      child: CustomButton(
+                        // width: 0.33.sw,
+                        height: 35,
+                        paddingText: PaddingApp.p4,
+                        isFilled: true,
+                        label: AppLocalizations.of(context)!.show_order,
+                        fillColor: Colors.white,
+                        labelColor: ColorManager.primaryGreen,
+                        borderColor: ColorManager.primaryGreen,
+                        styleText: getUnderBoldStyle(
+                            color: ColorManager.primaryGreen,
+                            fontSize: FontSizeApp.s14),
+                        onTap: () {
+                          AppRouter.push(
+                              context, OrderDetailsScreen(isHome: isHome,id: order.id,));
+                        },
                       ),
                     ),
-                  ],
-                )
+                  ),
+                ],
+              )
               : Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [

@@ -7,7 +7,8 @@ import 'package:pharmy_driver/presentation/resources/values_app.dart';
 import 'package:pharmy_driver/translations.dart';
 
 class ProgressLinearIndicatorWidget extends StatelessWidget {
-  const ProgressLinearIndicatorWidget({Key? key}) : super(key: key);
+final  int progress;
+  const ProgressLinearIndicatorWidget({Key? key,required this.progress}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -44,9 +45,9 @@ class ProgressLinearIndicatorWidget extends StatelessWidget {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                      const Expanded(
+                       Expanded(
                         child: LinearProgressIndicator(
-                          value: 0.9,
+                          value:progress/100,
                           minHeight: 9,
                           borderRadius:
                               BorderRadius.all(Radius.circular(RadiusApp.r18)),
@@ -59,7 +60,7 @@ class ProgressLinearIndicatorWidget extends StatelessWidget {
                         width: SizeApp.s10,
                       ),
                       Text(
-                        '90 %',
+                        progress.toString(),
                         style: getBoldStyle(color: ColorManager.primaryGreen),
                       ),
                     ],

@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pharmy_driver/core/app_enum.dart';
-import 'package:pharmy_driver/cubit/location/location_cubit.dart';
-import 'package:pharmy_driver/cubit/order/order_cubit.dart';
 import 'package:pharmy_driver/cubit/setting/setting_bloc.dart';
 import 'package:pharmy_driver/presentation/app_widgets/base_scaffold.dart';
 import 'package:pharmy_driver/presentation/app_widgets/image_helper_svg.dart';
@@ -25,6 +23,7 @@ import '../../../app_widgets/dialog/error_dialog.dart';
 import '../../../app_widgets/dialog/loading_dialog.dart';
 import '../../../app_widgets/google_map.dart';
 import '../widgets/cutsom_home_shimmer.dart';
+import '../widgets/show_orders.dart';
 import 'package:socket_io_client/socket_io_client.dart' as IO;
 
 class HomeScreen extends StatelessWidget {
@@ -33,7 +32,6 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return BaseScaffold(
       child: BlocConsumer<HomeCubit, HomeStates>(
         listener: (context, state) {
@@ -55,9 +53,12 @@ class HomeScreen extends StatelessWidget {
             return const CustomHomeShimmer();
           }
           if (state.screenState == ScreenState.error) {
-            return CustomErrorScreen(titleError: state.error,onTap: (){
-              sl<HomeCubit>().getLastOrder();
-              sl<SettingBloc>().GetSetting();
+            return CustomErrorScreen(titleError: state.error,onTap: () async {
+              await sl<HomeCubit>().getHome(context.read<SettingBloc>().settingModel?.data?.update_time??"5");
+              await  sl<SettingBloc>().GetSetting();
+           await   sl<HomeCubit>().getLastOrder();
+
+
             },);
           }
           if (state.screenState == ScreenState.success) {
