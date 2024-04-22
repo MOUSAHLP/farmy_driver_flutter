@@ -23,7 +23,7 @@ class NotificationScreen extends StatelessWidget {
         create: (context) {
 
             return   sl<NotificationBloc>()
-              ..GetNotificationList();
+              ..getNotificationList();
           });
   }
 }
@@ -71,7 +71,7 @@ class _NotificationScreenBodyState extends State<NotificationScreenBody>
                             return Center(
                               child: CustomErrorScreen(
                                 onTap: () {
-                                  context.read<NotificationBloc>().GetNotificationList();
+                                  context.read<NotificationBloc>().getNotificationList();
                                 },
                               ),
                             );
@@ -100,7 +100,9 @@ class _NotificationScreenBodyState extends State<NotificationScreenBody>
                               ],
                             );
                           }
-                          else return SizedBox();
+                          else {
+                            return const SizedBox();
+                          }
                         },
             ),
                       ),

@@ -81,7 +81,7 @@ class ActionAlertDialog extends StatelessWidget {
                 Expanded(
                   child: OutlinedButton(
                     onPressed: onCancel,
-                    child: Text(cancelText?? AppLocalizations.of(context)!.cancel??'',
+                    child: Text(cancelText?? AppLocalizations.of(context)!.cancel,
                       style:getRegularStyle(color: Colors.white,fontSize: FontSizeApp.s16),
                     ),
                   ),

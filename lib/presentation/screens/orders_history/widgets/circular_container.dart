@@ -5,7 +5,7 @@ import '../../../resources/font_app.dart';
 import '../../../resources/style_app.dart';
 import '../../../resources/values_app.dart';
 
-Widget CircularContainer({
+Widget circularContainer({
   required String text,
   Color color =const Color.fromARGB(255, 253, 249, 254),
   Color textColor= ColorManager.primaryGreen,

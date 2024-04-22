@@ -7,8 +7,7 @@ import 'package:url_launcher/url_launcher.dart';
 
 Future<void> launchSocial(String url) async {
   try {
-    print("launchSocial");
-    print(url);
+
     await launchUrl(Uri.parse(url));
   } catch (e) {
     if (kDebugMode) {
@@ -32,7 +31,7 @@ openWhatsApp(String whatsapp, context) async {
     }
   } else {
     // android , web
-    print("ghina");
+
     if (await canLaunchUrl(Uri.parse(whatsappURlAndroid))) {
       await launchUrl(Uri.parse(whatsappURlAndroid));
     } else {

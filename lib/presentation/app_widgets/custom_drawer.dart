@@ -1,15 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:pharmy_driver/core/app_router/app_router.dart';
 import 'package:pharmy_driver/presentation/app_widgets/drawer/elevated_button.dart';
 
 import 'package:pharmy_driver/presentation/screens/settings/screens/settings_screen.dart';
 import 'package:pharmy_driver/translations.dart';
-import '../../cubit/authentication_bloc/authertication_bloc.dart';
 import '../resources/assets_manager.dart';
 import '../resources/color_manager.dart';
-import '../resources/style_app.dart';
 import '../screens/contact_us/contact_us_screen.dart';
 import 'dialog/logout_confirmation_dialog.dart';
 

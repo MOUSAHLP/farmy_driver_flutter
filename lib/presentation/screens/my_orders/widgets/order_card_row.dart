@@ -10,7 +10,7 @@ class OrderCardRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if(content==null ||content=="")return const SizedBox();
+    if(content.isEmpty ||content=="")return const SizedBox();
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [

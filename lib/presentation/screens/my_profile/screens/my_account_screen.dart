@@ -1,19 +1,13 @@
-import 'package:country_code_picker/country_code_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:pharmy_driver/core/app_router/app_router.dart';
 import 'package:pharmy_driver/presentation/app_widgets/base_scaffold.dart';
 import 'package:pharmy_driver/presentation/app_widgets/custom_button.dart';
-import 'package:pharmy_driver/presentation/app_widgets/image_helper_svg.dart';
 import 'package:pharmy_driver/presentation/app_widgets/input_field_auth.dart';
-import 'package:pharmy_driver/presentation/app_widgets/screen_title.dart';
 import 'package:pharmy_driver/presentation/resources/assets_manager.dart';
 import 'package:pharmy_driver/presentation/resources/color_manager.dart';
 import 'package:pharmy_driver/presentation/resources/style_app.dart';
-import 'package:pharmy_driver/presentation/resources/values_app.dart';
 import 'package:pharmy_driver/translations.dart';
-import 'package:sms_autofill/sms_autofill.dart';
 
 import '../../../../core/app_validators.dart';
 import '../../../../core/services/services_locator.dart';

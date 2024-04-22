@@ -9,7 +9,7 @@ class PrivacyBloc extends Cubit< PrivacyState> {
   PrivacyModel? privacyModel;
 
   PrivacyBloc() : super(PrivacyInit()) ;
-  GetPrivacy()async{
+  getPrivacy()async{
     emit(PrivacyLoading());
     var response = await PrivacyRepo.getPrivacy();
     response.fold((l) {

@@ -73,9 +73,6 @@ class SettingScreen extends StatelessWidget {
                         child: BlocBuilder<LanguageCubit, LanguageState>(
                           builder: (context, state) {
                             LanguageCubit cubitLang = LanguageCubit.get(context);
-                            print("BlocBuilder");
-                            print(cubitLang.lang);
-
                             return CardSetting(
                                 color: Colors.black,
                                 title: DataStore.instance.lang == "ar"
@@ -123,8 +120,6 @@ class SettingScreen extends StatelessWidget {
                                                         groupValue:
                                                             cubitLang.lang,
                                                         onChanged: (value) {
-                                                          print(
-                                                              "en en en en en ");
 
                                                           cubitLang.updateLang(
                                                               value ?? "en");
@@ -134,7 +129,7 @@ class SettingScreen extends StatelessWidget {
                                                   ),
                                                 ),
                                                 onTap: () {
-                                                  print("else en en en en en ");
+
                                                   cubitLang.updateLang("en");
                                                 }),
                                             const SizedBox(
@@ -173,8 +168,6 @@ class SettingScreen extends StatelessWidget {
                                                         groupValue:
                                                             cubitLang.lang,
                                                         onChanged: (value) {
-                                                          print(
-                                                              " ar ar ar ar ar ");
                                                           cubitLang.updateLang(
                                                               value ?? "ar");
                                                         },
@@ -183,7 +176,7 @@ class SettingScreen extends StatelessWidget {
                                                   ),
                                                 ),
                                                 onTap: () {
-                                                  print("else ar ar ar ar ar ");
+
                                                   cubitLang.updateLang("ar");
                                                 }),
                                             const SizedBox(
@@ -233,14 +226,14 @@ class SettingScreen extends StatelessWidget {
                                 .terms_and_Conditions,
                             onTap: () {
                               //ConditionsScreen
-                              AppRouter.push(context, ConditionsScreen());
+                              AppRouter.push(context, const ConditionsScreen());
                             }),
                       ),
                       CardSetting(
                           color: Colors.black,
                           title: AppLocalizations.of(context)!.privacy_Policy,
                           onTap: () {
-                            AppRouter.push(context, PrivacyPolicyScreen());
+                            AppRouter.push(context, const PrivacyPolicyScreen());
                           }),
                       const SizedBox(
                         height: 10,
@@ -254,7 +247,7 @@ class SettingScreen extends StatelessWidget {
                                 .frequently_Asked_Questions,
                             onTap: () {
 
-                              AppRouter.push(context, FAQScreen());
+                              AppRouter.push(context, const FAQScreen());
                             }),
                       ),
                       CardSetting(

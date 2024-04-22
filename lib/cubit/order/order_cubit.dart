@@ -1,11 +1,8 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pharmy_driver/data/repository/tracking_repo.dart';
 
 import '../../core/app_enum.dart';
-import '../../data/repository/home_repo.dart';
 import '../../data/repository/order_repo.dart';
-import '../../models/order_details_model.dart';
 import 'order_states.dart';
 
 class OrderCubit extends Cubit<OrderStates> {
@@ -53,10 +50,6 @@ class OrderCubit extends Cubit<OrderStates> {
         ?.removeWhere((element) => element.id == id);
     canceledProductsIds.add(id);
     approvedProductsIds.removeWhere((element) => element == id);
-    print("canceled_products_ids");
-    print(canceledProductsIds);
-    print("approved_products_ids");
-    print(approvedProductsIds);
     emit(state.copyWith(orderDetailsModel: state.orderDetailsModel));
   }
 

@@ -23,7 +23,7 @@ class FAQScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider<FaqBloc>(
       lazy: true,
-      create: (BuildContext context) => sl<FaqBloc>()..GetFAQ(),
+      create: (BuildContext context) => sl<FaqBloc>()..getFAQ(),
       child: SafeArea(
         child: Scaffold(
           body: Column(
@@ -37,7 +37,7 @@ class FAQScreen extends StatelessWidget {
                       if (state is FAQError) {
                         return CustomErrorScreen(
                           onTap: () {
-                            context.read<FaqBloc>().GetFAQ();
+                            context.read<FaqBloc>().getFAQ();
                           },
                         );
                       }

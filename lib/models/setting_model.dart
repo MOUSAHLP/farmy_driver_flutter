@@ -17,7 +17,7 @@ class Data {
   String? version;
   String? phone;
   String? baseUrl;
-  String? update_time;
+  String? updateTime;
 
 
   Data({
@@ -25,7 +25,7 @@ class Data {
     this.version,
     this.phone,
     this.baseUrl,
-    this.update_time,
+    this.updateTime,
 
   });
 
@@ -34,7 +34,7 @@ class Data {
     version = json['version'];
     phone = json['phone'];
     baseUrl = json['baseUrl'];
-    update_time= json["update_time"];
+    updateTime= json["update_time"];
 
   }
 }

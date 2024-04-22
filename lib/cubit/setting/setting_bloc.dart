@@ -10,7 +10,7 @@ class SettingBloc extends Cubit<SettingState> {
 
   SettingBloc() : super(SettingInit()) ;
 
-  GetSetting()async{
+  getSetting()async{
     {
       emit(SettingLoading());
       var response = await SettingRepo.getSetting();

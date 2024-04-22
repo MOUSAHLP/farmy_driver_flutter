@@ -4,9 +4,9 @@ import 'package:pharmy_driver/presentation/resources/color_manager.dart';
 import 'package:pharmy_driver/presentation/resources/style_app.dart';
 
 class CardSetting extends StatelessWidget {
-    CardSetting({super.key,required this.title,required this.onTap,required this.color});
+  const  CardSetting({super.key,required this.title,required this.onTap,required this.color});
   final String title;
-   late Color color;
+   final Color color;
   final Function ()onTap;
 
   @override

@@ -85,7 +85,7 @@ class BaseApiClient {
 
   static Future<Either<String, T>> put<T>(
       {required String url,
-      dynamic? formData,
+      dynamic formData,
       Map<String, dynamic>? queryParameters,
       required T Function(dynamic) converter,
       dynamic returnOnError}) async {
@@ -135,8 +135,7 @@ class BaseApiClient {
     CancelToken? cancelToken,
   }) async {
     try {
-      print("url");
-      print(url);
+
       var response = await client.get(
         url,
         queryParameters: queryParameters,

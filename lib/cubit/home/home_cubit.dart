@@ -12,7 +12,7 @@ class HomeCubit extends Cubit<HomeStates> {
    GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
   Timer? _timer;
 
-  HomeCubit() : super(HomeStates()) {
+  HomeCubit() : super(const HomeStates()) {
     _startTimer();
 
   }

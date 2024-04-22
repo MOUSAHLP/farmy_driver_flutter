@@ -8,7 +8,7 @@ class AboutBloc extends Cubit< AboutState> {
   FAQModel? faqModel;
 
   AboutBloc() : super(AboutInit());
-  GetAbout()async{
+  getAbout()async{
     emit(AboutLoading());
     var response = await FAQRepo.getAbout();
     response.fold((l) {

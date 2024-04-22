@@ -11,7 +11,7 @@ class NotificationBloc extends Cubit<NotificationState> {
   List<NotificationModel> listNotification=[];
   int index =0;
   NotificationBloc() : super(NotificationLoading()) ;
-  GetNotificationList()async {
+  getNotificationList()async {
     emit(NotificationLoading());
     listNotification.clear();
     final response = await NotificationRepository.getNotifications();

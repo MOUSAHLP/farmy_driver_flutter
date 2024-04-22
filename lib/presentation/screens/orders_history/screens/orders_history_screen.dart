@@ -9,11 +9,8 @@ import 'package:pharmy_driver/presentation/resources/values_app.dart';
 import 'package:pharmy_driver/presentation/screens/orders_history/screens/earning_date.dart';
 import 'package:pharmy_driver/presentation/screens/orders_history/widgets/chart.dart';
 import 'package:pharmy_driver/translations.dart';
-import 'package:url_launcher/url_launcher.dart';
 import '../../../../cubit/orders_history/orders_history_cubit.dart';
 import '../../../../cubit/orders_history/orders_history_state.dart';
-import '../../../app_widgets/dialog/error_dialog.dart';
-import '../../../app_widgets/dialog/loading_dialog.dart';
 import 'all_orders_history_date.dart';
 
 class OrdersHistoryScreen extends StatelessWidget {

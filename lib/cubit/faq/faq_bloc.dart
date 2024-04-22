@@ -8,7 +8,7 @@ class FaqBloc extends Cubit< FAQState> {
   FAQModel? faqModel;
 
   FaqBloc() : super(FAQInit());
-  GetFAQ()async{
+  getFAQ()async{
     emit(FAQLoading());
     var response = await FAQRepo.getFAQ();
     response.fold((l) {

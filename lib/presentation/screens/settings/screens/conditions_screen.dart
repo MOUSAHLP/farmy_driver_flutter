@@ -20,7 +20,7 @@ class ConditionsScreen extends StatelessWidget {
     return BlocProvider<ConditionsBloc>(
       lazy: true,
       create: (BuildContext context) =>
-          sl<ConditionsBloc>()..GetConditions(),
+          sl<ConditionsBloc>()..getConditions(),
       child: SafeArea(
         child: Scaffold(
           body: Column(
@@ -28,14 +28,14 @@ class ConditionsScreen extends StatelessWidget {
               ScreenTitleWidget(title: AppLocalizations.of(context)!.terms_and_Conditions,isBack: true,),
 
               Padding(
-                padding:  EdgeInsets.all(PaddingApp.p20),
+                padding:  const EdgeInsets.all(PaddingApp.p20),
                 child: BlocConsumer<ConditionsBloc, ConditionsState>(
                     listener: (context, state) {},
                     builder: (context, state) {
                       if (state is ConditionsError) {
                         return CustomErrorScreen(
                           onTap: () {
-                            context.read<ConditionsBloc>().GetConditions();
+                            context.read<ConditionsBloc>().getConditions();
                           },
                         );
                       }

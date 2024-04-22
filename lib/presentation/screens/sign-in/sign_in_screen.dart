@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pharmy_driver/presentation/screens/sign-in/widgets/background_auth.dart';
 import 'package:pharmy_driver/presentation/screens/sign-in/widgets/button_auth.dart';
 import 'package:pharmy_driver/presentation/screens/sign-in/widgets/password_input_field_auth.dart';
-import '../../../core/app_enum.dart';
 import '../../../core/app_router/app_router.dart';
 import '../../../core/app_validators.dart';
 import '../../../core/services/services_locator.dart';
@@ -119,7 +118,7 @@ class SignInBody extends StatelessWidget {
                 label: AppLocalizations.of(context)!.sign_in,
                 onTap: () {
                   if (_formKey.currentState!.validate()) {
-                    sl<AuthenticationBloc>().LogIn(
+                    sl<AuthenticationBloc>().logIn(
                        LoginParams(
                           phone: phoneController.text,
                           password: passwordController.text,

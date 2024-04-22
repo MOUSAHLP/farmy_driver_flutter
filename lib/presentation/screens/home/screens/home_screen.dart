@@ -13,7 +13,6 @@ import 'package:pharmy_driver/presentation/resources/values_app.dart';
 import 'package:pharmy_driver/presentation/screens/home/widgets/progress_linear_indicator.dart';
 import 'package:pharmy_driver/presentation/screens/my_orders/widgets/order_card.dart';
 import 'package:pharmy_driver/translations.dart';
-import 'package:socket_io_client/socket_io_client.dart';
 import '../../../../core/services/services_locator.dart';
 import '../../../../cubit/home/home_cubit.dart';
 import '../../../../cubit/home/home_states.dart';
@@ -26,7 +25,6 @@ import '../../../app_widgets/dialog/loading_dialog.dart';
 import '../../../app_widgets/google_map.dart';
 import '../widgets/cutsom_home_shimmer.dart';
 import '../widgets/show_orders.dart';
-import 'package:socket_io_client/socket_io_client.dart' as IO;
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -62,8 +60,8 @@ class HomeScreen extends StatelessWidget {
           }
           if (state.screenState == ScreenState.error) {
             return CustomErrorScreen(titleError: state.error,onTap: () async {
-              await sl<HomeCubit>().getHome(context.read<SettingBloc>().settingModel?.data?.update_time??"5");
-              await  sl<SettingBloc>().GetSetting();
+              await sl<HomeCubit>().getHome(context.read<SettingBloc>().settingModel?.data?.updateTime??"5");
+              await  sl<SettingBloc>().getSetting();
            await   sl<HomeCubit>().getLastOrder();
 
 
@@ -99,7 +97,7 @@ class HomeScreen extends StatelessWidget {
                         ],
                       ),
                        Padding(
-                        padding: EdgeInsets.symmetric(vertical: PaddingApp.p12),
+                        padding: const EdgeInsets.symmetric(vertical: PaddingApp.p12),
                         child: ProgressLinearIndicatorWidget(progress: state.homeModel?.acceptanceRate??0,),
                       ),
 
