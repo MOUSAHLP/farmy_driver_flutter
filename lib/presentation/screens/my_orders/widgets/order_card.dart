@@ -71,7 +71,7 @@ final OrderModel order;
                     ),
                     const SizedBox(width: 4),
                     SizedBox(
-                      width: 0.34.sw,
+                      width:isAssign?0.24.sw: 0.34.sw,
                       child: OrderCardRow(
                         title: AppLocalizations.of(context)!.order_time,
                         content:isHome? order.time.toString():order.orderTime.toString(),
