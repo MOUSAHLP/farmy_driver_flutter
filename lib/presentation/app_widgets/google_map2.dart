@@ -135,8 +135,8 @@ class _MapGoogleState extends State<MapGoogle2> {
     socket.onDisconnect((_) => print('disconnect'));
 
     Timer.periodic(const Duration(seconds: 2), (timer) async {
-      params.long = x;
-      params.lat = y;
+      params.lat = x;
+      params.long = y;
       socket.emit(
         'track_${widget.id}',
         params.toJson(),
