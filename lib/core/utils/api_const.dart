@@ -43,4 +43,7 @@ class ApiConst {
   ///All Orders
   static const String getDriverAllOrders = "/all-orders";
   static const String generatePdfAllOrders = "/generate-pdf-all-orders";
+
+  ///Notifactuon
+  static const String getNotifications = "/notifications";
 }

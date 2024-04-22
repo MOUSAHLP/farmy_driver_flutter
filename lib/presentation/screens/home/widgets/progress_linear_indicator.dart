@@ -63,6 +63,10 @@ final  int progress;
                         progress.toString(),
                         style: getBoldStyle(color: ColorManager.primaryGreen),
                       ),
+                      Text(
+                        "%",
+                        style: getBoldStyle(color: ColorManager.primaryGreen),
+                      ),
                     ],
                   ),
                 )

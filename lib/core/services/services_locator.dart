@@ -7,6 +7,7 @@ import '../../cubit/authentication_bloc/authertication_bloc.dart';
 import '../../cubit/conditions_bloc/conditions_bloc.dart';
 import '../../cubit/contact_us/contact_us_bloc.dart';
 import '../../cubit/faq/faq_bloc.dart';
+import '../../cubit/notification/notification_bloc.dart';
 import '../../cubit/order/order_cubit.dart';
 import '../../cubit/privacy_bloc/privacy_bloc.dart';
 import '../../cubit/profile/pofile_bloc.dart';
@@ -39,6 +40,7 @@ class ServicesLocator {
     /// Conditions Screen
     sl.registerFactory(() => ConditionsBloc());
     sl.registerFactory(() => AboutBloc());
+    sl.registerFactory(() => NotificationBloc());
 
     /// setting
     sl.registerLazySingleton(() => SettingBloc());

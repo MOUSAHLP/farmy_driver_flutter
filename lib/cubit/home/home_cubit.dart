@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -12,7 +14,7 @@ class HomeCubit extends Cubit<HomeStates> {
 
   HomeCubit() : super(HomeStates()) {
     _startTimer();
-    print(sl<SettingBloc>().settingModel?.data?.phone??"");
+
   }
 
   void _startTimer() {
