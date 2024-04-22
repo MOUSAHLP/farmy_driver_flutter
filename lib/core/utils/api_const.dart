@@ -14,6 +14,7 @@ class ApiConst {
   static const String getConditions = "/conditions";
   static const String getFaqQuestions = "/faq_questions";
   static const String getAbout = "/about_the_app";
+  static const String getTerm = "/use_terms";
 
 
   /// Setting

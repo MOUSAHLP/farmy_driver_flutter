@@ -4,6 +4,7 @@ import 'package:pharmy_driver/core/app_router/app_router.dart';
 import 'package:pharmy_driver/presentation/app_widgets/drawer/elevated_button.dart';
 
 import 'package:pharmy_driver/presentation/screens/settings/screens/settings_screen.dart';
+import 'package:pharmy_driver/presentation/screens/settings/screens/term_screen.dart';
 import 'package:pharmy_driver/translations.dart';
 import '../resources/assets_manager.dart';
 import '../resources/color_manager.dart';
@@ -84,7 +85,7 @@ class CustomAppDrawer extends StatelessWidget {
                         ElevatedButtonWidget(
                             title: AppLocalizations.of(context)!.usage_guide,
                             onTap: () {
-                              //AppRouter.push(context, const AllInvoicesScreen());
+                             AppRouter.push(context,  TermScreen());
                             }),
                         //  sl<AuthenticationBloc>().loggedIn?
                         ElevatedButtonWidget(

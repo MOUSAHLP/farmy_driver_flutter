@@ -19,4 +19,15 @@ class AboutBloc extends Cubit< AboutState> {
     });
 
   }
+  getTerm()async{
+    emit(AboutLoading());
+    var response = await FAQRepo.getTerm();
+    response.fold((l) {
+      emit(AboutError(l));
+    }, (r) {
+      faqModel = r;
+      emit(AboutSuccess());
+    });
+
+  }
 }
