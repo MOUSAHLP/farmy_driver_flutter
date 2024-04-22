@@ -52,8 +52,8 @@ class _NotificationScreenBodyState extends State<NotificationScreenBody>
         child: Column(
 
           children: [
-            ScreenTitleWidget(title: AppLocalizations.of(context)!.notification,isBack:true)
-,
+            ScreenTitleWidget(title: AppLocalizations.of(context)!.notification,isBack:true),
+
           Expanded(
                   child: Column(
                     children: [
