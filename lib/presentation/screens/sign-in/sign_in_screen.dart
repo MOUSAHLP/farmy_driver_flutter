@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pharmy_driver/presentation/screens/sign-in/widgets/background_auth.dart';
 import 'package:pharmy_driver/presentation/screens/sign-in/widgets/button_auth.dart';
 import 'package:pharmy_driver/presentation/screens/sign-in/widgets/password_input_field_auth.dart';
-import '../../../core/app_enum.dart';
 import '../../../core/app_router/app_router.dart';
 import '../../../core/app_validators.dart';
 import '../../../core/services/services_locator.dart';
@@ -97,29 +96,29 @@ class SignInBody extends StatelessWidget {
             const SizedBox(
               height: 31,
             ),
-            // Row(
-            //   mainAxisAlignment: MainAxisAlignment.center,
-            //   children: [
-            //     Text(AppLocalizations.of(context)!.forget_password,
-            //         style: getSemiBoldStyle(color: Colors.white)),
-            //     SizedBox(width: 4,),
-            //     InkWell(
-            //       onTap: () {
-            //         context
-            //             .read<AuthenticationBloc>()
-            //             .add(TapOnPressed(ScreensAuth.phoneNumberScreen));
-            //       },
-            //       child: Text(AppLocalizations.of(context)!.reset_password,
-            //           style: getSemiBoldStyle(color: Colors.yellow)),
-            //     ),
-            //   ],
-            // ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text("هل نسيت كلمة المرور؟ ",
+                    style: getSemiBoldStyle(color: Colors.white)),
+                SizedBox(width: 4,),
+                InkWell(
+                  onTap: () {
+                    // context
+                    //     .read<AuthenticationBloc>()
+                    //     .add(TapOnPressed(ScreensAuth.phoneNumberScreen));
+                  },
+                  child: Text("إعادة ضبط كلمة المرور",
+                      style: getSemiBoldStyle(color: Colors.yellow)),
+                ),
+              ],
+            ),
             const SizedBox(height: 64),
             ButtonAuth(
                 label: AppLocalizations.of(context)!.sign_in,
                 onTap: () {
                   if (_formKey.currentState!.validate()) {
-                    sl<AuthenticationBloc>().LogIn(
+                    sl<AuthenticationBloc>().logIn(
                        LoginParams(
                           phone: phoneController.text,
                           password: passwordController.text,

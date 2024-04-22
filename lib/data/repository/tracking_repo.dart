@@ -1,5 +1,4 @@
 import 'package:dartz/dartz.dart';
-import 'package:pharmy_driver/models/order_model.dart';
 import 'package:pharmy_driver/models/tracking_model.dart';
 
 import '../../core/utils/api_const.dart';

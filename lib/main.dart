@@ -6,9 +6,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pharmy_driver/cubit/all_orders_date/all_orders_date_cubit.dart';
 import 'package:pharmy_driver/cubit/language/language_cubit.dart';
 import 'package:pharmy_driver/cubit/language/language_states.dart';
-import 'package:pharmy_driver/cubit/location/location_cubit.dart';
 import 'package:pharmy_driver/cubit/order/order_cubit.dart';
-import 'package:pharmy_driver/cubit/order_delivery/order_delivery_cubit.dart';
 import 'package:pharmy_driver/cubit/orders_history/orders_history_cubit.dart';
 import 'package:pharmy_driver/cubit/transactions/transactions_cubit.dart';
 import 'package:pharmy_driver/presentation/screens/main_screen/screen/main_screen.dart';
@@ -64,7 +62,7 @@ class MyApp extends StatelessWidget {
         // all orders screen
         BlocProvider(create: (BuildContext context) => AllOrdersDateCubit()..getDriverTransactions()),
         //
-        BlocProvider(lazy: false, create: (BuildContext context) => SettingBloc()..GetSetting()),
+        BlocProvider(lazy: false, create: (BuildContext context) => SettingBloc()..getSetting()),
         //
         BlocProvider(create: (BuildContext context) => sl<AuthenticationBloc>()),
         BlocProvider(create: (BuildContext context) => sl<OrderCubit>()),
@@ -94,7 +92,7 @@ class MyApp extends StatelessWidget {
                       GlobalWidgetsLocalizations.delegate,
                     ],
                     home: BlocBuilder<AuthenticationBloc, AuthenticationState>(
-                        bloc: sl<AuthenticationBloc>()..AppStarted(),
+                        bloc: sl<AuthenticationBloc>()..appStarted(),
                         builder: (context, state) {
                           switch (state.authenticationScreen) {
                             case AuthenticationScreenStates

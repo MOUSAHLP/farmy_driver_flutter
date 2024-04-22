@@ -8,8 +8,10 @@ import 'package:pharmy_driver/presentation/resources/assets_manager.dart';
 import 'package:pharmy_driver/presentation/resources/font_app.dart';
 import 'package:pharmy_driver/presentation/resources/style_app.dart';
 import 'package:url_launcher/url_launcher.dart';
+import '../../../../core/app_router/app_router.dart';
 import '../../../../data/data_resource/local_resource/data_store.dart';
 import '../../../resources/color_manager.dart';
+import '../../notification_screen/notification_screen.dart';
 
 class CustomAppBar extends StatelessWidget {
   const CustomAppBar({
@@ -56,7 +58,7 @@ class CustomAppBar extends StatelessWidget {
                       padding: const EdgeInsets.symmetric(horizontal: 13),
                       child: InkWell(
                         onTap: () {
-                        //  AppRouter.push(context, const NotificationScreen());
+                        AppRouter.push(context, const NotificationScreen());
                         },
                         child: Image.asset(
                           IconsManager.notificationIcon,

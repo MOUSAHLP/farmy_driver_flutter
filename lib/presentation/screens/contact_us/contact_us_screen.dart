@@ -114,7 +114,7 @@ class ContactUsScreen extends StatelessWidget {
                                   AppLocalizations.of(context)!
                                       .emailIsNotValid) {
                                 context.read<ContactUsBloc>()
-                                .  SentInfo(
+                                .  sentInfo(
                                      emailController.text,
                                     notesController.text,
 

@@ -40,10 +40,10 @@ class ProfileBloc extends Cubit< ProfileState> {
     }, (r) {
       LoginResponse result = LoginResponse(
           id: r.id ,
-          firstName: r.firstName??"",
-          phone: r.phone??"",
-          email: r.email??"",
-          lastName: r.lastName??"",
+          firstName: r.firstName,
+          phone: r.phone,
+          email: r.email,
+          lastName: r.lastName,
           birthday:r. birthday
       );
       DataStore.instance.userInfo?.birthday=r.birthday;

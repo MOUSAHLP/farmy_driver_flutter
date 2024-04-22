@@ -15,7 +15,6 @@ import 'package:pharmy_driver/presentation/screens/order_delivery/screens/order_
 import 'package:pharmy_driver/presentation/screens/order_details/widgets/order_expanded_card.dart';
 import 'package:pharmy_driver/presentation/screens/order_details/widgets/user_info.dart';
 import 'package:pharmy_driver/translations.dart';
-import 'package:socket_io_client/socket_io_client.dart';
 import '../../../../core/app_enum.dart';
 import '../../../../core/app_router/app_router.dart';
 import '../../../../core/services/services_locator.dart';
@@ -24,7 +23,7 @@ import '../../../app_widgets/dialog/error_dialog.dart';
 import '../../../app_widgets/dialog/loading_dialog.dart';
 import '../../home/widgets/cutsom_home_shimmer.dart';
 import '../widgets/order_info_column.dart';
-import 'package:socket_io_client/socket_io_client.dart' as IO;
+
 
 class OrderDetailsScreen extends StatelessWidget {
   final int id;
@@ -54,7 +53,7 @@ class OrderDetailsBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    ;
+
     return Scaffold(
       body: BaseScaffold(
         isBack: true,
@@ -209,12 +208,12 @@ class OrderDetailsBody extends StatelessWidget {
                               fillColor: ColorManager.primaryGreen,
                               onTap: () {
                                 if (isHome) {
-                                  print('isHome');
+
                                   context
                                       .read<OrderCubit>()
                                       .acceptOrder(state.orderDetailsModel!.id);
                                 } else {
-                                  print('######');
+
                                   context
                                       .read<OrderCubit>()
                                       .moveToTheDeliveryStage(

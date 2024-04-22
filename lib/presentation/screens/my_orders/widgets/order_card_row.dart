@@ -10,14 +10,15 @@ class OrderCardRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if(content==null ||content=="")return const SizedBox();
+    if(content.isEmpty ||content=="")return const SizedBox();
     return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text('$title: ',style: getUnderBoldStyle(color: color,fontSize:fontSize ),),
         const SizedBox(width: 2,),
         Expanded(
           child: Text(content,style: getRegularStyle(color: color,fontSize:fontSize ),
-            maxLines: 1,
+            maxLines: 2,
             overflow: TextOverflow.ellipsis,
           ),
         ),

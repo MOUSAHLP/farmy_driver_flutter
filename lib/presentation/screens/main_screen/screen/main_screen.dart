@@ -49,7 +49,7 @@ class _MainScreenState extends State<MainScreen> {
         return false;
       },
       child: BlocBuilder<HomeCubit, HomeStates>(
-        bloc: sl<HomeCubit>()..getHome(context.read<SettingBloc>().settingModel?.data?.update_time??"5")..getLastOrder(),
+        bloc: sl<HomeCubit>()..getHome(context.read<SettingBloc>().settingModel?.data?.updateTime??"5")..getLastOrder(),
         builder: (context, state) => Scaffold(
           key: context.read<HomeCubit>().scaffoldKey,
           drawer: const CustomAppDrawer(),

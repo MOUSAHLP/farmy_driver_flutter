@@ -16,18 +16,19 @@ import 'package:pharmy_driver/presentation/resources/values_app.dart';
 import 'package:pharmy_driver/presentation/screens/home/widgets/progress_linear_indicator.dart';
 import 'package:pharmy_driver/presentation/screens/my_orders/widgets/order_card.dart';
 import 'package:pharmy_driver/translations.dart';
-import 'package:socket_io_client/socket_io_client.dart';
 import '../../../../core/services/services_locator.dart';
 import '../../../../cubit/home/home_cubit.dart';
 import '../../../../cubit/home/home_states.dart';
+import '../../../../cubit/location/location_cubit.dart';
+import '../../../../cubit/order/order_cubit.dart';
 import '../../../app_widgets/custom_error_screen.dart';
 import '../../../app_widgets/custom_no_dataa.dart';
 import '../../../app_widgets/dialog/error_dialog.dart';
 import '../../../app_widgets/dialog/loading_dialog.dart';
 import '../../../app_widgets/google_map.dart';
+import '../../orders_history/widgets/circular_container.dart';
 import '../widgets/cutsom_home_shimmer.dart';
 import '../widgets/show_orders.dart';
-import 'package:socket_io_client/socket_io_client.dart' as IO;
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -46,26 +47,30 @@ class HomeScreen extends StatelessWidget {
           if (state.errorAccept != "") {
             ErrorDialog.openDialog(context, state.errorAccept);
           }
-          if (state.isSuccessAccept) {}
-        },
+          if(state.isSuccessHome) {
+            if (state.homeModel!.asignedOrders!.isNotEmpty) {
+
+              showDialog(
+                context: context,
+                builder: (BuildContext context) {
+                  return ShowOrders(
+                    listOrder: state.homeModel!.asignedOrders!,);
+                },
+              );
+            }
+          }},
         builder: (BuildContext context, state) {
           if (state.screenState == ScreenState.loading) {
             return const CustomHomeShimmer();
           }
           if (state.screenState == ScreenState.error) {
-            return CustomErrorScreen(
-              titleError: state.error,
-              onTap: () async {
-                await sl<HomeCubit>().getHome(context
-                        .read<SettingBloc>()
-                        .settingModel
-                        ?.data
-                        ?.update_time ??
-                    "5");
-                await sl<SettingBloc>().GetSetting();
-                await sl<HomeCubit>().getLastOrder();
-              },
-            );
+            return CustomErrorScreen(titleError: state.error,onTap: () async {
+              await sl<HomeCubit>().getHome(context.read<SettingBloc>().settingModel?.data?.updateTime??"5");
+              await  sl<SettingBloc>().getSetting();
+           await   sl<HomeCubit>().getLastOrder();
+
+
+            },);
           }
           if (state.screenState == ScreenState.success) {
             sl<LocationCubit>().getLatAndLng();
@@ -89,21 +94,20 @@ class HomeScreen extends StatelessWidget {
                                 fontSize: FontSizeApp.s15),
                           ),
                           Text(
-                            'متمرس',
+                            state.homeModel?.driverRank??"",
                             style: getBoldStyle(
                                 color: ColorManager.primaryGreen,
                                 fontSize: FontSizeApp.s15),
                           ),
                         ],
                       ),
-                      const Padding(
-                        padding: EdgeInsets.symmetric(vertical: PaddingApp.p12),
-                        child: ProgressLinearIndicatorWidget(
-                          progress: 2,
-                        ),
+                       Padding(
+                        padding: const EdgeInsets.symmetric(vertical: PaddingApp.p12),
+                        child: ProgressLinearIndicatorWidget(progress: state.homeModel?.acceptanceRate??0,),
                       ),
+
                       isShow
-                          // ToDo Id order in google Map
+                      // ToDo Id order in google Map
                           ? Stack(
                               alignment: AlignmentDirectional.bottomEnd,
                               children: [

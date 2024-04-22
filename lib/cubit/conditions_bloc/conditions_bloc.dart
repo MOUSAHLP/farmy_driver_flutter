@@ -8,7 +8,7 @@ class ConditionsBloc extends Cubit< ConditionsState> {
   ConditionModel? conditionModel;
 
   ConditionsBloc() : super(ConditionsInit()) ;
-  GetConditions()async{
+  getConditions()async{
     emit(ConditionsLoading());
     var response = await ConditionsRepo.getConditions();
     response.fold((l) {

@@ -1,15 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:pharmy_driver/core/services/services_locator.dart';
-import 'package:pharmy_driver/cubit/location/location_cubit.dart';
 import 'package:pharmy_driver/cubit/order/order_cubit.dart';
 import 'package:pharmy_driver/presentation/app_widgets/base_scaffold.dart';
 import 'package:pharmy_driver/presentation/app_widgets/google_map2.dart';
 import 'package:pharmy_driver/presentation/resources/color_manager.dart';
 import 'package:pharmy_driver/presentation/screens/orders_history/widgets/circular_container.dart';
 import 'package:pharmy_driver/translations.dart';
-import 'package:socket_io_client/socket_io_client.dart';
 import '../../../../core/app_router/app_router.dart';
 import '../../../../cubit/order_delivery/order_delivery_cubit.dart';
 import '../../../../cubit/order_delivery/order_delivery_state.dart';
@@ -17,7 +14,7 @@ import '../../../app_widgets/google_map.dart';
 import 'package:slide_to_act/slide_to_act.dart';
 import '../../../resources/font_app.dart';
 import '../../../resources/style_app.dart';
-import 'package:socket_io_client/socket_io_client.dart' as IO;
+
 
 class OrderDeliveryScreen extends StatelessWidget {
   final int idOrder;
@@ -153,7 +150,7 @@ class OrderDeliveryScreen extends StatelessWidget {
                                                         AppRouter.pop(context);
                                                         AppRouter.pop(context);
                                                       },
-                                                      child: CircularContainer(
+                                                      child: circularContainer(
                                                           circular: 15,
                                                           text: "تم",
                                                           color: ColorManager
@@ -167,7 +164,7 @@ class OrderDeliveryScreen extends StatelessWidget {
                                             },
                                           );
                                         },
-                                        child: CircularContainer(
+                                        child: circularContainer(
                                           circular: 15,
                                           text: "تم الدفع",
                                           color: ColorManager.primaryGreen,

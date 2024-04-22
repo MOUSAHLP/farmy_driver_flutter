@@ -24,7 +24,7 @@ class AboutScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider<AboutBloc>(
       lazy: true,
-      create: (BuildContext context) => sl<AboutBloc>()..GetAbout(),
+      create: (BuildContext context) => sl<AboutBloc>()..getAbout(),
       child: SafeArea(
         child: Scaffold(
           body: Column(
@@ -38,7 +38,7 @@ class AboutScreen extends StatelessWidget {
                       if (state is AboutError) {
                         return CustomErrorScreen(
                           onTap: () {
-                            context.read<AboutBloc>().GetAbout();
+                            context.read<AboutBloc>().getAbout();
                           },
                         );
                       }

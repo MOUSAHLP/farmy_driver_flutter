@@ -114,7 +114,7 @@ class ChangePasswordBody extends StatelessWidget {
                                 isFilled: true,
                                 onTap: (){
                                   if (_formKey.currentState!.validate()) {
-                                          sl<AuthenticationBloc>().ResetPassword(
+                                          sl<AuthenticationBloc>().resetPassword(
                                               ResetPasswordParams(
                                                   password:
                                                       passwordController.text,

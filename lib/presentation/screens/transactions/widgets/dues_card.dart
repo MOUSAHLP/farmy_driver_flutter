@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pharmy_driver/core/utils/formatter.dart';
-import 'package:pharmy_driver/presentation/app_widgets/custom_button.dart';
 import 'package:pharmy_driver/presentation/resources/color_manager.dart';
 import 'package:pharmy_driver/presentation/resources/font_app.dart';
 import 'package:pharmy_driver/presentation/resources/style_app.dart';
-import 'package:pharmy_driver/presentation/resources/values_app.dart';
 import 'package:pharmy_driver/translations.dart';
 
 class DuesCard extends StatelessWidget {

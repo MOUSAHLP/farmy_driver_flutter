@@ -11,7 +11,7 @@ class ContactUsBloc extends Cubit< ContactUsState> {
           isSuccess: false,
           isError: '',
         ));
-  SentInfo(email,notes)async{
+  sentInfo(email,notes)async{
     emit(state.copyWith(isLoading: true));
     var response = await ContactUsRepo.contactUs(
       email: email,

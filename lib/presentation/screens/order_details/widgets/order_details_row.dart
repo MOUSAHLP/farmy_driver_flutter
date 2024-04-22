@@ -12,7 +12,7 @@ class OrderDetailsRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if(content==""||content=="null"||content==null)return SizedBox();
+    if(content==""||content=="null"||content.isEmpty)return const SizedBox();
     return Padding(
       padding: const EdgeInsets.only(bottom: PaddingApp.p10),
       child: Row(

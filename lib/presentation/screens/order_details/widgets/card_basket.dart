@@ -81,7 +81,7 @@ class CardBasket extends StatelessWidget {
                           color: ColorManager.black, fontSize: FontSizeApp.s10)
                       ?.copyWith(height: 1),
                 ),
-                SizedBox(height: 5,),
+                const SizedBox(height: 5,),
                 orderDetail.attributes.isNotEmpty? SizedBox(
                   height: 25,
 
@@ -113,12 +113,12 @@ class CardBasket extends StatelessWidget {
                                 fontSize: FontSizeApp.s15,
                               )!
                                   .copyWith(height: 1),
-                            ):SizedBox()
+                            ):const SizedBox()
 
                           ],
                         )) ,),
-                ):SizedBox(),
-               SizedBox(height: 5,),
+                ):const SizedBox(),
+               const SizedBox(height: 5,),
                 Row(
                   children: [
 

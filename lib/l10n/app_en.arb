@@ -135,5 +135,7 @@
   "confirm_delete": "Confirm Delete",
   "previous_Password": "Previous Password",
   "new_password": "New password",
-  "tax": "Tax"
+  "tax": "Tax",
+  "no_notifications": "There are no notifications",
+  "notification": "Notifications"
 }

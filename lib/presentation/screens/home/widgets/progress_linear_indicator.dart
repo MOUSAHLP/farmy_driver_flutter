@@ -50,9 +50,9 @@ final  int progress;
                           value:progress/100,
                           minHeight: 9,
                           borderRadius:
-                              BorderRadius.all(Radius.circular(RadiusApp.r18)),
+                              const BorderRadius.all(Radius.circular(RadiusApp.r18)),
                           backgroundColor: ColorManager.lightGray,
-                          valueColor: AlwaysStoppedAnimation<Color>(
+                          valueColor: const AlwaysStoppedAnimation<Color>(
                               ColorManager.primaryGreen),
                         ),
                       ),
@@ -61,6 +61,10 @@ final  int progress;
                       ),
                       Text(
                         progress.toString(),
+                        style: getBoldStyle(color: ColorManager.primaryGreen),
+                      ),
+                      Text(
+                        "%",
                         style: getBoldStyle(color: ColorManager.primaryGreen),
                       ),
                     ],

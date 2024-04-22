@@ -53,7 +53,7 @@ class DeleteAccountScreen extends StatelessWidget {
                       ErrorDialog.openDialog(context, state.error);
                     }
                     if(state.isDeleteAccount){
-                      AppRouter.pushReplacement(context, SignInScreen());
+                      AppRouter.pushReplacement(context, const SignInScreen());
                     }
                   },
                   builder: (context, state) => Expanded(
@@ -143,7 +143,7 @@ class DeleteAccountScreen extends StatelessWidget {
                               onTap: () {
                                 if (_formKey.currentState!.validate()) {
                                   context.read<AuthenticationBloc>().
-                                        DeleteAccount(
+                                        deleteAccount(
 
                                               DeleteAccountParams(
                                                   phone: phoneController.text,

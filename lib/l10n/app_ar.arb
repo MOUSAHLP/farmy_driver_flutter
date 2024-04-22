@@ -134,5 +134,7 @@
   "password_with_star": "كلمة المرور **",
   "confirm_delete": "تأكيد الحذف",
   "previous_Password": "كلمة المرور السابقة",
-  "tax": "ضريبة"
+  "tax": "ضريبة",
+  "no_notifications": "لا يوجد اشعارات",
+  "notification": "اشعارات"
 }

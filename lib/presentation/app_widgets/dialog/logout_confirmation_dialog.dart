@@ -63,7 +63,7 @@ class _LogoutConfirmationDialog extends StatelessWidget {
                     label: AppLocalizations.of(context)!.exit,
                     fillColor: Colors.red,
                     onTap: () {
-                      sl<AuthenticationBloc>().LoggedOut();
+                      sl<AuthenticationBloc>().loggedOut();
 
                       AppRouter.pushAndRemoveAllStack(context, const SignInScreen());
                       // ServicesLocator.clearAll();

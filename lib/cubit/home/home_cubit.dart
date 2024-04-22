@@ -14,9 +14,9 @@ class HomeCubit extends Cubit<HomeStates> {
    GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
   Timer? _timer;
 
-  HomeCubit() : super(HomeStates()) {
+  HomeCubit() : super(const HomeStates()) {
     _startTimer();
-    print(sl<SettingBloc>().settingModel?.data?.phone??"");
+
   }
 
   void _startTimer() {
@@ -65,7 +65,7 @@ class HomeCubit extends Cubit<HomeStates> {
   }
   acceptOrderAssign(int id)async{
     emit(state.copyWith(isLoadingAssign: true));
-    final response = await HomeRepository.acceptOrder(id);
+    final response = await HomeRepository.acceptOrderAssign(id);
     response.fold((l) {
     emit(state.copyWith(errorAssign: l));
     }, (r) {

@@ -22,7 +22,7 @@ class PrivacyPolicyScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider<PrivacyBloc>(
       lazy: true,
-      create: (BuildContext context) => sl<PrivacyBloc>()..GetPrivacy(),
+      create: (BuildContext context) => sl<PrivacyBloc>()..getPrivacy(),
       child: SafeArea(
         child: Scaffold(
           body: Column(
@@ -40,7 +40,7 @@ class PrivacyPolicyScreen extends StatelessWidget {
                       if (state is PrivacyError) {
                         return CustomErrorScreen(
                           onTap: () {
-                            context.read<PrivacyBloc>().GetPrivacy();
+                            context.read<PrivacyBloc>().getPrivacy();
                           },
                         );
                       }

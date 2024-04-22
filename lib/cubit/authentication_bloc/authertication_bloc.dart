@@ -17,7 +17,7 @@ class AuthenticationBloc
 
   AuthenticationBloc(this.userRepository) : super(AuthenticationState());
 
-  AppStarted()async{
+  appStarted()async{
     final PackageInfo info = await PackageInfo.fromPlatform();
     DataStore.instance.setVersion(info.version);
     final bool hasToken = await userRepository.hasToken();
@@ -46,7 +46,7 @@ class AuthenticationBloc
     });
 
   }
-  LoggedOut()async{
+  loggedOut()async{
     emit(state.copyWith(authenticationScreenStates: AuthenticationScreenStates.authenticationInitialized));
     await userRepository.logout().then((value) {
       userRepository.deleteToken();
@@ -54,7 +54,7 @@ class AuthenticationBloc
       emit(state.copyWith(authenticationScreenStates: AuthenticationScreenStates.authenticationLoggedOut));
     });
   }
-  LogIn(LoginParams loginParams)async{
+  logIn(LoginParams loginParams)async{
     emit(state.copyWith(isLoading: true));
     final response = await userRepository.logIn(
       loginParams: loginParams,
@@ -77,7 +77,7 @@ class AuthenticationBloc
           login: true));
     });
   }
-   DeleteAccount(DeleteAccountParams deleteAccountParams)async{
+   deleteAccount(DeleteAccountParams deleteAccountParams)async{
      emit(state.copyWith(isLoading: true));
      final response =
      await userRepository.deleteAccount(deleteAccountParams);
@@ -92,7 +92,7 @@ class AuthenticationBloc
            isDeleteAccount: true));
      });
    }
-   ResetPassword(ResetPasswordParams resetPasswordParams)async{
+   resetPassword(ResetPasswordParams resetPasswordParams)async{
      emit(state.copyWith(isLoading: true));
 
      ResetPasswordParams forgetPasswordParams = ResetPasswordParams(

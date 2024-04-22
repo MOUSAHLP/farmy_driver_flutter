@@ -114,8 +114,8 @@ class _InputFieldAuthState extends State<InputFieldAuth> {
                  ),
 
               Expanded(
-                child: Container(
-               //   color: Colors.red,
+                child: SizedBox(
+              
                   height: 40,
                   child: TextFormField(
                     initialValue: widget.initValue,
