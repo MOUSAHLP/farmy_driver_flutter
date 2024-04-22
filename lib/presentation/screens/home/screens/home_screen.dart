@@ -2,8 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pharmy_driver/core/app_enum.dart';
+import 'package:pharmy_driver/cubit/location/location_cubit.dart';
+import 'package:pharmy_driver/cubit/order/order_cubit.dart';
 import 'package:pharmy_driver/cubit/setting/setting_bloc.dart';
 import 'package:pharmy_driver/presentation/app_widgets/base_scaffold.dart';
+import 'package:pharmy_driver/presentation/app_widgets/google_map2.dart';
 import 'package:pharmy_driver/presentation/app_widgets/image_helper_svg.dart';
 import 'package:pharmy_driver/presentation/resources/assets_manager.dart';
 import 'package:pharmy_driver/presentation/resources/color_manager.dart';
@@ -43,23 +46,26 @@ class HomeScreen extends StatelessWidget {
           if (state.errorAccept != "") {
             ErrorDialog.openDialog(context, state.errorAccept);
           }
-          if(state.isSuccessAccept){
-
-          }
-
+          if (state.isSuccessAccept) {}
         },
         builder: (BuildContext context, state) {
           if (state.screenState == ScreenState.loading) {
             return const CustomHomeShimmer();
           }
           if (state.screenState == ScreenState.error) {
-            return CustomErrorScreen(titleError: state.error,onTap: () async {
-              await sl<HomeCubit>().getHome(context.read<SettingBloc>().settingModel?.data?.update_time??"5");
-              await  sl<SettingBloc>().GetSetting();
-           await   sl<HomeCubit>().getLastOrder();
-
-
-            },);
+            return CustomErrorScreen(
+              titleError: state.error,
+              onTap: () async {
+                await sl<HomeCubit>().getHome(context
+                        .read<SettingBloc>()
+                        .settingModel
+                        ?.data
+                        ?.update_time ??
+                    "5");
+                await sl<SettingBloc>().GetSetting();
+                await sl<HomeCubit>().getLastOrder();
+              },
+            );
           }
           if (state.screenState == ScreenState.success) {
             sl<LocationCubit>().getLatAndLng();
@@ -92,20 +98,28 @@ class HomeScreen extends StatelessWidget {
                       ),
                       const Padding(
                         padding: EdgeInsets.symmetric(vertical: PaddingApp.p12),
-                        child: ProgressLinearIndicatorWidget(),
+                        child: ProgressLinearIndicatorWidget(
+                          progress: 2,
+                        ),
                       ),
-
                       isShow
-                      // ToDo Id order in google Map
+                          // ToDo Id order in google Map
                           ? Stack(
                               alignment: AlignmentDirectional.bottomEnd,
                               children: [
                                   Container(
-                                      height: 200.h,
-                                      padding: const EdgeInsets.symmetric(
-                                          horizontal: PaddingApp.p5,
-                                          vertical: PaddingApp.p12),
-                                      child:  MapGoogle(trackingUrl:   context.read<OrderCubit>().state.trackingUrl,id: 0,orderCubit: context.read<OrderCubit>()),
+                                    height: 200.h,
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: PaddingApp.p5,
+                                        vertical: PaddingApp.p12),
+                                    child: MapGoogle2(
+                                      trackingUrl: context
+                                          .read<OrderCubit>()
+                                          .state
+                                          .trackingUrl,
+                                      id: 0,
+                                      orderCubit: context.read<OrderCubit>(),
+                                    ),
                                   ),
                                   Padding(
                                     padding:
@@ -127,7 +141,6 @@ class HomeScreen extends StatelessWidget {
                                   )
                                 ])
                           : const SizedBox(),
-
                       15.verticalSpace,
                       Row(
                         children: [
@@ -165,17 +178,19 @@ class HomeScreen extends StatelessWidget {
                                     const SizedBox(
                                       width: SizeApp.s12,
                                     ),
-                                 state.isLoading?const SizedBox(
-                                   width: 19,
-                                   height: 19,
-                                   child: CircularProgressIndicator(
-                                       color: Colors.white,
-                                     ),
-                                 ): const ImageSvgWidget(
-                                      url: IconsManager.refreshIcon,
-                                      width: 19,
-                                      height: 19,
-                                    ).buildAssetSvgImage()
+                                    state.isLoading
+                                        ? const SizedBox(
+                                            width: 19,
+                                            height: 19,
+                                            child: CircularProgressIndicator(
+                                              color: Colors.white,
+                                            ),
+                                          )
+                                        : const ImageSvgWidget(
+                                            url: IconsManager.refreshIcon,
+                                            width: 19,
+                                            height: 19,
+                                          ).buildAssetSvgImage()
                                   ],
                                 ),
                               ),
@@ -195,13 +210,13 @@ class HomeScreen extends StatelessWidget {
                                   const SizedBox(
                                     height: PaddingApp.p22,
                                   ),
-                              itemCount:state.orderList.length)
+                              itemCount: state.orderList.length)
                           : const Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              CustomNoData(noDataStatment: "no order"),
-                            ],
-                          ),
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                CustomNoData(noDataStatment: "no order"),
+                              ],
+                            ),
                     ],
                   ),
                 ),

@@ -10,13 +10,14 @@ import 'package:pharmy_driver/presentation/resources/assets_manager.dart';
 import 'package:socket_io_client/socket_io_client.dart';
 import 'dart:ui' as ui;
 import 'package:socket_io_client/socket_io_client.dart' as IO;
+import 'package:geolocator/geolocator.dart';
 
-class MapGoogle extends StatefulWidget {
+class MapGoogle2 extends StatefulWidget {
   final String trackingUrl;
   final int id;
   final OrderCubit orderCubit;
 
-  const MapGoogle({
+  const MapGoogle2({
     Key? key,
     required this.trackingUrl,
     required this.id,
@@ -24,12 +25,14 @@ class MapGoogle extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  State<MapGoogle> createState() => _MapGoogleState();
+  State<MapGoogle2> createState() => _MapGoogleState();
 }
 
-class _MapGoogleState extends State<MapGoogle> {
+class _MapGoogleState extends State<MapGoogle2> {
   BitmapDescriptor? customIcon;
   Marker? markerLocation;
+  double x = 0.0;
+  double y = 0.0;
   late IO.Socket socket;
 
   final List<Marker> _markers = <Marker>[];
@@ -37,17 +40,44 @@ class _MapGoogleState extends State<MapGoogle> {
   final Completer<GoogleMapController> _controller =
       Completer<GoogleMapController>();
 
-  late final CameraPosition _kGooglePlex;
+  // late final CameraPosition _kGooglePlex;
+
+  final LocationSettings locationSettings = const LocationSettings(
+    accuracy: LocationAccuracy.high,
+    distanceFilter: 100,
+  );
+  late StreamSubscription<Position> positionStream;
 
   @override
   void initState() {
     sl<LocationCubit>().getLatAndLng();
-    _kGooglePlex = CameraPosition(
-      target: LatLng(sl<LocationCubit>().lat, sl<LocationCubit>().lng),
-      zoom: 14.4746,
-    );
-    // connectAndListen();
+    x = sl<LocationCubit>().lat;
+    y = sl<LocationCubit>().lng;
+    print('@@@@@');
+    print(x);
+    print('@@@@@');
+
+    // _kGooglePlex = CameraPosition(
+    //   target: LatLng(sl<LocationCubit>().lat, sl<LocationCubit>().lng),
+    //   zoom: 14.4746,
+    // );
+    connectAndListen();
     // loadData();
+    positionStream = Geolocator.getPositionStream(locationSettings: locationSettings).listen((Position? position) {
+      if (position != null) {
+        x = position.latitude;
+        y = position.longitude;
+        print('###');
+        print(x);
+        print('###');
+        setState(() {
+
+        });
+      }
+      print(position == null
+          ? 'Unknown'
+          : '${position.latitude.toString()}, ${position.longitude.toString()}');
+    });
     super.initState();
     // _loadCustomIcon();
   }
@@ -58,13 +88,12 @@ class _MapGoogleState extends State<MapGoogle> {
     super.dispose();
   }
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: GoogleMap(
         initialCameraPosition: CameraPosition(
-          target: LatLng(sl<LocationCubit>().lat, sl<LocationCubit>().lng),
+          target: LatLng(x, y),
           zoom: 13.5,
         ),
         // markers: Set<Marker>.of(_markers),
@@ -72,8 +101,8 @@ class _MapGoogleState extends State<MapGoogle> {
           Marker(
             markerId: const MarkerId("currentLocation"),
             position: LatLng(
-              sl<LocationCubit>().lat,
-              sl<LocationCubit>().lng,
+              x,
+              y,
             ),
           ),
         },
@@ -87,8 +116,8 @@ class _MapGoogleState extends State<MapGoogle> {
   //STEP2: Add this function in main function in main.dart file and add incoming data to the stream
   Future<void> connectAndListen() async {
     TrackingParams params = TrackingParams(
-      lat: sl<LocationCubit>().lat,
-      long: sl<LocationCubit>().lng,
+      lat: x,
+      long: y,
       status: "",
     );
 
@@ -104,10 +133,10 @@ class _MapGoogleState extends State<MapGoogle> {
     });
 
     socket.onDisconnect((_) => print('disconnect'));
-    Timer.periodic(const Duration(milliseconds: 100), (timer) async {
-      sl<LocationCubit>().getLatAndLng();
-      params.long = sl<LocationCubit>().lng;
-      params.lat = sl<LocationCubit>().lat;
+
+    Timer.periodic(const Duration(seconds: 2), (timer) async {
+      params.long = x;
+      params.lat = y;
       socket.emit(
         'track_${widget.id}',
         params.toJson(),
@@ -118,8 +147,8 @@ class _MapGoogleState extends State<MapGoogle> {
           CameraPosition(
             zoom: 17,
             target: LatLng(
-              sl<LocationCubit>().lat,
-              sl<LocationCubit>().lng,
+              x,
+              y,
             ),
           ),
         ),
@@ -127,9 +156,6 @@ class _MapGoogleState extends State<MapGoogle> {
       setState(() {});
     });
   }
-
-
-
 
   // declared method to get Images
   Future<Uint8List> getImages(String path, int width) async {
