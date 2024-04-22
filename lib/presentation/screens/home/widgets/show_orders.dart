@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:pharmy_driver/core/app_router/app_router.dart';
 
 import '../../../../cubit/home/home_cubit.dart';
 import '../../../../cubit/home/home_states.dart';
@@ -29,7 +30,7 @@ final  List<OrderModel> listOrder;
            ErrorDialog.openDialog(context, state.errorAssign);
         }
         if (state.isSuccessAssign) {
-
+AppRouter.pop(context);
         }
       },
       builder: (context,state) {

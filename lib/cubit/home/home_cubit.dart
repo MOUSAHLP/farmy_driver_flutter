@@ -63,7 +63,7 @@ class HomeCubit extends Cubit<HomeStates> {
   }
   acceptOrderAssign(int id)async{
     emit(state.copyWith(isLoadingAssign: true));
-    final response = await HomeRepository.acceptOrder(id);
+    final response = await HomeRepository.acceptOrderAssign(id);
     response.fold((l) {
     emit(state.copyWith(errorAssign: l));
     }, (r) {

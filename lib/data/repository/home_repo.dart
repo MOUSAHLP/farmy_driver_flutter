@@ -30,5 +30,13 @@ class HomeRepository{
       },
     );
   }
+  static Future<Either<String, bool>> acceptOrderAssign(int id) {
+    return BaseApiClient.get<bool>(
+      url: ApiConst.acceptOrderAssign(id),
+      converter: (e) {
+        return true;
+      },
+    );
+  }
 
 }
