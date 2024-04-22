@@ -11,12 +11,36 @@ class LocationCubit extends Cubit<LocationState> {
   static LocationCubit get(BuildContext context) {
     return BlocProvider.of(context);
   }
+
   late Position cl;
   var lat;
   var lng;
   late CameraPosition _kGooglePlex;
 
   Future<void> getLatAndLng() async {
+    bool serviceEnabled;
+    LocationPermission permission;
+
+    // Test if location services are enabled.
+    serviceEnabled = await Geolocator.isLocationServiceEnabled();
+    if (!serviceEnabled) {
+      return Future.error('Location services are disabled.');
+    }
+
+    permission = await Geolocator.checkPermission();
+    if (permission == LocationPermission.denied) {
+      permission = await Geolocator.requestPermission();
+      if (permission == LocationPermission.denied) {
+        return Future.error('Location permissions are denied');
+      }
+    }
+
+    if (permission == LocationPermission.deniedForever) {
+      // Permissions are denied forever, handle appropriately.
+      return Future.error(
+          'Location permissions are permanently denied, we cannot request permissions.');
+    }
+
     Position cl = await Geolocator.getCurrentPosition().then((value) => value);
     lat = cl.latitude;
     lng = cl.longitude;
@@ -24,6 +48,9 @@ class LocationCubit extends Cubit<LocationState> {
       target: LatLng(lat, lng),
       zoom: 10.4746,
     );
+    print('@@@@@@@@@@');
+    print(lat);
+    print('@@@@@@@@@@');
     emit(InitialLocationState());
   }
 }

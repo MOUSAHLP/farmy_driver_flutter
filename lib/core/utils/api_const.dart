@@ -23,6 +23,8 @@ class ApiConst {
   ///Home
   static const String getLastOrders = "/orders";
   static  String acceptOrder(int id) => "/accept-order/$id";
+
+  static  String getTrackingUrl(int idOrder) => "/order-tracking/$idOrder";
   ///orders
   static const String getOrders = "/driver-orders";
   static  String getOrdersDetails(int id) => "/driver-orders/$id?lang=ar";
