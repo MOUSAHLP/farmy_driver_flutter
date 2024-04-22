@@ -13,9 +13,14 @@ class LocationCubit extends Cubit<LocationState> {
   }
 
   late Position cl;
-  var lat;
-  var lng;
+  late double lat;
+   late double lng;
   late CameraPosition _kGooglePlex;
+
+  final LocationSettings locationSettings = const LocationSettings(
+    accuracy: LocationAccuracy.high,
+    distanceFilter: 100,
+  );
 
   Future<void> getLatAndLng() async {
     bool serviceEnabled;
@@ -41,6 +46,7 @@ class LocationCubit extends Cubit<LocationState> {
           'Location permissions are permanently denied, we cannot request permissions.');
     }
 
+
     Position cl = await Geolocator.getCurrentPosition().then((value) => value);
     lat = cl.latitude;
     lng = cl.longitude;
@@ -48,9 +54,10 @@ class LocationCubit extends Cubit<LocationState> {
       target: LatLng(lat, lng),
       zoom: 10.4746,
     );
-    print('@@@@@@@@@@');
-    print(lat);
-    print('@@@@@@@@@@');
-    emit(InitialLocationState());
+
+    // print('@@@@@@@@@@');
+    // print(lat);
+    // print('@@@@@@@@@@');
+    // emit(InitialLocationState());
   }
 }

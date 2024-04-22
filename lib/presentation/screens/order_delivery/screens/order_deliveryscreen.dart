@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pharmy_driver/cubit/order/order_cubit.dart';
 import 'package:pharmy_driver/presentation/app_widgets/base_scaffold.dart';
+import 'package:pharmy_driver/presentation/app_widgets/google_map2.dart';
 import 'package:pharmy_driver/presentation/resources/color_manager.dart';
 import 'package:pharmy_driver/presentation/screens/orders_history/widgets/circular_container.dart';
 import 'package:pharmy_driver/translations.dart';
@@ -38,7 +39,7 @@ class OrderDeliveryScreen extends StatelessWidget {
               child: Expanded(
                 child: Stack(
                   children: [
-                    MapGoogle(
+                    MapGoogle2(
                       orderCubit: orderCubit,
                       trackingUrl:orderCubit.state.trackingUrl,
                       id: idOrder,
