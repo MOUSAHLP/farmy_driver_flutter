@@ -44,7 +44,7 @@ class HomeScreen extends StatelessWidget {
           }
 
           if(state.isSuccessHome){
-            if(state.homeModel!.asignedOrders!.isEmpty) {
+            if(state.homeModel!.asignedOrders!.isNotEmpty) {
               showDialog(
                 context: context,
                 builder: (BuildContext context) {
