@@ -6,6 +6,7 @@ class BaseScaffold extends StatelessWidget {
   final String? title;
   final Widget child;
   final bool isBack;
+
   const BaseScaffold({Key? key,  this.title,required this.child,this.isBack=false}) : super(key: key);
 
   @override
@@ -15,6 +16,7 @@ class BaseScaffold extends StatelessWidget {
         const CustomAppBar(),
         if(title!=null)ScreenTitleWidget(title: title!,isBack:isBack),
         child,
+
       ],
     );
   }

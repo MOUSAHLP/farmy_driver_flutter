@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_switch/flutter_switch.dart';
 import 'package:pharmy_driver/cubit/home/home_cubit.dart';
+import 'package:pharmy_driver/cubit/setting/setting_bloc.dart';
 import 'package:pharmy_driver/presentation/app_widgets/image_helper_svg.dart';
 import 'package:pharmy_driver/presentation/resources/assets_manager.dart';
 import 'package:pharmy_driver/presentation/resources/font_app.dart';
@@ -88,7 +89,7 @@ class CustomAppBar extends StatelessWidget {
                 GestureDetector(
                   onTap: () async {
                     Uri url =
-                    Uri.parse("https://wa.me/ ${0936252114}/?text=hello");
+                    Uri.parse("https://wa.me/ ${context.read<SettingBloc>().settingModel?.data?.phone??""}/?text=hello");
                     if (!await launchUrl(url)) {
                       throw Exception('Could not launch $url');
                     }
