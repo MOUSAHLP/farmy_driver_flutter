@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:pharmy_driver/cubit/setting/setting_bloc.dart';
 
 import '../../../resources/color_manager.dart';
 import '../../../resources/style_app.dart';
@@ -29,7 +31,7 @@ class CustomContactContainer extends StatelessWidget {
             children: [
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal:20.0),
-                child: Text("0936252114",
+                child: Text(context.read<SettingBloc>().settingModel?.data?.phone??"",
                     maxLines: 2,
                     style: getBoldStyle(color: ColorManager.grayForMessage)!
                         .copyWith(overflow: TextOverflow.ellipsis),

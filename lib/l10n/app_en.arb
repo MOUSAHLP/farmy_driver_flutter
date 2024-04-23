@@ -143,5 +143,6 @@
   "requirements": "Requirements",
   "confirm_password": "Confirme password",
   "forget_password": "Did you forgot your password ?",
-  "reset_password": "Reset password"
+  "reset_password": "Reset password",
+  "field_is_required": "Field is required"
 }
