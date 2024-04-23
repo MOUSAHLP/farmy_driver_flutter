@@ -50,11 +50,47 @@ class CardBasket extends StatelessWidget {
                     ),
                     onTap: (){
                       context.read<OrderCubit>().addProduct(orderDetail.id);
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          duration:
+                          const Duration(seconds: 1),
+                          content: Container(
+                            alignment: Alignment.center,
+                            child: Text(
+                              AppLocalizations.of(context)!.add_product,
+                              style: getRegularStyle(
+                                color: ColorManager.white,
+                                fontSize: FontSizeApp.s14,
+                              ),
+                            ),
+                          ),
+                          backgroundColor:
+                          ColorManager.primaryGreen,
+                        ),
+                      );
                     },
                   ),
                   InkWell(
                     onTap: (){
                       context.read<OrderCubit>().deleteProduct(orderDetail.id);
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          duration:
+                          const Duration(seconds: 1),
+                          content: Container(
+                            alignment: Alignment.center,
+                            child: Text(
+                           AppLocalizations.of(context)!.remove_product,
+                              style: getRegularStyle(
+                                color: ColorManager.white,
+                                fontSize: FontSizeApp.s14,
+                              ),
+                            ),
+                          ),
+                          backgroundColor:
+                          ColorManager.primaryGreen,
+                        ),
+                      );
                     },
                     child: Container(
                       height: 36,

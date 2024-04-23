@@ -7,6 +7,7 @@ import '../../../core/app_validators.dart';
 import '../../../core/launcher.dart';
 import '../../../core/services/services_locator.dart';
 import '../../../cubit/contact_us/contact_us_bloc.dart';
+import '../../../cubit/setting/setting_bloc.dart';
 import '../../../translations.dart';
 import '../../app_widgets/custom_button.dart';
 import '../../app_widgets/dialog/error_dialog.dart';
@@ -23,7 +24,7 @@ class ContactUsScreen extends StatelessWidget {
 
   final TextEditingController emailController = TextEditingController();
   final TextEditingController notesController = TextEditingController();
-
+  final _formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -33,157 +34,149 @@ class ContactUsScreen extends StatelessWidget {
 
         builder: (context, state) => SafeArea(
           child: Scaffold(
-            body: Column(
-              children: [
-                ScreenTitleWidget(title:  AppLocalizations.of(context)!.contact_us,isBack:true),
+            body: Form(
+              key: _formKey,
+              child: Column(
+                children: [
+                  ScreenTitleWidget(title:  AppLocalizations.of(context)!.contact_us,isBack:true),
 
-                Expanded(
-                  child: SingleChildScrollView(
-                    child: Column(
-                      children: [
-                        SizedBox(
-                          height: 10.h,
-                        ),
-                        Padding(
-                          padding: EdgeInsets.symmetric(
-                            horizontal: 29.w,
+                  Expanded(
+                    child: SingleChildScrollView(
+                      child: Column(
+                        children: [
+                          SizedBox(
+                            height: 10.h,
                           ),
-                          child: Text(
-                            AppLocalizations.of(context)!
-                                .leave_message_to_contact,
-                            style: getUnderBoldStyle(
-                              color: ColorManager.grayForMessage,
-                              fontSize: FontSizeApp.s15.sp,
+                          Padding(
+                            padding: EdgeInsets.symmetric(
+                              horizontal: 29.w,
+                            ),
+                            child: Text(
+                              AppLocalizations.of(context)!
+                                  .leave_message_to_contact,
+                              style: getUnderBoldStyle(
+                                color: ColorManager.grayForMessage,
+                                fontSize: FontSizeApp.s15.sp,
+                              ),
                             ),
                           ),
-                        ),
-                        Padding(
-                          padding: EdgeInsets.symmetric(
-                            horizontal: 20.w,
-                            vertical: 10.h,
-                          ),
-                          child: InputFieldAuth(
-                            controller: emailController,
-                            textAlign: TextAlign.start,
-                            angelRadios: Radius.circular(
-                              6.r,
+                          Padding(
+                            padding: EdgeInsets.symmetric(
+                              horizontal: 20.w,
+                              vertical: 10.h,
                             ),
-                            color: const Color.fromRGBO(228, 228, 228, 1),
-                            textStyle: getUnderBoldStyle(
+                            child: InputFieldAuth(
+                              controller: emailController,
+                              textAlign: TextAlign.start,
+                              angelRadios: Radius.circular(
+                                6.r,
+                              ),
+                              color: const Color.fromRGBO(228, 228, 228, 1),
+                              textStyle: getUnderBoldStyle(
+                                  color: ColorManager.grayForSearchProduct,
+                                  fontSize: FontSizeApp.s14)!,
+                              width: 1.sw,
+                              height: 44.h,
+                              hintText:
+                              AppLocalizations.of(context)!.email_with_at,
+                              hintStyle: TextStyle(
+                                fontWeight: FontWeight.w700,
                                 color: ColorManager.grayForSearchProduct,
-                                fontSize: FontSizeApp.s14)!,
-                            width: 1.sw,
-                            height: 44.h,
-                            hintText:
-                            AppLocalizations.of(context)!.email_with_at,
-                            hintStyle: TextStyle(
-                              fontWeight: FontWeight.w700,
-                              color: ColorManager.grayForSearchProduct,
-                              fontSize: FontSizeApp.s14.sp,
-                            ),
-                            suffixIcon: const Text(" "),
-                          ),
-                        ),
-                        Padding(
-                          padding: EdgeInsets.symmetric(
-                            horizontal: 20.w,
-                          ),
-                          child: InputFieldAuth(
-                            controller: notesController,
-                            maxLines: 5,
-                            minLines: 5,
-                            height: .30.sw,
-                            width: 1.sw,
-                            color: ColorManager.lightGray,
-                            hintText: AppLocalizations.of(context)!
-                                .write_message_notes_question_here,
-                            hintStyle: getRegularStyle(
-                              color: ColorManager.grayForMessage,
+                                fontSize: FontSizeApp.s14.sp,
+                              ),
+                              suffixIcon: const Text(" "),
+                              validator: (value) {
+                                return AppValidators.validateEmailFields(
+                                    context, value);
+                              },
                             ),
                           ),
-                        ),
-                        Padding(
-                          padding: EdgeInsets.symmetric(
-                            horizontal: 139.w,
-                            vertical: 14.h,
+                          Padding(
+                            padding: EdgeInsets.symmetric(
+                              horizontal: 20.w,
+                            ),
+                            child: InputFieldAuth(
+                              controller: notesController,
+                              maxLines: 5,
+                              minLines: 5,
+                              height: .30.sw,
+                              width: 1.sw,
+                              color: ColorManager.lightGray,
+                              hintText: AppLocalizations.of(context)!
+                                  .write_message_notes_question_here,
+                              hintStyle: getRegularStyle(
+                                color: ColorManager.grayForMessage,
+                              ),
+                              validator: (value) {
+                                return AppValidators.validateNameFields(
+                                    context, value);
+                              },
+                            ),
                           ),
-                          child: CustomButton(
-                            onTap: () {
-                              if (AppValidators.validateEmailFields(
-                                  context, emailController.text) !=
-                                  AppLocalizations.of(context)!
-                                      .emailIsNotValid) {
-                                context.read<ContactUsBloc>()
-                                .  sentInfo(
-                                     emailController.text,
+                          Padding(
+                            padding: EdgeInsets.symmetric(
+                              horizontal: 139.w,
+                              vertical: 14.h,
+                            ),
+                            child: CustomButton(
+                              onTap: () {
+                                if (_formKey.currentState!.validate()){
+                                  context.read<ContactUsBloc>()
+                                      .  sentInfo(
+                                    emailController.text,
                                     notesController.text,
 
-                                );
-                              } else {
-                                ScaffoldMessenger.of(context).showSnackBar(
-                                  SnackBar(
-                                    duration: const Duration(seconds: 1),
-                                    content: Container(
-                                      alignment: Alignment.center,
-                                      child: Text(
-                                        "${AppValidators.validateEmailFields(context, emailController.text)}",
-                                        style: getRegularStyle(
-                                          color: ColorManager.white,
-                                          fontSize: FontSizeApp.s14,
-                                        ),
-                                      ),
-                                    ),
-                                    backgroundColor: ColorManager.primaryGreen,
-                                  ),
-                                );
-                              }
-                            },
-                            label: AppLocalizations.of(context)!.sent,
+                                  );
+                                }
+
+                              },
+                              label: AppLocalizations.of(context)!.sent,
+                            ),
                           ),
-                        ),
-                        Padding(
-                          padding: EdgeInsets.symmetric(
-                            horizontal: 32.w,
+                          Padding(
+                            padding: EdgeInsets.symmetric(
+                              horizontal: 32.w,
+                            ),
+                            child: Text(
+                              AppLocalizations.of(context)!
+                                  .you_can_connect_directly,
+                              style: getBoldStyle(
+                                color: ColorManager.grayForMessage,
+                                fontSize: FontSizeApp.s15.sp,
+                              ),
+                              textAlign: TextAlign.center,
+                            ),
                           ),
-                          child: Text(
-                            AppLocalizations.of(context)!
-                                .you_can_connect_directly,
+                          Text(
+                            AppLocalizations.of(context)!.on_the_next_number,
                             style: getBoldStyle(
                               color: ColorManager.grayForMessage,
                               fontSize: FontSizeApp.s15.sp,
                             ),
-                            textAlign: TextAlign.center,
                           ),
-                        ),
-                        Text(
-                          AppLocalizations.of(context)!.on_the_next_number,
-                          style: getBoldStyle(
-                            color: ColorManager.grayForMessage,
-                            fontSize: FontSizeApp.s15.sp,
-                          ),
-                        ),
-                        Padding(
-                          padding: EdgeInsets.symmetric(
-                            vertical: 12.h,
-                          ),
-                          child: InkWell(
-                            onTap: () {
-                              launchPhoneCall("0962225868");
-                            },
-                            child: const CustomContactContainer(
-                              contactImage: ImageManager.contactLogo,
+                          Padding(
+                            padding: EdgeInsets.symmetric(
+                              vertical: 12.h,
+                            ),
+                            child: InkWell(
+                              onTap: () {
+                                launchPhoneCall(context.read<SettingBloc>().settingModel?.data?.phone??"");
+                              },
+                              child: const CustomContactContainer(
+                                contactImage: ImageManager.contactLogo,
+                              ),
                             ),
                           ),
-                        ),
 
-                        SizedBox(
-                          height: 10.h,
-                        )
-                      ],
+                          SizedBox(
+                            height: 10.h,
+                          )
+                        ],
+                      ),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         ),

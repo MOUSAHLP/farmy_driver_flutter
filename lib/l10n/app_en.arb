@@ -137,5 +137,12 @@
   "new_password": "New password",
   "tax": "Tax",
   "no_notifications": "There are no notifications",
-  "notification": "Notifications"
+  "notification": "Notifications",
+  "add_product": "Product added",
+  "remove_product": "Product deleted",
+  "requirements": "Requirements",
+  "confirm_password": "Confirme password",
+  "forget_password": "Did you forgot your password ?",
+  "reset_password": "Reset password",
+  "field_is_required": "Field is required"
 }

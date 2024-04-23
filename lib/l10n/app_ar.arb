@@ -136,5 +136,13 @@
   "previous_Password": "كلمة المرور السابقة",
   "tax": "ضريبة",
   "no_notifications": "لا يوجد اشعارات",
-  "notification": "اشعارات"
+  "notification": "اشعارات",
+  "add_product": "تم اضافة المنتج",
+  "remove_product": "تم حذف المنتج",
+  "requirements": "المتطلبات",
+  "confirm_password": "تأكيد كلمة المرور",
+  "new_password": "كلمة المرور الجديدة",
+  "forget_password": "هل نسيت كلمة المرور ؟",
+  "reset_password": "إعادة ضبط كلمة المرور",
+  "field_is_required": "الحقل مطلوب"
 }

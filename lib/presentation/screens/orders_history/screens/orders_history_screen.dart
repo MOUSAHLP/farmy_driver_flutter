@@ -21,7 +21,7 @@ class OrdersHistoryScreen extends StatelessWidget {
     OrdersHistoryCubit cubit = OrdersHistoryCubit.get(context);
     return Scaffold(
       body: BaseScaffold(
-        isBack: true,
+
         title: AppLocalizations.of(context)!.orders_date,
         child: Expanded(
           child: BlocConsumer<OrdersHistoryCubit, OrdersHistoryState>(

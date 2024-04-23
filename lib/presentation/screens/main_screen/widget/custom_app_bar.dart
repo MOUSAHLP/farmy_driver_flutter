@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_switch/flutter_switch.dart';
 import 'package:pharmy_driver/cubit/home/home_cubit.dart';
+import 'package:pharmy_driver/cubit/setting/setting_bloc.dart';
 import 'package:pharmy_driver/presentation/app_widgets/image_helper_svg.dart';
 import 'package:pharmy_driver/presentation/resources/assets_manager.dart';
 import 'package:pharmy_driver/presentation/resources/font_app.dart';
@@ -88,7 +89,7 @@ class CustomAppBar extends StatelessWidget {
                 GestureDetector(
                   onTap: () async {
                     Uri url =
-                    Uri.parse("https://wa.me/ ${0936252114}/?text=hello");
+                    Uri.parse("https://wa.me/ ${context.read<SettingBloc>().settingModel?.data?.phone??""}/?text=hello");
                     if (!await launchUrl(url)) {
                       throw Exception('Could not launch $url');
                     }
@@ -106,17 +107,17 @@ class CustomAppBar extends StatelessWidget {
               children: [
                 Expanded(
                     child: Text('${DataStore.instance.userInfo?.firstName}',style: getBold800Style(color: Colors.white,fontSize: FontSizeApp.s13),)),
-                Text('متصل',style: getBold800Style(color: Colors.white,fontSize: FontSizeApp.s12),),
-                const SizedBox(width: 6,),
-                FlutterSwitch(
-                  width:53.0,
-                  height: 19.0,
-                  padding: 3,
-                  value: true,
-                  onToggle: (bool value) {  },
-                  activeToggleColor:ColorManager.primaryGreen,
-                  activeColor: ColorManager.lightXGreen ,
-              )
+              //   Text('متصل',style: getBold800Style(color: Colors.white,fontSize: FontSizeApp.s12),),
+              //   const SizedBox(width: 6,),
+              //   FlutterSwitch(
+              //     width:53.0,
+              //     height: 19.0,
+              //     padding: 3,
+              //     value: true,
+              //     onToggle: (bool value) {  },
+              //     activeToggleColor:ColorManager.primaryGreen,
+              //     activeColor: ColorManager.lightXGreen ,
+              // )
               ],
             )
           ],
