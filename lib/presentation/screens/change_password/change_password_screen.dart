@@ -91,7 +91,7 @@ class ChangePasswordBody extends StatelessWidget {
                           padding: const EdgeInsets.only(top: 14),
                           child: CustomLabelWithPassField(
                             labelName:
-                                "AppLocalizations.of(context)!.confirm_password",
+                            AppLocalizations.of(context)!.confirm_password,
                             controller: repeatPasswordController,
                             validator: (value){
                               return AppValidators.validateRepeatPasswordFields(

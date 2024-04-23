@@ -140,5 +140,8 @@
   "notification": "Notifications",
   "add_product": "Product added",
   "remove_product": "Product deleted",
-  "requirements": "Requirements"
+  "requirements": "Requirements",
+  "confirm_password": "Confirme password",
+  "forget_password": "Did you forgot your password ?",
+  "reset_password": "Reset password"
 }

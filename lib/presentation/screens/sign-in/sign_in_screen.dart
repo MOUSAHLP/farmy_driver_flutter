@@ -99,7 +99,7 @@ class SignInBody extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text("هل نسيت كلمة المرور؟ ",
+                Text(AppLocalizations.of(context)!.forget_password,
                     style: getSemiBoldStyle(color: Colors.white)),
                 SizedBox(width: 4,),
                 InkWell(
@@ -108,7 +108,7 @@ class SignInBody extends StatelessWidget {
                     //     .read<AuthenticationBloc>()
                     //     .add(TapOnPressed(ScreensAuth.phoneNumberScreen));
                   },
-                  child: Text("إعادة ضبط كلمة المرور",
+                  child: Text(AppLocalizations.of(context)!.reset_password,
                       style: getSemiBoldStyle(color: Colors.yellow)),
                 ),
               ],

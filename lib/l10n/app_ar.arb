@@ -139,5 +139,9 @@
   "notification": "اشعارات",
   "add_product": "تم اضافة المنتج",
   "remove_product": "تم حذف المنتج",
-  "requirements": "المتطلبات"
+  "requirements": "المتطلبات",
+  "confirm_password": "تأكيد كلمة المرور",
+  "new_password": "كلمة المرور الجديدة",
+  "forget_password": "هل نسيت كلمة المرور ؟",
+  "reset_password": "إعادة ضبط كلمة المرور"
 }
