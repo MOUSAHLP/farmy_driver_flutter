@@ -36,6 +36,8 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    sl<LocationCubit>().getLatAndLng();
+
     return BaseScaffold(
       child: BlocConsumer<HomeCubit, HomeStates>(
         listener: (context, state) {
@@ -73,7 +75,6 @@ class HomeScreen extends StatelessWidget {
             },);
           }
           if (state.screenState == ScreenState.success) {
-            sl<LocationCubit>().getLatAndLng();
             return Expanded(
               child: SingleChildScrollView(
                 child: Padding(

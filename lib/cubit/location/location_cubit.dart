@@ -13,8 +13,8 @@ class LocationCubit extends Cubit<LocationState> {
   }
 
   late Position cl;
-  late double lat;
-   late double lng;
+   double lat=33;
+    double lng = 36;
   late CameraPosition _kGooglePlex;
 
   final LocationSettings locationSettings = const LocationSettings(
@@ -29,6 +29,24 @@ class LocationCubit extends Cubit<LocationState> {
     // Test if location services are enabled.
     serviceEnabled = await Geolocator.isLocationServiceEnabled();
     if (!serviceEnabled) {
+      // Show alert dialog here
+      // showDialog(
+      //   context: context,
+      //   builder: (BuildContext context) {
+      //     return AlertDialog(
+      //       title: Text("Location Services Disabled"),
+      //       content: Text("Please enable location services to proceed."),
+      //       actions: <Widget>[
+      //         TextButton(
+      //           child: Text("OK"),
+      //           onPressed: () {
+      //             Navigator.of(context).pop();
+      //           },
+      //         ),
+      //       ],
+      //     );
+      //   },
+      // );
       return Future.error('Location services are disabled.');
     }
 

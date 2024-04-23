@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:pharmy_driver/core/services/services_locator.dart';
+import 'package:pharmy_driver/cubit/location/location_cubit.dart';
 import 'package:pharmy_driver/cubit/order/order_cubit.dart';
 import 'package:pharmy_driver/presentation/app_widgets/base_scaffold.dart';
 import 'package:pharmy_driver/presentation/app_widgets/google_map2.dart';
 import 'package:pharmy_driver/presentation/resources/color_manager.dart';
+import 'package:pharmy_driver/presentation/screens/home/screens/home_screen.dart';
+import 'package:pharmy_driver/presentation/screens/main_screen/screen/main_screen.dart';
+import 'package:pharmy_driver/presentation/screens/order_details/screens/order_details.dart';
 import 'package:pharmy_driver/presentation/screens/orders_history/widgets/circular_container.dart';
 import 'package:pharmy_driver/translations.dart';
 import '../../../../core/app_router/app_router.dart';
@@ -15,14 +20,25 @@ import 'package:slide_to_act/slide_to_act.dart';
 import '../../../resources/font_app.dart';
 import '../../../resources/style_app.dart';
 
-
-class OrderDeliveryScreen extends StatelessWidget {
+class OrderDeliveryScreen extends StatefulWidget {
   final int idOrder;
   final OrderCubit orderCubit;
 
   const OrderDeliveryScreen(
       {Key? key, required this.idOrder, required this.orderCubit})
       : super(key: key);
+
+  @override
+  State<OrderDeliveryScreen> createState() => _OrderDeliveryScreenState();
+}
+
+class _OrderDeliveryScreenState extends State<OrderDeliveryScreen> {
+  @override
+  void initState() {
+    sl<LocationCubit>().getLatAndLng();
+
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -40,9 +56,9 @@ class OrderDeliveryScreen extends StatelessWidget {
                 child: Stack(
                   children: [
                     MapGoogle2(
-                      orderCubit: orderCubit,
-                      trackingUrl:orderCubit.state.trackingUrl,
-                      id: idOrder,
+                      orderCubit: widget.orderCubit,
+                      trackingUrl: widget.orderCubit.state.trackingUrl,
+                      id: widget.idOrder,
                     ),
                     PositionedDirectional(
                       bottom: 100.h,
@@ -146,9 +162,12 @@ class OrderDeliveryScreen extends StatelessWidget {
                                                         // context.read<HomeCubit>().currentIndex = 2;
                                                         // context.read<HomeCubit>().scaffoldKey = GlobalKey<ScaffoldState>();
                                                         //  AppRouter.pushReplacement(context, MainScreen());
+                                                        sl<OrderCubit>().getOrder();
                                                         AppRouter.pop(context);
                                                         AppRouter.pop(context);
                                                         AppRouter.pop(context);
+
+
                                                       },
                                                       child: circularContainer(
                                                           circular: 15,
@@ -163,6 +182,7 @@ class OrderDeliveryScreen extends StatelessWidget {
                                               );
                                             },
                                           );
+
                                         },
                                         child: circularContainer(
                                           circular: 15,

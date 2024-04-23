@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pharmy_driver/core/launcher.dart';
+import 'package:pharmy_driver/cubit/location/location_cubit.dart';
 import 'package:pharmy_driver/cubit/order/order_cubit.dart';
 import 'package:pharmy_driver/cubit/order/order_states.dart';
 import 'package:pharmy_driver/cubit/setting/setting_bloc.dart';
@@ -71,6 +72,8 @@ class OrderDetailsBody extends StatelessWidget {
 
             // TODO
             if (state.isSuccessAccept) {
+              sl<LocationCubit>().getLatAndLng();
+
               AppRouter.push(
                 context,
                 OrderDeliveryScreen(
@@ -89,6 +92,8 @@ class OrderDetailsBody extends StatelessWidget {
               ErrorDialog.openDialog(context, state.errorUpdate);
             }
             if (state.isSuccessUpdate) {
+              sl<LocationCubit>().getLatAndLng();
+
               AppRouter.push(
                 context,
                 OrderDeliveryScreen(
