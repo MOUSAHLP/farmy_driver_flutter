@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pharmy_driver/presentation/resources/color_manager.dart';
 import 'package:pharmy_driver/presentation/resources/font_app.dart';
 import 'package:pharmy_driver/presentation/resources/style_app.dart';
 import 'package:pharmy_driver/presentation/resources/values_app.dart';
 import 'package:pharmy_driver/presentation/screens/order_details/widgets/card_basket.dart';
+import 'package:pharmy_driver/translations.dart';
 
 import '../../../../models/order_details_model.dart';
-
+import 'package:pharmy_driver/cubit/order/order_cubit.dart';
 bool isExpanded=false;
 class OrderExpandedCard extends StatefulWidget {
   final bool isHome ;
@@ -60,7 +62,12 @@ class _OrderExpandedCardState extends State<OrderExpandedCard> {
               padding: const EdgeInsets.symmetric(horizontal: 26.0),
               child: Row(
                 children: [
-                  Text('المتطلبات',style: getUnderBoldStyle(color: Colors.white,fontSize: FontSizeApp.s20,),),
+                  Text(AppLocalizations.of(context)!.requirements,style: getUnderBoldStyle(color: Colors.white,fontSize: FontSizeApp.s20,),),
+                  const SizedBox(width: 5,),
+                  context.read<OrderCubit>().approvedProductsIds.isNotEmpty?
+
+                  Text('( ${context.read<OrderCubit>().approvedProductsIds.length} )',
+                    style: getUnderBoldStyle(color: Colors.white,fontSize: FontSizeApp.s20,),):const SizedBox(),
                 ],
               ),
             ),

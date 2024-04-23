@@ -136,5 +136,8 @@
   "previous_Password": "كلمة المرور السابقة",
   "tax": "ضريبة",
   "no_notifications": "لا يوجد اشعارات",
-  "notification": "اشعارات"
+  "notification": "اشعارات",
+  "add_product": "تم اضافة المنتج",
+  "remove_product": "تم حذف المنتج",
+  "requirements": "المتطلبات"
 }

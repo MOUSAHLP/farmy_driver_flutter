@@ -46,15 +46,25 @@ class OrderCubit extends Cubit<OrderStates> {
   }
 
   deleteProduct(int id) {
-    state.orderDetailsModel?.orderDetails
-        ?.removeWhere((element) => element.id == id);
+    // state.orderDetailsModel?.orderDetails
+    //     ?.removeWhere((element) => element.id == id);
     canceledProductsIds.add(id);
     approvedProductsIds.removeWhere((element) => element == id);
     emit(state.copyWith(orderDetailsModel: state.orderDetailsModel));
   }
 
   addProduct(int id) {
-    approvedProductsIds.add(id);
+    print("approvedProductsIds.any((element) => element==id)");
+    print(approvedProductsIds.where((element) => element==id));
+    print(approvedProductsIds.any((element) => element==id));
+    print(approvedProductsIds);
+    print(approvedProductsIds.contains((element) => element==id));
+if(approvedProductsIds.any((element) => element==id)) {
+print("yesss");
+    }
+else{
+  approvedProductsIds.add(id);
+}
     emit(state.copyWith(orderDetailsModel: state.orderDetailsModel));
   }
 
