@@ -106,17 +106,17 @@ class CustomAppBar extends StatelessWidget {
               children: [
                 Expanded(
                     child: Text('${DataStore.instance.userInfo?.firstName}',style: getBold800Style(color: Colors.white,fontSize: FontSizeApp.s13),)),
-                Text('متصل',style: getBold800Style(color: Colors.white,fontSize: FontSizeApp.s12),),
-                const SizedBox(width: 6,),
-                FlutterSwitch(
-                  width:53.0,
-                  height: 19.0,
-                  padding: 3,
-                  value: true,
-                  onToggle: (bool value) {  },
-                  activeToggleColor:ColorManager.primaryGreen,
-                  activeColor: ColorManager.lightXGreen ,
-              )
+              //   Text('متصل',style: getBold800Style(color: Colors.white,fontSize: FontSizeApp.s12),),
+              //   const SizedBox(width: 6,),
+              //   FlutterSwitch(
+              //     width:53.0,
+              //     height: 19.0,
+              //     padding: 3,
+              //     value: true,
+              //     onToggle: (bool value) {  },
+              //     activeToggleColor:ColorManager.primaryGreen,
+              //     activeColor: ColorManager.lightXGreen ,
+              // )
               ],
             )
           ],
