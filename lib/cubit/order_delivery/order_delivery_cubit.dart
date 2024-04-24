@@ -1,17 +1,35 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:pharmy_driver/core/app_enum.dart';
+import 'package:pharmy_driver/data/repository/tracking_repo.dart';
 
 import 'order_delivery_state.dart';
+
 class OrderDeliveryCubit extends Cubit<OrderDeliveryState> {
-  OrderDeliveryCubit() : super(InitialOrderDeliveryState());
+  OrderDeliveryCubit() : super(OrderDeliveryState());
 
   static OrderDeliveryCubit get(BuildContext context) {
     return BlocProvider.of(context);
-
   }
+
   bool isDelivery = true;
+
   void delivery() {
-    isDelivery = false;
-    emit(DeliveryState());
+    emit(state.copyWith(isDelivery: false));
+  }
+
+  deliverOrder(int idOrder) async {
+    emit(state.copyWith(screenState: ScreenState.loading));
+    final response = await TrackingRepo.deliverOrder(idOrder);
+    response.fold((l) {
+      emit(state.copyWith(screenState: ScreenState.error));
+    }, (r) {
+      emit(
+        state.copyWith(
+          screenState: ScreenState.success,
+          deliverOrder: r,
+        ),
+      );
+    });
   }
 }
