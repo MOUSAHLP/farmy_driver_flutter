@@ -6,6 +6,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pharmy_driver/cubit/all_orders_date/all_orders_date_cubit.dart';
 import 'package:pharmy_driver/cubit/language/language_cubit.dart';
 import 'package:pharmy_driver/cubit/language/language_states.dart';
+import 'package:pharmy_driver/cubit/location/location_cubit.dart';
 import 'package:pharmy_driver/cubit/order/order_cubit.dart';
 import 'package:pharmy_driver/cubit/orders_history/orders_history_cubit.dart';
 import 'package:pharmy_driver/cubit/transactions/transactions_cubit.dart';
@@ -67,6 +68,8 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (BuildContext context) => sl<AuthenticationBloc>()),
         BlocProvider(create: (BuildContext context) => sl<OrderCubit>()),
 
+        BlocProvider(create: (BuildContext context) => sl<LocationCubit>()..getLatAndLng()),
+
       ],
       child: ScreenUtilInit(
           minTextAdapt: true,
@@ -77,7 +80,6 @@ class MyApp extends StatelessWidget {
                 if (true) {
                   return MaterialApp(
                     debugShowCheckedModeBanner: false,
-                    title: 'Flutter Demo',
                     theme: ThemeData(
                       colorScheme:
                           ColorScheme.fromSeed(seedColor: Colors.deepPurple),

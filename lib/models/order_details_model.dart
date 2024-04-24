@@ -13,7 +13,7 @@ class OrderDetailsModel {
   int? deliveryFee;
   int? subTotal;
   int? total;
-  String? tax;
+  int? tax;
   String? notes;
   List<int>? changes;
   List<String>? deliveryAttributes;

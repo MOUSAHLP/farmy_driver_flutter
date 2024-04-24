@@ -34,7 +34,7 @@ class _MapGoogleState extends State<MapGoogle2> {
   double x = 0.0;
   double y = 0.0;
   late IO.Socket socket;
-
+  late GoogleMapController googleMapController;
   final List<Marker> _markers = <Marker>[];
 
   final Completer<GoogleMapController> _controller =
@@ -85,6 +85,7 @@ class _MapGoogleState extends State<MapGoogle2> {
   @override
   void dispose() {
     socket.close();
+    googleMapController.dispose();
     super.dispose();
   }
 
@@ -125,7 +126,7 @@ class _MapGoogleState extends State<MapGoogle2> {
       widget.trackingUrl,
       OptionBuilder().setTransports(['websocket']).build(),
     );
-    GoogleMapController googleMapController = await _controller.future;
+     googleMapController = await _controller.future;
 
     socket.onConnect((_) {
       print('connect');
