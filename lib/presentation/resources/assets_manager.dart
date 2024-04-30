@@ -10,10 +10,13 @@ class ImageManager {
   static const String auth = "$imagePath/auth.png";
   static const String whatsUpLogo = "$imagePath/whats_up.png";
   static const String contactLogo = "$imagePath/contact_logo.png";
+  static const String farmy = "$imagePath/farmy.png";
+
 }
 
 class IconsManager {
   static const String logoApp = "$iconPath/logo_app.svg";
+  static const String farmyIcon = "$iconPath/farmy.svg";
   static const String pdfIcon = "$iconPath/pdf_icon.svg";
   static const String crownIcon = "$iconPath/crown_icon.svg";
   static const String logoGreen = "$iconPath/logo_green.svg";

@@ -49,74 +49,88 @@ class HomeScreen extends StatelessWidget {
           if (state.errorAccept != "") {
             ErrorDialog.openDialog(context, state.errorAccept);
           }
-          if(state.isSuccessHome) {
+          if (state.isSuccessHome) {
             if (state.homeModel!.asignedOrders!.isNotEmpty) {
-
               showDialog(
                 context: context,
                 builder: (BuildContext context) {
                   return ShowOrders(
-                    listOrder: state.homeModel!.asignedOrders!,);
+                    listOrder: state.homeModel!.asignedOrders!,
+                  );
                 },
               );
             }
-          }},
+          }
+        },
         builder: (BuildContext context, state) {
           if (state.screenState == ScreenState.loading) {
             return const CustomHomeShimmer();
           }
           if (state.screenState == ScreenState.error) {
-            return CustomErrorScreen(titleError: state.error,onTap: () async {
-              await sl<HomeCubit>().getHome(context.read<SettingBloc>().settingModel?.data?.updateTime??"5");
-              await  sl<SettingBloc>().getSetting();
-           await   sl<HomeCubit>().getLastOrder();
-
-
-            },);
+            return CustomErrorScreen(
+              titleError: state.error,
+              onTap: () async {
+                await sl<HomeCubit>().getHome(context
+                        .read<SettingBloc>()
+                        .settingModel
+                        ?.data
+                        ?.updateTime ??
+                    "5");
+                await sl<SettingBloc>().getSetting();
+                await sl<HomeCubit>().getLastOrder();
+              },
+            );
           }
           if (state.screenState == ScreenState.success) {
             return Expanded(
               child: SingleChildScrollView(
                 child: Padding(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: PaddingApp.p22),
+                  padding: EdgeInsets.symmetric(
+                    horizontal: PaddingApp.p22.w,
+                  ),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const SizedBox(
-                        height: SizeApp.s14,
+                      SizedBox(
+                        height: SizeApp.s14.h,
                       ),
                       Row(
                         children: [
                           Text(
                             '${AppLocalizations.of(context)!.driver_level}: ',
                             style: getBoldStyle(
-                                color: ColorManager.grayForMessage,
-                                fontSize: FontSizeApp.s15),
+                              color: ColorManager.grayForMessage,
+                              fontSize: FontSizeApp.s15.sp,
+                            ),
                           ),
                           Text(
-                            state.homeModel?.driverRank??"",
+                            state.homeModel?.driverRank ?? "",
                             style: getBoldStyle(
-                                color: ColorManager.primaryGreen,
-                                fontSize: FontSizeApp.s15),
+                              color: ColorManager.primaryGreen,
+                              fontSize: FontSizeApp.s15.sp,
+                            ),
                           ),
                         ],
                       ),
-                       Padding(
-                        padding: const EdgeInsets.symmetric(vertical: PaddingApp.p12),
-                        child: ProgressLinearIndicatorWidget(progress: state.homeModel?.acceptanceRate??0,),
+                      Padding(
+                        padding: EdgeInsets.symmetric(
+                          vertical: PaddingApp.p12.h,
+                        ),
+                        child: ProgressLinearIndicatorWidget(
+                          progress: state.homeModel?.acceptanceRate ?? 0,
+                        ),
                       ),
-
                       isShow
-                      // ToDo Id order in google Map
+                          // ToDo Id order in google Map
                           ? Stack(
                               alignment: AlignmentDirectional.bottomEnd,
                               children: [
                                   Container(
                                     height: 200.h,
-                                    padding: const EdgeInsets.symmetric(
-                                        horizontal: PaddingApp.p5,
-                                        vertical: PaddingApp.p12),
+                                    padding: EdgeInsets.symmetric(
+                                      horizontal: PaddingApp.p5.w,
+                                      vertical: PaddingApp.p12.h,
+                                    ),
                                     child: MapGoogle2(
                                       trackingUrl: context
                                           .read<OrderCubit>()
@@ -129,7 +143,11 @@ class HomeScreen extends StatelessWidget {
                                   Padding(
                                     padding:
                                         const EdgeInsetsDirectional.fromSTEB(
-                                            0, 0, 4, 10),
+                                      0,
+                                      0,
+                                      4,
+                                      10,
+                                    ),
                                     child: FloatingActionButton(
                                       mini: true,
                                       elevation: 10,

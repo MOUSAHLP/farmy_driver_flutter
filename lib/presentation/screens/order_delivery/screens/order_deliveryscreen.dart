@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:pharmy_driver/core/app_enum.dart';
 import 'package:pharmy_driver/core/services/services_locator.dart';
+import 'package:pharmy_driver/core/utils/formatter.dart';
 import 'package:pharmy_driver/cubit/location/location_cubit.dart';
 import 'package:pharmy_driver/cubit/order/order_cubit.dart';
 import 'package:pharmy_driver/presentation/app_widgets/base_scaffold.dart';
+import 'package:pharmy_driver/presentation/app_widgets/dialog/loading_dialog.dart';
 import 'package:pharmy_driver/presentation/app_widgets/google_map2.dart';
 import 'package:pharmy_driver/presentation/resources/color_manager.dart';
 import 'package:pharmy_driver/presentation/screens/home/screens/home_screen.dart';
@@ -45,7 +48,108 @@ class _OrderDeliveryScreenState extends State<OrderDeliveryScreen> {
     return BlocProvider(
       create: (BuildContext context) => OrderDeliveryCubit(),
       child: BlocConsumer<OrderDeliveryCubit, OrderDeliveryState>(
-        listener: (BuildContext context, state) {},
+        listener: (BuildContext context, state) {
+          if (state.screenState == ScreenState.loading) {
+            LoadingDialog().openDialog(context);
+          } else if (state.screenState == ScreenState.success) {
+            LoadingDialog().closeDialog(context);
+            showDialog(
+              context: context,
+              builder: (context) {
+                return AlertDialog(
+                  content: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      Text(
+                        '${AppLocalizations.of(context)?.total_bill}',
+                        style: getBoldStyle(
+                          color: ColorManager.grayForMessage,
+                          fontSize: FontSizeApp.s15,
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      Text(
+                        Formatter.formatPrice(state.deliverOrder!.data.orderTotal),
+                        style: getBoldStyle(
+                          color: ColorManager.primaryGreen,
+                          fontSize: FontSizeApp.s26.sp,
+                        ),
+                      ),
+                      Text(
+                        "اضغط تم الدفع بعد الانتهاء من عملية الدفع",
+                        style: getBold800Style(
+                          color: ColorManager.grayForMessage,
+                          fontSize: FontSizeApp.s14.sp,
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 18,
+                      ),
+                      InkWell(
+                        onTap: () {
+                          Navigator.of(context).pop();
+                          showDialog(
+                            context: context,
+                            builder: (context) {
+                              return AlertDialog(
+                                content: Column(
+                                  mainAxisSize: MainAxisSize.min,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceAround,
+                                  children: [
+                                    Text(
+                                      'تمت العملية بنجاح :)',
+                                      style: getBoldStyle(
+                                          color: ColorManager.primaryGreen,
+                                          fontSize: FontSizeApp.s15),
+                                    ),
+                                    const SizedBox(
+                                      height: 10,
+                                    ),
+                                    Text(
+                                        "يمكنك رؤية جميع الطلبات التي قمت بإتمامها من قائمة تاريخ الطلبات في المنيو",
+                                        style: getBold800Style(
+                                            color: ColorManager.grayForMessage,
+                                            fontSize: FontSizeApp.s14)),
+                                    const SizedBox(
+                                      height: 18,
+                                    ),
+                                    InkWell(
+                                      onTap: () {
+                                        sl<OrderCubit>().getOrder();
+                                        AppRouter.pop(context);
+                                        AppRouter.pop(context);
+                                        AppRouter.pop(context);
+                                      },
+                                      child: circularContainer(
+                                          circular: 15,
+                                          text: "تم",
+                                          color: ColorManager.primaryGreen,
+                                          textColor: Colors.white),
+                                    )
+                                  ],
+                                ),
+                              );
+                            },
+                          );
+                        },
+                        child: circularContainer(
+                          circular: 15,
+                          text: "تم الدفع",
+                          color: ColorManager.primaryGreen,
+                          textColor: Colors.white,
+                        ),
+                      )
+                    ],
+                  ),
+                );
+              },
+            );
+          }
+        },
         builder: (BuildContext context, state) {
           OrderDeliveryCubit cubit = OrderDeliveryCubit.get(context);
           return Scaffold(
@@ -84,118 +188,9 @@ class _OrderDeliveryScreenState extends State<OrderDeliveryScreen> {
                           sliderRotate: false,
                           borderRadius: 10,
                           onSubmit: () {
+                            cubit.deliverOrder(widget.idOrder);
                             cubit.delivery();
-                            return showDialog(
-                              context: context,
-                              builder: (context) {
-                                return AlertDialog(
-                                  content: Column(
-                                    mainAxisSize: MainAxisSize.min,
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceAround,
-                                    children: [
-                                      Text(
-                                        '${AppLocalizations.of(context)?.total_bill}',
-                                        style: getBoldStyle(
-                                          color: ColorManager.grayForMessage,
-                                          fontSize: FontSizeApp.s15,
-                                        ),
-                                      ),
-                                      const SizedBox(
-                                        height: 10,
-                                      ),
-                                      Text(
-                                        " 200,000 ل.س",
-                                        style: getBoldStyle(
-                                          color: ColorManager.primaryGreen,
-                                          fontSize: FontSizeApp.s26.sp,
-                                        ),
-                                      ),
-                                      Text(
-                                        "اضغط تم الدفع بعد الانتهاء من عملية الدفع",
-                                        style: getBold800Style(
-                                          color: ColorManager.grayForMessage,
-                                          fontSize: FontSizeApp.s14.sp,
-                                        ),
-                                      ),
-                                      const SizedBox(
-                                        height: 18,
-                                      ),
-                                      InkWell(
-                                        onTap: () {
-                                          Navigator.of(context).pop();
-                                          showDialog(
-                                            context: context,
-                                            builder: (context) {
-                                              return AlertDialog(
-                                                content: Column(
-                                                  mainAxisSize:
-                                                      MainAxisSize.min,
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment
-                                                          .spaceAround,
-                                                  children: [
-                                                    Text(
-                                                      'تمت العملية بنجاح :)',
-                                                      style: getBoldStyle(
-                                                          color: ColorManager
-                                                              .primaryGreen,
-                                                          fontSize:
-                                                              FontSizeApp.s15),
-                                                    ),
-                                                    const SizedBox(
-                                                      height: 10,
-                                                    ),
-                                                    Text(
-                                                        "يمكنك رؤية جميع الطلبات التي قمت بإتمامها من قائمة تاريخ الطلبات في المنيو",
-                                                        style: getBold800Style(
-                                                            color: ColorManager
-                                                                .grayForMessage,
-                                                            fontSize:
-                                                                FontSizeApp
-                                                                    .s14)),
-                                                    const SizedBox(
-                                                      height: 18,
-                                                    ),
-                                                    InkWell(
-                                                      onTap: () {
-                                                        // context.read<HomeCubit>().currentIndex = 2;
-                                                        // context.read<HomeCubit>().scaffoldKey = GlobalKey<ScaffoldState>();
-                                                        //  AppRouter.pushReplacement(context, MainScreen());
-                                                        sl<OrderCubit>().getOrder();
-                                                        AppRouter.pop(context);
-                                                        AppRouter.pop(context);
-                                                        AppRouter.pop(context);
-
-
-                                                      },
-                                                      child: circularContainer(
-                                                          circular: 15,
-                                                          text: "تم",
-                                                          color: ColorManager
-                                                              .primaryGreen,
-                                                          textColor:
-                                                              Colors.white),
-                                                    )
-                                                  ],
-                                                ),
-                                              );
-                                            },
-                                          );
-
-                                        },
-                                        child: circularContainer(
-                                          circular: 15,
-                                          text: "تم الدفع",
-                                          color: ColorManager.primaryGreen,
-                                          textColor: Colors.white,
-                                        ),
-                                      )
-                                    ],
-                                  ),
-                                );
-                              },
-                            );
+                            return null;
                           },
                         ),
                       ),

@@ -16,7 +16,6 @@ class BaseScaffold extends StatelessWidget {
         const CustomAppBar(),
         if(title!=null)ScreenTitleWidget(title: title!,isBack:isBack),
         child,
-
       ],
     );
   }

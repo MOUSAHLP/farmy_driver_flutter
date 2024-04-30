@@ -53,9 +53,6 @@ class _MapGoogleState extends State<MapGoogle2> {
     sl<LocationCubit>().getLatAndLng();
     x = sl<LocationCubit>().lat;
     y = sl<LocationCubit>().lng;
-    print('@@@@@');
-    print(x);
-    print('@@@@@');
 
     // _kGooglePlex = CameraPosition(
     //   target: LatLng(sl<LocationCubit>().lat, sl<LocationCubit>().lng),
@@ -67,16 +64,12 @@ class _MapGoogleState extends State<MapGoogle2> {
       if (position != null) {
         x = position.latitude;
         y = position.longitude;
-        print('###');
-        print(x);
-        print('###');
-        setState(() {
 
-        });
+        if (mounted) {
+          setState(() {});
+        }
       }
-      print(position == null
-          ? 'Unknown'
-          : '${position.latitude.toString()}, ${position.longitude.toString()}');
+
     });
     super.initState();
     // _loadCustomIcon();
@@ -86,6 +79,7 @@ class _MapGoogleState extends State<MapGoogle2> {
   void dispose() {
     socket.close();
     googleMapController.dispose();
+    positionStream.cancel();
     super.dispose();
   }
 
@@ -133,11 +127,15 @@ class _MapGoogleState extends State<MapGoogle2> {
       socket.emit('track_${widget.id}', params.toJson());
     });
 
-    socket.onDisconnect((_) => print('disconnect'));
+    socket.onDisconnect((_) {
+      socket.close();
+      socket.destroy();
+    });
 
-    Timer.periodic(const Duration(seconds: 2), (timer) async {
+    Timer.periodic(const Duration(seconds: 4), (timer) async {
       params.lat = x;
       params.long = y;
+      params.status = "OnDelivery";
       socket.emit(
         'track_${widget.id}',
         params.toJson(),
@@ -146,7 +144,7 @@ class _MapGoogleState extends State<MapGoogle2> {
       googleMapController.animateCamera(
         CameraUpdate.newCameraPosition(
           CameraPosition(
-            zoom: 17,
+            zoom: 16,
             target: LatLng(
               x,
               y,
@@ -154,7 +152,9 @@ class _MapGoogleState extends State<MapGoogle2> {
           ),
         ),
       );
-      setState(() {});
+      if (mounted) {
+        setState(() {});
+      }
     });
   }
 
@@ -186,6 +186,8 @@ class _MapGoogleState extends State<MapGoogle2> {
       //   title: 'Location: '+i.toString(),
       // ),
     ));
-    setState(() {});
+    if (mounted) {
+      setState(() {});
+    }
   }
 }
