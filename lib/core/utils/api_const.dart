@@ -26,6 +26,7 @@ class ApiConst {
   static const String getLastOrders = "/orders";
   static  String acceptOrder(int id) => "/accept-order/$id";
   static  String acceptOrderAssign(int id) => "/accept-assigned-order/$id";
+  static  String chengActive = "/active-inactive";
 
   static  String getTrackingUrl(int idOrder) => "/order-tracking/$idOrder";
   static  String deliverOrder(int idOrder) => "/deliver-order/$idOrder";

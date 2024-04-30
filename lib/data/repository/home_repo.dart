@@ -5,7 +5,7 @@ import '../../core/utils/api_const.dart';
 import '../../models/home_model.dart';
 import '../data_resource/remote_resource/api_handler/base_api_client.dart';
 
-class HomeRepository{
+class HomeRepository {
   static Future<Either<String, List<OrderModel>>> getLastOrder() {
     return BaseApiClient.get<List<OrderModel>>(
       url: ApiConst.getLastOrders,
@@ -14,6 +14,7 @@ class HomeRepository{
       },
     );
   }
+
   static Future<Either<String, HomeModel>> getHome() {
     return BaseApiClient.get<HomeModel>(
       url: ApiConst.getHome,
@@ -22,6 +23,7 @@ class HomeRepository{
       },
     );
   }
+
   static Future<Either<String, bool>> acceptOrder(int id) {
     return BaseApiClient.get<bool>(
       url: ApiConst.acceptOrder(id),
@@ -30,6 +32,7 @@ class HomeRepository{
       },
     );
   }
+
   static Future<Either<String, bool>> acceptOrderAssign(int id) {
     return BaseApiClient.get<bool>(
       url: ApiConst.acceptOrderAssign(id),
@@ -39,4 +42,15 @@ class HomeRepository{
     );
   }
 
+  static Future<Either<String, bool>> chengActive(bool isActive) {
+    return BaseApiClient.post<bool>(
+      formData: {
+        "online_status": isActive,
+      },
+      url: ApiConst.chengActive,
+      converter: (e) {
+        return true;
+      },
+    );
+  }
 }

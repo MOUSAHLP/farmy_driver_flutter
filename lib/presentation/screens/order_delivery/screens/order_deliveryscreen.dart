@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pharmy_driver/core/app_enum.dart';
 import 'package:pharmy_driver/core/services/services_locator.dart';
+import 'package:pharmy_driver/core/utils/formatter.dart';
 import 'package:pharmy_driver/cubit/location/location_cubit.dart';
 import 'package:pharmy_driver/cubit/order/order_cubit.dart';
 import 'package:pharmy_driver/presentation/app_widgets/base_scaffold.dart';
@@ -71,7 +72,7 @@ class _OrderDeliveryScreenState extends State<OrderDeliveryScreen> {
                         height: 10,
                       ),
                       Text(
-                        " ${state.deliverOrder!.data.orderTotal}",
+                        Formatter.formatPrice(state.deliverOrder!.data.orderTotal),
                         style: getBoldStyle(
                           color: ColorManager.primaryGreen,
                           fontSize: FontSizeApp.s26.sp,
@@ -189,6 +190,7 @@ class _OrderDeliveryScreenState extends State<OrderDeliveryScreen> {
                           onSubmit: () {
                             cubit.deliverOrder(widget.idOrder);
                             cubit.delivery();
+                            return null;
                           },
                         ),
                       ),
