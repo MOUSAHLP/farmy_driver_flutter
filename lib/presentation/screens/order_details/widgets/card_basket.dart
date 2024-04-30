@@ -10,6 +10,7 @@ import 'package:pharmy_driver/presentation/resources/style_app.dart';
 import 'package:pharmy_driver/presentation/resources/values_app.dart';
 import '../../../../models/order_details_model.dart';
 import '../../../../translations.dart';
+import '../../../app_widgets/cached_image.dart';
 
 class CardBasket extends StatelessWidget {
   final bool isHome ;
@@ -42,7 +43,9 @@ class CardBasket extends StatelessWidget {
                       width: 36,
                       decoration: BoxDecoration(boxShadow: [
                         ColorManager.shadowGaryDown,
-                      ], color: Colors.white),
+                      ], color:
+                      context.read<OrderCubit>().approvedProductsIds.any((element) => element==orderDetail.id)?
+                      ColorManager.primaryGreen.withOpacity(0.5):Colors.white),
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: const ImageSvgWidget(url: IconsManager.checkIcon).buildAssetSvgImage(),
@@ -97,7 +100,8 @@ class CardBasket extends StatelessWidget {
                       width: 36,
                       decoration: BoxDecoration(boxShadow: [
                         ColorManager.shadowGaryDown,
-                      ], color: Colors.white),
+                      ], color: context.read<OrderCubit>().canceledProductsIds.any((element) => element==orderDetail.id)?
+                      ColorManager.redForFavorite.withOpacity(0.5):Colors.white),
                       child: Padding(
                         padding: const EdgeInsets.all(10.0),
                         child: const ImageSvgWidget(url: IconsManager.closeIcon).buildAssetSvgImage(),
@@ -188,10 +192,9 @@ class CardBasket extends StatelessWidget {
                 color: ColorManager.grayForPlaceholde,
                 child: Padding(
                   padding: const EdgeInsets.all(PaddingApp.p22),
-                  child: const ImageSvgWidget(
-                    url: IconsManager.logoApp,
-                    color: ColorFilter.mode(
-                        Colors.grey, BlendMode.srcIn),).buildAssetSvgImage(),
+                  child:  CachedImage(
+                    imageUrl: orderDetail.image,
+                  ),
                 ),
               ),
             ),

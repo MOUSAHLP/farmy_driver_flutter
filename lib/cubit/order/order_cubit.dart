@@ -63,6 +63,7 @@ class OrderCubit extends Cubit<OrderStates> {
       print("yesss");
     } else {
       approvedProductsIds.add(id);
+      canceledProductsIds.removeWhere((element) => element == id);
     }
     emit(state.copyWith(orderDetailsModel: state.orderDetailsModel));
   }

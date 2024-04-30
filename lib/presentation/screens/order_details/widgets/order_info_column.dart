@@ -5,6 +5,7 @@ import 'package:pharmy_driver/presentation/resources/values_app.dart';
 import 'package:pharmy_driver/presentation/screens/order_details/widgets/order_details_row.dart';
 import 'package:pharmy_driver/translations.dart';
 
+import '../../../../core/utils/formatter.dart';
 import '../../../../models/order_details_model.dart';
 
 class OrderInfoWidget extends StatelessWidget {
@@ -61,25 +62,25 @@ class OrderInfoWidget extends StatelessWidget {
                 contentColor: ColorManager.primaryGreen,
                 fontSize: FontSizeApp.s12,
                 title: AppLocalizations.of(context)!.the_value_of_the_request,
-                content: orderDetailsModel.subTotal.toString()),
+                content: Formatter.formatPrice(orderDetailsModel.subTotal??0),),
             OrderDetailsRow(
                 titleColor: ColorManager.grayForMessage,
                 contentColor: ColorManager.primaryGreen,
                 fontSize: FontSizeApp.s12,
                 title: AppLocalizations.of(context)!.delivery_value,
-                content:orderDetailsModel.deliveryFee.toString()),
+                content:Formatter.formatPrice(orderDetailsModel.deliveryFee??0)),
             OrderDetailsRow(
                 titleColor: ColorManager.grayForMessage,
                 contentColor: ColorManager.primaryGreen,
                 fontSize: FontSizeApp.s12,
                 title: AppLocalizations.of(context)!.total_invoice,
-                content:orderDetailsModel.total.toString()),
+                content:Formatter.formatPrice(orderDetailsModel.total??0)),
             OrderDetailsRow(
                 titleColor: ColorManager.grayForMessage,
                 contentColor: ColorManager.primaryGreen,
                 fontSize: FontSizeApp.s12,
                 title: AppLocalizations.of(context)!.tax,
-                content:orderDetailsModel.tax.toString()),
+                content:Formatter.formatPrice(orderDetailsModel.tax??0)),
           ],
         ],
       ),
