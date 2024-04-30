@@ -23,7 +23,7 @@ class CustomErrorScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            SvgPicture.asset(IconsManager.logoApp,color: ColorManager.lightGray,height: 170,width: 170,fit: BoxFit.contain),
+            SvgPicture.asset(IconsManager.logoApp,colorFilter: const ColorFilter.mode( ColorManager.lightGray, BlendMode.srcIn),height: 170,width: 170,fit: BoxFit.contain),
             const SizedBox(height: 10),
             Text(titleError??"لا يوجد اتصال الرجاء\n التحقق من إعدادات الانترنت لديك",style: getBoldStyle(color: ColorManager.primaryGreen,fontSize: 14),textAlign: TextAlign.center),
             const SizedBox(height: 10),

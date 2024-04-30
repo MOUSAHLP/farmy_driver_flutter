@@ -85,7 +85,7 @@ class CustomAppDrawer extends StatelessWidget {
                         ElevatedButtonWidget(
                             title: AppLocalizations.of(context)!.usage_guide,
                             onTap: () {
-                             AppRouter.push(context,  TermScreen());
+                             AppRouter.push(context,  const TermScreen());
                             }),
                         //  sl<AuthenticationBloc>().loggedIn?
                         ElevatedButtonWidget(

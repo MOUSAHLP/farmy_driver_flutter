@@ -29,24 +29,6 @@ class LocationCubit extends Cubit<LocationState> {
     // Test if location services are enabled.
     serviceEnabled = await Geolocator.isLocationServiceEnabled();
     if (!serviceEnabled) {
-      // Show alert dialog here
-      // showDialog(
-      //   context: context,
-      //   builder: (BuildContext context) {
-      //     return AlertDialog(
-      //       title: Text("Location Services Disabled"),
-      //       content: Text("Please enable location services to proceed."),
-      //       actions: <Widget>[
-      //         TextButton(
-      //           child: Text("OK"),
-      //           onPressed: () {
-      //             Navigator.of(context).pop();
-      //           },
-      //         ),
-      //       ],
-      //     );
-      //   },
-      // );
       return Future.error('Location services are disabled.');
     }
 
@@ -72,10 +54,5 @@ class LocationCubit extends Cubit<LocationState> {
       target: LatLng(lat, lng),
       zoom: 10.4746,
     );
-
-    // print('@@@@@@@@@@');
-    // print(lat);
-    // print('@@@@@@@@@@');
-    // emit(InitialLocationState());
   }
 }

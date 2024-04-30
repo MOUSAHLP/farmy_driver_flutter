@@ -9,7 +9,7 @@ import 'package:pharmy_driver/models/params/tracking_params.dart';
 import 'package:pharmy_driver/presentation/resources/assets_manager.dart';
 import 'package:socket_io_client/socket_io_client.dart';
 import 'dart:ui' as ui;
-import 'package:socket_io_client/socket_io_client.dart' as IO;
+import 'package:socket_io_client/socket_io_client.dart' as io;
 import 'package:geolocator/geolocator.dart';
 
 class MapGoogle2 extends StatefulWidget {
@@ -33,7 +33,7 @@ class _MapGoogleState extends State<MapGoogle2> {
   Marker? markerLocation;
   double x = 0.0;
   double y = 0.0;
-  late IO.Socket socket;
+  late io.Socket socket;
   late GoogleMapController googleMapController;
   final List<Marker> _markers = <Marker>[];
 
@@ -116,14 +116,13 @@ class _MapGoogleState extends State<MapGoogle2> {
       status: "",
     );
 
-    socket = IO.io(
+    socket = io.io(
       widget.trackingUrl,
       OptionBuilder().setTransports(['websocket']).build(),
     );
      googleMapController = await _controller.future;
 
     socket.onConnect((_) {
-      print('connect');
       socket.emit('track_${widget.id}', params.toJson());
     });
 
