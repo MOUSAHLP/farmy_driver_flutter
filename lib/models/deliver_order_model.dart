@@ -22,7 +22,7 @@ class DeliverOrder {
 }
 
 class Data {
-  final int orderTotal;
+  final int? orderTotal;
 
   Data({
     required this.orderTotal,

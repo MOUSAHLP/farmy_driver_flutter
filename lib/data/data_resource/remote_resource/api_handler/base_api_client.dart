@@ -138,16 +138,17 @@ class BaseApiClient {
 
       var response = await client.get(
         url,
-        queryParameters: queryParameters,
+        // queryParameters: queryParameters,
         options: Options(
           headers: {
             'accept': _acceptHeader,
             'authorization': 'Bearer ${DataStore.instance.token ?? ''}',
           },
         ),
+        data: queryParameters,
         cancelToken: cancelToken,
       );
-      if (response.statusCode! >= 200 || response.statusCode! <= 205) {
+      if (response.statusCode! >= 200 && response.statusCode! <= 205) {
         if (kDebugMode) {
           log(response.data.toString());
           print(response);

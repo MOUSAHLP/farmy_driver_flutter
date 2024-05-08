@@ -144,5 +144,8 @@
   "new_password": "كلمة المرور الجديدة",
   "forget_password": "هل نسيت كلمة المرور ؟",
   "reset_password": "إعادة ضبط كلمة المرور",
-  "field_is_required": "الحقل مطلوب"
+  "field_is_required": "الحقل مطلوب",
+   "order_verify_code":"رمز التحقق من الطلب",
+   "order_verify_code_desc":"يرجى كتابة الرمز الخاص مع الزبون \n لإنهاء الطلب",
+   "next":"متابعة"
 }

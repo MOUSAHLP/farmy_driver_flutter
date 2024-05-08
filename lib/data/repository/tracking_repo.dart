@@ -20,9 +20,12 @@ class TrackingRepo {
     );
   }
 
-  static Future<Either<String, DeliverOrder>> deliverOrder(int idOrder) {
+  static Future<Either<String, DeliverOrder>> deliverOrder({required int idOrder,String? code}) {
     return BaseApiClient.get<DeliverOrder>(
       url: ApiConst.deliverOrder(idOrder),
+     queryParameters: {
+        "code":code
+     },
       converter: (e) {
         return DeliverOrder.fromJson(e);
       },

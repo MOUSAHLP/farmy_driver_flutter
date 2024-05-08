@@ -37,6 +37,7 @@ class IconsManager {
   static const String checkIcon = "$iconPath/check_icon.svg";
   static const String refreshIcon = "$iconPath/refresh.svg";
   static const String locationIcon = "$iconPath/Location_2.png";
+  static const String successIcon = "$iconPath/success.png";
 }
 
 class LottieManager {
