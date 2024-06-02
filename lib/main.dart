@@ -66,10 +66,10 @@ class MyApp extends StatelessWidget {
         BlocProvider(lazy: false, create: (BuildContext context) => SettingBloc()..getSetting()),
         //
         BlocProvider(create: (BuildContext context) => sl<AuthenticationBloc>()),
+        //
         BlocProvider(create: (BuildContext context) => sl<OrderCubit>()),
-
+        //
         BlocProvider(create: (BuildContext context) => sl<LocationCubit>()..getLatAndLng()),
-
       ],
       child: ScreenUtilInit(
           minTextAdapt: true,

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pharmy_driver/core/app_router/app_router.dart';
+import 'package:pharmy_driver/data/data_resource/local_resource/data_store.dart';
 import 'package:pharmy_driver/models/transactions_model.dart';
 import 'package:pharmy_driver/presentation/app_widgets/custom_button.dart';
 import 'package:pharmy_driver/presentation/resources/color_manager.dart';
@@ -16,6 +17,7 @@ import '../../../../core/utils/api_const.dart';
 
 class OrderDateCard extends StatelessWidget {
   final List<DueOrders> listData;
+
   const OrderDateCard({Key? key, required this.listData}) : super(key: key);
 
   @override
@@ -125,11 +127,9 @@ class OrderDateCard extends StatelessWidget {
                       fontSize: FontSizeApp.s12.sp),
                   onTap: () {
                     launchUrl(
-                        Uri.parse(
-                            ApiConst.baseUrl+ApiConst.generatePdfAllOrders),
-                        mode: LaunchMode
-                            .externalApplication);
-
+                      Uri.parse(ApiConst.baseUrl + ApiConst.generatePdfAllOrders,),
+                      mode: LaunchMode.externalApplication,
+                    );
                   },
                 ),
               ),
