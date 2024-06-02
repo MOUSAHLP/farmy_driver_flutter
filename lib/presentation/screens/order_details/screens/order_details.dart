@@ -25,23 +25,30 @@ import '../../../app_widgets/dialog/loading_dialog.dart';
 import '../../home/widgets/cutsom_home_shimmer.dart';
 import '../widgets/order_info_column.dart';
 
-
-class OrderDetailsScreen extends StatelessWidget {
+class OrderDetailsScreen extends StatefulWidget {
   final int id;
   final bool isHome;
-
   const OrderDetailsScreen({
-    super.key,
+    Key? key,
     required this.id,
     this.isHome = false,
-  });
+  }) : super(key: key);
+
+  @override
+  _OrderDetailsScreenState createState() => _OrderDetailsScreenState();
+}
+
+class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    context.read<OrderCubit>().getOrderDetails(widget.id);
+  }
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider<OrderCubit>(
-      create: (context) => sl<OrderCubit>()..getOrderDetails(id),
-      child: OrderDetailsBody(id: id, isHome: isHome),
-    );
+    return OrderDetailsBody(id: widget.id, isHome: widget.isHome);
   }
 }
 
@@ -54,7 +61,6 @@ class OrderDetailsBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       body: BaseScaffold(
         isBack: true,
@@ -213,12 +219,10 @@ class OrderDetailsBody extends StatelessWidget {
                               fillColor: ColorManager.primaryGreen,
                               onTap: () {
                                 if (isHome) {
-
                                   context
                                       .read<OrderCubit>()
                                       .acceptOrder(state.orderDetailsModel!.id);
                                 } else {
-
                                   context
                                       .read<OrderCubit>()
                                       .moveToTheDeliveryStage(

@@ -13,57 +13,71 @@ import '../../../app_widgets/custom_error_screen.dart';
 import '../../../app_widgets/custom_no_dataa.dart';
 import '../../home/widgets/cutsom_home_shimmer.dart';
 
-class MyOrdersBody extends StatelessWidget {
+class MyOrdersBody extends StatefulWidget {
   const MyOrdersBody({Key? key}) : super(key: key);
 
   @override
+  _MyOrdersBodyState createState() => _MyOrdersBodyState();
+}
+
+class _MyOrdersBodyState extends State<MyOrdersBody> {
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    context.read<OrderCubit>().getOrder();
+  }
+  @override
   Widget build(BuildContext context) {
-    return BlocProvider<OrderCubit>(
-      create: (context) => sl<OrderCubit>()..getOrder(),
-      child: BaseScaffold(
-        title: AppLocalizations.of(context)!.my_orders,
-        child: BlocBuilder<OrderCubit, OrderStates>(builder: (context, state) {
-          if (state.screenState == ScreenState.loading) {
-            return const CustomHomeShimmer();
-          }
-          if (state.screenState == ScreenState.error) {
-            return CustomErrorScreen(
-              titleError: state.error,
-              onTap: () {
-                sl<OrderCubit>().getOrder();
-              },
-            );
-          }
-          if (state.screenState == ScreenState.success) {
-            return Expanded(
-              child: state.orderList.isNotEmpty
-                  ? ListView.separated(
-                      padding: EdgeInsets.symmetric(
-                        vertical: PaddingApp.p22.h,
-                        horizontal: PaddingApp.p22.w,
-                      ),
-                      itemBuilder: (context, index) => OrderCardWidget(
-                        order: state.orderList[index],
-                      ),
-                      separatorBuilder: (context, index) => const SizedBox(
-                        height: PaddingApp.p22,
-                      ),
-                      itemCount: state.orderList.length,
-                    )
-                  : const Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        CustomNoData(
-                          noDataStatment: "no order",
-                        ),
-                      ],
-                    ),
-            );
-          } else {
-            return const SizedBox();
-          }
-        }),
-      ),
+
+    return BaseScaffold(
+      title: AppLocalizations.of(context)!.my_orders,
+      child: BlocBuilder<OrderCubit, OrderStates>(builder: (context, state) {
+        print("stateeeeeeeee: ${state.screenState}");
+        if (state.screenState == ScreenState.loading) {
+          return const CustomHomeShimmer();
+        }
+        if (state.screenState == ScreenState.error) {
+          return CustomErrorScreen(
+            titleError: state.error,
+            onTap: () {
+              sl<OrderCubit>().getOrder();
+            },
+          );
+        }
+        if (state.screenState == ScreenState.success) {
+          return Expanded(
+            child: state.orderList.isNotEmpty
+                ? ListView.separated(
+              padding: EdgeInsets.symmetric(
+                vertical: PaddingApp.p22.h,
+                horizontal: PaddingApp.p22.w,
+              ),
+              itemBuilder: (context, index) => OrderCardWidget(
+                order: state.orderList[index],
+              ),
+              separatorBuilder: (context, index) => const SizedBox(
+                height: PaddingApp.p22,
+              ),
+              itemCount: state.orderList.length,
+            )
+                : const Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                CustomNoData(
+                  noDataStatment: "no order",
+                ),
+              ],
+            ),
+          );
+        } else {
+          return const SizedBox();
+        }
+      }),
     );
   }
 }
+
+
+
+
