@@ -40,48 +40,48 @@ class DuesCard extends StatelessWidget {
                         style: getBoldStyle(color: Colors.white, fontSize: 17)),
                   ),
                 ),
-                Expanded(
-                    child: Center(
-                        child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Text(
-                          Formatter.formatNumber(dues),
-                          style: getBoldStyle(
-                              color: ColorManager.primaryGreen,
-                              fontSize: FontSizeApp.s30),
-                        ),
-                        SizedBox(
-                          width: 4.w,
-                        ),
-                        Text(AppLocalizations.of(context)!.syrian_pound,
-                            style: getBoldStyle(
-                                color: ColorManager.primaryGreen,
-                                fontSize: 16)),
-                      ],
-                    ),
-                    // CustomButton(
-                    //   width: 0.33.sw,
-                    //   height: 47,
-                    //   paddingText: PaddingApp.p4,
-                    //   label:
-                    //       AppLocalizations.of(context)!.request_your_benefits,
-                    //   fillColor: ColorManager.primaryGreen,
-                    //   labelColor: Colors.white,
-                    //   styleText: getUnderBoldStyle(
-                    //       color: Colors.white, fontSize: FontSizeApp.s14),
-                    //   onTap: onTap,
-                    // ),
-                    const SizedBox(
-                      height: 4,
-                    ),
-                  ],
-                )))
+                // Expanded(
+                //     child: Center(
+                //         child: Column(
+                //   mainAxisAlignment: MainAxisAlignment.center,
+                //   crossAxisAlignment: CrossAxisAlignment.center,
+                //   children: [
+                //     Row(
+                //       mainAxisAlignment: MainAxisAlignment.center,
+                //       crossAxisAlignment: CrossAxisAlignment.center,
+                //       children: [
+                //         Text(
+                //           Formatter.formatNumber(dues),
+                //           style: getBoldStyle(
+                //               color: ColorManager.primaryGreen,
+                //               fontSize: FontSizeApp.s30),
+                //         ),
+                //         SizedBox(
+                //           width: 4.w,
+                //         ),
+                //         Text(AppLocalizations.of(context)!.syrian_pound,
+                //             style: getBoldStyle(
+                //                 color: ColorManager.primaryGreen,
+                //                 fontSize: 16)),
+                //       ],
+                //     ),
+                //     // CustomButton(
+                //     //   width: 0.33.sw,
+                //     //   height: 47,
+                //     //   paddingText: PaddingApp.p4,
+                //     //   label:
+                //     //       AppLocalizations.of(context)!.request_your_benefits,
+                //     //   fillColor: ColorManager.primaryGreen,
+                //     //   labelColor: Colors.white,
+                //     //   styleText: getUnderBoldStyle(
+                //     //       color: Colors.white, fontSize: FontSizeApp.s14),
+                //     //   onTap: onTap,
+                //     // ),
+                //     const SizedBox(
+                //       height: 4,
+                //     ),
+                //   ],
+                // )))
               ],
             ),
           ),

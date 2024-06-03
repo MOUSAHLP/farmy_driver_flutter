@@ -53,23 +53,36 @@ class MyApp extends StatelessWidget {
       providers: [
         BlocProvider(create: (BuildContext context) => sl<HomeCubit>()),
         // Home screen
-        BlocProvider(create: (BuildContext context) => sl<HomeCubit>(),),
+        BlocProvider(
+          create: (BuildContext context) => sl<HomeCubit>(),
+        ),
         // language screen
         BlocProvider(create: (BuildContext context) => LanguageCubit()),
         // Orders History screen
-        BlocProvider(create: (BuildContext context) => OrdersHistoryCubit()..getDriverOrdersHistory()),
+        BlocProvider(
+            create: (BuildContext context) =>
+                OrdersHistoryCubit()..getDriverOrdersHistory()),
         // Transactions screen
-        BlocProvider(create: (BuildContext context) => TransactionsCubit()..getDriverTransactions()),
+        BlocProvider(
+            create: (BuildContext context) =>
+                TransactionsCubit()..getDriverTransactions()),
         // all orders screen
-        BlocProvider(create: (BuildContext context) => AllOrdersDateCubit()..getDriverTransactions()),
+        BlocProvider(
+            create: (BuildContext context) =>
+                AllOrdersDateCubit()..getDriverTransactions()),
         //
-        BlocProvider(lazy: false, create: (BuildContext context) => SettingBloc()..getSetting()),
+        BlocProvider(
+            lazy: false,
+            create: (BuildContext context) => SettingBloc()..getSetting()),
         //
-        BlocProvider(create: (BuildContext context) => sl<AuthenticationBloc>()),
+        BlocProvider(
+            create: (BuildContext context) => sl<AuthenticationBloc>()),
         //
         BlocProvider(create: (BuildContext context) => sl<OrderCubit>()),
         //
-        BlocProvider(create: (BuildContext context) => sl<LocationCubit>()..getLatAndLng()),
+        BlocProvider(
+            create: (BuildContext context) =>
+                sl<LocationCubit>()..getLatAndLng()),
       ],
       child: ScreenUtilInit(
           minTextAdapt: true,
@@ -81,8 +94,9 @@ class MyApp extends StatelessWidget {
                   return MaterialApp(
                     debugShowCheckedModeBanner: false,
                     theme: ThemeData(
-                      colorScheme:
-                          ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+                      colorScheme: ColorScheme.fromSeed(
+                        seedColor: Colors.deepPurple,
+                      ),
                       useMaterial3: true,
                     ),
                     locale: Locale(DataStore.instance.lang),

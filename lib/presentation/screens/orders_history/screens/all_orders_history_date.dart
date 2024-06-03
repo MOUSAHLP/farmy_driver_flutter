@@ -21,7 +21,9 @@ class AllOrdersHistoryDate extends StatelessWidget {
       children: [
         Padding(
           padding: const EdgeInsets.symmetric(
-              vertical: PaddingApp.p20, horizontal: PaddingApp.p32),
+            vertical: PaddingApp.p20,
+            horizontal: PaddingApp.p32,
+          ),
           child: Row(
             children: [
               Text(AppLocalizations.of(context)!.more_details,
@@ -44,11 +46,8 @@ class AllOrdersHistoryDate extends StatelessWidget {
                       color: ColorManager.primaryGreen,
                       fontSize: FontSizeApp.s14.sp),
                   onTap: () {
-                    launchUrl(
-                        Uri.parse(
-                            ApiConst.baseUrl+ApiConst.generatePdfAllOrders),
-                        mode: LaunchMode
-                            .externalApplication);
+                    launchUrl(Uri.parse(cubit.ordersHistorymodel!.pdfUrl!),
+                        mode: LaunchMode.externalApplication);
                   },
                 ),
               ),

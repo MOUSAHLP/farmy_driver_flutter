@@ -1,8 +1,10 @@
 class TransactionsModel {
   String? driverDues;
   List<DueOrders>? orders;
+  String? pdfUrl;
 
-  TransactionsModel({this.driverDues, this.orders});
+
+  TransactionsModel({this.driverDues, this.orders,this.pdfUrl});
 
   TransactionsModel.fromJson(Map<String, dynamic> json) {
     driverDues = json['driver_dues'];
@@ -12,6 +14,7 @@ class TransactionsModel {
         orders!.add(DueOrders.fromJson(v));
       });
     }
+    pdfUrl = json["pdf_url"];
   }
 
   Map<String, dynamic> toJson() {

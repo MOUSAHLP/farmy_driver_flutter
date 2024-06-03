@@ -3,15 +3,18 @@ import 'package:pharmy_driver/models/statistics_model.dart';
 class OrdersHistorymodel {
   StatisticsModel? statisticsdata;
   int? ordersCount;
+   String ?pdfUrl;
+
   List<DriverOrders>? driverOrders;
   OrdersHistorymodel(
-      {this.statisticsdata, this.ordersCount, this.driverOrders});
+      {this.statisticsdata, this.ordersCount, this.driverOrders,required this.pdfUrl});
 
   OrdersHistorymodel.fromJson(Map<String, dynamic> json) {
     statisticsdata = StatisticsModel(
       monthData: json['month_data'],
       weekData: json['week_data'],
     );
+    pdfUrl =json["pdf_url"];
 
     ordersCount = json['orders_count'];
 

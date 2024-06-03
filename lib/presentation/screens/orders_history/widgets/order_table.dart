@@ -10,7 +10,7 @@ import '../../../resources/values_app.dart';
 
 class OrderTable extends StatelessWidget {
   final List<DriverOrders> listData;
-  const OrderTable({Key? key, required this.listData}) : super(key: key);
+  const OrderTable({Key? key, required this.listData,}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

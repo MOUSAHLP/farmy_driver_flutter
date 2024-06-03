@@ -38,24 +38,24 @@ class TransactionsScreen extends StatelessWidget {
                     const SizedBox(
                       height: 10,
                     ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 27),
-                      child: Row(
-                        children: [
-                          Text(
-                            "${AppLocalizations.of(context)!.dues} :",
-                            style: getBoldStyle(
-                                color: ColorManager.grayForMessage,
-                                fontSize: 15),
-                          )
-                        ],
-                      ),
-                    ),
-                    DuesCard(
-                      dues: int.parse(
-                          cubit.transactionsModel!.driverDues.toString()),
-                      onTap: () {},
-                    ),
+                    // Padding(
+                    //   padding: const EdgeInsets.symmetric(horizontal: 27),
+                    //   child: Row(
+                    //     children: [
+                    //       Text(
+                    //         "${AppLocalizations.of(context)!.dues} :",
+                    //         style: getBoldStyle(
+                    //             color: ColorManager.grayForMessage,
+                    //             fontSize: 15),
+                    //       )
+                    //     ],
+                    //   ),
+                    // ),
+                    // DuesCard(
+                    //   dues: int.parse(
+                    //       cubit.transactionsModel!.driverDues.toString()),
+                    //   onTap: () {},
+                    // ),
                     SizedBox(
                       height: 4.h,
                     ),
@@ -72,7 +72,10 @@ class TransactionsScreen extends StatelessWidget {
                         ],
                       ),
                     ),
-                    OrderDateCard(listData: cubit.transactionsModel!.orders!),
+                    OrderDateCard(
+                      listData: cubit.transactionsModel!.orders!,
+                      pdfUrl: cubit.transactionsModel!.pdfUrl!,
+                    ),
                   ],
                 );
               }),
