@@ -20,14 +20,22 @@ class TrackingRepo {
     );
   }
 
-  static Future<Either<String, DeliverOrder>> deliverOrder({required int idOrder,String? code}) {
+  static Future<Either<String, DeliverOrder>> deliverOrder(
+      {required int idOrder, String? code}) {
     return BaseApiClient.get<DeliverOrder>(
       url: ApiConst.deliverOrder(idOrder),
-     queryParameters: {
-        "code":code
-     },
+      queryParameters: {"code": code},
       converter: (e) {
         return DeliverOrder.fromJson(e);
+      },
+    );
+  }
+
+  static Future<Either<String, bool>> makeOrderPaid({required int idOrder}) {
+    return BaseApiClient.get<bool>(
+      url: ApiConst.makeOrderPaid(idOrder),
+      converter: (e) {
+        return true;
       },
     );
   }

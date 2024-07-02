@@ -17,9 +17,10 @@ import '../../../../core/utils/api_const.dart';
 
 class OrderDateCard extends StatelessWidget {
   final List<DueOrders> listData;
- final String pdfUrl;
+  final String pdfUrl;
 
-  const OrderDateCard({Key? key, required this.listData, required this.pdfUrl}) : super(key: key);
+  const OrderDateCard({Key? key, required this.listData, required this.pdfUrl})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -105,7 +106,7 @@ class OrderDateCard extends StatelessWidget {
                   styleText: getUnderBoldStyle(
                       color: Colors.white, fontSize: FontSizeApp.s12.sp),
                   onTap: () {
-                    AppRouter.push(context, const AllOrdersDate());
+                    AppRouter.push(context, AllOrdersDate(pdfUrl: pdfUrl));
                   },
                 ),
               ),
@@ -128,7 +129,9 @@ class OrderDateCard extends StatelessWidget {
                       fontSize: FontSizeApp.s12.sp),
                   onTap: () {
                     launchUrl(
-                      Uri.parse(pdfUrl,),
+                      Uri.parse(
+                        pdfUrl,
+                      ),
                       mode: LaunchMode.externalApplication,
                     );
                   },

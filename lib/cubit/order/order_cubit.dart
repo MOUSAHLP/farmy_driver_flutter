@@ -52,8 +52,6 @@ class OrderCubit extends Cubit<OrderStates> {
   }
 
   addProduct(int id) {
-
-
     if (approvedProductsIds.any((element) => element == id)) {
     } else {
       approvedProductsIds.add(id);

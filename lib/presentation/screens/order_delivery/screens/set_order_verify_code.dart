@@ -3,6 +3,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:pharmy_driver/presentation/app_widgets/dialog/error_dialog.dart';
+import 'package:pharmy_driver/presentation/screens/home/screens/home_screen.dart';
+import 'package:pharmy_driver/presentation/screens/main_screen/screen/main_screen.dart';
+import 'package:pharmy_driver/presentation/screens/my_orders/screens/my_orders.dart';
 import 'package:sms_autofill/sms_autofill.dart';
 import '../../../../core/app_enum.dart';
 import '../../../../core/app_router/app_router.dart';
@@ -155,6 +158,7 @@ class _OrderVerifyCodeState extends State<OrderVerifyCode> {
                             child: BlocConsumer<OrderDeliveryCubit,
                                 OrderDeliveryState>(
                               listener: (BuildContext context, state) {
+                                var bloc = context.read<OrderDeliveryCubit>();
                                 if (state.screenState == ScreenState.loading) {
                                   LoadingDialog().openDialog(context);
                                 } else if (state.screenState ==
@@ -165,11 +169,74 @@ class _OrderVerifyCodeState extends State<OrderVerifyCode> {
                                 } else if (state.screenState ==
                                     ScreenState.success) {
                                   LoadingDialog().closeDialog(context);
-                                  showDialog(
-                                    context: context,
-                                    builder: (context) {
-                                      return AlertDialog(
-                                        content: Column(
+                                  if (state.wasMadePaid) {
+                                    showDialog(
+                                      context: context,
+                                      builder: (context) {
+                                        return AlertDialog(
+                                          content: Column(
+                                            mainAxisSize: MainAxisSize.min,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceAround,
+                                            children: [
+                                              Text(
+                                                'تمت العملية بنجاح :)',
+                                                style: getBoldStyle(
+                                                  color:
+                                                      ColorManager.primaryGreen,
+                                                  fontSize: FontSizeApp.s15.sp,
+                                                ),
+                                              ),
+                                              const SizedBox(
+                                                height: 10,
+                                              ),
+                                              Text(
+                                                "يمكنك رؤية جميع الطلبات التي قمت بإتمامها من قائمة تاريخ الطلبات في المنيو",
+                                                style: getBold800Style(
+                                                  color: ColorManager
+                                                      .grayForMessage,
+                                                  fontSize: FontSizeApp.s14.sp,
+                                                ),
+                                              ),
+                                              const SizedBox(
+                                                height: 18,
+                                              ),
+                                              InkWell(
+                                                onTap: () {
+                                                  context
+                                                      .read<HomeCubit>()
+                                                      .getRefreshOrder();
+                                                  context
+                                                      .read<OrderCubit>()
+                                                      .getOrder();
+                                                  context
+                                                      .read<HomeCubit>()
+                                                      .changeIndex(2);
+                                                  AppRouter.pop(context);
+                                                  AppRouter.pop(context);
+                                                  AppRouter.pop(context);
+                                                  AppRouter.pop(context);
+                                                  AppRouter.pop(context);
+                                                },
+                                                child: circularContainer(
+                                                  circular: 15,
+                                                  text: "تم",
+                                                  color:
+                                                      ColorManager.primaryGreen,
+                                                  textColor: Colors.white,
+                                                ),
+                                              )
+                                            ],
+                                          ),
+                                        );
+                                      },
+                                    );
+                                  } else {
+                                    showDialog(
+                                      context: context,
+                                      builder: (context) {
+                                        return AlertDialog(
+                                            content: Column(
                                           mainAxisSize: MainAxisSize.min,
                                           mainAxisAlignment:
                                               MainAxisAlignment.spaceAround,
@@ -211,80 +278,8 @@ class _OrderVerifyCodeState extends State<OrderVerifyCode> {
                                             InkWell(
                                               onTap: () {
                                                 Navigator.of(context).pop();
-                                                showDialog(
-                                                  context: context,
-                                                  builder: (context) {
-                                                    return AlertDialog(
-                                                      content: Column(
-                                                        mainAxisSize:
-                                                            MainAxisSize.min,
-                                                        mainAxisAlignment:
-                                                            MainAxisAlignment
-                                                                .spaceAround,
-                                                        children: [
-                                                          Text(
-                                                            'تمت العملية بنجاح :)',
-                                                            style: getBoldStyle(
-                                                              color: ColorManager
-                                                                  .primaryGreen,
-                                                              fontSize:
-                                                                  FontSizeApp
-                                                                      .s15.sp,
-                                                            ),
-                                                          ),
-                                                          const SizedBox(
-                                                            height: 10,
-                                                          ),
-                                                          Text(
-                                                            "يمكنك رؤية جميع الطلبات التي قمت بإتمامها من قائمة تاريخ الطلبات في المنيو",
-                                                            style:
-                                                                getBold800Style(
-                                                              color: ColorManager
-                                                                  .grayForMessage,
-                                                              fontSize:
-                                                                  FontSizeApp
-                                                                      .s14.sp,
-                                                            ),
-                                                          ),
-                                                          const SizedBox(
-                                                            height: 18,
-                                                          ),
-                                                          InkWell(
-                                                            onTap: () {
-                                                              context
-                                                                  .read<
-                                                                      HomeCubit>()
-                                                                  .getRefreshOrder();
-                                                              context
-                                                                  .read<
-                                                                      OrderCubit>()
-                                                                  .getOrder();
-                                                              AppRouter.pop(
-                                                                  context);
-                                                              AppRouter.pop(
-                                                                  context);
-                                                              AppRouter.pop(
-                                                                  context);
-                                                              AppRouter.pop(
-                                                                  context);
-                                                              AppRouter.pop(
-                                                                  context);
-                                                            },
-                                                            child:
-                                                                circularContainer(
-                                                              circular: 15,
-                                                              text: "تم",
-                                                              color: ColorManager
-                                                                  .primaryGreen,
-                                                              textColor:
-                                                                  Colors.white,
-                                                            ),
-                                                          )
-                                                        ],
-                                                      ),
-                                                    );
-                                                  },
-                                                );
+                                                bloc.makeOrderPaid(
+                                                    idOrder: widget.orderId);
                                               },
                                               child: circularContainer(
                                                 circular: 15,
@@ -295,10 +290,10 @@ class _OrderVerifyCodeState extends State<OrderVerifyCode> {
                                               ),
                                             )
                                           ],
-                                        ),
-                                      );
-                                    },
-                                  );
+                                        ));
+                                      },
+                                    );
+                                  }
                                 }
                               },
                               builder: (context, state) {

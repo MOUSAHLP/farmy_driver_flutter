@@ -24,10 +24,9 @@ class DioErrorsHandler {
         print(e.response!.statusCode);
         print(e.response!.statusMessage);
       }
-
       data["message"] = e.response!.data["message"];
       data["statusCode"] = e.response!.data["returnedCode"];
-    } else if (e.type ==DioExceptionType.unknown ||
+    } else if (e.type == DioExceptionType.unknown ||
         e.type == DioExceptionType.badCertificate ||
         e.type == DioExceptionType.badResponse) {
       data["message"] = "Something Went Wrong";

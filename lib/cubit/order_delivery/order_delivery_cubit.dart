@@ -18,16 +18,34 @@ class OrderDeliveryCubit extends Cubit<OrderDeliveryState> {
     emit(state.copyWith(isDelivery: false));
   }
 
-  deliverOrder({required int idOrder,String? code}) async {
+  deliverOrder({required int idOrder, String? code}) async {
     emit(state.copyWith(screenState: ScreenState.loading));
-    final response = await TrackingRepo.deliverOrder(idOrder: idOrder,code: code);
+    final response =
+        await TrackingRepo.deliverOrder(idOrder: idOrder, code: code);
     response.fold((l) {
-      emit(state.copyWith(screenState: ScreenState.error,error: l));
+      emit(state.copyWith(screenState: ScreenState.error, error: l));
     }, (r) {
       emit(
         state.copyWith(
           screenState: ScreenState.success,
           deliverOrder: r,
+        ),
+      );
+    });
+  }
+
+  makeOrderPaid({required int idOrder, String? code}) async {
+    emit(state.copyWith(screenState: ScreenState.loading));
+    final response = await TrackingRepo.makeOrderPaid(idOrder: idOrder);
+    response.fold((l) {
+      emit(state.copyWith(screenState: ScreenState.error, error: l));
+    }, (r) {
+    print("#@qwe");
+
+      emit(
+        state.copyWith(
+          screenState: ScreenState.success,
+          wasMadePaid: true,
         ),
       );
     });

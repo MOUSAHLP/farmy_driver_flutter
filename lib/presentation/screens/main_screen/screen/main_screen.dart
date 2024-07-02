@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:pharmy_driver/core/app_router/app_router.dart';
 import 'package:pharmy_driver/cubit/home/home_cubit.dart';
 import 'package:pharmy_driver/presentation/app_widgets/dialog/will_pop_scope_handler.dart';
 import 'package:pharmy_driver/presentation/resources/assets_manager.dart';
@@ -34,7 +35,6 @@ class _MainScreenState extends State<MainScreen> {
       const MyOrdersBody(),
       const TransactionsScreen(),
       const HomeScreen(),
-
       const OrdersHistoryScreen(),
       const MyAccountScreen(),
     ];
@@ -49,7 +49,10 @@ class _MainScreenState extends State<MainScreen> {
         return false;
       },
       child: BlocBuilder<HomeCubit, HomeStates>(
-        bloc: sl<HomeCubit>()..getHome(context.read<SettingBloc>().settingModel?.data?.updateTime??"5")..getLastOrder(),
+        bloc: sl<HomeCubit>()
+          ..getHome(
+              context.read<SettingBloc>().settingModel?.data?.updateTime ?? "5")
+          ..getLastOrder(),
         builder: (context, state) => Scaffold(
           key: context.read<HomeCubit>().scaffoldKey,
           drawer: const CustomAppDrawer(),
@@ -75,6 +78,7 @@ class _MainScreenState extends State<MainScreen> {
                         currentIndex: context.read<HomeCubit>().currentIndex,
                         onTap: () {
                           context.read<HomeCubit>().changeIndex(0);
+                  
                         },
                         title: AppLocalizations.of(context)!.my_orders,
                         icon: IconsManager.ordersIcon,

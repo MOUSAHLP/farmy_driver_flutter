@@ -16,23 +16,23 @@ class ApiConst {
   static const String getAbout = "/about_the_app";
   static const String getTerm = "/use_terms";
 
-
   /// Setting
   static const String getSetting = "/setting";
-
 
   ///Home
   static const String getHome = "/get_home";
   static const String getLastOrders = "/orders";
-  static  String acceptOrder(int id) => "/accept-order/$id";
-  static  String acceptOrderAssign(int id) => "/accept-assigned-order/$id";
-  static  String chengActive = "/active-inactive";
+  static String acceptOrder(int id) => "/accept-order/$id";
+  static String acceptOrderAssign(int id) => "/accept-assigned-order/$id";
+  static String chengActive = "/active-inactive";
 
-  static  String getTrackingUrl(int idOrder) => "/order-tracking/$idOrder";
-  static  String deliverOrder(int idOrder) => "/deliver-order/$idOrder";
+  static String getTrackingUrl(int idOrder) => "/order-tracking/$idOrder";
+  static String deliverOrder(int idOrder) => "/deliver-order/$idOrder";
+  static String makeOrderPaid(int idOrder) => "/make-order-paid/$idOrder";
+
   ///orders
   static const String getOrders = "/driver-orders";
-  static  String getOrdersDetails(int id) => "/driver-orders/$id?lang=ar";
+  static String getOrdersDetails(int id) => "/driver-orders/$id?lang=ar";
 
   ///Orders History
   static String getDriverOrdersHistory(String date, String type) =>

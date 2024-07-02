@@ -12,7 +12,9 @@ class OrderInfoWidget extends StatelessWidget {
   final bool isHome;
   final OrderDetailsModel orderDetailsModel;
 
-  const OrderInfoWidget({Key? key, this.isHome = false,required this.orderDetailsModel}) : super(key: key);
+  const OrderInfoWidget(
+      {Key? key, this.isHome = false, required this.orderDetailsModel})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -31,56 +33,65 @@ class OrderInfoWidget extends StatelessWidget {
               contentColor: ColorManager.grayForMessage,
               fontSize: FontSizeApp.s12,
               title: AppLocalizations.of(context)!.order_date,
-              content: orderDetailsModel.orderDate??""),
+              content: orderDetailsModel.orderDate ?? ""),
           OrderDetailsRow(
               titleColor: ColorManager.grayForMessage,
               contentColor: ColorManager.primaryGreen,
               fontSize: FontSizeApp.s12,
               title: AppLocalizations.of(context)!.order_time,
-              content: orderDetailsModel.orderTime??""),
+              content: orderDetailsModel.orderTime ?? ""),
           OrderDetailsRow(
               titleColor: ColorManager.grayForMessage,
               contentColor: ColorManager.primaryGreen,
               fontSize: FontSizeApp.s12,
               title: AppLocalizations.of(context)!.order_status,
-              content: orderDetailsModel.status??""),
+              content: orderDetailsModel.status ?? ""),
           OrderDetailsRow(
               titleColor: ColorManager.grayForMessage,
               contentColor: ColorManager.grayForMessage,
               fontSize: FontSizeApp.s12,
               title: AppLocalizations.of(context)!.pay_method,
-              content: orderDetailsModel.paymentMethod??""),
+              content: orderDetailsModel.paymentMethod ?? ""),
           OrderDetailsRow(
               titleColor: ColorManager.grayForMessage,
               contentColor: ColorManager.grayForMessage,
               fontSize: FontSizeApp.s12,
               title: AppLocalizations.of(context)!.order_location,
-              content: orderDetailsModel.userAddress??""),
+              content: orderDetailsModel.userAddress ?? ""),
           if (!isHome) ...[
             OrderDetailsRow(
-                titleColor: ColorManager.grayForMessage,
-                contentColor: ColorManager.primaryGreen,
-                fontSize: FontSizeApp.s12,
-                title: AppLocalizations.of(context)!.the_value_of_the_request,
-                content: Formatter.formatPrice(orderDetailsModel.subTotal??0),),
+              titleColor: ColorManager.grayForMessage,
+              contentColor: ColorManager.primaryGreen,
+              fontSize: FontSizeApp.s12,
+              title: AppLocalizations.of(context)!.the_value_of_the_request,
+              content: Formatter.formatPrice(orderDetailsModel.subTotal ?? 0),
+            ),
             OrderDetailsRow(
                 titleColor: ColorManager.grayForMessage,
                 contentColor: ColorManager.primaryGreen,
                 fontSize: FontSizeApp.s12,
                 title: AppLocalizations.of(context)!.delivery_value,
-                content:Formatter.formatPrice(orderDetailsModel.deliveryFee??0)),
-            OrderDetailsRow(
-                titleColor: ColorManager.grayForMessage,
-                contentColor: ColorManager.primaryGreen,
-                fontSize: FontSizeApp.s12,
-                title: AppLocalizations.of(context)!.total_invoice,
-                content:Formatter.formatPrice(orderDetailsModel.total??0)),
+                content:
+                    Formatter.formatPrice(orderDetailsModel.deliveryFee ?? 0)),
             OrderDetailsRow(
                 titleColor: ColorManager.grayForMessage,
                 contentColor: ColorManager.primaryGreen,
                 fontSize: FontSizeApp.s12,
                 title: AppLocalizations.of(context)!.tax,
-                content:Formatter.formatPrice(orderDetailsModel.tax??0)),
+                content: Formatter.formatPrice(orderDetailsModel.tax ?? 0)),
+            OrderDetailsRow(
+                titleColor: ColorManager.grayForMessage,
+                contentColor: ColorManager.primaryGreen,
+                fontSize: FontSizeApp.s12,
+                title: AppLocalizations.of(context)!.extra_discount,
+                content: Formatter.formatPrice(
+                    orderDetailsModel.extraDiscount ?? 0)),
+            OrderDetailsRow(
+                titleColor: ColorManager.grayForMessage,
+                contentColor: ColorManager.primaryGreen,
+                fontSize: FontSizeApp.s12,
+                title: AppLocalizations.of(context)!.total_invoice,
+                content: Formatter.formatPrice(orderDetailsModel.total ?? 0)),
           ],
         ],
       ),

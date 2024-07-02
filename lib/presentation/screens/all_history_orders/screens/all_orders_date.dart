@@ -15,7 +15,9 @@ import '../../../resources/style_app.dart';
 import '../../../resources/values_app.dart';
 
 class AllOrdersDate extends StatelessWidget {
-  const AllOrdersDate({Key? key}) : super(key: key);
+ final String pdfUrl;
+
+  const AllOrdersDate({Key? key, required this.pdfUrl}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -67,7 +69,7 @@ class AllOrdersDate extends StatelessWidget {
                               onTap: () {
                                 launchUrl(
                                     Uri.parse(
-                                        ApiConst.baseUrl+ApiConst.generatePdfAllOrders),
+                                        pdfUrl),
                                     mode: LaunchMode
                                         .externalApplication);
                               },

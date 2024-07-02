@@ -11,6 +11,7 @@ class OrderDetailsModel {
   bool? paymentStatus;
   int? couponDiscount;
   int? deliveryFee;
+  int? extraDiscount;
   int? subTotal;
   int? total;
   int? tax;
@@ -20,8 +21,8 @@ class OrderDetailsModel {
   List<OrderDetail>? orderDetails;
 
   OrderDetailsModel({
-  required  this.id,
-   required this.orderNumber,
+    required this.id,
+    required this.orderNumber,
     this.userPhone,
     this.status,
     this.deliveryMethod,
@@ -32,6 +33,7 @@ class OrderDetailsModel {
     this.paymentStatus,
     this.couponDiscount,
     this.deliveryFee,
+    this.extraDiscount,
     this.subTotal,
     this.total,
     this.notes,
@@ -41,27 +43,31 @@ class OrderDetailsModel {
     this.tax,
   });
 
-  factory OrderDetailsModel.fromJson(Map<String, dynamic> json) => OrderDetailsModel(
-    id: json["id"],
-    orderNumber: json["order_number"],
-    userPhone: json["user_phone"],
-    status: json["status"],
-    deliveryMethod: json["delivery_method"],
-    orderTime: json["order_time"],
-    orderDate: json["order_date"],
-    userAddress: json["user_address"],
-    paymentMethod: json["payment_method"],
-    paymentStatus: json["payment_status"],
-    couponDiscount: json["coupon_discount"],
-    deliveryFee: json["delivery_fee"],
-    subTotal: json["sub_total"],
-    total: json["total"],
-    tax: json["tax"],
-    notes: json["notes"],
-    changes: List<int>.from(json["changes"].map((x) => x)),
-    deliveryAttributes: List<String>.from(json["deliveryAttributes"].map((x) => x)),
-    orderDetails: List<OrderDetail>.from(json["order_details"].map((x) => OrderDetail.fromJson(x))),
-  );
+  factory OrderDetailsModel.fromJson(Map<String, dynamic> json) =>
+      OrderDetailsModel(
+        id: json["id"],
+        orderNumber: json["order_number"],
+        userPhone: json["user_phone"],
+        status: json["status"],
+        deliveryMethod: json["delivery_method"],
+        orderTime: json["order_time"],
+        orderDate: json["order_date"],
+        userAddress: json["user_address"],
+        paymentMethod: json["payment_method"],
+        paymentStatus: json["payment_status"],
+        couponDiscount: json["coupon_discount"],
+        deliveryFee: json["delivery_fee"],
+        extraDiscount: json["extra_discount"],
+        subTotal: json["sub_total"],
+        total: json["total"],
+        tax: json["tax"],
+        notes: json["notes"],
+        changes: List<int>.from(json["changes"].map((x) => x)),
+        deliveryAttributes:
+            List<String>.from(json["deliveryAttributes"].map((x) => x)),
+        orderDetails: List<OrderDetail>.from(
+            json["order_details"].map((x) => OrderDetail.fromJson(x))),
+      );
 }
 
 class OrderDetail {
@@ -73,24 +79,25 @@ class OrderDetail {
   List<Attribute> attributes;
 
   OrderDetail({
-  required  this.id,
+    required this.id,
     this.name,
     this.image,
     this.quantity,
     this.price,
-    this.attributes=const[],
+    this.attributes = const [],
   });
 
   factory OrderDetail.fromJson(Map<String, dynamic> json) => OrderDetail(
-    id: json["id"],
-    name: json["name"],
-    image: json["image"],
-    quantity: json["quantity"],
-    price: json["price"],
-    attributes:  json["attributes"] == null
-        ? []
-        :List<Attribute>.from(json["attributes"].map((x) => Attribute.fromJson(x))),
-  );
+        id: json["id"],
+        name: json["name"],
+        image: json["image"],
+        quantity: json["quantity"],
+        price: json["price"],
+        attributes: json["attributes"] == null
+            ? []
+            : List<Attribute>.from(
+                json["attributes"].map((x) => Attribute.fromJson(x))),
+      );
 }
 
 class Attribute {
@@ -103,12 +110,12 @@ class Attribute {
   });
 
   factory Attribute.fromJson(Map<String, dynamic> json) => Attribute(
-    name: json["name"],
-    value: json["value"],
-  );
+        name: json["name"],
+        value: json["value"],
+      );
 
   Map<String, dynamic> toJson() => {
-    "name": name,
-    "value": value,
-  };
+        "name": name,
+        "value": value,
+      };
 }
